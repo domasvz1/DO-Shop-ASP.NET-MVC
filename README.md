@@ -4,6 +4,7 @@ Will be renewed from time to time and updated
 And electronic shop local website written with:
 - .NET visual Studio 
     * Migartions Entity Framework
+    * Unity Container
 - 
 (More to come)
 
