@@ -63,4 +63,9 @@ You can create and delete orders.
 - Ispect more how databasesare created wit Entity Framework/Migrations using DataAccess
 
 
+[Fix]
+--
 
+Responsive buttons in the admin panel.
+Responsive buttons in the UI
+Change the language from Lithuanian to English
