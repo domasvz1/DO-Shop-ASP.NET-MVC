@@ -2,7 +2,8 @@
 Will be renewed from time to time and updated
 
 And electronic shop local website written with:
-- .NET visual Studio
+- .NET visual Studio 
+    * Migartions Entity Framework
 - 
 (More to come)
 
@@ -33,3 +34,6 @@ Enable-Migrations (if its installed do the following)
 Some starting tasks:
 - Make coding practises better
 - Make a script where the admin user would be inserted intoa database so that would not be needed to do manually)
+
+
+- Ispect more how databasesare created wit Entity Framework/Migrations using DataAccess
