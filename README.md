@@ -42,6 +42,18 @@ Login Modal has to have 3 lower tier modals:
 - Credit card information modal
 
 
+Main window should use a btter styling.
+- npm run dev
+- When connecting to the system ther shpuld be a window displaying theis problem
+( You are blocked in our system, let us know how could we help you_)
+
+
+----
+Hierarchy -> first blocked, then email, then password (catch all three exceptions somehow)
+
+
+You can create and delete orders.
+
 [Lithuanian]
 --
 - Padaryti modal sistema, kur login but sudarytas is modalu, kurie butu (visible/not visible)
