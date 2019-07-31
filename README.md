@@ -6,7 +6,7 @@ And electronic shop local website written with:
 - 
 (More to come)
 
-Setting up the project:
+You might havesome addons or something else regarding the project, so im leaving you with this "Setting up the project" guide:
 --
 If you pull this from the master and the error is proceeded with the 
 
@@ -17,3 +17,15 @@ If you pull this from the master and the error is proceeded with the
   In the "Package Manager Console" in the Visual Studio.
 
   Also you can add "SQL Server Object Explorer" in view. If itsmissin, restrat the project (by opening it in the explorer using Visual    Studio).
+
+
+
+This error may also occur
+"No context type was found in the assembly"
+
+In the Packahge Manager Console (Or if it changes in the future in something similar) change Defaukt project to "DataAccess"
+--
+Enable-Migrations (if its installed do the following)
+
+Add-Migration InitialCreate        and            update-database
+--
