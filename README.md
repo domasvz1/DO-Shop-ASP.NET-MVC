@@ -37,9 +37,9 @@ Some starting tasks:
 - Make a script where the admin user would be inserted intoa database so that would not be needed to do manually)
 
 Login Modal has to have 3 lower tier modals:
-     * Basic info modal 
-     * Adress information modal
-      * Credit card information modal
+- Basic info modal 
+- Adress information modal
+- Credit card information modal
 
 [Lithuanian]
 --
