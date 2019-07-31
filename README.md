@@ -35,6 +35,18 @@ Enable-Migrations (if its installed do the following)
 Some starting tasks:
 - Make coding practises better
 - Make a script where the admin user would be inserted intoa database so that would not be needed to do manually)
+- Login Modal has to have 3 lower tier modals:
+         * Basic info modal 
+         * Adress information modal
+         * Credit card information modal
+
+[Lithuanian]
+--
+- Padaryti modal sistema, kur login but sudarytas is modalu, kurie butu (visible/not visible)
+- Prideti i uzsakymu krepseli turi nuvesti i kita "modal" kuriame butu galima prisijungti
 
 
 - Ispect more how databasesare created wit Entity Framework/Migrations using DataAccess
+
+
+
