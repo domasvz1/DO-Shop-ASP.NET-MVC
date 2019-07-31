@@ -27,5 +27,5 @@ In the Packahge Manager Console (Or if it changes in the future in something sim
 --
 Enable-Migrations (if its installed do the following)
 
-Add-Migration InitialCreate        and            update-database
+"Add-Migration InitialCreate"        and            "update-database"
 --
