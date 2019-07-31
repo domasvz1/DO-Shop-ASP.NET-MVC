@@ -29,3 +29,6 @@ Enable-Migrations (if its installed do the following)
 
 "Add-Migration InitialCreate"        and            "update-database"
 --
+
+Some starting tasks:
+- Make coding practises better
