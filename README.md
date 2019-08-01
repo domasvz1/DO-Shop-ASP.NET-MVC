@@ -80,9 +80,13 @@ Upload pictures, display one as icon and then have an album(array of uploaded pi
 --
 Connecting the login (through facebook, twitter google, maybe leave reviews) 
 
+[Maybe futuristic features]
+--
+
+connect with username and email (now only one)
 
 
-Starting from:
+Starting the work from:
 --
  - Connecting registration and login it with database (In Progress)
  - Connecting registration and login it with database (In Progress)
