@@ -86,4 +86,5 @@ Starting from:
 --
 - Renewing menu (In Progress) 
    -Renewing desing (done)
+   Renewing registration window (In progress)
    - Connecting it with database (In Progress)
