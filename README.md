@@ -62,13 +62,12 @@ You can create and delete orders.
 - Ispect more how databasesare created wit Entity Framework/Migrations using DataAccess
 
 
-[Fix]
+[What needs to be fixed]
 --
-
-Responsive buttons in the admin panel.
-Responsive buttons in the UI
-Change the language from Lithuanian to English
-Adminas/Edit/16 (Photo modificfaction widnow, back button doesnt work or deosnt exist)
+* Responsive buttons in the admin panel.
+* Responsive buttons in the UI
+* Change the language from Lithuanian to English
+* Adminas/Edit/16 (Photo modificfaction widnow, back button doesnt work or deosnt exist)
 
 
 [Upcoming features]
@@ -90,6 +89,7 @@ Starting the work from:
 --
  - Connecting registration and login it with database (In Progress)
  - Connecting registration and login it with database (In Progress)
+ - Renewing and making new header
    
    
 [Whats done]
