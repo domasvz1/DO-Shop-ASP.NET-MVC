@@ -32,8 +32,8 @@ Enable-Migrations (if its installed do the following)
 "Add-Migration InitialCreate"        and            "update-database"
 --
 Some starting tasks:
-- Make coding practises better
-- Make a script where the admin user would be inserted intoa database so that would not be needed to do manually)
+- Make coding practises better used (in the code itself)
+- Make a script where (when launching the program for the first time) the "Admin user" would be inserted into the system's database automatically [so that would not be needed to do manually by the programmer]
 
 
 Login Modal has to have 3 lower tier modals:
@@ -43,13 +43,12 @@ Login Modal has to have 3 lower tier modals:
 
 
 Main window should use a btter styling.
-- npm run dev
-- When connecting to the system ther shpuld be a window displaying theis problem
+- When connecting to the system there should be a window displaying theis problem
 ( You are blocked in our system, let us know how could we help you_)
 
 
 ----
-Hierarchy -> first blocked, then email, then password (catch all three exceptions somehow)
+Hierarchy -> first blocked, then email, then password (catch all three exceptions somehow or display in that order).
 
 
 You can create and delete orders.
@@ -69,3 +68,22 @@ You can create and delete orders.
 Responsive buttons in the admin panel.
 Responsive buttons in the UI
 Change the language from Lithuanian to English
+Adminas/Edit/16 (Photo modificfaction widnow, back button doesnt work or deosnt exist)
+
+
+[Upcoming features]
+--
+Upload pictures, display one as icon and then have an album(array of uploaded pictures) and display them in the item page.
+
+
+[Harder tasks]
+--
+Connecting with face 
+
+
+
+Starting from:
+--
+- Renewing menu (In Progress) 
+   -Renewing desing (done)
+   - Connecting it with database (In Progress)
