@@ -78,13 +78,19 @@ Upload pictures, display one as icon and then have an album(array of uploaded pi
 
 [Harder tasks]
 --
-Connecting with face 
+Connecting the login (through facebook, twitter google, maybe leave reviews) 
 
 
 
 Starting from:
 --
-- Renewing menu (In Progress) 
-   -Renewing desing (done)
-   Renewing registration window (In progress)
-   - Connecting it with database (In Progress)
+ - Connecting registration and login it with database (In Progress)
+ - Connecting registration and login it with database (In Progress)
+   
+   
+[Whats done]
+--
+
+- Renewing registration menu window visual
+- Renewing login menud window visual
+  
