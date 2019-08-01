@@ -82,7 +82,8 @@ Connecting the login (through facebook, twitter google, maybe leave reviews)
 [Maybe futuristic features]
 --
 
-connect with username and email (now only one)
+Connect with username and email both (now only one)
+Redone footer
 
 
 Starting the work from:
