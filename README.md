@@ -8,6 +8,11 @@ And electronic shop local website written with:
 - 
 (More to come)
 
+# Currently working on
+
+Design of the e shop front page
+- Renewing first page and getting items to be shown there
+
 You might havesome addons or something else regarding the project, so im leaving you with this "Setting up the project" guide:
 --
 If you pull this from the master and the error is proceeded with the 
