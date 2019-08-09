@@ -9,10 +9,7 @@ And electronic shop local website written with:
 (More to come)
 
 # Currently working on
-
-Design of the e shop front page
-- Merging winkel with the current base system
-- Renewing first page and getting items to be shown there
+- Navigation bar, Admin Panel and the UI display of the items in the Shop.
 
 You might havesome addons or something else regarding the project, so im leaving you with this "Setting up the project" guide:
 --
@@ -70,11 +67,14 @@ You can create and delete orders.
 
 [What needs to be fixed]
 --
-* Responsive buttons in the admin panel.
+
+* Responsive and interactive buttons in the admin panel.
 * Responsive buttons in the UI
 * Change the language from Lithuanian to English
 * Adminas/Edit/16 (Photo modificfaction widnow, back button doesnt work or deosnt exist)
 
+
+[Not burning fixes make Favro for this]
 
 [Upcoming features]
 --
@@ -85,23 +85,12 @@ Upload pictures, display one as icon and then have an album(array of uploaded pi
 --
 Connecting the login (through facebook, twitter google, maybe leave reviews) 
 
-[Maybe futuristic features]
+
+[Whats done or added features and fixes]
 --
+- Created Favro for login and adding cards there (increasing the workflow)
+- Renewing registration menu window visual UI
+- Renewing login menu window visual UI
+- Fixed a bug where if you are connected, the app crashes.
 
-Connect with username and email both (now only one)
-Redone footer
 
-
-Starting the work from:
---
- - Connecting registration and login it with database (In Progress)
- - Connecting registration and login it with database (In Progress)
- - Renewing and making new header
-   
-   
-[Whats done]
---
-
-- Renewing registration menu window visual
-- Renewing login menud window visual
-  
