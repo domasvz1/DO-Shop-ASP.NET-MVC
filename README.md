@@ -9,7 +9,8 @@ And electronic shop local website written with:
 (More to come)
 
 # Currently working on
-- Navigation bar, Admin Panel and the UI display of the items in the Shop.
+- Navigation bar (80 %) [the UI and the text doesnt matter for now]
+- Admin Panel and the UI display of the items in the Shop.
 
 You might havesome addons or something else regarding the project, so im leaving you with this "Setting up the project" guide:
 --
@@ -38,11 +39,6 @@ Some starting tasks:
 - Make coding practises better used (in the code itself)
 - Make a script where (when launching the program for the first time) the "Admin user" would be inserted into the system's database automatically [so that would not be needed to do manually by the programmer]
 
-
-Login Modal has to have 3 lower tier modals:
-- Basic info modal 
-- Adress information modal
-- Credit card information modal
 
 
 Main window should use a btter styling.
