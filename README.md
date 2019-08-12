@@ -1,10 +1,16 @@
-# MVCLocalDatabaseWebsiteProject
-Will be renewed from time to time and updated
+# D O Shop
 
-And electronic shop local website written with:
+# MVCLocalDatabaseWebsiteProject (D O initials of my first and last name)
+This was initially my University project changed and updated.
+Since there's a lot of things that can be tweaked and changed, I want to update the scripts and the documentation before releasing.
+
+
+An electronic shop local website written with:
 - .NET visual Studio 
-    * Migartions Entity Framework
+    * Migartions 
+    * Entity Framework
     * Unity Container
+    * Boostrap
 - 
 (More to come)
 
@@ -47,10 +53,12 @@ Main window should use a btter styling.
 
 
 ----
-Hierarchy -> first blocked, then email, then password (catch all three exceptions somehow or display in that order).
+Hierarchy of the locked login
+-> first blocked, 
+   -> then email, 
+      -> then password
+      ---(catch all three exceptions somehow or display in that order).
 
-
-You can create and delete orders.
 
 [Lithuanian]
 --
