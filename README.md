@@ -3,7 +3,7 @@
 # MVCLocalDatabaseWebsiteProject (D O initials of my first and last name)
 This was initially my University project changed and updated.
 Since there's a lot of things that can be tweaked and changed, I want to update the scripts and the documentation before releasing.
-
+This won't be marketed or selled. This is a free download project with a fair use, UI remade completely learning from Winkel boostrap examples.
 
 An electronic shop local website written with:
 - .NET visual Studio 
@@ -11,12 +11,15 @@ An electronic shop local website written with:
     * Entity Framework
     * Unity Container
     * Boostrap
+    * Winkel Boostrap
 - 
 (More to come)
 
 # Currently working on
-- Navigation bar (80 %) [the UI and the text doesnt matter for now]
-- Admin Panel and the UI display of the items in the Shop.
+- [States] Logging of and Logging on (displaying that in the Navigation Bar)
+- Admin Panel and the 
+
+- Item display in the shop [Postponed]
 
 You might havesome addons or something else regarding the project, so im leaving you with this "Setting up the project" guide:
 --
@@ -96,5 +99,6 @@ Connecting the login (through facebook, twitter google, maybe leave reviews)
 - Renewing registration menu window visual UI
 - Renewing login menu window visual UI
 - Fixed a bug where if you are connected, the app crashes.
+- Implemented Navigation bar with Winkel bootsrap
 
 
