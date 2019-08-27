@@ -16,8 +16,8 @@ An electronic shop local website written with:
 (More to come)
 
 # Currently working on
-- [States] Logging of and Logging on (displaying that in the Navigation Bar)
-- Admin Panel and the 
+
+- Admin Panel's Navigation Bar
 
 - Item display in the shop [Postponed]
 
@@ -81,7 +81,6 @@ Hierarchy of the locked login
 * Adminas/Edit/16 (Photo modificfaction widnow, back button doesnt work or deosnt exist)
 
 
-[Not burning fixes make Favro for this]
 
 [Upcoming features]
 --
@@ -95,10 +94,11 @@ Connecting the login (through facebook, twitter google, maybe leave reviews)
 
 [Whats done or added features and fixes]
 --
+[ Favro was create for the workflow markups]
 - Created Favro for login and adding cards there (increasing the workflow)
 - Renewing registration menu window visual UI
 - Renewing login menu window visual UI
 - Fixed a bug where if you are connected, the app crashes.
 - Implemented Navigation bar with Winkel bootsrap
-
+- [States] Logging of and Logging on (displaying that in the Navigation Bar)
 
