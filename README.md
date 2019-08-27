@@ -17,6 +17,8 @@ An electronic shop local website written with:
 
 # Currently working on
 
+- Renaming project, modals methods, updating and uploading project to this repository
+
 - Admin Panel's Navigation Bar
 
 - Item display in the shop [Postponed]
