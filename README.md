@@ -17,7 +17,8 @@ An electronic shop local website written with:
 
 # Currently working on
 
-- Renaming project, modals methods, updating and uploading project to this repository
+- Renaming project, modaules, methods, controllers updating and uploading project to this repository!
+- Also at the same time making it more easily understandable/changeable
 
 - Admin Panel's Navigation Bar
 
@@ -37,6 +38,7 @@ If you pull this from the master and the error is proceeded with the
 
 
 
+
 This error may also occur
 "No context type was found in the assembly"
 
@@ -46,6 +48,11 @@ Enable-Migrations (if its installed do the following)
 
 "Add-Migration InitialCreate"        and            "update-database"
 --
+If there are problems with migrations 
+
+[Migrations sould be tested on new PC when starting the project for the first time]
+
+
 Some starting tasks:
 - Make coding practises better used (in the code itself)
 - Make a script where (when launching the program for the first time) the "Admin user" would be inserted into the system's database automatically [so that would not be needed to do manually by the programmer]
