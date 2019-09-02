@@ -12,7 +12,9 @@ An electronic shop local website written with:
     * Unity Container
     * Boostrap
     * Winkel Boostrap
-- 
+-
+
+Designing architecture
 (More to come)
 
 # Currently working on
@@ -70,13 +72,6 @@ Hierarchy of the locked login
    -> then email, 
       -> then password
       ---(catch all three exceptions somehow or display in that order).
-
-
-[Lithuanian]
---
-- Padaryti modal sistema, kur login but sudarytas is modalu, kurie butu (visible/not visible)
-- Prideti i uzsakymu krepseli turi nuvesti i kita "modal" kuriame butu galima prisijungti
-
 
 - Ispect more how databasesare created wit Entity Framework/Migrations using DataAccess
 
