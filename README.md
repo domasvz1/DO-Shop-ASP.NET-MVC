@@ -2,24 +2,26 @@
 
 This was initially my University project changed and updated. (D O initials of my first and last name)
 Since there's a lot of things that can be tweaked and changed, I want to update the scripts and the documentation before releasing.
-This won't be marketed or selled. This is a free download project with a fair use, UI remade completely learning from Winkel boostrap examples.
+This won't be marketed or selled. This is a free download project with a fair use, UI remade completely learning from Winkel boostrap examples. Might some lithuanian expressions left, since this was my university project.
 
-An electronic shop local website written with:
+An electronic shop local website written with following elemts frameworks (all can be found in the project):
 - .NET visual Studio 
     * Migartions 
     * Entity Framework
     * Unity Container
     * Boostrap
     * Winkel Boostrap
--
+    * jQuerry
+    * Plain javascript 
+    * Business, DataAcess and Presentation Architecture layers.
+
 
 Designing architecture
-(More to come)
+(upcoming feature)
 
 # Currently working on
+- Uploading this to git
 
-Finishing the project renaming - modules, layers, methods, controllers updating and uploading project to this repository!
-Also at the same time making it more easily understandable/changeable
 
 
 Later move on to:
@@ -108,4 +110,5 @@ Connecting the login (through facebook, twitter google, maybe leave reviews)
 - Fixed a bug where if you are connected, the app crashes.
 - Implemented Navigation bar with Winkel bootsrap
 - [States] Logging of and Logging on (displaying that in the Navigation Bar)
+- Renamed - modules, layers, methods, also at the same time made it more easily understandable/changeable. [Deleted a little part of unnessesary models]
 
