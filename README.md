@@ -1,7 +1,6 @@
 # D O Shop
 
-# MVCLocalDatabaseWebsiteProject (D O initials of my first and last name)
-This was initially my University project changed and updated.
+This was initially my University project changed and updated. (D O initials of my first and last name)
 Since there's a lot of things that can be tweaked and changed, I want to update the scripts and the documentation before releasing.
 This won't be marketed or selled. This is a free download project with a fair use, UI remade completely learning from Winkel boostrap examples.
 
@@ -19,10 +18,14 @@ Designing architecture
 
 # Currently working on
 
-- Renaming project, modaules, methods, controllers updating and uploading project to this repository!
-- Also at the same time making it more easily understandable/changeable
+Finishing the project renaming - modules, layers, methods, controllers updating and uploading project to this repository!
+Also at the same time making it more easily understandable/changeable
 
+
+Later move on to:
 - Admin Panel's Navigation Bar
+
+
 
 - Item display in the shop [Postponed]
 
