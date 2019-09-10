@@ -85,6 +85,29 @@ If there are problems with migrations
 [Migrations sould be tested on new PC when starting the project for the first time]
 
 
+
+
+[Whats done or added features and fixes]
+--
+[ Favro was create for the workflow markups]
+- Created Favro for login and adding cards there (increasing the workflow)
+- Renewing registration menu window visual UI
+- Renewing login menu window visual UI
+- Fixed a bug where if you are connected, the app crashes.
+- Implemented Navigation bar with Winkel bootsrap
+- [States] Logging of and Logging on (displaying that in the Navigation Bar)
+- Renamed - modules, layers, methods, also at the same time made it more easily understandable/changeable. [Deleted a little part of unnessesary models]
+
+
+[What needs to be fixed]
+--
+
+* Responsive and interactive buttons in the admin panel.
+* Responsive buttons in the UI
+* Change the language from Lithuanian to English
+* Adminas/Edit/16 (Photo modificfaction widnow, back button doesnt work or deosnt exist)
+
+
 Some starting tasks:
 - Make coding practises better used (in the code itself)
 - Make a script where (when launching the program for the first time) the "Admin user" would be inserted into the system's database automatically [so that would not be needed to do manually by the programmer]
@@ -106,17 +129,8 @@ Hierarchy of the locked login
 - Ispect more how databasesare created wit Entity Framework/Migrations using DataAccess
 
 
-[What needs to be fixed]
---
 
-* Responsive and interactive buttons in the admin panel.
-* Responsive buttons in the UI
-* Change the language from Lithuanian to English
-* Adminas/Edit/16 (Photo modificfaction widnow, back button doesnt work or deosnt exist)
-
-
-
-[Upcoming features]
+[Upcoming features someday]
 --
 Upload pictures, display one as icon and then have an album(array of uploaded pictures) and display them in the item page.
 
@@ -126,14 +140,4 @@ Upload pictures, display one as icon and then have an album(array of uploaded pi
 Connecting the login (through facebook, twitter google, maybe leave reviews) 
 
 
-[Whats done or added features and fixes]
---
-[ Favro was create for the workflow markups]
-- Created Favro for login and adding cards there (increasing the workflow)
-- Renewing registration menu window visual UI
-- Renewing login menu window visual UI
-- Fixed a bug where if you are connected, the app crashes.
-- Implemented Navigation bar with Winkel bootsrap
-- [States] Logging of and Logging on (displaying that in the Navigation Bar)
-- Renamed - modules, layers, methods, also at the same time made it more easily understandable/changeable. [Deleted a little part of unnessesary models]
 
