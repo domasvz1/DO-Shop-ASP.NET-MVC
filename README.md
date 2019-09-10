@@ -1,4 +1,4 @@
-# D O Shop
+# D O Shop-ASP.NET MVC
 
 This was initially my University project changed and updated. (D O initials of my first and last name)
 Since there's a lot of things that can be tweaked and changed, I want to update the scripts and the documentation before releasing.
@@ -12,8 +12,33 @@ An electronic shop local website written with following elemts frameworks (all c
     * Boostrap
     * Winkel Boostrap
     * jQuerry
-    * Plain javascript 
+    * Plain javascript
+    * Razor
     * Business, DataAcess and Presentation Architecture layers.
+
+
+Taken from the Microsoft documentation: https://dotnet.microsoft.com/apps/aspnet/web-apps
+
+* Modern, scalable web apps with .NET and C#
+Use .NET and C# to create websites based on HTML5, CSS, and JavaScript that are secure, fast, and can scale to millions of users.
+
+-------
+*  Dynamically render HTML with Razor
+Razor provides a simple, clean, and lightweight way to create dynamic web content using HTML and C#.
+
+With Razor you can use any HTML or C# feature. You get great editor support for both, including IntelliSense which provides auto-completion, real-time type and syntax checking, and more.
+
+-------
+* Seamless integration with the data in the project.
+The popular Entity Framework (EF) data access library lets you interact with databases using strongly typed objects.
+
+Most popular databases are supported, including SQLite, SQL Server, MySQL, PostgreSQL, DB2 and more, as well as non-relational stores such as MongoDB, Redis, and Azure Cosmos DB.
+
+
+More documentation coming, (need to read it first and apply in the website)
+
+Also a section here should be added about winkel boostarp framework.
+
 
 
 Designing architecture
