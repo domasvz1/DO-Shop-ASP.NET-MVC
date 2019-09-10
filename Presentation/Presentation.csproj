@@ -203,9 +203,6 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrapSite.css" />
-    <Content Include="Content\cart.html" />
-    <Content Include="Content\checkout.html" />
-    <Content Include="Content\contact.html" />
     <Content Include="Content\css\bootstrap.min.css" />
     <Content Include="Content\css\bootstrap\bootstrap-grid.css" />
     <Content Include="Content\css\bootstrap\bootstrap-reboot.css" />
@@ -253,7 +250,6 @@
     <Content Include="Content\js\jquery.stellar.min.js" />
     <Content Include="Content\js\jquery.waypoints.min.js" />
     <Content Include="Content\js\main.js" />
-    <Content Include="Content\product-single.html" />
     <Content Include="Content\starability-all.min.css" />
     <Content Include="Content\quantityBox.css" />
     <Content Include="Content\themes\base\accordion.css" />
@@ -405,7 +401,6 @@
     <Content Include="Content\vendor\bootstrap\css\bootstrap-reboot.min.css.map" />
     <Content Include="Content\vendor\bootstrap\css\bootstrap.css.map" />
     <Content Include="Content\vendor\bootstrap\css\bootstrap.min.css.map" />
-    <Content Include="Content\.DS_Store" />
     <Content Include="Content\prepros-6.config" />
     <Content Include="Content\scss\.DS_Store" />
     <Content Include="Content\scss\bootstrap\.DS_Store" />

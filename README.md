@@ -40,19 +40,11 @@ More documentation coming, (need to read it first and apply in the website)
 Also a section here should be added about winkel boostarp framework.
 
 
-
-Designing architecture
-(upcoming feature)
-
-# Currently working on
-- Uploading this to git
-
-
-
 Later move on to:
 - Admin Panel's Navigation Bar
 
 
+[Tips when launching the project]
 
 - Item display in the shop [Postponed]
 
@@ -66,8 +58,8 @@ If you pull this from the master and the error is proceeded with the
 
   In the "Package Manager Console" in the Visual Studio.
 
-  Also you can add "SQL Server Object Explorer" in view. If itsmissin, restrat the project (by opening it in the explorer using Visual    Studio).
-
+- Also you can add "SQL Server Object Explorer" in view. If itsmissin, restrat the project (by opening it in the explorer using Visual    Studio).
+- When you have opened the soloution, make sure to check if  "Presentation" Layer is set as a Startup Project in the Soloution Settings
 
 
 
@@ -83,20 +75,70 @@ Enable-Migrations (if its installed do the following)
 If there are problems with migrations 
 
 [Migrations sould be tested on new PC when starting the project for the first time]
+-----------------------------------------------------------------------------------------------------------------------------------
+
+
+# Currently working on
 
 
 
-
-[Whats done or added features and fixes]
+[Whats done or added features and fixes, released versions with newest at the top]
 --
-[ Favro was create for the workflow markups]
-- Created Favro for login and adding cards there (increasing the workflow)
-- Renewing registration menu window visual UI
-- Renewing login menu window visual UI
-- Fixed a bug where if you are connected, the app crashes.
-- Implemented Navigation bar with Winkel bootsrap
-- [States] Logging of and Logging on (displaying that in the Navigation Bar)
-- Renamed - modules, layers, methods, also at the same time made it more easily understandable/changeable. [Deleted a little part of unnessesary models]
+[Version 0.1a released]
+
+- Documented the changes made to the project in the 0.1 alpha version and moved/cleared cards in the Favro from done to documented.
+
+- Renewed Navigation bar and layout, the following Views were renewed (with starts):
+* Register _view is somewhat done and testded for clients;
+* Login _view is somewhat done and testded for clients;
+* Renewed visuals in the Register and Login _Views;
+* Added Layout file, from where every page (_view) takes the Layout, Navigation bar, head nad footer;
+* Header is done and seperated into a PartialView, when called in the main Layout;
+* Footer is done, connected to all pages, seperatedinto a seperate PartialView file;
+* Contact, Blog, About, Contact _views were implemeted with some tweaking needed later;
+* Home, Shop, Checkout and Items page Layouts in the view is done but will need some tweaking in the later versions as the shop progresses;
+* The full Navigation bar is working, functionality has been tested, will need some updates as the shop progresses.
+
+
+- Merged projects Frontend _Views  with Winkel Boostrap, only the first stage, will need sometweaking in the future;
+- The project has been finally updated/released in this git repository;
+- Seperate Favro page was created to mark up the goals and the workflow;
+- Renewing registration menu window visual UI in the Client Views, also renewing Client controller;
+- Renewing login menu window visual UI;
+- Fixed a bug where if you are connected, the app crashes;
+- Implemented Navigation bar with Winkel bootsrap;
+- Fixed scaling bug in all windows when selecting Responsive resolution simulation through Google Screen Emulator (F12);
+
+- [States] Logging of and Logging on (displaying that in the Navigation Bar) for administrators and clients, the following statements describes the idea of the sattes in the shop:
+* In the DO Shop, admins are connecting with a secret password and then with their username. On the other end, users are connecting with their emails. The if statements logic was implemented in the navBar itself.
+* The Login.cshtml in the "Shared" module was deleted and the logic from it (Users or the admin connection states, is checked in the _NavigationBar.cshtml module, where the main Navigation bar's logic is implemented.
+* The 'cart' _View is now seperate and dependant on the connected Client. Admins can't see it.
+
+
+The follwoing modules, layers, methods, variables were renamed (also at the same time made more easily understandable/changeable) :
+- Business Objects Classes and Intercaces;
+- Business Logic (The Layer connecting Business Objects with Data Access Layer) Classes and Intercaces;
+- Data Access Repository Classes and Interfaces;
+- Fixed some naming for Classes, Views, Models, Controllers in Presentation Layer;
+- The following three Controllers were tweaked:
+* AdminController.cs
+* ClientController.cs
+* MainController.cs
+- All the Models in the Presentation Layer were renamed, fixed and working;
+- All the Views of the Controllers, Tweaked, working, will need some work in the future.
+
+The following modules, scripts / classes were deleted :
+- IClientPaymentControl, since it was not used.
+
+- Removed unnecessary/unusable files from the Contents;
+- Presentation, DataAccess, Bussiness Layers made more readable/ adaptable;
+- Removed unnecessary namesapces and imports in Presentation, DataAccess, Bussiness Layers;
+- Made fileds with Interface type readonly in all the controllers.
+
+- Fixed JQuerry import issues;
+
+
+-----------------------------------------------------------------------------------------------------------------------------------
 
 
 [What needs to be fixed]
@@ -130,9 +172,13 @@ Hierarchy of the locked login
 
 
 
-[Upcoming features someday]
+[Upcoming features and ideas someday]
 --
 Upload pictures, display one as icon and then have an album(array of uploaded pictures) and display them in the item page.
+
+
+Designing architecture
+(upcoming feature)
 
 
 [Harder tasks]
