@@ -1,0 +1,11 @@
+C:\Users\dominykaso\Desktop\TheeditableMVC\DO Shop\BusinessObjects\bin\Debug\BusinessObjects.dll
+C:\Users\dominykaso\Desktop\TheeditableMVC\DO Shop\BusinessObjects\bin\Debug\BusinessObjects.pdb
+C:\Users\dominykaso\Desktop\TheeditableMVC\DO Shop\BusinessObjects\bin\Debug\MoreLinq.dll
+C:\Users\dominykaso\Desktop\TheeditableMVC\DO Shop\BusinessObjects\bin\Debug\System.ValueTuple.dll
+C:\Users\dominykaso\Desktop\TheeditableMVC\DO Shop\BusinessObjects\bin\Debug\MoreLinq.xml
+C:\Users\dominykaso\Desktop\TheeditableMVC\DO Shop\BusinessObjects\bin\Debug\System.ValueTuple.xml
+C:\Users\dominykaso\Desktop\TheeditableMVC\DO Shop\BusinessObjects\obj\Debug\BusinessObjects.csproj.CoreCompileInputs.cache
+C:\Users\dominykaso\Desktop\TheeditableMVC\DO Shop\BusinessObjects\obj\Debug\BusinessObjects.csproj.CopyComplete
+C:\Users\dominykaso\Desktop\TheeditableMVC\DO Shop\BusinessObjects\obj\Debug\BusinessObjects.dll
+C:\Users\dominykaso\Desktop\TheeditableMVC\DO Shop\BusinessObjects\obj\Debug\BusinessObjects.pdb
+C:\Users\dominykaso\Desktop\TheeditableMVC\DO Shop\BusinessObjects\obj\Debug\BusinessObjects.csprojAssemblyReference.cache
