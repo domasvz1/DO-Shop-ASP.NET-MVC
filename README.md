@@ -36,12 +36,7 @@ Most popular databases are supported, including SQLite, SQL Server, MySQL, Postg
 
 
 More documentation coming, (need to read it first and apply in the website)
-
 Also a section here should be added about winkel boostarp framework.
-
-
-Later move on to:
-- Admin Panel's Navigation Bar
 
 
 [Tips when launching the project]
@@ -62,7 +57,6 @@ If you pull this from the master and the error is proceeded with the
 - When you have opened the soloution, make sure to check if  "Presentation" Layer is set as a Startup Project in the Soloution Settings
 
 
-
 This error may also occur
 "No context type was found in the assembly"
 
@@ -70,7 +64,7 @@ In the Packahge Manager Console (Or if it changes in the future in something sim
 --
 Enable-Migrations (if its installed do the following)
 
-"Add-Migration InitialCreate"        and            "update-database"
+Add-Migration InitialCreate and update-database
 --
 If there are problems with migrations 
 
@@ -81,8 +75,11 @@ If there are problems with migrations
 # Currently working on
 
 
+Later move on to:
+- Admin Panel's Navigation Bar
 
-[Whats done or added features and fixes, released versions with newest at the top]
+
+[New added features, fixes, released versions starting with newest at the top]
 --
 [Version 0.1a released]
 
