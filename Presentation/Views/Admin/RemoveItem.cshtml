@@ -1,0 +1,59 @@
+﻿@model BusinessObjects.Item
+
+@{
+	ViewBag.Title = "RemoveItem";
+}
+
+@using (Html.BeginForm())
+{
+	@Html.AntiForgeryToken()
+	<br />
+	<h1>Ar tikrai norite ištrinti šią prekę iš sistemos?</h1><hr />
+	<div class="form-horizontal">
+		<dl class="form-group">
+			<dt>
+				@Html.DisplayNameFor(model => model.SKUCode)
+			</dt>
+			<dd>
+				@Html.DisplayFor(model => model.SKUCode)
+			</dd>
+			<dt>
+				@Html.DisplayNameFor(model => model.Name)
+			</dt>
+			<dd>
+				@Html.DisplayFor(model => model.Name)
+			</dd>
+			<dt>
+				@Html.DisplayNameFor(model => model.Title)
+			</dt>
+			<dd>
+				@Html.DisplayFor(model => model.Title)
+			</dd>
+			<dt>
+				@Html.DisplayNameFor(model => model.Price)
+			</dt>
+			<dd>
+				@Html.DisplayFor(model => model.Price)
+			</dd>
+			<dt>
+				@Html.DisplayNameFor(model => model.Category)
+			</dt>
+			<dd>
+				@Html.DisplayFor(model => model.Category.Name)
+			</dd>
+			<dt>
+				@Html.DisplayNameFor(model => model.Description)
+			</dt>
+			<dd>
+				@Html.DisplayFor(model => model.Description)
+			</dd>
+		</dl>
+		<br />
+		<div class="form-group">
+			<div>
+				<input type="submit" value="Ištrinti prekę" class="btn btn-danger" />
+				<button type="button" style="margin-bottom:2px" class="btn btn-dark" color onclick="location.href = '@Url.Action("ModifyItems", "Admin")'">"Grįžti į prekių valdymo langą"</button>
+			</div>
+		</div>
+	</div>
+}

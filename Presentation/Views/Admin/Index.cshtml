@@ -1,0 +1,33 @@
+﻿@{
+	ViewBag.Title = "Index";
+}
+
+
+<br />
+<h1 style="color:black">Administratoriaus valdymo langas</h1> <hr />
+
+
+<div>
+	<button type="button" class="btn btn-dark" color onclick="location.href = '@Url.Action("SystemUsers", "Admin")'">Tvarkyti sistemos naudotojus</button>
+</div>
+
+<div style="color:black">
+	Work with clients
+</div>
+<hr />
+
+<div>
+	<button type="button" class="btn btn-dark" onclick="location.href='@Url.Action("ModifyItems")'">Tvarkyti prekes</button>
+</div>
+<div style="color:black">
+		For now nothing will stay here, everything else will be updated someday
+</div>
+<hr />
+
+<div style="color:black">
+	handle orders
+</div>
+<div style="color:black">
+	<button type="button" class="btn btn-dark" onclick="location.href='@Url.Action("HandleOrders")'">Handle all the orders</button>
+</div>
+<hr />

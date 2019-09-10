@@ -1,0 +1,31 @@
+﻿@model IEnumerable<BusinessObjects.Property>
+
+@{
+	ViewBag.Title = "Properties";
+}
+
+<h2>Properties in the system</h2> <hr /> <br />
+
+<table style="width: 120%; max-width: 120%;">
+	@foreach (var item in Model)
+	{
+	<tr>
+		<td>
+			@Html.DisplayFor(modelItem => item.Name)
+			<br />
+			<hr />
+		</td>
+		<td style="vertical-align:top">
+			<button type="button" class="btn btn-warning" color onclick="location.href='@Url.Action("ModifyProperty", new { id = item.Id })'">Modify this property</button>
+			<button type="button" class="btn btn-danger" color onclick="location.href='@Url.Action("RemoveProperty", new { id = item.Id })'">Remove this property</button>
+		</td>
+	</tr>
+	}
+</table>
+
+<br />
+
+<div>
+	<button type="button" class="btn btn-success" color onclick="location.href='@Url.Action("AddProperty")'">Add a new property</button>
+	<button type="button" style="margin-bottom:2px" class="btn btn-dark" color onclick="location.href = '@Url.Action("ModifyItems", "Admin")'">Grįžti į prekių valdymo langą</button>
+</div>

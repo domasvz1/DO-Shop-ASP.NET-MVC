@@ -1,0 +1,70 @@
+﻿@model BusinessObjects.Client
+
+@{
+	ViewBag.Title = "EditProfile";
+}
+
+
+@using (Html.BeginForm())
+{
+	<div>
+		@Html.AntiForgeryToken()
+
+		<div class="form-horizontal">
+			<br />
+			<h1>Your profile information</h1>
+			<hr />
+			@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+			@Html.HiddenFor(model => model.Id)
+			<div class="form-group">
+				@Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "col-md-3" })
+				<div class="col-md-10">
+					@Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+					@Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+				</div>
+			</div>
+			<div class="form-group">
+				@Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "col-md-3" })
+				<div class="col-md-10">
+					@Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
+					@Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+				</div>
+			</div>
+			<div class="form-group">
+				@Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "col-md-3" })
+				<div class="col-md-10">
+					@Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })
+					@Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+				</div>
+			</div>
+
+			<hr />
+			<button type="button" class="btn btn-warning" onclick="location.href='@Url.Action("PasswordChange")'">Atnaujinti slaptažodį</button>
+			<hr>
+			<div class="row">
+				<div class="col-md-10">
+					@Html.EditorFor(model => model.DeliveryAddress, new { htmlAttributes = new { @class = "form-control" } })
+					@Html.ValidationMessageFor(model => model.DeliveryAddress, "", new { @class = "text-danger" })
+				</div>
+			</div>
+
+			<br /><br />
+
+			<div style="display:none">
+				@Html.TextBoxFor(model => model.Card.CardHolder, new { @Value = "Vardenis Pavardenis" })
+				@Html.TextBoxFor(model => model.Card.CardNumber, new { @Value = "4111111111111111"})
+				@Html.TextBoxFor(model => model.Card.CardExpirationMonth, new { @Value = "11" })
+				@Html.TextBoxFor(model => model.Card.CardExpirationYear, new { @Value = "2018" })
+				@Html.TextBoxFor(model => model.Card.CVV, new { @Value = "111" })
+
+			</div>
+
+			<div class="form-group">
+				<div class="col-md-10">
+					<input type="submit" class="btn btn-success" value="Išsaugoti atnaujintą informacija" />
+					<button type="button" class="btn btn-dark" onclick="location.href='@Url.Action("Index", "Main")'">Grįžti į parduotuvę</button>
+				</div>
+			</div>
+		</div>
+	</div>
+}

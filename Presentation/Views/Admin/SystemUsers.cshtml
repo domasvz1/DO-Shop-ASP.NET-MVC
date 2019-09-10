@@ -1,0 +1,19 @@
+﻿@{
+	ViewBag.Title = "SystemUsers";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+@Html.Action("UsersList", "Admin")
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+
+<script>$(".grid").on("click", ".trigger", function () {
+        $.ajax({
+            url: "/ProcessLogEntries",
+            type: "post"
+        })
+            .done(function (result) {
+                $(".grid").html(result);
+            });
+	});
+</script>

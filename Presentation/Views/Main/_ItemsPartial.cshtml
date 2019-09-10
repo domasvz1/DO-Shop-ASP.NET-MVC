@@ -1,0 +1,67 @@
+﻿@model IEnumerable<BusinessObjects.Item>
+
+@{
+	ViewBag.Title = "_ItemsPartial";
+}
+
+<div class="container grid" align="center" style="margin-left:7%">
+	@if (!Model.Any())
+	{
+		<b>We don't have Items right now</b>
+	}
+	else
+	{
+		foreach (var item in Model)
+		{
+			var categoryName = "Item has no category";
+			if (item.Category != null)
+			{
+				categoryName = item.Category.Name;
+			}
+
+			<div class="filterDiv @categoryName" align="center">
+
+				@{
+					decimal piecePrice = item.Price / 100.0m;
+				}
+				<div class="card d-sm-inline-block" align="center">
+
+					<h5 class="card-header" style="color:#FFFFFF; font-size: 15px;">@Html.DisplayFor(modelItem => item.Name)</h5>
+
+					<div style="min-height:50px; height:50px; text-align:center; margin-top:10px">
+						@*Pasiziurett tektso spalva*@
+						<h6 class="card-subtitle text-muted">@Html.DisplayFor(modelItem => item.Title)</h6>
+					</div>
+
+					<div onclick="location.href='@Url.Action("About_Item", "Main" , new { prekesId = item.Id }, null)'">
+						@{
+							if (item.ImageUrl != null)
+							{
+								<img src="@Url.Content(item.ImageUrl)" alt="@item.Name" style="height:200px; min-height:200px; width:290px; min-width:290px" class="img-thumbnail" />
+							}
+							else
+							{
+								<img src="@Url.Content("~/Content/Images/nera.png")" alt="@item.Name" style="height:200px; min-height:200px; width:290px; min-width:290px" class="img-thumbnail" />
+							}
+						}
+					</div> <br />
+
+					<div align="center">
+						<button type="button" id="AddToCart" class="btn btn-primary" style="align-content:center" onClick="PridetiPreke(@item.Id)">Add to Cart</button>
+					</div>
+
+					<br />
+					<div align="center" style="color:#FFFFFF; font-size: 15px;">
+						@Html.DisplayFor(modelItem => piecePrice) Eurai
+					</div>
+
+
+					<div class="card-footer text-muted text-center">
+						@categoryName
+					</div>
+				</div>
+			</div>
+			<div id="snackbar">Item Added to your Cart</div>
+		}
+	}
+</div>

@@ -1,0 +1,31 @@
+﻿@model IEnumerable<BusinessObjects.Orders.ClientOrders>
+@{
+	ViewBag.Title = "OrderHistory";
+}
+
+<div>
+	<br /><h1>Your order history</h1>
+
+	<div onload="DisplayClientsOrders()"> <br />
+		@Html.DropDownList("OrderId", new SelectList(Model, "Id", "OrderDate"), "Add the wanted order", new { @class = "form-control", @onchange = "DisplayClientsOrders()" })
+		<div id="uzsak"></div>
+	</div>
+
+</div>
+
+
+<script type="text/javascript">
+	function DisplayClientsOrders() {
+        var url = '@Url.Action("DisplayOrders", "Client")';
+        $.ajax({
+            type: "POST",
+            url: url,
+            data: $('#OrderId').serialize(),
+            cache: false,
+            dataType: 'html',
+            success: function (response) {
+                $("#uzsak").html(response);
+            }
+        });
+    }
+</script>

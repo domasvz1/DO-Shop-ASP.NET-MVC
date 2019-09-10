@@ -1,0 +1,30 @@
+﻿@model IEnumerable<BusinessObjects.Category>
+
+@{
+	ViewBag.Title = "Categories";
+}
+
+<h2>All the Categories in the DO Shop right now</h2> <hr /> <br />
+ 
+<table style="width: 150%; max-width: 150%;">
+	@foreach (var item in Model)
+	{
+		<tr>
+			<td>
+				@Html.DisplayFor(modelItem => item.Name)
+				<br />
+				<hr />
+			</td>
+			<td style="vertical-align:top">
+				<button type="button" class="btn btn-info"  color onclick="location.href='@Url.Action("CategoryInformation", new { id = item.Id })'">Informacija apie kategoriją</button>
+				<button type="button" class="btn btn-danger" color onclick="location.href='@Url.Action("RemoveCategory", new { id = item.Id })'">Ištrinti kategoriją</button>
+			</td>
+		</tr>
+	}
+</table>
+
+<br />
+<div>
+	<button type="button" class="btn btn-success" color onclick="location.href='@Url.Action("AddCategory")'">Sukurti naują kateroriją</button>
+	<button type="button" style="margin-bottom:2px" class="btn btn-dark" color onclick="location.href = '@Url.Action("ModifyItems", "Admin")'">Grįžti į prekių valdymo langą</button>
+</div>

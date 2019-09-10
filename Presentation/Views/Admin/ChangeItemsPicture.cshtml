@@ -1,0 +1,33 @@
+﻿@model BusinessObjects.Item
+
+@{
+	ViewBag.Title = "ChangeItemsPicture";
+}
+
+<h2>Norėdami pakeisti nuotrauką įrašykite naują nuotraukos URL</h2>
+
+@using (Html.BeginForm())
+{
+	@Html.AntiForgeryToken()
+
+	<div class="form-horizontal">
+		<hr />
+		@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+		@Html.HiddenFor(model => model.Id)
+
+		<div class="form-group">
+			<div class="col-md-3">Naujas nuotraukos URL:</div>
+			<div class="col-md-10">
+				@Html.EditorFor(model => model.ImageUrl, new { htmlAttributes = new { @class = "form-control" } })
+				@Html.ValidationMessageFor(model => model.ImageUrl, "", new { @class = "text-danger" })
+			</div>
+		</div>
+
+		<div class="form-group">
+			<div class="col-md-offset-2 col-md-10">
+				<input type="submit" value="Išsaugoti naują nuotrauką" class="btn btn-success" />
+				<button type="button" class="btn btn-dark" onclick="location.href = '@Url.Action("ModifyItem", new { id = Model.Id })'">Grįžti į prekių valdymo langą</button>
+			</div>
+		</div>
+	</div>
+}

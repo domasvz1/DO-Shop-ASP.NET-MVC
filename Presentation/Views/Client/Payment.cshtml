@@ -1,0 +1,173 @@
+﻿@model Presentation.Models.PaymentModel
+
+@{
+	ViewBag.Title = "Payment";
+	string method;
+	int cartID = -1;
+	if (Model.FullOrder)
+	{
+		method = "ApmoketiSuformuotaUzsakyma";
+		cartID = Model.Cart.Id;
+	}
+	else
+	{
+		method = "NotPaidOrders";
+	}
+}
+
+
+@using (Html.BeginForm(method, "Client", FormMethod.Post))
+{
+	<br />
+	<h1>Apmokėjimo langas</h1>
+	<p>
+		<h3>Jūsų užsakyme esančios prekės </h3> <br />
+		<table class="table">
+			<tr class="table-active">
+				<th>
+				</th>
+				<th>
+					Prekės pavadinimas
+				</th>
+				<th>
+					Prekės kategorija
+				</th>
+				<th>
+					Kiekis
+				</th>
+				<th>
+					Bendra kaina
+				</th>
+				<th>
+					Visa kaina
+				</th>
+			</tr>
+			@foreach (var cartItem in Model.Cart.ItemsInCart)
+			{
+				decimal price = (cartItem.CartsPrice * cartItem.Quantity) / 100.0m;
+				decimal piecePrice = cartItem.CartsPrice / 100.0m;
+
+				<tr style="vertical-align:middle;">
+					<td width="10%">
+						@{
+							if (cartItem.Item.ImageUrl != null)
+							{
+								@:<img src="@Url.Content(cartItem.Item.ImageUrl)" alt="@cartItem.Item.Name" style="height:40px; width:auto;" />
+							}
+						}
+					</td>
+					<td>
+						@Html.ActionLink(cartItem.Item.Name, "About_Item", "Main", new { prekesId = cartItem.Item.Id }, new { @style = "color:#00008B" })
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => cartItem.Item.Category.Name)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => cartItem.Quantity)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => piecePrice) Eur/piece
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => price) Eur
+					</td>
+				</tr>
+			}
+		</table>
+		@{var fullOrderPrice = Model.Cart.CartsPrice / 100.0m; } <br /><br />
+
+
+		<b>Įveskite kortelės duomenis norėdami įvykdyti transakciją</b><br /><br />
+		<table class="table" style="width:80%">
+			<tr class="table-active">
+				<th>
+					Kortelės numeris
+				</th>
+				<th>
+					Kortelės savininko vardas ir pavardė
+				</th>
+				<th>
+					Kortelės galiojimo datos metai
+				</th>
+				<th>
+					Kortelės galiojimo datas mėnuo
+				</th>
+				<th>
+					Kortelės CVV
+				</th>
+			</tr>
+			<tr>
+				<th style="width:30%; text-align:center">
+					@Html.EditorFor(model => model.Client.Card.CardNumber, new { htmlAttributes = new { @class = "form-control" } })
+				</th>
+
+				<th style="width:30%; text-align:center">
+					@Html.EditorFor(model => model.Client.Card.CardHolder, new { htmlAttributes = new { @class = "form-control" } })
+				</th>
+
+				<th style="width:30%; text-align:center">
+					@Html.EditorFor(model => model.Client.Card.CardExpirationYear, new { htmlAttributes = new { @class = "form-control" } })
+				</th>
+				<th style="width:30%; text-align:center">
+					@Html.EditorFor(model => model.Client.Card.CardExpirationMonth, new { htmlAttributes = new { @class = "form-control" } })
+
+				</th>
+				<th style="width:30%; text-align:center">
+					@Html.EditorFor(model => model.Client.Card.CVV, new { htmlAttributes = new { @class = "form-control" } })
+					@*Reikia tik vienos pasleptos krepselio id*@
+					<input type="hidden" name="cartId" value="@cartID" />
+				</th>
+			</tr>
+		</table>
+
+		<br />
+		<b>Viso krepšelio kaina:</b> @Html.DisplayFor(model => fullOrderPrice ) Euros
+		<br />
+		<br />
+		<input type="submit" name="btnPay" value="Apmoketi" class="btn btn-primary" /> 
+		<button type="button" class="btn btn-info" color onclick="location.href = '@Url.Action("Index", "Main")'">Grįžti ir nusipirkti dar prekių</button>
+	</p>
+}
+
+<script type="text/javascript">
+    function Apmoketi() {
+		var url = '@Url.Action("NotPaidOrders", "Client")';
+		var kortelesNumeris = $('#Klientas_ManoKortele_KortelesNumeris').val();
+		var kortelesSavininkas = $('#Klientas_ManoKortele_KortelesSavininkas').val();
+		var galiojimoMetai = $('#Klientas_ManoKortele_GaliojimoMetai').val();
+		var galiojimoMenesis = $('#Klientas_ManoKortele_GaliojimoMenesis').val();
+		var cvv = $('#Klientas_ManoKortele_CVV').val();
+
+        $.ajax({
+            type: "POST",
+            url: url,
+			data: { Klientas_ManoKortele_KortelesNumeris: kortelesNumeris, Klientas_ManoKortele_GaliojimoMetai: galiojimoMetai, Klientas_ManoKortele_GaliojimoMenesis: galiojimoMenesis, Klientas_ManoKortele_CVV: cvv },
+            cache: false,
+            dataType: 'html',
+            success: function (response) {
+                $("html").empty();
+                $("html").append(response);
+            }
+        });
+	}
+
+
+	function ApmoketiSuformuotaUzsakyma(cartID) {
+        var url = '@Url.Action("ApmoketiSuformuotaUzsakyma", "Client")';
+		var kortelesNumeris = $('#Klientas_ManoKortele_KortelesNumeris').val();
+		var kortelesSavininkas = $('#Klientas_ManoKortele_KortelesSavininkas').val();
+		var galiojimoMetai = $('#Klientas_ManoKortele_GaliojimoMetai').val();
+		var galiojimoMenesis = $('#Klientas_ManoKortele_GaliojimoMenesis').val();
+		var cvv = $('#Klientas_ManoKortele_CVV').val();
+		var cartId = $('#cartID').val();
+
+        $.ajax({
+            type: "POST",
+            url: url,
+			data: { Klientas_ManoKortele_KortelesNumeris: kortelesNumeris, Klientas_ManoKortele_GaliojimoMetai: galiojimoMetai, Klientas_ManoKortele_GaliojimoMenesis: galiojimoMenesis, Klientas_ManoKortele_CVV: cvv, cartId: cartID },
+            cache: false,
+            dataType: 'html',
+        });
+    }
+</script>
+

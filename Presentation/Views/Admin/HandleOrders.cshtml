@@ -1,0 +1,42 @@
+﻿@model IEnumerable<BusinessObjects.Orders.ClientOrders>
+
+@{
+	ViewBag.Title = "HandleOrders";
+}
+
+<div style="width:100%">
+	<br />
+	<h1> Išsiuntę prekę arba gavę apmokėjimą, pakeiskite prekės statusą</h1> <br />
+
+	<table class="table-bordered" style=" width: 70%;text-align:center">
+		<tr>
+			<th style=" height: 50px;">
+				@Html.DisplayNameFor(model => model.OrderDate) <br />
+			</th>
+			<th style=" height: 50px;">
+				@Html.DisplayNameFor(model => model.OrderStatus) <br />
+			</th>
+		</tr>
+		@foreach (var order in Model)
+		{
+			<tr>
+				<td style=" height: 50px;  vertical-align: middle; padding: 15px;">
+					@Html.DisplayFor(modelItem => order.OrderDate)
+				</td>
+				<td style=" height: 50px; vertical-align: middle;">
+					@Html.DisplayFor(modelItem => order.OrderStatus)
+				</td>
+
+				<td style=" height: 50px; vertical-align: middle;">
+					<button type="button" class="btn btn-warning" color onclick="location.href='@Url.Action("ModifyOrderStatus", new { id = order.Id })'">Keisti užsakymo Būseną</button>
+				</td>
+
+			</tr>
+		}
+
+	</table>
+	<br />
+	<div>
+		<button type="button" style="margin-bottom:2px" class="btn btn-dark" color onclick="location.href = '@Url.Action("Index","Admin")'">Grįžti į administratoriaus valdymo langą</button>
+	</div>
+</div>

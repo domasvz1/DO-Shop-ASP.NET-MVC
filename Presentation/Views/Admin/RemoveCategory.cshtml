@@ -1,0 +1,28 @@
+﻿@model BusinessObjects.Category
+
+@{
+	ViewBag.Title = "RemoveCategory";
+}
+
+
+<h3>Ar tikrai norite ištrinti šitą kategoriją?</h3>
+<div>
+	<dl>
+		<dt>
+			@Html.DisplayNameFor(model => model.Name)
+		</dt>
+		<dd>
+			@Html.DisplayFor(model => model.Name)
+		</dd>
+	</dl>
+	@using (Html.BeginForm())
+	{
+		@Html.AntiForgeryToken()
+
+		<br />
+	<div class="form-actions no-color">
+		<input type="submit" value="Pašalinti iš sistemos" class="btn btn-default" />
+		<button type="button" style="margin-bottom:2px" class="btn btn-dark" color onclick="location.href = '@Url.Action("Categories")'">Grįžti į kategorijų valdymo langą</button>
+	</div>
+	}
+</div>

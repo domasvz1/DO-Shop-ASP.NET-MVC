@@ -1,0 +1,196 @@
+﻿@model BusinessObjects.Client
+
+@{
+	ViewBag.Title = "Register";
+}
+
+<!DOCTYPE html>
+@using (Html.BeginForm("Register", "Client", FormMethod.Post))
+{
+	@Html.AntiForgeryToken()
+	string finalLine = "Register Me";
+
+
+	<html lang="en">
+	<head>
+		<title>Registration Window</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!--===============================================================================================-->
+		<link rel="icon" type="image/png" href="/Content/images/icons/favicon.ico" />
+		<!--===============================================================================================-->
+		<link rel="stylesheet" type="text/css" href="/Content/vendor/bootstrap/css/bootstrap.min.css">
+		<!--===============================================================================================-->
+		<link rel="stylesheet" type="text/css" href="/Content/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+		<!--===============================================================================================-->
+		<link rel="stylesheet" type="text/css" href="/Content/fonts/iconic/css/material-design-iconic-font.min.css">
+		<!--===============================================================================================-->
+		<link rel="stylesheet" type="text/css" href="/Content/vendor/animate/animate.css">
+		<!--===============================================================================================-->
+		<link rel="stylesheet" type="text/css" href="/Content/vendor/css-hamburgers/hamburgers.min.css">
+		<!--===============================================================================================-->
+		<link rel="stylesheet" type="text/css" href="/Content/vendor/animsition/css/animsition.min.css">
+		<!--===============================================================================================-->
+		<link rel="stylesheet" type="text/css" href="/Content/vendor/select2/select2.min.css">
+		<!--===============================================================================================-->
+		<link rel="stylesheet" type="text/css" href="/Content/vendor/daterangepicker/daterangepicker.css">
+		<!--===============================================================================================-->
+		<link rel="stylesheet" type="text/css" href="/Content/css/util.css">
+		<link rel="stylesheet" type="text/css" href="/Content/css/main.css">
+		<!--===============================================================================================-->
+
+
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
+
+		<link rel="stylesheet" href="/Content/css/open-iconic-bootstrap.min.css">
+		<link rel="stylesheet" href="/Content/css/animate.css">
+
+		<link rel="stylesheet" href="/Content/css/owl.carousel.min.css">
+		<link rel="stylesheet" href="/Content/css/owl.theme.default.min.css">
+		<link rel="stylesheet" href="/Content/css/magnific-popup.css">
+		<link rel="stylesheet" href="/Content/css/aos.css">
+		<link rel="stylesheet" href="/Content/css/ionicons.min.css">
+		<link rel="stylesheet" href="/Content/css/bootstrap-datepicker.css">
+		<link rel="stylesheet" href="/Content/css/jquery.timepicker.css">
+		<link rel="stylesheet" href="/Content/css/flaticon.css">
+		<link rel="stylesheet" href="/Content/css/icomoon.css">
+		<link rel="stylesheet" href="/Content/css/style.css">
+
+	</head>
+
+
+	@*Need to fix this later*@
+	@*
+		1. Label
+		2. Input field
+		3. Icon
+	*@
+
+	<body class="goto-here">
+
+
+		<div class="hero-wrap hero-bread" style="background-image: url('/Content/images/bg_6.jpg');">
+			<div class="container">
+				<div class="row no-gutters slider-text align-items-center justify-content-center">
+					<div class="col-md-9 ftco-animate text-center">
+						<p class="breadcrumbs"><span class="mr-2"><a href="index.html">Sign up</a></span></p>
+						<h1 class="mb-0 bread">Start Shopping NOW</h1>
+					</div>
+				</div>
+			</div>
+		</div>
+		<br>
+
+		<div class="container">
+			<div class="row justify-content-center">
+				<div style="width:70%">
+					<form action="#">
+
+						<div class="wrap-input100 validate-input m-b-23" data-validate="Password is required">
+							<span class="label-input100">@Html.LabelFor(model => model.FirstName)</span>
+							@Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "input100", placeholder = "Type your first name", type = "text" } })
+							@*@Html.ValidationMessageFor(model => model.Vardas, "", new { @class = "text-danger" })*@
+							<span class="focus-input100" data-symbol="&#xf190;"></span>
+						</div>
+
+						<div class="wrap-input100 validate-input m-b-23" data-validate="Password is required">
+							<span class="label-input100">@Html.LabelFor(model => model.LastName)</span>
+							@Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "input100", placeholder = "Type your last name", type = "text" } })
+							@*@Html.ValidationMessageFor(model => model.Pavarde, "", new { @class = "text-danger" })*@
+							<span class="focus-input100" data-symbol="&#xf190;"></span>
+						</div>
+
+						<div class="wrap-input100 validate-input m-b-23" data-validate="Password is required">
+							<span class="label-input100">@Html.LabelFor(model => model.Email)</span>
+							@Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "input100", placeholder = "Type your email", type = "text" } })
+							@*@Html.ValidationMessageFor(model => model.ElPastas, "", new { @class = "text-danger" })*@
+							<span class="focus-input100" data-symbol="&#xf190;"></span>
+						</div>
+
+						<div class="wrap-input100 validate-input m-b-23" data-validate="Password is required">
+							<span class="label-input100">@Html.LabelFor(model => model.Password)</span>
+							@Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "input100", placeholder = "Type in your password", type = "password" } })
+							@*@Html.ValidationMessageFor(model => model.Vardas, "", new { @class = "text-danger" })*@
+							<span class="focus-input100" data-symbol="&#xf190;"></span>
+						</div>
+
+						<div class="wrap-input100 validate-input m-b-23" data-validate="Password is required">
+							<span class="label-input100">@Html.LabelFor(model => model.SecondPassword)</span>
+							@Html.EditorFor(model => model.SecondPassword, new { htmlAttributes = new { @class = "input100", placeholder = "Repeat your password", type = "password" } })
+							@*@Html.ValidationMessageFor(model => model.Slaptazodis2, "", new { @class = "text-danger" })*@
+							<span class="focus-input100" data-symbol="&#xf190;"></span>
+						</div>
+
+						<div class="container-login100-form-btn" style="width:80%; padding-left:20%">
+							<div class="wrap-login100-form-btn">
+								<div class="login100-form-bgbtn"></div>
+								<button type="submit" value="save" name="loginButton" class="login100-form-btn">
+									@finalLine
+								</button>
+							</div>
+						</div>
+
+						<div style="display:none">
+
+							@*I set the default data for now. The user will get to change it later*@
+							@Html.TextBoxFor(model => model.DeliveryAddress.ApartmentNumber, new { @Value = 99 })
+							@Html.TextBoxFor(model => model.DeliveryAddress.Street, new { @Value = "Test Street" })
+							@Html.TextBoxFor(model => model.DeliveryAddress.StreetNumber, new { @Value = 99 })
+							@Html.TextBoxFor(model => model.DeliveryAddress.City, new { @Value = "Test City" })
+							@Html.TextBoxFor(model => model.DeliveryAddress.Country, new { @Value = "Test Country" })
+
+							@*Default payment data for now*@
+							@Html.TextBoxFor(model => model.Card.CardHolder, new { @Value = "Vardenis Pavardenis" })
+							@Html.TextBoxFor(model => model.Card.CardNumber, new { @Value = "4111111111111111" })
+							@Html.TextBoxFor(model => model.Card.CardExpirationMonth, new { @Value = "11" })
+							@Html.TextBoxFor(model => model.Card.CardExpirationYear, new { @Value = "2020" })
+							@Html.TextBoxFor(model => model.Card.CVV, new { @Value = "111" })
+						</div>
+					</form><!-- END -->
+				</div>
+			</div>
+		</div>
+
+
+
+		<div id="dropDownSelect1"></div>
+		<!--===============================================================================================-->
+		<script src="/Content/vendor/jquery/jquery-3.2.1.min.js"></script>
+		<!--===============================================================================================-->
+		<script src="/Content/vendor/animsition/js/animsition.min.js"></script>
+		<!--===============================================================================================-->
+		<script src="/Content/vendor/bootstrap/js/popper.js"></script>
+		<script src="/Content/vendor/bootstrap/js/bootstrap.min.js"></script>
+		<!--===============================================================================================-->
+		<script src="/Content/vendor/select2/select2.min.js"></script>
+		<!--===============================================================================================-->
+		<script src="/Content/vendor/daterangepicker/moment.min.js"></script>
+		<script src="/Content/vendor/daterangepicker/daterangepicker.js"></script>
+		<!--===============================================================================================-->
+		<script src="/Content/vendor/countdowntime/countdowntime.js"></script>
+		<!--===============================================================================================-->
+		<script src="/Content/js/main.js"></script>
+		<script src="/Content/js/jquery.min.js"></script>
+		<script src="/Content/js/jquery-migrate-3.0.1.min.js"></script>
+		<script src="/Content/js/popper.min.js"></script>
+		<script src="/Content/js/bootstrap.min.js"></script>
+		<script src="/Content/js/jquery.easing.1.3.js"></script>
+		<script src="/Content/js/jquery.waypoints.min.js"></script>
+		<script src="/Content/js/jquery.stellar.min.js"></script>
+		<script src="/Content/js/owl.carousel.min.js"></script>
+		<script src="/Content/js/jquery.magnific-popup.min.js"></script>
+		<script src="/Content/js/aos.js"></script>
+		<script src="/Content/js/jquery.animateNumber.min.js"></script>
+		<script src="/Content/js/bootstrap-datepicker.js"></script>
+		<script src="/Content/js/scrollax.min.js"></script>
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+		<script src="/Content/js/google-map.js"></script>
+		<script src="/Content/js/main.js"></script>
+
+	</body>
+</html>
+}
+
+@section Scripts {
+	@Scripts.Render("~/bundles/jqueryval")
+}

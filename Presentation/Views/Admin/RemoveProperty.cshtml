@@ -1,0 +1,27 @@
+﻿@model BusinessObjects.Property
+
+@{
+	ViewBag.Title = "RemoveProperty";
+}
+
+
+@using (Html.BeginForm())
+{
+	@Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+	<div class="form-group">
+		<div class="col-md-10">
+			<h3>Remove this property?</h3>
+			<h2>@Html.DisplayFor(model => model.Name)</h2>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<div class="col-md-10">
+			<input type="submit" value="RemovePropety" class="btn btn-default" />
+			<button type="button" style="margin-bottom:2px" class="btn btn-dark" color onclick="location.href = '@Url.Action("Properties", "Admin")'">Grįžti į savybių valdymo langą</button>
+		</div>
+	</div>
+</div>
+}

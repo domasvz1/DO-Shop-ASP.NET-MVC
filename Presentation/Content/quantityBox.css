@@ -1,0 +1,43 @@
+﻿
+/*CUSTOM QUANTITY IN CART*/
+
+.quantity, .quantity form {
+    vertical-align: middle;
+    display: inline;
+    white-space: nowrap;
+}
+
+.quantity input{
+    -webkit-appearance: none;
+    border: none;
+    text-align: center;
+    width: 64px;
+    font-size: 16px;
+    color: #43484D;
+    font-weight: 300;
+    border-radius: 5px;
+    }
+
+
+.plus-btn, .minus-btn {
+    width: 30px;
+    height: 30px;
+    background-color: #E1E8EE;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+
+}
+
+.minus-btn img {
+    margin-bottom: 2px;
+}
+
+.plus-btn img {
+    margin-bottom: 2px;
+}
+
+button:focus,
+input:focus {
+    outline: 0;
+}

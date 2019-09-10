@@ -1,0 +1,19 @@
+﻿@model Presentation.Models.PaymentModel
+
+@{
+	ViewBag.Title = "NotPaidOrders";
+}
+@using BusinessObjects.Orders;
+
+
+	<h1>Bendra informacija apie pirkima</h1>
+	<p>@Model.PaymentInformation.OrderStatus.GetOrderStatus()</p>
+	@if (@Model.PaymentInformation.PaymentDetails != "")
+	{
+		<p>Kodėl apmokėjimas neįvyko:  @Model.PaymentInformation.PaymentDetails</p>
+
+	}
+	
+	<br />
+	<button type="button" class="btn btn-info" color onclick="location.href = '@Url.Action("UzsakymuIstorija", "Client")'">Peržiūrėkite savo užsakymų istoriją</button>
+

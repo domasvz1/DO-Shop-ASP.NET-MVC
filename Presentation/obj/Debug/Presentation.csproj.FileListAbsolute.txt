@@ -1,0 +1,132 @@
+C:\Users\dominykaso\Desktop\TheeditableMVC\DO Shop\Presentation\bin\Presentation.dll.config
+C:\Users\dominykaso\Desktop\TheeditableMVC\DO Shop\Presentation\bin\Presentation.dll
+C:\Users\dominykaso\Desktop\TheeditableMVC\DO Shop\Presentation\bin\Presentation.pdb
+C:\Users\dominykaso\Desktop\TheeditableMVC\DO Shop\Presentation\bin\roslyn\csc.exe
+C:\Users\dominykaso\Desktop\TheeditableMVC\DO Shop\Presentation\bin\roslyn\csc.exe.config
+C:\Users\dominykaso\Desktop\TheeditableMVC\DO Shop\Presentation\bin\roslyn\csc.rsp
+C:\Users\dominykaso\Desktop\TheeditableMVC\DO Shop\Presentation\bin\roslyn\csi.exe
+C:\Users\dominykaso\Desktop\TheeditableMVC\DO Shop\Presentation\bin\roslyn\csi.exe.config
+C:\Users\dominykaso\Desktop\TheeditableMVC\DO Shop\Presentation\bin\roslyn\csi.rsp
+C:\Users\dominykaso\Desktop\TheeditableMVC\DO Shop\Presentation\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\dominykaso\Desktop\TheeditableMVC\DO Shop\Presentation\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\dominykaso\Desktop\TheeditableMVC\DO Shop\Presentation\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\dominykaso\Desktop\TheeditableMVC\DO Shop\Presentation\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\dominykaso\Desktop\TheeditableMVC\DO Shop\Presentation\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\dominykaso\Desktop\TheeditableMVC\DO Shop\Presentation\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\dominykaso\Desktop\TheeditableMVC\DO Shop\Presentation\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\dominykaso\Desktop\TheeditableMVC\DO Shop\Presentation\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\dominykaso\Desktop\TheeditableMVC\DO Shop\Presentation\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\dominykaso\Desktop\TheeditableMVC\DO Shop\Presentation\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\dominykaso\Desktop\TheeditableMVC\DO Shop\Presentation\bin\roslyn\Microsoft.Win32.Primitives.dll
+C:\Users\dominykaso\Desktop\TheeditableMVC\DO Shop\Presentation\bin\roslyn\System.AppContext.dll
+C:\Users\dominykaso\Desktop\TheeditableMVC\DO Shop\Presentation\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\dominykaso\Desktop\TheeditableMVC\DO Shop\Presentation\bin\roslyn\System.Console.dll
+C:\Users\dominykaso\Desktop\TheeditableMVC\DO Shop\Presentation\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+C:\Users\dominykaso\Desktop\TheeditableMVC\DO Shop\Presentation\bin\roslyn\System.Diagnostics.Process.dll
+C:\Users\dominykaso\Desktop\TheeditableMVC\DO Shop\Presentation\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Users\dominykaso\Desktop\TheeditableMVC\DO Shop\Presentation\bin\roslyn\System.IO.Compression.dll
+C:\Users\dominykaso\Desktop\TheeditableMVC\DO Shop\Presentation\bin\roslyn\System.IO.FileSystem.dll
+C:\Users\dominykaso\Desktop\TheeditableMVC\DO Shop\Presentation\bin\roslyn\System.IO.FileSystem.DriveInfo.dll
+C:\Users\dominykaso\Desktop\TheeditableMVC\DO Shop\Presentation\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Users\dominykaso\Desktop\TheeditableMVC\DO Shop\Presentation\bin\roslyn\System.IO.Pipes.dll
+C:\Users\dominykaso\Desktop\TheeditableMVC\DO Shop\Presentation\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\dominykaso\Desktop\TheeditableMVC\DO Shop\Presentation\bin\roslyn\System.Security.AccessControl.dll
+C:\Users\dominykaso\Desktop\TheeditableMVC\DO Shop\Presentation\bin\roslyn\System.Security.Claims.dll
+C:\Users\dominykaso\Desktop\TheeditableMVC\DO Shop\Presentation\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+C:\Users\dominykaso\Desktop\TheeditableMVC\DO Shop\Presentation\bin\roslyn\System.Security.Cryptography.Encoding.dll
+C:\Users\dominykaso\Desktop\TheeditableMVC\DO Shop\Presentation\bin\roslyn\System.Security.Cryptography.Primitives.dll
+C:\Users\dominykaso\Desktop\TheeditableMVC\DO Shop\Presentation\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+C:\Users\dominykaso\Desktop\TheeditableMVC\DO Shop\Presentation\bin\roslyn\System.Security.Principal.Windows.dll
+C:\Users\dominykaso\Desktop\TheeditableMVC\DO Shop\Presentation\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\Users\dominykaso\Desktop\TheeditableMVC\DO Shop\Presentation\bin\roslyn\System.Threading.Thread.dll
+C:\Users\dominykaso\Desktop\TheeditableMVC\DO Shop\Presentation\bin\roslyn\System.ValueTuple.dll
+C:\Users\dominykaso\Desktop\TheeditableMVC\DO Shop\Presentation\bin\roslyn\System.Xml.ReaderWriter.dll
+C:\Users\dominykaso\Desktop\TheeditableMVC\DO Shop\Presentation\bin\roslyn\System.Xml.XmlDocument.dll
+C:\Users\dominykaso\Desktop\TheeditableMVC\DO Shop\Presentation\bin\roslyn\System.Xml.XPath.dll
+C:\Users\dominykaso\Desktop\TheeditableMVC\DO Shop\Presentation\bin\roslyn\System.Xml.XPath.XDocument.dll
+C:\Users\dominykaso\Desktop\TheeditableMVC\DO Shop\Presentation\bin\roslyn\vbc.exe
+C:\Users\dominykaso\Desktop\TheeditableMVC\DO Shop\Presentation\bin\roslyn\vbc.exe.config
+C:\Users\dominykaso\Desktop\TheeditableMVC\DO Shop\Presentation\bin\roslyn\vbc.rsp
+C:\Users\dominykaso\Desktop\TheeditableMVC\DO Shop\Presentation\bin\roslyn\VBCSCompiler.exe
+C:\Users\dominykaso\Desktop\TheeditableMVC\DO Shop\Presentation\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\dominykaso\Desktop\TheeditableMVC\DO Shop\Presentation\bin\BusinessLogic.dll
+C:\Users\dominykaso\Desktop\TheeditableMVC\DO Shop\Presentation\bin\BusinessObjects.dll
+C:\Users\dominykaso\Desktop\TheeditableMVC\DO Shop\Presentation\bin\DataAccess.dll
+C:\Users\dominykaso\Desktop\TheeditableMVC\DO Shop\Presentation\bin\EPPlus.dll
+C:\Users\dominykaso\Desktop\TheeditableMVC\DO Shop\Presentation\bin\BusinessLogic.pdb
+C:\Users\dominykaso\Desktop\TheeditableMVC\DO Shop\Presentation\bin\BusinessLogic.dll.config
+C:\Users\dominykaso\Desktop\TheeditableMVC\DO Shop\Presentation\bin\BusinessObjects.pdb
+C:\Users\dominykaso\Desktop\TheeditableMVC\DO Shop\Presentation\bin\DataAccess.pdb
+C:\Users\dominykaso\Desktop\TheeditableMVC\DO Shop\Presentation\bin\DataAccess.dll.config
+C:\Users\dominykaso\Desktop\TheeditableMVC\DO Shop\Presentation\bin\EPPlus.xml
+C:\Users\dominykaso\Desktop\TheeditableMVC\DO Shop\Presentation\obj\Debug\Presentation.csprojAssemblyReference.cache
+C:\Users\dominykaso\Desktop\TheeditableMVC\DO Shop\Presentation\obj\Debug\Presentation.csproj.CoreCompileInputs.cache
+C:\Users\dominykaso\Desktop\TheeditableMVC\DO Shop\Presentation\obj\Debug\Presentation.csproj.CopyComplete
+C:\Users\dominykaso\Desktop\TheeditableMVC\DO Shop\Presentation\obj\Debug\Presentation.dll
+C:\Users\dominykaso\Desktop\TheeditableMVC\DO Shop\Presentation\obj\Debug\Presentation.pdb
+C:\Users\dominykaso\Desktop\DO-Shop-ASP.NET-MVC\Presentation\bin\Presentation.dll.config
+C:\Users\dominykaso\Desktop\DO-Shop-ASP.NET-MVC\Presentation\bin\Presentation.dll
+C:\Users\dominykaso\Desktop\DO-Shop-ASP.NET-MVC\Presentation\bin\Presentation.pdb
+C:\Users\dominykaso\Desktop\DO-Shop-ASP.NET-MVC\Presentation\bin\roslyn\csc.exe
+C:\Users\dominykaso\Desktop\DO-Shop-ASP.NET-MVC\Presentation\bin\roslyn\csc.exe.config
+C:\Users\dominykaso\Desktop\DO-Shop-ASP.NET-MVC\Presentation\bin\roslyn\csc.rsp
+C:\Users\dominykaso\Desktop\DO-Shop-ASP.NET-MVC\Presentation\bin\roslyn\csi.exe
+C:\Users\dominykaso\Desktop\DO-Shop-ASP.NET-MVC\Presentation\bin\roslyn\csi.exe.config
+C:\Users\dominykaso\Desktop\DO-Shop-ASP.NET-MVC\Presentation\bin\roslyn\csi.rsp
+C:\Users\dominykaso\Desktop\DO-Shop-ASP.NET-MVC\Presentation\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\dominykaso\Desktop\DO-Shop-ASP.NET-MVC\Presentation\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\dominykaso\Desktop\DO-Shop-ASP.NET-MVC\Presentation\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\dominykaso\Desktop\DO-Shop-ASP.NET-MVC\Presentation\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\dominykaso\Desktop\DO-Shop-ASP.NET-MVC\Presentation\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\dominykaso\Desktop\DO-Shop-ASP.NET-MVC\Presentation\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\dominykaso\Desktop\DO-Shop-ASP.NET-MVC\Presentation\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\dominykaso\Desktop\DO-Shop-ASP.NET-MVC\Presentation\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\dominykaso\Desktop\DO-Shop-ASP.NET-MVC\Presentation\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\dominykaso\Desktop\DO-Shop-ASP.NET-MVC\Presentation\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\dominykaso\Desktop\DO-Shop-ASP.NET-MVC\Presentation\bin\roslyn\Microsoft.Win32.Primitives.dll
+C:\Users\dominykaso\Desktop\DO-Shop-ASP.NET-MVC\Presentation\bin\roslyn\System.AppContext.dll
+C:\Users\dominykaso\Desktop\DO-Shop-ASP.NET-MVC\Presentation\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\dominykaso\Desktop\DO-Shop-ASP.NET-MVC\Presentation\bin\roslyn\System.Console.dll
+C:\Users\dominykaso\Desktop\DO-Shop-ASP.NET-MVC\Presentation\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+C:\Users\dominykaso\Desktop\DO-Shop-ASP.NET-MVC\Presentation\bin\roslyn\System.Diagnostics.Process.dll
+C:\Users\dominykaso\Desktop\DO-Shop-ASP.NET-MVC\Presentation\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Users\dominykaso\Desktop\DO-Shop-ASP.NET-MVC\Presentation\bin\roslyn\System.IO.Compression.dll
+C:\Users\dominykaso\Desktop\DO-Shop-ASP.NET-MVC\Presentation\bin\roslyn\System.IO.FileSystem.dll
+C:\Users\dominykaso\Desktop\DO-Shop-ASP.NET-MVC\Presentation\bin\roslyn\System.IO.FileSystem.DriveInfo.dll
+C:\Users\dominykaso\Desktop\DO-Shop-ASP.NET-MVC\Presentation\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Users\dominykaso\Desktop\DO-Shop-ASP.NET-MVC\Presentation\bin\roslyn\System.IO.Pipes.dll
+C:\Users\dominykaso\Desktop\DO-Shop-ASP.NET-MVC\Presentation\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\dominykaso\Desktop\DO-Shop-ASP.NET-MVC\Presentation\bin\roslyn\System.Security.AccessControl.dll
+C:\Users\dominykaso\Desktop\DO-Shop-ASP.NET-MVC\Presentation\bin\roslyn\System.Security.Claims.dll
+C:\Users\dominykaso\Desktop\DO-Shop-ASP.NET-MVC\Presentation\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+C:\Users\dominykaso\Desktop\DO-Shop-ASP.NET-MVC\Presentation\bin\roslyn\System.Security.Cryptography.Encoding.dll
+C:\Users\dominykaso\Desktop\DO-Shop-ASP.NET-MVC\Presentation\bin\roslyn\System.Security.Cryptography.Primitives.dll
+C:\Users\dominykaso\Desktop\DO-Shop-ASP.NET-MVC\Presentation\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+C:\Users\dominykaso\Desktop\DO-Shop-ASP.NET-MVC\Presentation\bin\roslyn\System.Security.Principal.Windows.dll
+C:\Users\dominykaso\Desktop\DO-Shop-ASP.NET-MVC\Presentation\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\Users\dominykaso\Desktop\DO-Shop-ASP.NET-MVC\Presentation\bin\roslyn\System.Threading.Thread.dll
+C:\Users\dominykaso\Desktop\DO-Shop-ASP.NET-MVC\Presentation\bin\roslyn\System.ValueTuple.dll
+C:\Users\dominykaso\Desktop\DO-Shop-ASP.NET-MVC\Presentation\bin\roslyn\System.Xml.ReaderWriter.dll
+C:\Users\dominykaso\Desktop\DO-Shop-ASP.NET-MVC\Presentation\bin\roslyn\System.Xml.XmlDocument.dll
+C:\Users\dominykaso\Desktop\DO-Shop-ASP.NET-MVC\Presentation\bin\roslyn\System.Xml.XPath.dll
+C:\Users\dominykaso\Desktop\DO-Shop-ASP.NET-MVC\Presentation\bin\roslyn\System.Xml.XPath.XDocument.dll
+C:\Users\dominykaso\Desktop\DO-Shop-ASP.NET-MVC\Presentation\bin\roslyn\vbc.exe
+C:\Users\dominykaso\Desktop\DO-Shop-ASP.NET-MVC\Presentation\bin\roslyn\vbc.exe.config
+C:\Users\dominykaso\Desktop\DO-Shop-ASP.NET-MVC\Presentation\bin\roslyn\vbc.rsp
+C:\Users\dominykaso\Desktop\DO-Shop-ASP.NET-MVC\Presentation\bin\roslyn\VBCSCompiler.exe
+C:\Users\dominykaso\Desktop\DO-Shop-ASP.NET-MVC\Presentation\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\dominykaso\Desktop\DO-Shop-ASP.NET-MVC\Presentation\bin\BusinessLogic.dll
+C:\Users\dominykaso\Desktop\DO-Shop-ASP.NET-MVC\Presentation\bin\BusinessObjects.dll
+C:\Users\dominykaso\Desktop\DO-Shop-ASP.NET-MVC\Presentation\bin\DataAccess.dll
+C:\Users\dominykaso\Desktop\DO-Shop-ASP.NET-MVC\Presentation\bin\EPPlus.dll
+C:\Users\dominykaso\Desktop\DO-Shop-ASP.NET-MVC\Presentation\bin\BusinessLogic.pdb
+C:\Users\dominykaso\Desktop\DO-Shop-ASP.NET-MVC\Presentation\bin\BusinessLogic.dll.config
+C:\Users\dominykaso\Desktop\DO-Shop-ASP.NET-MVC\Presentation\bin\BusinessObjects.pdb
+C:\Users\dominykaso\Desktop\DO-Shop-ASP.NET-MVC\Presentation\bin\DataAccess.pdb
+C:\Users\dominykaso\Desktop\DO-Shop-ASP.NET-MVC\Presentation\bin\DataAccess.dll.config
+C:\Users\dominykaso\Desktop\DO-Shop-ASP.NET-MVC\Presentation\bin\EPPlus.xml
+C:\Users\dominykaso\Desktop\DO-Shop-ASP.NET-MVC\Presentation\obj\Debug\Presentation.csprojAssemblyReference.cache
+C:\Users\dominykaso\Desktop\DO-Shop-ASP.NET-MVC\Presentation\obj\Debug\Presentation.csproj.CoreCompileInputs.cache
+C:\Users\dominykaso\Desktop\DO-Shop-ASP.NET-MVC\Presentation\obj\Debug\Presentation.csproj.CopyComplete
+C:\Users\dominykaso\Desktop\DO-Shop-ASP.NET-MVC\Presentation\obj\Debug\Presentation.dll
+C:\Users\dominykaso\Desktop\DO-Shop-ASP.NET-MVC\Presentation\obj\Debug\Presentation.pdb

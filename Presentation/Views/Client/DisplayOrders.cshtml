@@ -1,0 +1,114 @@
+﻿@model Presentation.Models.OrderModel
+
+@{
+	ViewBag.Title = "DisplayOrders";
+}
+
+@{
+	IEnumerable<BusinessObjects.ItemsInCart> itemsInCart = Model.ClientOrders.Cart.ItemsInCart;
+	Layout = null;
+	var orderDateTime = Model.ClientOrders.OrderDate;
+	var orderStatus = Model.ClientOrders.OrderStatus;
+}
+
+@using BusinessObjects.Orders
+
+<br />
+<h2>Užsakymo data ir laikas: @orderDateTime</h2>
+<div>
+	<table class="table">
+		<tr class="table-active">
+			<th>
+			</th>
+			<th>
+				Pavadinimas
+			</th>
+			<th>
+				Kategorija
+			</th>
+			<th>
+				Kiekis
+			</th>
+			<th>
+				Vieneto Kaina
+			</th>
+			<th>
+				Bendra Kaina
+			</th>
+		</tr>
+		@foreach (var item in itemsInCart)
+		{
+			decimal price = (item.CartsPrice * item.Quantity) / 100.0m;
+			decimal piecePrice = item.CartsPrice / 100.0m;
+
+			<tr>
+				<td width="10%">
+					@{
+						if (item.Item != null && item.Item.ImageUrl != null)
+						{
+							@:<img src="@Url.Content(item.Item.ImageUrl)" alt="@item.Item.Name" style="height:40px; width:auto;" />
+						}
+					}
+				</td>
+				<td style="vertical-align:middle;">
+					@if (item.Item != null)
+					{
+						@Html.ActionLink(item.Item.Name, "PrekesInformacija", "Pagrindinis", new { prekesId = item.Item.Id }, new { @style = "color:#00008B" })
+					}
+					else
+					{
+						@:Prekės parduotuvėje šiuo metu nėra
+					}
+				</td>
+				<td style="vertical-align:middle;">
+					@if (item.Item != null)
+					{
+						@:@Html.DisplayFor(modelItem => item.Item.Category.Name)
+					}
+					else
+					{
+						@:Prekės parduotuvėje šiuo metu nėra
+					}
+				</td>
+				<td style="vertical-align:middle;">
+					@Html.DisplayFor(modelItem => item.Quantity)
+				</td>
+				<td style="vertical-align:middle;">
+					@Html.DisplayFor(modelItem => piecePrice) Eurai už vienetą
+				</td>
+				<td style="vertical-align:middle;">
+					@Html.DisplayFor(modelItem => price) Eurai
+				</td>
+			</tr>
+		}
+
+		@{var totalCost = Model.ClientOrders.Cart.CartsPrice / 100.0m; }
+		<tr>
+			<th>
+				Visa suma:
+			</th>
+			<th></th>
+			<th></th>
+			<th></th>
+			<th></th>
+			<th></th>
+			<td>
+				@Html.DisplayFor(model => totalCost) Eurai
+			</td>
+		</tr>
+	</table>
+	<p>
+		Užsakymo būsena: @Model.ClientOrders.OrderStatus.GetOrderStatus() <br /> <br />
+
+		@*Pagal uzsakymo busena ismtam klientui pasirinkima*@
+		@if (@Model.ClientOrders.OrderStatus == OrderStatus.Waiting)
+		{
+			@Html.ActionLink("These orders are waiting for your payment", "PayUnpaidOrder", "Client", new { orderId = Model.ClientOrders.Id }, new { @class = "btn btn-warning" })
+		}
+		else
+		{
+			@Html.ActionLink("Click to repeat the order", "RepeatTheOrder", "Client", new { orderId = Model.ClientOrders.Id }, new { @class = "btn btn-primary" })
+		}
+	</p>
+
+</div>

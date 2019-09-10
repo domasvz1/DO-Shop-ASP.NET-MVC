@@ -1,0 +1,88 @@
+﻿@model BusinessObjects.Item
+
+@{
+	var atvaizduojamaKaina = Model.Price / 100.0m;
+	ViewBag.Title = "ItemInformation";
+}
+
+
+<div style="width:100%">
+
+	<div style="margin-top: 15%">
+		@if (Model.ImageUrl != null)
+		{
+			<img src="@Url.Content(Model.ImageUrl)" width="20%" alt="Image" />
+		}
+	</div>
+
+	<button type="button" class="btn btn-warning" style="margin-left:4.5%; margin-top: 2%" color onclick="location.href = '@Url.Action("ModifyItem", new { id = Model.Id })'">Redaguoti prekę</button>
+	<div style="color:black; padding-left:25%; margin-top: -24%">
+
+		<dl>
+			<dt>
+				@Html.DisplayNameFor(model => model.SKUCode):
+			</dt>
+			<dd>
+				@Html.DisplayFor(model => model.SKUCode)
+			</dd>
+
+			<hr />
+
+			<dt>
+				@Html.DisplayNameFor(model => model.Name):
+			</dt>
+			<dd>
+				@Html.DisplayFor(model => model.Name)
+			</dd>
+
+			<hr />
+
+			<dt>
+				@Html.DisplayNameFor(model => model.Title):
+			</dt>
+			<dd>
+				@Html.DisplayFor(model => model.Title)
+			</dd>
+
+			<hr />
+
+			<dt> @Html.DisplayNameFor(model => model.Price): </dt>
+			<dd>@Html.DisplayFor(model => atvaizduojamaKaina) Eurai </dd>
+
+			<hr />
+
+			<dt> @Html.DisplayNameFor(model => model.Description)</dt>
+			<dd>@Html.DisplayFor(model => model.Description) </dd>
+
+			<hr />
+
+			<dt>
+				@Html.DisplayNameFor(model => model.Category)
+			</dt>
+			<dd>
+				@Html.DisplayFor(model => model.Category.Name)
+			</dd>
+			@if (Model.ItemProperties.Count != 0)
+			{
+				<dt>
+					@Html.DisplayName("Item properties")
+				</dt>
+				foreach (var property in Model.ItemProperties)
+				{
+					if (property.Value != null)
+					{
+						<dd>@property.Property.Name: @property.Value</dd>
+					}
+
+				}
+			}
+		</dl>
+	</div>
+
+
+	<div style="margin-right: 20%;">
+		<button type="button" class="btn btn-dark" color onclick="location.href = '@Url.Action("ModifyItems")'">Grižti į prekių sąrašą</button>
+	</div>
+
+</div>
+

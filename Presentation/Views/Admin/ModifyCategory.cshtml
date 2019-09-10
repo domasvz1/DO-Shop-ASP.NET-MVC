@@ -1,0 +1,34 @@
+﻿@model Presentation.Models.CategoryModel
+
+@{
+	ViewBag.Title = "ModifyCategory";
+}
+
+<h2>Windows with properties</h2>
+@using (Html.BeginForm())
+{
+	@Html.AntiForgeryToken()
+
+	<div class="form-horizontal" style="width:100%">
+		<hr />
+		@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+		@Html.HiddenFor(model => model.CategoryId)
+		<div class="form-group">
+			<div class="col-md-10">
+				@Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+				@Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+			</div>
+		</div>
+		<div class="col-md-10">
+			@Html.EditorFor(x => x.Properties)
+		</div>
+
+		<div class="form-group">
+			<div class="col-md-10">
+				<br />
+				<input type="submit" value="Išsaugoti kategorija" class="btn btn-success" />
+				<button type="button" class="btn btn-dark" color onclick="location.href = '@Url.Action("CategoryInformation", new { id = Model.CategoryId })'">Grįžti atgal</button>
+			</div>
+		</div>
+	</div>
+}

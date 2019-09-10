@@ -1,0 +1,29 @@
+﻿@model BusinessObjects.Category
+
+@{
+	ViewBag.Title = "CategoryInformation";
+}
+
+<div>
+	<br />
+	<h1> @Html.DisplayNameFor(model => model.Name):   @Model.Name</h1> <br />
+	<h3> these properties belong to this category </h3> <br />
+
+	<font size="4">
+		<table>
+			@foreach (var property in Model.Properties)
+			{
+				<tr>
+					<td>
+						* @Html.DisplayFor(modelItem => property.Name)
+					</td>
+				</tr>
+			}
+		</table>
+	</font>
+</div>
+<hr />
+<div>
+	<button type="button" class="btn btn-warning" color onclick="location.href='@Url.Action("ModifyCategory", new { id = Model.Id })'">Redaguoti Kategorija</button>
+	<button type="button" style="margin-bottom:2px" class="btn btn-dark" color onclick="location.href = '@Url.Action("Categories", "Admin")'">Grįžti į kategorijų valdymo langą</button>
+</div>
