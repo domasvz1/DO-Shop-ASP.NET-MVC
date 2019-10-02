@@ -8,7 +8,7 @@ namespace BusinessLogic.Interfaces
     {
         Client ConnectClient(Client clientObject);
         Client GetClient(int id);
-        Client Client(string email);
+        Client GetClient(string email);
         List<Client> GetClientsList();
         void CreateClient(Client clientObject);
         void EditProfile(Client clientObject);

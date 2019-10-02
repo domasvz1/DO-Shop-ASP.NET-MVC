@@ -62,6 +62,12 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Reflection.Context" />
+    <Reference Include="System.Web.Mvc">
+      <HintPath>..\Presentation\bin\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages">
+      <HintPath>..\Presentation\bin\System.Web.WebPages.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -72,9 +78,11 @@
   <ItemGroup>
     <Compile Include="AdminRepository.cs" />
     <Compile Include="CategoryRepository.cs" />
+    <Compile Include="CountryRepository.cs" />
     <Compile Include="DataBaseMigrator.cs" />
     <Compile Include="Interfaces\IAdminRepository.cs" />
     <Compile Include="Interfaces\ICategoryRepository.cs" />
+    <Compile Include="Interfaces\ICountryRepository.cs" />
     <Compile Include="Interfaces\IItemRepository.cs" />
     <Compile Include="Interfaces\IClientRepository.cs" />
     <Compile Include="Interfaces\IPropertyRepository.cs" />

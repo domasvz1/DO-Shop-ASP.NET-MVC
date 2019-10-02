@@ -1,28 +1,32 @@
 ﻿using System.ComponentModel;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Web.Mvc;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BusinessObjects.Orders
 {
     public class DeliveryAddress
     {
-        [Required(ErrorMessage = "Enter receivers country")]
-        [DisplayName("Country")]
-        public string Country { get; set; }
+        [Required(ErrorMessage = "Please select a city")]
+        [Display(Name = "City")]
+        public string City { get; set; } = "-";
 
-        [Required(ErrorMessage = "Enter receivers city")]
-        [DisplayName("City")]
-        public string City { get; set; }
+        [Required(ErrorMessage = "Please select a locality")]
+        [Display(Name = "Locality")]
+        public string Locality { get; set; } = "-";
 
         [Required(ErrorMessage = "Enter receivers street's name")]
         [DisplayName("Street Name")]
-        public string Street { get; set; }
+        public string Street { get; set; } = "Enter the Street";
 
         [Required(ErrorMessage = "Enter receivers street number")]
         [DisplayName("Streets Number")]
-        public int StreetNumber { get; set; }
+        public int StreetNumber { get; set; } = 1;
 
         [Required(ErrorMessage = "Enter receivers apartment/office number")]
         [DisplayName("Apartment/Office number")]
-        public int ApartmentNumber { get; set; }
-    }
+        public int ApartmentNumber { get; set; } = 1;
+
+    }  
 }

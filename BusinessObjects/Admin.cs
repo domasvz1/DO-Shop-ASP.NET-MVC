@@ -18,9 +18,7 @@ namespace BusinessObjects
         public bool IsCorrectPassword(string enteredPassword)
         {
             // admin password is not encrypted, needs to change logic temporary
-            //if (Encryption.EncryptPassword(ivestasSlaptazodis).ToLower() == Password.ToLower())
-
-            if (enteredPassword == Password)
+            if (Encryption.EncryptPassword(enteredPassword).ToLower() == Password.ToLower())
                 return true;
             else
                 return false;

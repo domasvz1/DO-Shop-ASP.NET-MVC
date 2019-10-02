@@ -130,3 +130,4 @@ C:\Users\dominykaso\Desktop\DO-Shop-ASP.NET-MVC\Presentation\obj\Debug\Presentat
 C:\Users\dominykaso\Desktop\DO-Shop-ASP.NET-MVC\Presentation\obj\Debug\Presentation.csproj.CopyComplete
 C:\Users\dominykaso\Desktop\DO-Shop-ASP.NET-MVC\Presentation\obj\Debug\Presentation.dll
 C:\Users\dominykaso\Desktop\DO-Shop-ASP.NET-MVC\Presentation\obj\Debug\Presentation.pdb
+C:\Users\dominykaso\Desktop\DO-Shop-ASP.NET-MVC\Presentation\bin\BusinessObjects.dll.config

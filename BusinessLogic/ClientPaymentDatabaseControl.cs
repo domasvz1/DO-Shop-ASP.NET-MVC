@@ -58,7 +58,7 @@ namespace BusinessLogic
 
                 // Making cards information default or blank (for now)
                 foundClientObject.Card.CardNumber = "4111111111111111";
-                foundClientObject.Card.CardExpirationYear = 2018;
+                foundClientObject.Card.CardExpirationYear = 2021;
                 foundClientObject.Card.CardExpirationMonth = 1;
                 foundClientObject.Card.CardHolder = "Vardenis Pavardenis";
                 foundClientObject.Card.CVV = "111";
@@ -100,7 +100,7 @@ namespace BusinessLogic
 
                 // Making card object data default (for now)
                 foundClientObject.Card.CardNumber = "4111111111111111";
-                foundClientObject.Card.CardExpirationYear = 2018;
+                foundClientObject.Card.CardExpirationYear = 2021;
                 foundClientObject.Card.CardExpirationMonth = 1;
                 foundClientObject.Card.CardHolder = "Vardenis Pavardenis";
                 foundClientObject.Card.CVV = "111";

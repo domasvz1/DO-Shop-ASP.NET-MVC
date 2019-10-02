@@ -7,7 +7,12 @@ using System.Collections.Generic;
 using BusinessObjects;
 using BusinessObjects.Orders;
 using BusinessLogic.Interfaces;
+using DataAccess.Interfaces;
 using Presentation.Models;
+using System.Web.UI.WebControls;
+using System.Diagnostics;
+using System.Windows;
+using System.Dynamic;
 
 namespace Presentation.Controllers
 {
@@ -18,38 +23,47 @@ namespace Presentation.Controllers
         private readonly IItemDistributionControl _itemDistributionControl;
         private readonly IHttpPaymentControl _httpPaymentControl;
         private readonly IClientPaymentDatabaseControl _clientPaymentDatabseControl;
+        private readonly IClientRepository _IClientRepository;
 
-        public ClientController(IClientProfileControl clientProfileControl, IClientCartControl cartControl, IItemDistributionControl itemDistributionControl, IHttpPaymentControl httpPaymentControl, IClientPaymentDatabaseControl clientPaymentDatabseControl)
+        public ClientController(IClientProfileControl clientProfileControl, IClientCartControl cartControl, IItemDistributionControl itemDistributionControl, IHttpPaymentControl httpPaymentControl, IClientPaymentDatabaseControl clientPaymentDatabseControl, IClientRepository iClientRepository)
         {
             _clientProfileControl = clientProfileControl;
             clientCartControl = cartControl;
             _itemDistributionControl = itemDistributionControl;
             _httpPaymentControl = httpPaymentControl;
             _clientPaymentDatabseControl = clientPaymentDatabseControl;
+            _IClientRepository = iClientRepository; 
         }
 
-        [UserAuthorization(ConnectionPage = "~/Client/Login", Roles = "Client")]
         public ActionResult Index()
         {
             return View();
         }
 
+        [HttpGet]
         [UserAuthorization(ConnectionPage = "~/Client/Login", Roles = "Client")]
         public ActionResult EditProfile()
         {
-            return View(_clientProfileControl.GetClient((int)Session["AccountId"]));
+            CommonViewModel model = new CommonViewModel
+            {
+                ClientVM = _clientProfileControl.GetClient((int)Session["AccountId"]),
+                CityVM = new CityModel()
+            };
+            ConfigureCityList(model.CityVM); // Filling City's and Locality's data in
+            return View(model);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         [UserAuthorization(ConnectionPage = "~/Client/Login", Roles = "Client")]
-        public ActionResult EditProfile(Client ClientObject)
+        public ActionResult EditProfile(CommonViewModel model)
         {
+            ModelState[nameof(model.ClientVM.Password)]?.Errors?.Clear();
             if (ModelState.IsValid)
             {
                 try
                 {
-                    _clientProfileControl.EditProfile(ClientObject);
+                    _clientProfileControl.EditProfile(model.ClientVM);
                     return RedirectToAction("Index", "Main");
                 }
                 catch (Exception ex)
@@ -57,10 +71,38 @@ namespace Presentation.Controllers
                     ModelState.AddModelError("Failino ?", ex.Message);
                 }
             }
-            return View("Index", "Main");
+            ConfigureCityList(model.CityVM); // Filling City's and Locality's data in
+            return View(model.ClientVM);
+        }
+
+
+        // Methods for the Cities and localities
+        [HttpGet]
+        public JsonResult FetchLocalities(int ID)
+        {
+            var data = _IClientRepository.FetchLocalities()
+                .Where(l => l.CityID == ID)
+                .Select(l => new { Value = l.ID, Text = l.Name });
+            return Json(data, JsonRequestBehavior.AllowGet);
+        }
+
+        private void ConfigureCityList(CityModel model)
+        {
+            List<City> cities = _IClientRepository.FetchCities();
+            model.CityList = new SelectList(cities, "ID", "Name");
+            if (model.SelectedCity.HasValue)
+            {
+                IEnumerable<Locality> localities = _IClientRepository.FetchLocalities().Where(l => l.CityID == model.SelectedCity.Value);
+                model.LocalityList = new SelectList(localities, "ID", "Name");
+            }
+            else
+            {
+                model.LocalityList = new SelectList(Enumerable.Empty<SelectListItem>());
+            }
         }
 
         //GET: Client/Register
+        [HttpGet]
         public ActionResult Register()
         {
             return View();
@@ -69,16 +111,24 @@ namespace Presentation.Controllers
         //GET: Client/Checkout
         public ActionResult Checkout()
         {
+            
             return View();
         }
-
-        //ModelState.IsValid tells you if any model errors have been added to ModelState. 
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Register(Client ClientObject)
         {
-            if (ModelState.IsValid)
+            // Creating Card and DeliveryAddress objects with default data to fill up for the user
+            // He will be available to edit them in other windows
+            DeliveryAddress delivery = new DeliveryAddress();
+            Card card = new Card();
+
+            // Passing the client data to the created object
+            ClientObject.DeliveryAddress = delivery;
+            ClientObject.Card = card;
+
+            if (ModelState.IsValid) // Tells if any model errors have been added to ModelState.
             {
                 try
                 {
@@ -92,14 +142,15 @@ namespace Presentation.Controllers
                 }
             }
             // Should print whats wrong with the launch
-            var errors = ModelState.Select(x => x.Value.Errors)
-                          .Where(y => y.Count > 0)
-                          .ToList();
+            var errors = ModelState.Select(x => x.Value.Errors).Where(y => y.Count > 0).ToList();
             return View(ClientObject);
         }
 
+        //GET: Client/Login
+        [HttpGet]
         public ActionResult Login()
         {
+            
             return View();
         }
 
@@ -477,6 +528,5 @@ namespace Presentation.Controllers
 
             return View("Cart", (Cart)Session["Cart"]);
         }
-
     }
 }
