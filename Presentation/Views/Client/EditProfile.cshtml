@@ -1,17 +1,9 @@
-﻿@model Presentation.Models.CommonViewModel
-
-@{
-	ViewBag.Title = "Register";
-}
+﻿@model Presentation.Models.ClientModel
 
 @{
 	ViewBag.Title = "EditProfile";
 }
 
-
-@using (Html.BeginForm("EditProfile", "Client", FormMethod.Post, new { @id = "editProfileForm" }))
-{
-	@Html.AntiForgeryToken()
 	<!DOCTYPE html>
 	<html lang="en">
 	<head>
@@ -34,128 +26,141 @@
 
 	<body class="goto-here">
 
-		<div class="hero-wrap hero-bread" style="background-image: url('/Content/images/bg_6.jpg');">
-			<div class="container">
-				<div class="row no-gutters slider-text align-items-center justify-content-center">
-					<div class="col-md-9 ftco-animate text-center">
-						<p class="breadcrumbs"><span class="mr-2"><a href="index.html">Welcome to your profile page</a></span></p>
-						<h1 class="mb-0 bread">Update your information here</h1>
+		@using (Html.BeginForm("EditProfile", "Client", FormMethod.Post))
+		{
+			@Html.AntiForgeryToken()
+			<div class="hero-wrap hero-bread" style="background-image: url('/Content/images/bg_6.jpg');">
+				<div class="container">
+					<div class="row no-gutters slider-text align-items-center justify-content-center">
+						<div class="col-md-9 ftco-animate text-center">
+							<p class="breadcrumbs"><span class="mr-2"><a href="index.html">Welcome to your profile page</a></span></p>
+							<h1 class="mb-0 bread">Update your information here</h1>
+						</div>
 					</div>
 				</div>
 			</div>
-		</div>
 
-		<section class="ftco-section">
-			<div class="container">
-				<div class="row justify-content-center">
-					<div class="col-xl-8 ftco-animate">
-						<form action="#" class="billing-form">
-							<h3 class="mb-4 billing-heading">Edit your profile</h3>
-							<div class="row align-items-end">
+			<section class="ftco-section">
+				<div class="container">
+					<div class="row justify-content-center">
+						<div class="col-xl-8 ftco-animate">
+							<form action="#" class="billing-form">
+								<h3 class="mb-4 billing-heading">Edit your profile</h3>
+								<div class="row align-items-end">
 
-								<div class="col-md-6">
-									<div class="form-group">
-										@Html.LabelFor(model => model.ClientVM.FirstName)
-										@Html.EditorFor(model => model.ClientVM.FirstName, new { htmlAttributes = new { @class = "form-control" } })
-										@Html.ValidationMessageFor(model => model.ClientVM.FirstName, "", new { @class = "text-danger" })
+									@*A tip here, for some reason if you are using "EditorFor" you need
+									"new { htmlAttributes = new { class = "form-control" } }"
+									to define the style of the edit field..
+									But if you are using DropDownListFor you then only need
+									"new { class = "form-control" })"
+									[Keep in mind that here berfore attribute class shouldbe the 'at' sign]*@
+
+									<div class="col-md-6">
+										<div class="form-group">
+											@Html.LabelFor(model => model.ClientVM.FirstName)
+											@Html.EditorFor(model => model.ClientVM.FirstName, new { htmlAttributes = new { @class = "newStyle" } })
+											@Html.ValidationMessageFor(model => model.ClientVM.FirstName, "", new { @class = "text-danger" })
+										</div>
 									</div>
-								</div>
 
-								<div class="col-md-6">
-									<div class="form-group">
-										@Html.LabelFor(model => model.ClientVM.LastName)
-										@Html.EditorFor(model => model.ClientVM.LastName, new { htmlAttributes = new { @class = "form-control" } })
-										@Html.ValidationMessageFor(model => model.ClientVM.LastName, "", new { @class = "text-danger" })
+									<div class="col-md-6">
+										<div class="form-group">
+											@Html.LabelFor(model => model.ClientVM.LastName)
+											@Html.EditorFor(model => model.ClientVM.LastName, new { htmlAttributes = new { @class = "form-control" } })
+											@Html.ValidationMessageFor(model => model.ClientVM.LastName, "", new { @class = "text-danger" })
+										</div>
 									</div>
-								</div>
 
-								<div class="col-md-6">
-									<div class="form-group">
-										@Html.LabelFor(model => model.ClientVM.Email)
-										@Html.EditorFor(model => model.ClientVM.Email, new { htmlAttributes = new { @class = "form-control" } })
-										@Html.ValidationMessageFor(model => model.ClientVM.Email, "", new { @class = "text-danger" })
+									<div class="col-md-6">
+										<div class="form-group">
+											@Html.LabelFor(model => model.ClientVM.Email)
+											@Html.EditorFor(model => model.ClientVM.Email, new { htmlAttributes = new { @class = "form-control" } })
+											@Html.ValidationMessageFor(model => model.ClientVM.Email, "", new { @class = "text-danger" })
+										</div>
 									</div>
-								</div>
 
-								<div class="col-md-6">
-									<div class="form-group">
-										<button type="button" class="form-control bg-primary" onclick="location.href='@Url.Action("PasswordChange", "Client", new { id = Model.ClientVM.Id })'">Change Password</button>
+									<div class="col-md-6">
+										<div class="form-group">
+											<button type="button" class="form-control bg-primary" onclick="location.href='@Url.Action("PasswordChange", "Client", new { id = Model.ClientVM.Id })'">Change Password</button>
+										</div>
 									</div>
-								</div>
 
-								@*Here is my logic implemented in 0.2 alpha version
+									<div style="display:none">
+										@Html.TextBoxFor(model => model.ClientVM.Password, new { @Value = "admin" })
+									</div>
+
+									@*Here is my logic implemented in 0.2 alpha version
 									-- First we select country
-									-- Then after selecting country there should be a list of cities for that country provided for the user
-									-- So we with the loop we go through each city to see if it belongs to a certain country
-								*@
+									-- Then after selecting country there is a list of cities for that country provided for the user *@
+
+									<div class="col-md-6">
+										<div class="form-group">
+											@Html.LabelFor(model => model.ClientVM.DeliveryAddress.City)
+											@Html.DropDownListFor(model => model.SelectedCity, Model.CityList, "Please select country", new { @class = "form-control" })
+											@Html.ValidationMessageFor(model => model.SelectedCity, "", new { @class = "text-danger" })
+										</div>
+									</div>
+
+									<div class="col-md-6">
+										<div class="form-group">
+											@Html.LabelFor(model => model.ClientVM.DeliveryAddress.Locality)
+											@Html.DropDownListFor(model => model.SelectedLocality, Model.LocalityList, "sddsdsd", new { @class = "form-control" })
+											@Html.ValidationMessageFor(model => model.SelectedLocality, "", new { @class = "text-danger" })
+										</div>
+									</div>
+
+									<div class="col-md-6">
+										<div class="form-group">
+											@Html.LabelFor(model => model.ClientVM.DeliveryAddress.Street)
+											@Html.EditorFor(model => model.ClientVM.DeliveryAddress.Street, new { htmlAttributes = new { @class = "form-control" } })
+											@Html.ValidationMessageFor(model => model.ClientVM.DeliveryAddress.Street, "", new { @class = "text-danger" })
+
+										</div>
+									</div>
+
+									<div class="w-100"></div>
+									<div class="col-md-6">
+										<div class="form-group">
+											@Html.LabelFor(model => model.ClientVM.DeliveryAddress.StreetNumber)
+											@Html.EditorFor(model => model.ClientVM.DeliveryAddress.StreetNumber, new { htmlAttributes = new { @class = "form-control" } })
+											@Html.ValidationMessageFor(model => model.ClientVM.DeliveryAddress.StreetNumber, "", new { @class = "text-danger" })
+										</div>
+									</div>
 
 
-								<div class="col-md-6">
+									<div class="col-md-6">
+										<div class="form-group">
+											@Html.LabelFor(model => model.ClientVM.DeliveryAddress.ApartmentNumber)
+											@Html.EditorFor(model => model.ClientVM.DeliveryAddress.ApartmentNumber, new { htmlAttributes = new { @class = "form-control" } })
+											@Html.ValidationMessageFor(model => model.ClientVM.DeliveryAddress.ApartmentNumber, "", new { @class = "text-danger" })
+										</div>
+									</div>
+
+									<div style="display:none">
+										@Html.TextBoxFor(model => model.ClientVM.Card.CardHolder, new { @Value = "Vardenis Pavardenis" })
+										@Html.TextBoxFor(model => model.ClientVM.Card.CardNumber, new { @Value = "4111111111111111" })
+										@Html.TextBoxFor(model => model.ClientVM.Card.CardExpirationMonth, new { @Value = "11" })
+										@Html.TextBoxFor(model => model.ClientVM.Card.CardExpirationYear, new { @Value = "2021" })
+										@Html.TextBoxFor(model => model.ClientVM.Card.CVV, new { @Value = "111" })
+									</div>
+
 									<div class="form-group">
-										@Html.LabelFor(model => model.ClientVM.DeliveryAddress.City)
-										@Html.DropDownListFor(model => model.CityVM.City, Model.CityVM.CityList, "Please select city")
-										@Html.ValidationMessageFor(model => model.ClientVM.DeliveryAddress.City)
+										<div class="col-md-10">
+											<input type="submit" class="btn btn-success" value="Išsaugoti atnaujintą informacija" />
+
+											<button type="button" class="btn btn-dark" onclick="location.href='@Url.Action("Index", "Main")'">Grįžti į parduotuvę</button>
+										</div>
 									</div>
 								</div>
-
-								<div class="col-md-6">
-									<div class="form-group">
-										@Html.LabelFor(model => model.ClientVM.DeliveryAddress.Locality)
-										@Html.DropDownListFor(model => model.CityVM.Locality, Model.CityVM.LocalityList)
-										@Html.ValidationMessageFor(model => model.CityVM.SelectedLocality)
-									</div>
-								</div>
-
-								@*-----------------------------------*@
-
-								<div class="col-md-6">
-									<div class="form-group">
-										@Html.LabelFor(model => model.ClientVM.DeliveryAddress.Street)
-										@Html.EditorFor(model => model.ClientVM.DeliveryAddress.Street, new { htmlAttributes = new { @class = "form-control" } })
-										@Html.ValidationMessageFor(model => model.ClientVM.DeliveryAddress.Street, "", new { @class = "text-danger" })
-
-									</div>
-								</div>
-
-								<div class="w-100"></div>
-								<div class="col-md-6">
-									<div class="form-group">
-										@Html.LabelFor(model => model.ClientVM.DeliveryAddress.StreetNumber)
-										@Html.EditorFor(model => model.ClientVM.DeliveryAddress.StreetNumber, new { htmlAttributes = new { @class = "form-control" } })
-										@Html.ValidationMessageFor(model => model.ClientVM.DeliveryAddress.StreetNumber, "", new { @class = "text-danger" })
-									</div>
-								</div>
-
-
-								<div class="col-md-6">
-									<div class="form-group">
-										@Html.LabelFor(model => model.ClientVM.DeliveryAddress.ApartmentNumber)
-										@Html.EditorFor(model => model.ClientVM.DeliveryAddress.ApartmentNumber, new { htmlAttributes = new { @class = "form-control" } })
-										@Html.ValidationMessageFor(model => model.ClientVM.DeliveryAddress.ApartmentNumber, "", new { @class = "text-danger" })
-									</div>
-								</div>
-
-								<div style="display:none">
-									@Html.TextBoxFor(model => model.ClientVM.Card.CardHolder, new { @Value = "Vardenis Pavardenis" })
-									@Html.TextBoxFor(model => model.ClientVM.Card.CardNumber, new { @Value = "4111111111111111" })
-									@Html.TextBoxFor(model => model.ClientVM.Card.CardExpirationMonth, new { @Value = "11" })
-									@Html.TextBoxFor(model => model.ClientVM.Card.CardExpirationYear, new { @Value = "2021" })
-									@Html.TextBoxFor(model => model.ClientVM.Card.CVV, new { @Value = "111" })
-								</div>
-
-								<div class="form-group">
-									<div class="col-md-10">
-										<input type="submit" class="btn btn-success" value="Išsaugoti atnaujintą informacija" />
-										@*The next line will need some change in the future*@
-										<button type="button" class="btn btn-dark" onclick="location.href='@Url.Action("Index", "Main")'">Grįžti į parduotuvę</button>
-									</div>
-								</div>
-							</div>
-						</form>
+							</form>
+						</div>
 					</div>
 				</div>
-			</div>
-		</section>
+			</section>
+
+			<hr />
+
+		}
 
 		<script src="/Content/js/jquery.min.js"></script>
 		<script src="/Content/js/jquery-migrate-3.0.1.min.js"></script>
@@ -174,7 +179,6 @@
 		<script src="/Content/js/google-map.js"></script>
 		<script src="/Content/js/main.js"></script>
 
-
 		<!-- JS includes -->
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 		<script src="//ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
@@ -182,28 +186,33 @@
 
 		<script type="text/javascript">
 			var localityUrl = '@Url.Action("FetchLocalities")';
-
 			var localities = $('#SelectedLocality');
-
 			$('#SelectedCity').change(function() {
 				localities.empty();
-
 				$.getJSON(localityUrl, { ID: $(this).val() },function(data) {
 					if (!data) {
 						return;
 					}
-					localities.append($('<option></option>').val('').text('Please select locality'));
+					localities.append($('<option class = "newStyle"></option>').val('').text('Please select the city'));
 					$.each(data, function(index, item) {
-						localities.append($('<option></option>').val(item.Value).text(item.Text));
+						localities.append($('<option class = "newStyle"></option>').val(item.Value).text(item.Text));
 					});
 				});
 			})
-
 		</script>
 
+		<style>
+			.newStyle {
+				height: 52px !important;
+				background: #ffffff !important;
+				color: #000000 !important;
+				font-size: 18px;
+				border-radius: 0px;
+				width: 100%;
+			}
+		</style>
 
 	</body>
 </html>
-}
 
 

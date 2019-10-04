@@ -95,8 +95,8 @@ namespace DataAccess
         {
             List<City> cities = new List<City>
             {
-                new City() { ID = 1, Name = "Faridabaad" },
-                new City() { ID = 2, Name = "Greater Noida" }
+                new City() { ID = 0, Name = "Lithuania" },
+                new City() { ID = 1, Name = "Latvia" }
             };
             return cities;
         }
@@ -104,10 +104,12 @@ namespace DataAccess
         {
             List<Locality> localities = new List<Locality>
             {
-                new Locality() { ID = 1, CityID = 1, Name = "East Faridabaad" },
-                new Locality() { ID = 2, CityID = 1, Name = "West Faridabaad" },
-                new Locality() { ID = 3, CityID = 2, Name = "East Noida" },
-                new Locality() { ID = 4, CityID = 2, Name = "West Noida" }
+                new Locality() { ID = 0, CityID = 0, Name = "Vilnius" },
+                new Locality() { ID = 1, CityID = 0, Name = "Kaunas" },
+                new Locality() { ID = 2, CityID = 0, Name = "Klaipeda" },
+                new Locality() { ID = 3, CityID = 1, Name = "Ryga" },
+                new Locality() { ID = 4, CityID = 1, Name = "Jurmala" },
+                new Locality() { ID = 5, CityID = 1, Name = "Liepaja" }
             };
             return localities;
         }

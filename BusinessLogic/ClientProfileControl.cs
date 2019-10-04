@@ -96,7 +96,7 @@ namespace BusinessLogic
                 if (foundClientObject == null)
                     throw new Exception("A cleint with received email was not found in the database");
 
-                // Found client object in the database
+                // Updating everything but password here
                 foundClientObject.Email = client.Email;
                 foundClientObject.FirstName = client.FirstName;
                 foundClientObject.LastName = client.LastName;

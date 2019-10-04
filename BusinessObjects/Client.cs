@@ -21,7 +21,7 @@ namespace BusinessObjects
                 @"(?(\[)(\[(\d{1,3}\.){3}\d{1,3}\])|(([0-9a-z][-0-9a-z]*[0-9a-z]*\.)+[a-z0-9][\-a-z0-9]{0,22}[a-z0-9]))$", ErrorMessage = "Iveskite galiojanti elketronini pasto adresa")]
         [DisplayName("Enter Email")]
         public string Email { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Password field is required")]
         [DataType(DataType.Password)]
         [DisplayName("Enter Password")]
         public string Password { get; set; }

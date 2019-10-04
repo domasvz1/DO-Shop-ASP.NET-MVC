@@ -8,13 +8,9 @@ namespace BusinessObjects.Orders
 {
     public class DeliveryAddress
     {
-        [Required(ErrorMessage = "Please select a city")]
-        [Display(Name = "City")]
-        public string City { get; set; } = "-";
+        public string City { get; set; }
 
-        [Required(ErrorMessage = "Please select a locality")]
-        [Display(Name = "Locality")]
-        public string Locality { get; set; } = "-";
+        public string Locality { get; set; }
 
         [Required(ErrorMessage = "Enter receivers street's name")]
         [DisplayName("Street Name")]

@@ -10,9 +10,6 @@ using BusinessLogic.Interfaces;
 using DataAccess.Interfaces;
 using Presentation.Models;
 using System.Web.UI.WebControls;
-using System.Diagnostics;
-using System.Windows;
-using System.Dynamic;
 
 namespace Presentation.Controllers
 {
@@ -44,21 +41,47 @@ namespace Presentation.Controllers
         [UserAuthorization(ConnectionPage = "~/Client/Login", Roles = "Client")]
         public ActionResult EditProfile()
         {
-            CommonViewModel model = new CommonViewModel
+            // 0.2 release, instead of passing just the client object here,
+            // we pass the model view in which we have client object and the properties for the countries and cities
+            // This allows to pass more variable/objects to a view
+            ClientModel model = new ClientModel
             {
                 ClientVM = _clientProfileControl.GetClient((int)Session["AccountId"]),
-                CityVM = new CityModel()
             };
-            ConfigureCityList(model.CityVM); // Filling City's and Locality's data in
+            ConfigureViewModel(model); // Filling Countries and City's data
+
+            // Since Country and City is dependant, one won't be null without another, so if in the begining its null, then we do not display it for the user
+            // This could be tweaked in later versions
+            if (!String.IsNullOrEmpty(model.ClientVM.DeliveryAddress.City))
+            {
+                model.SelectedCity = _IClientRepository.FetchCities().Find(obj => obj.Name == model.ClientVM.DeliveryAddress.City).ID; // we get selcted city
+                model.SelectedLocality = _IClientRepository.FetchLocalities().Find(obj => obj.Name == model.ClientVM.DeliveryAddress.Locality).ID;
+                IEnumerable<Locality> localities = _IClientRepository.FetchLocalities().Where(l => l.CityID == model.SelectedCity.Value);
+                model.LocalityList = new SelectList(localities, "ID", "Name");
+            }
+            
             return View(model);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         [UserAuthorization(ConnectionPage = "~/Client/Login", Roles = "Client")]
-        public ActionResult EditProfile(CommonViewModel model)
+        public ActionResult EditProfile(ClientModel model)
         {
-            ModelState[nameof(model.ClientVM.Password)]?.Errors?.Clear();
+            // Release 0.2, Added, we take selected index, find a city or locality with it and pass it to the model
+            // Relased 0.2, Fixed if selected city or locality is null
+            string emptyValue = "-";
+
+            if (model.SelectedCity.HasValue)
+                model.ClientVM.DeliveryAddress.City = _IClientRepository.FetchCities().ElementAt(model.SelectedCity.Value).Name;
+            else
+                model.ClientVM.DeliveryAddress.City = emptyValue;
+
+            if (model.SelectedLocality.HasValue)
+                model.ClientVM.DeliveryAddress.Locality = _IClientRepository.FetchLocalities().ElementAt(model.SelectedLocality.Value).Name;
+            else
+                model.ClientVM.DeliveryAddress.Locality = emptyValue;
+
             if (ModelState.IsValid)
             {
                 try
@@ -71,34 +94,8 @@ namespace Presentation.Controllers
                     ModelState.AddModelError("Failino ?", ex.Message);
                 }
             }
-            ConfigureCityList(model.CityVM); // Filling City's and Locality's data in
-            return View(model.ClientVM);
-        }
-
-
-        // Methods for the Cities and localities
-        [HttpGet]
-        public JsonResult FetchLocalities(int ID)
-        {
-            var data = _IClientRepository.FetchLocalities()
-                .Where(l => l.CityID == ID)
-                .Select(l => new { Value = l.ID, Text = l.Name });
-            return Json(data, JsonRequestBehavior.AllowGet);
-        }
-
-        private void ConfigureCityList(CityModel model)
-        {
-            List<City> cities = _IClientRepository.FetchCities();
-            model.CityList = new SelectList(cities, "ID", "Name");
-            if (model.SelectedCity.HasValue)
-            {
-                IEnumerable<Locality> localities = _IClientRepository.FetchLocalities().Where(l => l.CityID == model.SelectedCity.Value);
-                model.LocalityList = new SelectList(localities, "ID", "Name");
-            }
-            else
-            {
-                model.LocalityList = new SelectList(Enumerable.Empty<SelectListItem>());
-            }
+            ConfigureViewModel(model); // Filling City's and Locality's data in
+            return View(model);
         }
 
         //GET: Client/Register
@@ -528,5 +525,31 @@ namespace Presentation.Controllers
 
             return View("Cart", (Cart)Session["Cart"]);
         }
+
+        [HttpGet]
+        public JsonResult FetchLocalities(int ID)
+        {
+            var data = _IClientRepository.FetchLocalities()
+                .Where(l => l.CityID == ID)
+                .Select(l => new { Value = l.ID, Text = l.Name });
+            return Json(data, JsonRequestBehavior.AllowGet);
+        }
+
+
+        private void ConfigureViewModel(ClientModel model)
+        {
+            List<City> cities = _IClientRepository.FetchCities();
+            model.CityList = new SelectList(cities, "ID", "Name");
+            if (model.SelectedCity.HasValue)
+            {
+                IEnumerable<Locality> localities = _IClientRepository.FetchLocalities().Where(l => l.CityID == model.SelectedCity.Value);
+                model.LocalityList = new SelectList(localities, "ID", "Name");
+            }
+            else
+            {
+                model.LocalityList = new SelectList(Enumerable.Empty<SelectListItem>());
+            }
+        }
     }
+
 }
