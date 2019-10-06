@@ -41,6 +41,8 @@ namespace Presentation.Controllers
         [UserAuthorization(ConnectionPage = "~/Client/Login", Roles = "Client")]
         public ActionResult EditProfile()
         {
+            // A check here should be implemented in the never versions, to see f any cleints are left from last time log in
+
             // 0.2 release, instead of passing just the client object here,
             // we pass the model view in which we have client object and the properties for the countries and cities
             // This allows to pass more variable/objects to a view
