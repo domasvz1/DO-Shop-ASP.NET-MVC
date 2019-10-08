@@ -56,6 +56,7 @@ namespace Presentation
             // Client
             container.RegisterType<IClientRepository, ClientRepository>();
             container.RegisterType<IClientProfileControl, ClientProfileControl>();
+            container.RegisterType<ICountryRepository, CountryRepository>();
 
 
             // Operations with Files

@@ -101,16 +101,18 @@ namespace Presentation.Controllers
         // SystemUers - everyone who uses this system-> cleints/admins [at least for now]
         public ActionResult SystemUsers() => View();
 
-        // UsersList has no references. This ActionResult is called when admin wants to modify the user
+        //UsersList has no references.This ActionResult is called when admin wants to modify the user
         public ActionResult UsersList(string searchQuarry)
         {
             List<Client> allClients = _clientProfileControl.GetClientsList()
-                .Select(x => new Client {
+                .Select(x => new Client
+                {
                     Id = x.Id,
                     FirstName = x.FirstName,
                     LastName = x.LastName,
                     Email = x.Email,
-                    IsBlocked = x.IsBlocked }).Distinct().ToList();
+                    IsBlocked = x.IsBlocked
+                }).Distinct().ToList();
 
             List<Client> allClientsAfterQuarry;
 
@@ -126,31 +128,35 @@ namespace Presentation.Controllers
                 x.LastName.ToUpper().Contains(searchQuarry) ||
                 x.Email.ToUpper().Contains(searchQuarry) ||
                 (x.FirstName.ToUpper() + " " + x.LastName.ToUpper()).Contains(searchQuarry))
-                    .Select(x => new Client {
+                    .Select(x => new Client
+                    {
                         Id = x.Id,
                         FirstName = x.FirstName,
                         LastName = x.LastName,
                         Email = x.Email,
-                        IsBlocked = x.IsBlocked }).Distinct().ToList();
+                        IsBlocked = x.IsBlocked
+                    }).Distinct().ToList();
             }
 
             return PartialView("../Admin/_UsersList", allClientsAfterQuarry);
         }
 
-        // No references to this Actionresult. This is only called from _UsersList PartialView
+        //No references to this Actionresult.This is only called from _UsersList PartialView
         public ActionResult GetAllClients()
         {
             List<Client> allClients = _clientProfileControl.GetClientsList()
-                .Select(x => new Client {
+                .Select(x => new Client
+                {
                     Id = x.Id,
                     FirstName = x.FirstName,
                     LastName = x.LastName,
                     Email = x.Email,
-                    IsBlocked = x.IsBlocked }).Distinct().ToList();
+                    IsBlocked = x.IsBlocked
+                }).Distinct().ToList();
 
             return PartialView("../Admin/_Search", allClients);
         }
-        
+
         // Right now Client has only 2 Statuses, Blocked and not blocked
         /// <summary>
         /// When Admin wants to modify the status, we go to SystemUser View and it goes to UsersList Action 
@@ -380,6 +386,8 @@ namespace Presentation.Controllers
 
                 itemProperties = properties.Select(x => new ItemProperty { Property = x, PropertyId = x.Id }).ToList();
             }
+            
+            // If we do not have any properties
             catch (FormatException)
             {
                 var properties = _propertyControl.GetAllProperties();
@@ -388,7 +396,6 @@ namespace Presentation.Controllers
                 else
                     return Content("<html></html>");
             }
-
 
             ViewData = new ViewDataDictionary { TemplateInfo = new TemplateInfo { HtmlFieldPrefix = "ItemProperties" } };
             return PartialView("_ItemProperties", itemProperties);

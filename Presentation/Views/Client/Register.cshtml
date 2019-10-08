@@ -130,23 +130,7 @@
 							</div>
 						</div>
 
-						<div style="display:none">
-
-							@*I set the default data for now. The user will get to change it later*@
-							@Html.TextBoxFor(model => model.DeliveryAddress.ApartmentNumber, new { @Value = 99 })
-							@Html.TextBoxFor(model => model.DeliveryAddress.Street, new { @Value = "Test Street" })
-							@Html.TextBoxFor(model => model.DeliveryAddress.StreetNumber, new { @Value = 99 })
-							@Html.TextBoxFor(model => model.DeliveryAddress.City, new { @Value = "Test City" })
-							@Html.TextBoxFor(model => model.DeliveryAddress.Country, new { @Value = "Test Country" })
-
-							@*Default payment data for now*@
-							@Html.TextBoxFor(model => model.Card.CardHolder, new { @Value = "Vardenis Pavardenis" })
-							@Html.TextBoxFor(model => model.Card.CardNumber, new { @Value = "4111111111111111" })
-							@Html.TextBoxFor(model => model.Card.CardExpirationMonth, new { @Value = "11" })
-							@Html.TextBoxFor(model => model.Card.CardExpirationYear, new { @Value = "2020" })
-							@Html.TextBoxFor(model => model.Card.CVV, new { @Value = "111" })
-						</div>
-					</form><!-- END -->
+					</form>
 				</div>
 			</div>
 		</div>

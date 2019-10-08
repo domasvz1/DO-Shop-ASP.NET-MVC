@@ -47,7 +47,7 @@ namespace Presentation
             else if (roleVariable[0] == 'c')
             {
                 var clientConfig = UnityConfig.Container.Resolve(typeof(IClientProfileControl), "") as IClientProfileControl;
-                var client = clientConfig.Client(roleVariable.Substring(1, roleVariable.Length - 1));
+                var client = clientConfig.GetClient(roleVariable.Substring(1, roleVariable.Length - 1));
                 role = client != null ? "Client" : "";
             }
 

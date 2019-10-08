@@ -10,23 +10,23 @@ namespace BusinessObjects.Orders
         [Required(ErrorMessage = "need 16 digits numeric, fix later")]
         [StringLength(16, MinimumLength = 16, ErrorMessage = "Wrong number")]
         [DisplayName("Kortelės numeris")]
-        public string CardNumber { get; set; }
+        public string CardNumber { get; set; } = "4111111111111111";
 
         [Required(ErrorMessage = "Need the card holder")]
         [DisplayName("Card Holder")]
-        public string CardHolder { get; set; }
+        public string CardHolder { get; set; } = "Not selected card holder";
 
         [Required(ErrorMessage = "Enter expiration year")]
         [Range(2020, 2200, ErrorMessage = "wrong expiration year")]
         [DisplayName("Card Expiration Year")]
-        public int CardExpirationYear { get; set; }
+        public int CardExpirationYear { get; set; } = 2020;
 
         [Range(1, 12, ErrorMessage = "Enter expiration month")]
         [Required(ErrorMessage = "wrong expiration month")]
         [DisplayName("Card Expiration Month")]
-        public int CardExpirationMonth { get; set; }
+        public int CardExpirationMonth { get; set; } = 11;
 
         [NotMapped]
-        public string CVV { get; set; }
+        public string CVV { get; set; } = "Not selected yet";
     }
 }

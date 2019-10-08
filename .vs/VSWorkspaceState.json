@@ -2,7 +2,11 @@
   "ExpandedNodes": [
     "",
     "\\BusinessLogic",
-    "\\BusinessLogic\\Interfaces"
+    "\\BusinessLogic\\Interfaces",
+    "\\BusinessObjects",
+    "\\Presentation",
+    "\\Presentation\\Views",
+    "\\Presentation\\Views\\Client"
   ],
   "SelectedNode": "\\DO Shop.sln",
   "PreviewInSolutionExplorer": false

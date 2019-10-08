@@ -4,101 +4,100 @@
 	ViewBag.Title = "ModifyItem";
 }
 
+	<body>
 
+		@using (Html.BeginForm("ModifyItem", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+		{
+			@Html.AntiForgeryToken()
 
-@using (Html.BeginForm("ModifyItem", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
-{
-	@Html.AntiForgeryToken()
-
-	<br />
-	<div style="width:100%">
-
-		<div>
-			<input type="submit" value="Išsaugoti prekę" class="btn btn-success" />
-			<button type="button" class="btn btn-danger" color onclick="location.href = '@Url.Action("ItemInformation", new { id = Model.Id })'">Grižti atgal</button>
-		</div>
-
-		<h4>Prekės redagavimo langas</h4>
-		<hr />
-		@Html.ValidationSummary(true, "", new { @class = "text-danger" })
-		@Html.HiddenFor(model => model.Id)
-
-
-		<div style="color:black" class="form-group">
-			@Html.LabelFor(model => model.SKUCode, htmlAttributes: new { @class = "col-md-3" })
-			<div class="col-md-10">
-				@Html.EditorFor(model => model.SKUCode, new { htmlAttributes = new { @class = "form-control" } })
-				@Html.ValidationMessageFor(model => model.SKUCode, "", new { @class = "text-danger" })
-			</div>
-		</div>
-
-		<div style="color:black" class="form-group">
-			@Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "col-md-3" })
-			<div class="col-md-10">
-				@Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
-				@Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
-			</div>
-		</div>
-
-		<div style="color:black" class="form-group">
-			@Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "col-md-3" })
-			<div class="col-md-10">
-				@Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
-				@Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
-			</div>
-		</div>
-
-		<div style="color:black" class="form-group">
-			@Html.LabelFor(model => model.Price, htmlAttributes: new { @class = "control-label col-md-2" })
-			<div class="col-md-10">
-				@Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "form-control" } })
-				@Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
-			</div>
-		</div>
-		<div style="color:black" class="form-group">
-			@Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
-			<div class="col-md-10">
-				@Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
-				@Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
-			</div>
-		</div>
-
-
-		<div class="col-md-11">
-			@{
-				if (Model.ImageUrl != null)
-				{
-					<img src="@Url.Content(Model.ImageUrl)" alt="@Model.Name" width="40%" class="img-thumbnail" />
-				}
-				else
-				{
-					<img src="@Url.Content("~/Content/Images/NoImage.jpg")" alt="@Model.Name" width="40%" class="img-thumbnail" />
-				}
-			}
-		</div>
-
-		<button type="button" class="btn btn-primary" style="margin-left:2%; margin-top:2%" onclick="location.href='@Url.Action("ChangeItemsPicture", "Admin", new { id = Model.Id })'">Pakiesti nuotrauka</button>
-
-
-
-		<div class="form-group">
 			<br />
-			@Html.LabelFor(model => model.CategoryId, "Category", htmlAttributes: new { @class = "col-md-3" })
+			<div style="width:100%">
 
-			<div style="color:black;" class="col-md-10">
-				@Html.DropDownList("CategoryId", null, "Preke neturi Kategorijos", htmlAttributes: new { @class = "form-control", @onchange = "changeProperty()" })
-				@Html.ValidationMessageFor(model => model.CategoryId, "", new { @class = "text-danger" })
+				<div>
+					<input type="submit" value="Išsaugoti prekę" class="btn btn-success" />
+					<button type="button" class="btn btn-danger" color onclick="location.href = '@Url.Action("ItemInformation", new { id = Model.Id })'">Grižti atgal</button>
+				</div>
+
+				<h4>Prekės redagavimo langas</h4>
+				<hr />
+				@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+				@Html.HiddenFor(model => model.Id)
+
+
+				<div style="color:black" class="form-group">
+					@Html.LabelFor(model => model.SKUCode, htmlAttributes: new { @class = "col-md-3" })
+					<div class="col-md-10">
+						@Html.EditorFor(model => model.SKUCode, new { htmlAttributes = new { @class = "form-control" } })
+						@Html.ValidationMessageFor(model => model.SKUCode, "", new { @class = "text-danger" })
+					</div>
+				</div>
+
+				<div style="color:black" class="form-group">
+					@Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "col-md-3" })
+					<div class="col-md-10">
+						@Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+						@Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+					</div>
+				</div>
+
+				<div style="color:black" class="form-group">
+					@Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "col-md-3" })
+					<div class="col-md-10">
+						@Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+						@Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+					</div>
+				</div>
+
+				<div style="color:black" class="form-group">
+					@Html.LabelFor(model => model.Price, htmlAttributes: new { @class = "control-label col-md-2" })
+					<div class="col-md-10">
+						@Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "form-control" } })
+						@Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
+					</div>
+				</div>
+				<div style="color:black" class="form-group">
+					@Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+					<div class="col-md-10">
+						@Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+						@Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+					</div>
+				</div>
+
+
+				<div class="col-md-11">
+					@{
+						if (Model.ImageUrl != null)
+						{
+							<img src="@Url.Content(Model.ImageUrl)" alt="@Model.Name" width="40%" class="img-thumbnail" />
+						}
+						else
+						{
+							<img src="@Url.Content("~/Content/Images/NoImage.jpg")" alt="@Model.Name" width="40%" class="img-thumbnail" />
+						}
+					}
+				</div>
+
+				<button type="button" class="btn btn-primary" style="margin-left:2%; margin-top:2%" onclick="location.href='@Url.Action("ChangeItemsPicture", "Admin", new { id = Model.Id })'">Pakiesti nuotrauka</button>
+
+				<div class="form-group">
+					<br />
+					@Html.LabelFor(model => model.CategoryId, "Category", htmlAttributes: new { @class = "col-md-3" })
+
+					<div style="color:black;" class="col-md-10">
+						@Html.DropDownList("CategoryId", null, "Item has no Category", htmlAttributes: new { @class = "form-control", @onchange = "changeProperty()" })
+						@Html.ValidationMessageFor(model => model.CategoryId, "", new { @class = "text-danger" })
+					</div>
+				</div>
+
+				<div id="ItemProperties">
+					@Html.EditorFor(model => model.ItemProperties)
+				</div>
 			</div>
-		</div>
+		}
 
-
-		<div id="ItemProperties">
-			@Html.EditorFor(model => model.ItemProperties)
-		</div>
-	</div>
-}
-
-
+		<br />
+		<hr />
+	</body>
 
 
 <script type="text/javascript">
@@ -112,7 +111,6 @@
             dataType: 'html',
             success: function (response) {
                 $("#ItemProperties").html(response);
-                console.log(response)
             }
         });
     }

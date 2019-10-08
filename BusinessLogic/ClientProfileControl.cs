@@ -16,7 +16,7 @@ namespace BusinessLogic
         public ClientProfileControl(IDbContextScopeFactory dbContextScopeFactory, IClientRepository clientRepository)
         {
             _dbContextScopeFactory = dbContextScopeFactory ?? throw new ArgumentNullException("ClientProileControl broke");
-            _clientRepository = clientRepository ?? throw new ArgumentNullException("ClientProileControl broke");
+            _clientRepository = clientRepository ?? throw new ArgumentNullException("ClientPghgdrthroileControl broke");
         }
 
         public Client ConnectClient(Client client)
@@ -41,7 +41,7 @@ namespace BusinessLogic
             }
         }
 
-        public Client Client(string email)
+        public Client GetClient(string email)
         {
             using (_dbContextScopeFactory.CreateReadOnly())
             {
@@ -73,13 +73,14 @@ namespace BusinessLogic
                     throw new Exception("The username is already registered, sorry");
 
                 client.InitializeClientPasswordEncryption();
-                client.IsBlocked = true;
+                client.IsBlocked = true; // 
 
                 _clientRepository.CreateClient(client);
                 dbContextScope.SaveChanges();
             }
         }
 
+        // Edit profile is seperate from the password
         public void EditProfile(Client client)
         {
             if (client == null)
@@ -87,19 +88,22 @@ namespace BusinessLogic
 
             using (var dbContextScope = _dbContextScopeFactory.Create())
             {
+                // User comes her but with id = 0, it should searched with email
+                // - Probably a new feature could be to make email unique
+                // [REMAKE MADE] A SEARCH IS DONE WITH EMAIL
+                var foundClientObject = _clientRepository.GetClient(client.Email);
 
-                var foundClientObject = _clientRepository.GetClient(client.Id);
                 if (foundClientObject == null)
-                {
-                    throw new Exception("this specific client was not found");
-                }
+                    throw new Exception("A cleint with received email was not found in the database");
 
+                // Updating everything but password here
                 foundClientObject.Email = client.Email;
                 foundClientObject.FirstName = client.FirstName;
                 foundClientObject.LastName = client.LastName;
                 foundClientObject.Card = client.Card;
                 foundClientObject.DeliveryAddress = client.DeliveryAddress;
 
+                // Edits the repository [the database object and saves it]
                 _clientRepository.EditClient(foundClientObject);
                 dbContextScope.SaveChanges();
             }

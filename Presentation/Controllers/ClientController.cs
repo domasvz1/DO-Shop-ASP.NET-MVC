@@ -7,7 +7,9 @@ using System.Collections.Generic;
 using BusinessObjects;
 using BusinessObjects.Orders;
 using BusinessLogic.Interfaces;
+using DataAccess.Interfaces;
 using Presentation.Models;
+using System.Web.UI.WebControls;
 
 namespace Presentation.Controllers
 {
@@ -18,38 +20,65 @@ namespace Presentation.Controllers
         private readonly IItemDistributionControl _itemDistributionControl;
         private readonly IHttpPaymentControl _httpPaymentControl;
         private readonly IClientPaymentDatabaseControl _clientPaymentDatabseControl;
+        private readonly IClientRepository _IClientRepository;
 
-        public ClientController(IClientProfileControl clientProfileControl, IClientCartControl cartControl, IItemDistributionControl itemDistributionControl, IHttpPaymentControl httpPaymentControl, IClientPaymentDatabaseControl clientPaymentDatabseControl)
+        public ClientController(IClientProfileControl clientProfileControl, IClientCartControl cartControl, IItemDistributionControl itemDistributionControl, IHttpPaymentControl httpPaymentControl, IClientPaymentDatabaseControl clientPaymentDatabseControl, IClientRepository iClientRepository)
         {
             _clientProfileControl = clientProfileControl;
             clientCartControl = cartControl;
             _itemDistributionControl = itemDistributionControl;
             _httpPaymentControl = httpPaymentControl;
             _clientPaymentDatabseControl = clientPaymentDatabseControl;
+            _IClientRepository = iClientRepository; 
         }
 
-        [UserAuthorization(ConnectionPage = "~/Client/Login", Roles = "Client")]
         public ActionResult Index()
         {
             return View();
         }
 
+        [HttpGet]
         [UserAuthorization(ConnectionPage = "~/Client/Login", Roles = "Client")]
         public ActionResult EditProfile()
         {
-            return View(_clientProfileControl.GetClient((int)Session["AccountId"]));
+            // A check here should be implemented in the never versions, to see f any cleints are left from last time log in
+
+            // 0.2 release, instead of passing just the client object here,
+            // we pass the model view in which we have client object and the properties for the countries and cities
+            // This allows to pass more variable/objects to a view
+            ClientModel model = new ClientModel
+            {
+                ClientVM = _clientProfileControl.GetClient((int)Session["AccountId"]),
+            };
+
+            // Since in Country and City list a value with index of 0 will be as " -- Not selected --"
+            ConfigureClientModel(model); // Filling Countries and City's data
+            return View(model);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         [UserAuthorization(ConnectionPage = "~/Client/Login", Roles = "Client")]
-        public ActionResult EditProfile(Client ClientObject)
+        public ActionResult EditProfile(ClientModel model)
         {
+            // We take selected index, then we find a country or city with it and pass it to the model
+            string emptyValue = "-";
+
+            if (model.SelectedCountry.HasValue)
+                model.ClientVM.DeliveryAddress.Country = _IClientRepository.FetchCountries().ElementAt(model.SelectedCountry.Value).Name;
+            else
+                model.ClientVM.DeliveryAddress.Country = emptyValue;
+
+            if (model.SelectedCity.HasValue)
+                model.ClientVM.DeliveryAddress.City = _IClientRepository.FetchCities().ElementAt(model.SelectedCity.Value).Name;
+            else
+                model.ClientVM.DeliveryAddress.City = emptyValue;
+
             if (ModelState.IsValid)
             {
                 try
                 {
-                    _clientProfileControl.EditProfile(ClientObject);
+                    _clientProfileControl.EditProfile(model.ClientVM);
                     return RedirectToAction("Index", "Main");
                 }
                 catch (Exception ex)
@@ -57,10 +86,40 @@ namespace Presentation.Controllers
                     ModelState.AddModelError("Failino ?", ex.Message);
                 }
             }
-            return View("Index", "Main");
+            ConfigureClientModel(model);
+            return View(model);
+        }
+
+        // Ajax calls this
+        [HttpGet]
+        public JsonResult FetchCities(int ID)
+        {
+            var data = _IClientRepository.FetchCities()
+                .Where(l => l.CountryID == ID)
+                .Select(l => new { Value = l.ID, Text = l.Name });
+            return Json(data, JsonRequestBehavior.AllowGet);
+        }
+
+        private void ConfigureClientModel(ClientModel model)
+        {
+            List<Country> countries = _IClientRepository.FetchCountries();
+            model.CountryList = new SelectList(countries, "ID", "Name");
+            IEnumerable<City> cities = _IClientRepository.FetchCities().Where(l => l.CountryID == model.SelectedCountry.Value);
+            model.CityList = new SelectList(cities, "ID", "Name");
+            if(!String.IsNullOrEmpty(model.ClientVM.DeliveryAddress.Country)) {
+                model.SelectedCountry = countries.Find(obj => obj.Name == model.ClientVM.DeliveryAddress.Country).ID;
+                model.SelectedCity = cities.FirstOrDefault(obj => obj.Name == model.ClientVM.DeliveryAddress.City).ID;
+            }
+            else // If its newly created user, the ID = 0 is the first option in Countris and Cities list, which always counts as not selected
+            {
+                int? notselectedID = 0;
+                model.SelectedCountry = notselectedID;
+                model.SelectedCity = notselectedID;
+            }
         }
 
         //GET: Client/Register
+        [HttpGet]
         public ActionResult Register()
         {
             return View();
@@ -69,16 +128,24 @@ namespace Presentation.Controllers
         //GET: Client/Checkout
         public ActionResult Checkout()
         {
+            
             return View();
         }
-
-        //ModelState.IsValid tells you if any model errors have been added to ModelState. 
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Register(Client ClientObject)
         {
-            if (ModelState.IsValid)
+            // Creating Card and DeliveryAddress objects with default data to fill up for the user
+            // He will be available to edit them in other windows
+            DeliveryAddress delivery = new DeliveryAddress();
+            Card card = new Card();
+
+            // Passing the client data to the created object
+            ClientObject.DeliveryAddress = delivery;
+            ClientObject.Card = card;
+
+            if (ModelState.IsValid) // Tells if any model errors have been added to ModelState.
             {
                 try
                 {
@@ -92,14 +159,15 @@ namespace Presentation.Controllers
                 }
             }
             // Should print whats wrong with the launch
-            var errors = ModelState.Select(x => x.Value.Errors)
-                          .Where(y => y.Count > 0)
-                          .ToList();
+            var errors = ModelState.Select(x => x.Value.Errors).Where(y => y.Count > 0).ToList();
             return View(ClientObject);
         }
 
+        //GET: Client/Login
+        [HttpGet]
         public ActionResult Login()
         {
+            
             return View();
         }
 
@@ -477,6 +545,5 @@ namespace Presentation.Controllers
 
             return View("Cart", (Cart)Session["Cart"]);
         }
-
     }
 }

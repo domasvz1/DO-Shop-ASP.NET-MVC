@@ -5,6 +5,7 @@ Since there's a lot of things that can be tweaked and changed, I want to update 
 This won't be marketed or selled. This is a free download project with a fair use, UI remade completely learning from Winkel boostrap examples. Might some lithuanian expressions left, since this was my university project.
 
 An electronic shop local website written with following elemts frameworks (all can be found in the project):
+If by any chance you are seating nearby this right now, you can learn the following from this
 - .NET visual Studio 
     * Migartions 
     * Entity Framework
@@ -14,7 +15,12 @@ An electronic shop local website written with following elemts frameworks (all c
     * jQuerry
     * Plain javascript
     * Razor
-    * Business, DataAcess and Presentation Architecture layers.
+	* Ajax
+
+	The project uses Web Layer architecture:
+	-  Presentation layer
+	-  Business layer
+	-  DataAcess layer
 
 
 Taken from the Microsoft documentation: https://dotnet.microsoft.com/apps/aspnet/web-apps
@@ -183,4 +189,8 @@ Designing architecture
 Connecting the login (through facebook, twitter google, maybe leave reviews) 
 
 
+# Decided to start error log here and how I Dealt with these issues:
 
+Issue: Error thrown The required anti-forgery form field “__RequestVerificationToken” is not present Error in user Registration
+Fix: If you have [ValidateAntiForgeryToken] attribute before your action (In HttpPost, you can't have them in HttpGet),
+then you should also add @Html.AntiForgeryToken() in your form after "@using (Html.BeginForm)"

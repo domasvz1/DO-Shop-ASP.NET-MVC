@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 // Used modules and interfaces in the project
 using BusinessObjects;
+using BusinessObjects.Orders;
 
 namespace DataAccess.Interfaces
 {
@@ -14,5 +15,7 @@ namespace DataAccess.Interfaces
         void EditClient(Client client);
         void UpdateClientOrder(Client client);
         void DeleteClient(Client client);
+        List<Country> FetchCountries();
+        List<City> FetchCities();
     }
 }

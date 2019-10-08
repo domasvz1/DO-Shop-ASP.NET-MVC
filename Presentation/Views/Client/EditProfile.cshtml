@@ -1,70 +1,233 @@
-﻿@model BusinessObjects.Client
+﻿@model Presentation.Models.ClientModel
 
 @{
 	ViewBag.Title = "EditProfile";
+
+	//Idea for future versions, make dropdown list autocomplete
+	//https://www.c-sharpcorner.com/forums/create-dropdownlistfor-autocomplete-in-asp-net-mvc-5
+
+
+	@*A tip here, for some reason if you are using "EditorFor" you need
+		"new { htmlAttributes = new { class = "form-control" } }"
+		to define the style of the edit field..
+		But if you are using DropDownListFor you then only need
+		"new { class = "form-control" })"
+		[Keep in mind that here berfore attribute class shouldbe the 'at' sign]*@
 }
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
+	<link rel="stylesheet" href="/Content/css/open-iconic-bootstrap.min.css">
+	<link rel="stylesheet" href="/Content/css/animate.css">
+	<link rel="stylesheet" href="/Content/css/owl.carousel.min.css">
+	<link rel="stylesheet" href="/Content/css/owl.theme.default.min.css">
+	<link rel="stylesheet" href="/Content/css/magnific-popup.css">
+	<link rel="stylesheet" href="/Content/css/aos.css">
+	<link rel="stylesheet" href="/Content/css/ionicons.min.css">
+	<link rel="stylesheet" href="/Content/css/bootstrap-datepicker.css">
+	<link rel="stylesheet" href="/Content/css/jquery.timepicker.css">
+	<link rel="stylesheet" href="/Content/css/flaticon.css">
+	<link rel="stylesheet" href="/Content/css/icomoon.css">
+	<link rel="stylesheet" href="/Content/css/style.css">
+</head>
 
-@using (Html.BeginForm())
-{
-	<div>
+<body class="goto-here">
+
+	@using (Html.BeginForm("EditProfile", "Client", FormMethod.Post))
+	{
 		@Html.AntiForgeryToken()
-
-		<div class="form-horizontal">
-			<br />
-			<h1>Your profile information</h1>
-			<hr />
-			@Html.ValidationSummary(true, "", new { @class = "text-danger" })
-			@Html.HiddenFor(model => model.Id)
-			<div class="form-group">
-				@Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "col-md-3" })
-				<div class="col-md-10">
-					@Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
-					@Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
-				</div>
-			</div>
-			<div class="form-group">
-				@Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "col-md-3" })
-				<div class="col-md-10">
-					@Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
-					@Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
-				</div>
-			</div>
-			<div class="form-group">
-				@Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "col-md-3" })
-				<div class="col-md-10">
-					@Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })
-					@Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
-				</div>
-			</div>
-
-			<hr />
-			<button type="button" class="btn btn-warning" onclick="location.href='@Url.Action("PasswordChange")'">Atnaujinti slaptažodį</button>
-			<hr>
-			<div class="row">
-				<div class="col-md-10">
-					@Html.EditorFor(model => model.DeliveryAddress, new { htmlAttributes = new { @class = "form-control" } })
-					@Html.ValidationMessageFor(model => model.DeliveryAddress, "", new { @class = "text-danger" })
-				</div>
-			</div>
-
-			<br /><br />
-
-			<div style="display:none">
-				@Html.TextBoxFor(model => model.Card.CardHolder, new { @Value = "Vardenis Pavardenis" })
-				@Html.TextBoxFor(model => model.Card.CardNumber, new { @Value = "4111111111111111"})
-				@Html.TextBoxFor(model => model.Card.CardExpirationMonth, new { @Value = "11" })
-				@Html.TextBoxFor(model => model.Card.CardExpirationYear, new { @Value = "2018" })
-				@Html.TextBoxFor(model => model.Card.CVV, new { @Value = "111" })
-
-			</div>
-
-			<div class="form-group">
-				<div class="col-md-10">
-					<input type="submit" class="btn btn-success" value="Išsaugoti atnaujintą informacija" />
-					<button type="button" class="btn btn-dark" onclick="location.href='@Url.Action("Index", "Main")'">Grįžti į parduotuvę</button>
+		<div class="hero-wrap hero-bread" style="background-image: url('/Content/images/bg_6.jpg');">
+			<div class="container">
+				<div class="row no-gutters slider-text align-items-center justify-content-center">
+					<div class="col-md-9 ftco-animate text-center">
+						<p class="breadcrumbs"><span class="mr-2"><a href="index.html">Welcome to your profile page</a></span></p>
+						<h1 class="mb-0 bread">Update your delivery information here</h1>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-}
+
+		<section class="ftco-section">
+			<div class="container">
+				<div class="row justify-content-center">
+					<div class="col-xl-8 ftco-animate">
+						<form action="#" class="billing-form">
+							<h3 class="mb-4 billing-heading">Edit your profile</h3>
+							<div class="row align-items-end">
+
+
+								<div class="col-md-6">
+									<div class="form-group">
+										@Html.LabelFor(model => model.ClientVM.FirstName)
+										@Html.EditorFor(model => model.ClientVM.FirstName, new { htmlAttributes = new { @class = "form-control" } })
+										@Html.ValidationMessageFor(model => model.ClientVM.FirstName, "", new { @class = "text-danger" })
+									</div>
+								</div>
+
+								<div class="col-md-6">
+									<div class="form-group">
+										@Html.LabelFor(model => model.ClientVM.LastName)
+										@Html.EditorFor(model => model.ClientVM.LastName, new { htmlAttributes = new { @class = "form-control" } })
+										@Html.ValidationMessageFor(model => model.ClientVM.LastName, "", new { @class = "text-danger" })
+									</div>
+								</div>
+
+								<div class="col-md-6">
+									<div class="form-group">
+										@Html.LabelFor(model => model.ClientVM.Email)
+										@Html.EditorFor(model => model.ClientVM.Email, new { htmlAttributes = new { @class = "form-control" } })
+										@Html.ValidationMessageFor(model => model.ClientVM.Email, "", new { @class = "text-danger" })
+									</div>
+								</div>
+
+								<div class="col-md-6">
+									<div class="form-group">
+										<button type="button" class="form-control bg-primary" onclick="location.href='@Url.Action("PasswordChange", "Client", new { id = Model.ClientVM.Id })'">Change Password</button>
+									</div>
+								</div>
+
+								<div style="display:none">
+									@Html.TextBoxFor(model => model.ClientVM.Password, new { @Value = "admin" })
+								</div>
+
+								@*Here is my logic implemented in 0.2 alpha version
+									-- First we select country
+									-- Then after selecting country there is a list of cities for that country provided for the user *@
+
+								<div class="col-md-6">
+									<div class="form-group">
+										@Html.LabelFor(model => model.ClientVM.DeliveryAddress.Country)
+										@Html.DropDownListFor(model => model.SelectedCountry, Model.CountryList, new { @class = "form-control" })
+										@Html.ValidationMessageFor(model => model.SelectedCountry, "", new { @class = "text-danger" })
+									</div>
+								</div>
+
+
+								<div class="col-md-6">
+									<div class="form-group">
+										@Html.LabelFor(model => model.ClientVM.DeliveryAddress.City)
+										@Html.DropDownListFor(model => model.SelectedCity, Model.CityList, new { @class = "form-control" })
+										@Html.ValidationMessageFor(model => model.SelectedCity, "", new { @class = "text-danger" })
+									</div>
+								</div>
+
+
+								<div class="col-md-6">
+									<div class="form-group">
+										@Html.LabelFor(model => model.ClientVM.DeliveryAddress.Street)
+										@Html.EditorFor(model => model.ClientVM.DeliveryAddress.Street, new { htmlAttributes = new { @class = "form-control" } })
+										@Html.ValidationMessageFor(model => model.ClientVM.DeliveryAddress.Street, "", new { @class = "text-danger" })
+
+									</div>
+								</div>
+
+								<div class="w-100"></div>
+								<div class="col-md-6">
+									<div class="form-group">
+										@Html.LabelFor(model => model.ClientVM.DeliveryAddress.StreetNumber)
+										@Html.EditorFor(model => model.ClientVM.DeliveryAddress.StreetNumber, new { htmlAttributes = new { @class = "form-control" } })
+										@Html.ValidationMessageFor(model => model.ClientVM.DeliveryAddress.StreetNumber, "", new { @class = "text-danger" })
+									</div>
+								</div>
+
+
+								<div class="col-md-6">
+									<div class="form-group">
+										@Html.LabelFor(model => model.ClientVM.DeliveryAddress.ApartmentNumber)
+										@Html.EditorFor(model => model.ClientVM.DeliveryAddress.ApartmentNumber, new { htmlAttributes = new { @class = "form-control" } })
+										@Html.ValidationMessageFor(model => model.ClientVM.DeliveryAddress.ApartmentNumber, "", new { @class = "text-danger" })
+									</div>
+								</div>
+
+								<div style="display:none">
+									@Html.TextBoxFor(model => model.ClientVM.Card.CardHolder, new { @Value = "Vardenis Pavardenis" })
+									@Html.TextBoxFor(model => model.ClientVM.Card.CardNumber, new { @Value = "4111111111111111" })
+									@Html.TextBoxFor(model => model.ClientVM.Card.CardExpirationMonth, new { @Value = "11" })
+									@Html.TextBoxFor(model => model.ClientVM.Card.CardExpirationYear, new { @Value = "2021" })
+									@Html.TextBoxFor(model => model.ClientVM.Card.CVV, new { @Value = "111" })
+								</div>
+
+								<div class="form-group">
+									<div class="col-md-10">
+										<input type="submit" class="btn btn-success" value="Išsaugoti atnaujintą informacija" />
+
+										<button type="button" class="btn btn-dark" onclick="location.href='@Url.Action("Index", "Main")'">Grįžti į parduotuvę</button>
+									</div>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<hr />
+
+	}
+
+	<script src="/Content/js/jquery.min.js"></script>
+	<script src="/Content/js/jquery-migrate-3.0.1.min.js"></script>
+	<script src="/Content/js/popper.min.js"></script>
+	<script src="/Content/js/bootstrap.min.js"></script>
+	<script src="/Content/js/jquery.easing.1.3.js"></script>
+	<script src="/Content/js/jquery.waypoints.min.js"></script>
+	<script src="/Content/js/jquery.stellar.min.js"></script>
+	<script src="/Content/js/owl.carousel.min.js"></script>
+	<script src="/Content/js/jquery.magnific-popup.min.js"></script>
+	<script src="/Content/js/aos.js"></script>
+	<script src="/Content/js/jquery.animateNumber.min.js"></script>
+	<script src="/Content/js/bootstrap-datepicker.js"></script>
+	<script src="/Content/js/scrollax.min.js"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+	<script src="/Content/js/google-map.js"></script>
+	<script src="/Content/js/main.js"></script>
+
+	<!-- JS includes -->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<script src="//ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
+	<script src="//ajax.aspnetcdn.com/ajax/mvc/4.0/jquery.validate.unobtrusive.min.js"></script>
+
+	<script type="text/javascript">
+			var cityUrl = '@Url.Action("FetchCities")';
+			var cities = $('#SelectedCity');
+			$('#SelectedCountry').change(function() {
+				cities.empty();
+				$.getJSON(cityUrl, { ID: $(this).val() },function(data) {
+					if (!data) {
+						return;
+					}
+
+					$.each(data, function (index, item) {
+
+
+						if (item.Value == 0) {
+							cities.append($('<option class = "form-control"></option>').val(item.Value).text(item.Text));
+						}
+						else {
+							cities.append($('<option class = "form-control"></option>').val(item.Value).text(item.Text));
+						}
+
+					});
+				});
+			})
+	</script>
+
+	<style>
+		.newStyle {
+			height: 52px !important;
+			background: #ffffff !important;
+			color: #000000 !important;
+			font-size: 18px;
+			border-radius: 0px;
+			width: 100%;
+		}
+	</style>
+
+</body>
+</html>
+
+
