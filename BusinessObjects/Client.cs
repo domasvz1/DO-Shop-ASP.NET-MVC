@@ -36,6 +36,9 @@ namespace BusinessObjects
         [DisplayName("Pakartokite slaptažodį")]
         public string SecondPassword { get; set; }
 
+        [DisplayName("Mobile Phone")]
+        public string MobilePhone { get; set; }
+
         [UIHint("Card")]
         public Card Card { get; set; }
 

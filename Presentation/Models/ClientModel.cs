@@ -2,11 +2,10 @@
 using BusinessObjects;
 using System.ComponentModel.DataAnnotations;
 
-
 namespace Presentation.Models
 {
     public class ClientModel
-    { 
+    {
         public Client ClientVM { get; set; }
         // ---------
         [Display(Name = "Country")]

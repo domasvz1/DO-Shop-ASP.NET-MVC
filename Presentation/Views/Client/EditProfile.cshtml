@@ -20,6 +20,8 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" type="text/css" href="/Content/css/util.css">
+	<link rel="stylesheet" type="text/css" href="/Content/css/main.css">
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
 	<link rel="stylesheet" href="/Content/css/open-iconic-bootstrap.min.css">
 	<link rel="stylesheet" href="/Content/css/animate.css">
@@ -86,6 +88,14 @@
 
 								<div class="col-md-6">
 									<div class="form-group">
+										@Html.LabelFor(model => model.ClientVM.MobilePhone)
+										@Html.EditorFor(model => model.ClientVM.MobilePhone, new { htmlAttributes = new { @class = "form-control" } })
+										@Html.ValidationMessageFor(model => model.ClientVM.MobilePhone, "", new { @class = "text-danger" })
+									</div>
+								</div>
+
+								<div class="col-md-6">
+									<div class="form-group">
 										<button type="button" class="form-control bg-primary" onclick="location.href='@Url.Action("PasswordChange", "Client", new { id = Model.ClientVM.Id })'">Change Password</button>
 									</div>
 								</div>
@@ -93,10 +103,6 @@
 								<div style="display:none">
 									@Html.TextBoxFor(model => model.ClientVM.Password, new { @Value = "admin" })
 								</div>
-
-								@*Here is my logic implemented in 0.2 alpha version
-									-- First we select country
-									-- Then after selecting country there is a list of cities for that country provided for the user *@
 
 								<div class="col-md-6">
 									<div class="form-group">
@@ -151,24 +157,29 @@
 									@Html.TextBoxFor(model => model.ClientVM.Card.CVV, new { @Value = "111" })
 								</div>
 
-								<div class="form-group">
-									<div class="col-md-10">
-										<input type="submit" class="btn btn-success" value="Išsaugoti atnaujintą informacija" />
+								<div class="col-md-6">
+									<div class="form-group">
+										<button type="submit" value="save" class="form-control bg-primary" onclick="location.href='@Url.Action("EditProfile")'">
+											Update my information
+										</button>
+									</div>
+								</div>
 
-										<button type="button" class="btn btn-dark" onclick="location.href='@Url.Action("Index", "Main")'">Grįžti į parduotuvę</button>
+								<div class="col-md-6">
+									<div class="form-group">
+										<button type="button" class="form-control bg-primary" onclick="location.href='@Url.Action("Index", "Main")'">Back To Home</button>
 									</div>
 								</div>
 							</div>
-						</form>
+</form>
 					</div>
 				</div>
 			</div>
 		</section>
-
 		<hr />
-
 	}
 
+	<script src="/Content/js/main.js"></script>
 	<script src="/Content/js/jquery.min.js"></script>
 	<script src="/Content/js/jquery-migrate-3.0.1.min.js"></script>
 	<script src="/Content/js/popper.min.js"></script>
@@ -229,5 +240,3 @@
 
 </body>
 </html>
-
-
