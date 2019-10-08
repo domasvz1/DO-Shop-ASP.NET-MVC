@@ -3,7 +3,10 @@
     "",
     "\\BusinessLogic",
     "\\BusinessLogic\\Interfaces",
-    "\\BusinessObjects"
+    "\\BusinessObjects",
+    "\\Presentation",
+    "\\Presentation\\Views",
+    "\\Presentation\\Views\\Client"
   ],
   "SelectedNode": "\\DO Shop.sln",
   "PreviewInSolutionExplorer": false
