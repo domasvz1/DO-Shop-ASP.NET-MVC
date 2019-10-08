@@ -2,8 +2,6 @@
 
 @{
 	ViewBag.Title = "EditProfile";
-	string selectedCountry = Model.SelectedCity.ToString();
-
 
 	//Idea for future versions, make dropdown list autocomplete
 	//https://www.c-sharpcorner.com/forums/create-dropdownlistfor-autocomplete-in-asp-net-mvc-5
@@ -102,18 +100,18 @@
 
 								<div class="col-md-6">
 									<div class="form-group">
-										@Html.LabelFor(model => model.ClientVM.DeliveryAddress.City)
-										@Html.DropDownListFor(model => model.SelectedCity, Model.CityList, new { @class = "form-control" })
-										@Html.ValidationMessageFor(model => model.SelectedCity, "", new { @class = "text-danger" })
+										@Html.LabelFor(model => model.ClientVM.DeliveryAddress.Country)
+										@Html.DropDownListFor(model => model.SelectedCountry, Model.CountryList, new { @class = "form-control" })
+										@Html.ValidationMessageFor(model => model.SelectedCountry, "", new { @class = "text-danger" })
 									</div>
 								</div>
 
 
 								<div class="col-md-6">
 									<div class="form-group">
-										@Html.LabelFor(model => model.ClientVM.DeliveryAddress.Locality)
-										@Html.DropDownListFor(model => model.SelectedLocality, Model.LocalityList, new { @class = "form-control" })
-										@Html.ValidationMessageFor(model => model.SelectedLocality, "", new { @class = "text-danger" })
+										@Html.LabelFor(model => model.ClientVM.DeliveryAddress.City)
+										@Html.DropDownListFor(model => model.SelectedCity, Model.CityList, new { @class = "form-control" })
+										@Html.ValidationMessageFor(model => model.SelectedCity, "", new { @class = "text-danger" })
 									</div>
 								</div>
 
@@ -194,11 +192,11 @@
 	<script src="//ajax.aspnetcdn.com/ajax/mvc/4.0/jquery.validate.unobtrusive.min.js"></script>
 
 	<script type="text/javascript">
-			var localityUrl = '@Url.Action("FetchLocalities")';
-			var localities = $('#SelectedLocality');
-			$('#SelectedCity').change(function() {
-				localities.empty();
-				$.getJSON(localityUrl, { ID: $(this).val() },function(data) {
+			var cityUrl = '@Url.Action("FetchCities")';
+			var cities = $('#SelectedCity');
+			$('#SelectedCountry').change(function() {
+				cities.empty();
+				$.getJSON(cityUrl, { ID: $(this).val() },function(data) {
 					if (!data) {
 						return;
 					}
@@ -207,10 +205,10 @@
 
 
 						if (item.Value == 0) {
-							localities.append($('<option class = "form-control"></option>').val(item.Value).text(item.Text));
+							cities.append($('<option class = "form-control"></option>').val(item.Value).text(item.Text));
 						}
 						else {
-							localities.append($('<option class = "form-control"></option>').val(item.Value).text(item.Text));
+							cities.append($('<option class = "form-control"></option>').val(item.Value).text(item.Text));
 						}
 
 					});

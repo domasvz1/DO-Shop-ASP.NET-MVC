@@ -91,30 +91,32 @@ namespace DataAccess
             DbContext.Entry(client).State = EntityState.Modified;
         }
 
+        public List<Country> FetchCountries()
+        {
+            List<Country> countries = new List<Country>
+            {
+                new Country() { ID = 0, Name = "- Select Delivery Country -" },
+                new Country() { ID = 1, Name = "Lithuania" },
+                new Country() { ID = 2, Name = "Latvia" }
+            };
+            return countries;
+        }
         public List<City> FetchCities()
         {
+            // If you cahnge values here, this might corralate with databe and cause error in Client Controller
             List<City> cities = new List<City>
             {
-                new City() { ID = 0, Name = "-- Not Selected Devivery Country --" },
-                new City() { ID = 1, Name = "Lithuania" },
-                new City() { ID = 2, Name = "Latvia" }
+                new City() { ID = 0, CountryID = 0, Name = "- First Select Delivery Country -" },
+                new City() { ID = 1, CountryID = 1, Name = "Vilnius" },
+                new City() { ID = 2, CountryID = 1, Name = "Kaunas" },
+                new City() { ID = 3, CountryID = 1, Name = "Klaipeda" },
+                new City() { ID = 4, CountryID = 2, Name = "Ryga" },
+                new City() { ID = 5, CountryID = 2, Name = "Jurmala" },
+                new City() { ID = 6, CountryID = 2, Name = "Liepaja" },
+                new City() { ID = 7, CountryID = 1, Name = "Alytus" },
+                new City() { ID = 8, CountryID = 1, Name = "Panevezys" },
             };
             return cities;
-        }
-        public List<Locality> FetchLocalities()
-        {
-            // If you cahnge values here, this might corralate with databe and cause error in Client Controller
-            List<Locality> localities = new List<Locality>
-            {
-                new Locality() { ID = 0, CityID = 0, Name = "-- Not Selected Devivery City --" },
-                new Locality() { ID = 1, CityID = 1, Name = "Vilnius" },
-                new Locality() { ID = 2, CityID = 1, Name = "Kaunas" },
-                new Locality() { ID = 3, CityID = 1, Name = "Klaipeda" },
-                new Locality() { ID = 4, CityID = 2, Name = "Ryga" },
-                new Locality() { ID = 5, CityID = 2, Name = "Jurmala" },
-                new Locality() { ID = 6, CityID = 2, Name = "Liepaja" }
-            };
-            return localities;
         }
     }
 }

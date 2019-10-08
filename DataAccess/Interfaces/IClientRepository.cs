@@ -15,7 +15,7 @@ namespace DataAccess.Interfaces
         void EditClient(Client client);
         void UpdateClientOrder(Client client);
         void DeleteClient(Client client);
+        List<Country> FetchCountries();
         List<City> FetchCities();
-        List<Locality> FetchLocalities();
     }
 }

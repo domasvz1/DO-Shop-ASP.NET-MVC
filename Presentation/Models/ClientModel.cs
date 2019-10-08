@@ -10,12 +10,11 @@ namespace Presentation.Models
         public Client ClientVM { get; set; }
         // ---------
         [Display(Name = "Country")]
+        public int? SelectedCountry { get; set; }
+        [Display(Name = "City")]
         public int? SelectedCity { get; set; }
         //---
-        [Display(Name = "City")]
-        public int? SelectedLocality { get; set; }
-        //---
+        public SelectList CountryList { get; set; }
         public SelectList CityList { get; set; }
-        public SelectList LocalityList { get; set; }
     }
 }

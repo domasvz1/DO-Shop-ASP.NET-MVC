@@ -8,9 +8,9 @@ namespace BusinessObjects.Orders
 {
     public class DeliveryAddress
     {
-        public string City { get; set; }
+        public string Country { get; set; }
 
-        public string Locality { get; set; }
+        public string City { get; set; }
 
         [Required(ErrorMessage = "Enter receivers street's name")]
         [DisplayName("Street Name")]
