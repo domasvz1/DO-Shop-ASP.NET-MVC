@@ -9,12 +9,10 @@ namespace Presentation.Models
     { 
         public Client ClientVM { get; set; }
         // ---------
-        [Required(ErrorMessage = "You have not selected delivery city")]
-        [Display(Name = "City")]
+        [Display(Name = "Country")]
         public int? SelectedCity { get; set; }
         //---
-        [Required(ErrorMessage = "You have not selected delivery city")]
-        [Display(Name = "Locality")]
+        [Display(Name = "City")]
         public int? SelectedLocality { get; set; }
         //---
         public SelectList CityList { get; set; }
