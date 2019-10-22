@@ -66,8 +66,9 @@ namespace Presentation.Controllers
             {
                 try
                 {
+                    // If clients updates successfully
                     _clientProfileControl.EditProfile(model.ClientVM);
-                    return RedirectToAction("Index", "Main");
+                    return RedirectToAction("EditProfile", "Client");
                 }
                 catch (Exception ex)
                 {
@@ -78,7 +79,7 @@ namespace Presentation.Controllers
             return View(model);
         }
 
-        // Ajax calls this
+        // Ajax in EditProfile View calls this
         [HttpGet]
         public JsonResult FetchCities(int ID)
         {
@@ -138,14 +139,19 @@ namespace Presentation.Controllers
                 {
                     string exMessage = ex.Message;
                     ModelState.AddModelError("", exMessage);
+                    // Here user should be relocated to the error window with the occured error message
                 }
+            } else {
+                // Should print whats wrong with the launch
+                // [0.4 RELEASE should be implemented the display for user of what wrong]
+                var errors = ModelState.Select(x => x.Value.Errors).Where(y => y.Count > 0).ToList();
             }
-            // Should print whats wrong with the launch
-            var errors = ModelState.Select(x => x.Value.Errors).Where(y => y.Count > 0).ToList();
+           
             return View(ClientObject);
         }
 
         //GET: Client/Checkout
+        // This will adressed in [0.5 RELEASE]
         public ActionResult Checkout()
         {
             return View();
@@ -162,7 +168,6 @@ namespace Presentation.Controllers
         public ActionResult Login(Client ClientObject, string returnUrl)
         {
             // Login model should have model if false exception
-
             // We pass the client's onject and then we search if there's a client object saved with the given data
             var foundClientObject = _clientProfileControl.ConnectClient(ClientObject);
             if (foundClientObject != null)

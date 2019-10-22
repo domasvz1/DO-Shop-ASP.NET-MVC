@@ -62,6 +62,7 @@ namespace BusinessLogic
             if (client == null)
                 throw new ArgumentNullException("When creating client, its object became null");
 
+            // Probably a return needs to be made here
             if (!client.ConfirmClientPasswordsMatch())
                 throw new Exception("The passwords do not match");
 

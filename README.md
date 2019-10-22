@@ -76,17 +76,62 @@ If there are problems with migrations
 
 [Migrations sould be tested on new PC when starting the project for the first time]
 -----------------------------------------------------------------------------------------------------------------------------------
+[New added features, fixes, released versions starting with newest at the top]
+--
 
 
 # Currently working on
+[WORK IN PROGRESS 0.3]
+
+New Admin Panel:
+- Start from sketches
 
 
-Later move on to:
-- Admin Panel's Navigation Bar
 
 
-[New added features, fixes, released versions starting with newest at the top]
---
+
+Check street number (if it still exists, change that to Apartment / Office Number)
+
+
+
+
+
+
+-----------------------------------------------------------------------
+
+
+
+[Version 0.2 released]
+
+- Added Country and City classes and implemented the architecture in the Business Object, Data access, Presentation Layers
+- Added MobilePhone field in the Business Object, Data access, database also Presentation Layer
+
+- Country and City is now assosaited via Client Repository
+- Fixed issue wher selected city or country is null
+- Fixed issue where if user has selected the city and country, the View should know about it and display it
+- In "Edit profile" view (save button should lead you back to your editProfile window and *Go Back* button leads to the main page)
+** To this fix was added ClientModel.cs which represent Client Data and City andCountry classes
+
+- Fixed styling when choosing Cities and Countries in EditProfile window
+
+- Remade EditProfile window, the UI and UX also styling redone
+
+- Fixed implemented --> In EditProfile window changed information now updates with database.
+
+
+[Presentation Layer]
+- Fixed Selected Country and City Selection lists and styling.
+- Fixed the options, when country is not selected, you cannot select the city aswell.
+- Implemeneted first option  which won't be hidden, but is always selcted as --Not Selected {Delivery Country/City} --
+
+---Not related with coding:
+
+- Did my first Pull Request Review on this project.
+
+
+-----------------------------------------------------------------------
+
+
 [Version 0.1a released]
 
 - Documented the changes made to the project in the 0.1 alpha version and moved/cleared cards in the Favro from done to documented.
@@ -140,6 +185,7 @@ The following modules, scripts / classes were deleted :
 
 - Fixed JQuerry import issues;
 
+-----------------------------------------------------------------------
 
 -----------------------------------------------------------------------------------------------------------------------------------
 
