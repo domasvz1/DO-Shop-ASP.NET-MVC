@@ -42,13 +42,9 @@ namespace Presentation.Controllers
         public ActionResult EditProfile()
         {
             // A check here should be implemented in the never versions, to see f any cleints are left from last time log in
-
-            // 0.2 release, instead of passing just the client object here,
-            // we pass the model view in which we have client object and the properties for the countries and cities
-            // This allows to pass more variable/objects to a view
             ClientModel model = new ClientModel
             {
-                ClientVM = _clientProfileControl.GetClient((int)Session["AccountId"]),
+                ClientVM = _clientProfileControl.GetClient((int)Session["AccountId"])
             };
 
             // Since in Country and City list a value with index of 0 will be as " -- Not selected --"
@@ -61,25 +57,18 @@ namespace Presentation.Controllers
         [UserAuthorization(ConnectionPage = "~/Client/Login", Roles = "Client")]
         public ActionResult EditProfile(ClientModel model)
         {
-            // We take selected index, then we find a country or city with it and pass it to the model
-            string emptyValue = "-";
-
-            if (model.SelectedCountry.HasValue)
-                model.ClientVM.DeliveryAddress.Country = _IClientRepository.FetchCountries().ElementAt(model.SelectedCountry.Value).Name;
-            else
-                model.ClientVM.DeliveryAddress.Country = emptyValue;
-
-            if (model.SelectedCity.HasValue)
-                model.ClientVM.DeliveryAddress.City = _IClientRepository.FetchCities().ElementAt(model.SelectedCity.Value).Name;
-            else
-                model.ClientVM.DeliveryAddress.City = emptyValue;
+            // Since the selected Country and City is never null after editing anymore the null checking is not necessary
+            // List values assigned to the Client Object's Delivery Address class
+            model.ClientVM.DeliveryAddress.Country = _IClientRepository.FetchCountries().ElementAt(model.SelectedCountry.Value).Name;
+            model.ClientVM.DeliveryAddress.City = _IClientRepository.FetchCities().ElementAt(model.SelectedCity.Value).Name;
 
             if (ModelState.IsValid)
             {
                 try
                 {
+                    // If clients updates successfully
                     _clientProfileControl.EditProfile(model.ClientVM);
-                    return RedirectToAction("Index", "Main");
+                    return RedirectToAction("EditProfile", "Client");
                 }
                 catch (Exception ex)
                 {
@@ -90,7 +79,7 @@ namespace Presentation.Controllers
             return View(model);
         }
 
-        // Ajax calls this
+        // Ajax in EditProfile View calls this
         [HttpGet]
         public JsonResult FetchCities(int ID)
         {
@@ -125,19 +114,13 @@ namespace Presentation.Controllers
             return View();
         }
 
-        //GET: Client/Checkout
-        public ActionResult Checkout()
-        {
-            
-            return View();
-        }
-
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Register(Client ClientObject)
         {
             // Creating Card and DeliveryAddress objects with default data to fill up for the user
             // He will be available to edit them in other windows
+            ClientObject.MobilePhone = "";
             DeliveryAddress delivery = new DeliveryAddress();
             Card card = new Card();
 
@@ -156,18 +139,28 @@ namespace Presentation.Controllers
                 {
                     string exMessage = ex.Message;
                     ModelState.AddModelError("", exMessage);
+                    // Here user should be relocated to the error window with the occured error message
                 }
+            } else {
+                // Should print whats wrong with the launch
+                // [0.4 RELEASE should be implemented the display for user of what wrong]
+                var errors = ModelState.Select(x => x.Value.Errors).Where(y => y.Count > 0).ToList();
             }
-            // Should print whats wrong with the launch
-            var errors = ModelState.Select(x => x.Value.Errors).Where(y => y.Count > 0).ToList();
+           
             return View(ClientObject);
+        }
+
+        //GET: Client/Checkout
+        // This will adressed in [0.5 RELEASE]
+        public ActionResult Checkout()
+        {
+            return View();
         }
 
         //GET: Client/Login
         [HttpGet]
         public ActionResult Login()
         {
-            
             return View();
         }
 
@@ -175,12 +168,10 @@ namespace Presentation.Controllers
         public ActionResult Login(Client ClientObject, string returnUrl)
         {
             // Login model should have model if false exception
-
             // We pass the client's onject and then we search if there's a client object saved with the given data
             var foundClientObject = _clientProfileControl.ConnectClient(ClientObject);
             if (foundClientObject != null)
             {
-
                 FormsAuthentication.SetAuthCookie("c" + foundClientObject.Email, false);
                 Session["AccountId"] = foundClientObject.Id;
                 Session["AccountEmail"] = foundClientObject.Email;

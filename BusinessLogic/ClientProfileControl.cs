@@ -62,6 +62,7 @@ namespace BusinessLogic
             if (client == null)
                 throw new ArgumentNullException("When creating client, its object became null");
 
+            // Probably a return needs to be made here
             if (!client.ConfirmClientPasswordsMatch())
                 throw new Exception("The passwords do not match");
 
@@ -73,7 +74,7 @@ namespace BusinessLogic
                     throw new Exception("The username is already registered, sorry");
 
                 client.InitializeClientPasswordEncryption();
-                client.IsBlocked = true; // 
+                client.IsBlocked = true; 
 
                 _clientRepository.CreateClient(client);
                 dbContextScope.SaveChanges();
@@ -100,6 +101,7 @@ namespace BusinessLogic
                 foundClientObject.Email = client.Email;
                 foundClientObject.FirstName = client.FirstName;
                 foundClientObject.LastName = client.LastName;
+                foundClientObject.MobilePhone = client.MobilePhone;
                 foundClientObject.Card = client.Card;
                 foundClientObject.DeliveryAddress = client.DeliveryAddress;
 

@@ -4,10 +4,12 @@
     "\\BusinessLogic",
     "\\BusinessLogic\\Interfaces",
     "\\BusinessObjects",
+    "\\DataAccess",
     "\\Presentation",
+    "\\Presentation\\Models",
     "\\Presentation\\Views",
     "\\Presentation\\Views\\Client"
   ],
-  "SelectedNode": "\\DO Shop.sln",
+  "SelectedNode": "\\Presentation\\fonts",
   "PreviewInSolutionExplorer": false
 }

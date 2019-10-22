@@ -131,6 +131,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\DOShop.mdf" />
+    <Content Include="App_Data\DOShop_log.ldf">
+      <DependentUpon>DOShop.mdf</DependentUpon>
+    </Content>
     <Content Include="bin\Antlr3.Runtime.dll" />
     <Content Include="bin\AutoMapper.dll" />
     <Content Include="bin\BusinessLogic.dll" />
@@ -251,6 +255,10 @@
     <Content Include="Content\js\jquery.stellar.min.js" />
     <Content Include="Content\js\jquery.waypoints.min.js" />
     <Content Include="Content\js\main.js" />
+    <Content Include="Content\js\owl.carousel.min.js" />
+    <Content Include="Content\js\popper.min.js" />
+    <Content Include="Content\js\range.js" />
+    <Content Include="Content\js\scrollax.min.js" />
     <Content Include="Content\starability-all.min.css" />
     <Content Include="Content\quantityBox.css" />
     <Content Include="Content\themes\base\accordion.css" />
@@ -504,6 +512,7 @@
     <Content Include="obj\Debug\Presentation.csproj.CoreCompileInputs.cache" />
     <Content Include="obj\Debug\Presentation.csprojAssemblyReference.cache" />
     <Content Include="bin\Presentation.dll.config" />
+    <Content Include="Content\js\.DS_Store" />
     <None Include="packages.config" />
     <Content Include="Content\bootsrap-all.css" />
     <Content Include="Global.asax" />
@@ -627,7 +636,6 @@
     <Compile Include="App_Start\StartingRoles.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
     <Folder Include="Content\Items\" />
     <Folder Include="Content\Nuotraukos\" />
     <Folder Include="Content\Prekes\" />
