@@ -4,36 +4,166 @@
 	ViewBag.Title = "Import_Export_Items";
 }
 
-	<body>
-		<h2>Prekių Importas</h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
+	<link rel="stylesheet" href="/Content/css/open-iconic-bootstrap.min.css">
+	<link rel="stylesheet" href="/Content/css/animate.css">
+	<link rel="stylesheet" href="/Content/css/owl.carousel.min.css">
+	<link rel="stylesheet" href="/Content/css/owl.theme.default.min.css">
+	<link rel="stylesheet" href="/Content/css/magnific-popup.css">
+	<link rel="stylesheet" href="/Content/css/aos.css">
+	<link rel="stylesheet" href="/Content/css/ionicons.min.css">
+	<link rel="stylesheet" href="/Content/css/bootstrap-datepicker.css">
+	<link rel="stylesheet" href="/Content/css/jquery.timepicker.css">
+	<link rel="stylesheet" href="/Content/css/flaticon.css">
+	<link rel="stylesheet" href="/Content/css/icomoon.css">
+	<link rel="stylesheet" href="/Content/css/style.css">
+</head>
+<body class="goto-here">
+	<section class="ftco-section bg-light">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8 col-lg-10 order-md-last">
+					<div class="row">
 
-		<h4>
-			Importuokite prekes is Excel failo tuojau pat! <br />
-			Spauskite 'Browse' mygtuką ir pasirinkite prekių faila
-		</h4>
+						<div class="col-sm-6 col-md-6 col-lg-4 ftco-animate">
+							<div class="product">
+								<a href="#" class="img-prod">
+									<img class="img-fluid" src="/Content/images/import.png" alt="Colorlib Template">
+									<div class="overlay"></div>
+								</a>
+								<div class="text py-3 px-3">
+									<h3><a href="#">Item Import</a></h3>
+									<div class="d-flex">
+										<div class="pricing">
+											<p class="price"><span>Import items from the selcted file</span></p>
+										</div>
 
-		@{ Html.BeginForm("ImportItems", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" });}
-		<p>
-			Prekių failo direktorija: @Html.TextBox("file", null, new { type = "file" }) @Html.ValidationSummary(true, "", new { @class = "text-danger" }) <br />
-		</p>
-		<input type="submit" value="Importuoti prekes" class="btn btn-info" />
-		@{ Html.EndForm();
-		}
+									</div>
+									<p class="bottom-area d-flex px-3">
+										@Html.TextBox("Hello there", null, new { type = "file", htmlAttributes = new { @class = "ion-ios-cart ml-1!important" } })
+										<a href="#" class="buy-now text-center py-2">Import items<span><i class="ion-ios-cart ml-1"></i></span></a>
+									</p>
+								</div>
+							</div>
+						</div>
 
 
-		<br /> <hr />
+						<div class="col-sm-6 col-md-6 col-lg-4 ftco-animate">
+							<div class="product">
+								<a href="#" class="img-prod">
+									<img class="img-fluid" src="/Content/images/import.png" alt="Colorlib Template">
+									<div class="overlay"></div>
+								</a>
+								<div class="text py-3 px-3">
+									<h3><a href="#">Item Import</a></h3>
+									<div class="d-flex">
+										<div class="pricing">
+											<p class="price"><span>Import items from the selcted file</span></p>
+										</div>
+
+									</div>
+									<p class="bottom-area d-flex px-3">
+										<a href="#" class="add-to-cart text-center py-2 mr-1">
+											<span>
 
 
-		<h2>Prekių Eksportas</h2>
-		<h4>Paspaudę mygtuką "Eksportuoti prekes" eksportuosite esamas prekes į excel failą</h4>
+												Choose the file
+												<i class="ion-ios-add ml-1"></i>
 
-		@{ Html.BeginForm("ExportItems", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" });}
-		<input type="submit" value="Eksportuoti prekes" class="btn btn-info" />
+											</span>
+										</a>
+										<a href="#" class="buy-now text-center py-2">Import items<span><i class="ion-ios-cart ml-1"></i></span></a>
+									</p>
+								</div>
+							</div>
+						</div>
+						
 
-		@{ Html.EndForm();}
+						<section>
 
-		<br />
+							@{ Html.BeginForm("ImportItems", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" });
 
-		<button type="button" class="btn btn-dark" onclick="location.href = '@Url.Action("ModifyItems", "Admin")'">Grįžti į prekių valdymo langą</button>
+							}
 
-	</body>
+							Prekių failo direktorija:
+
+
+							<input type="submit" value="Import Items" class="btn btn-info" />
+
+						</section>
+
+
+						<h2>Prekių Eksportas</h2>
+						<h4>Paspaudę mygtuką "Eksportuoti prekes" eksportuosite esamas prekes į excel failą</h4>
+
+						@{ Html.BeginForm("ExportItems", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" });}
+						<input type="submit" value="Eksportuoti prekes" class="btn btn-info" />
+
+						@{ Html.EndForm();}
+
+						<br />
+
+						<button type="button" class="btn btn-dark" onclick="location.href = '@Url.Action("ModifyItems", "Admin")'">Grįžti į prekių valdymo langą</button>
+
+					</div>
+				</div>
+
+				<div class="col-md-4 col-lg-2 sidebar">
+					<div class="sidebar-box-2">
+						<h2 class="heading mb-4"><a href="#">Clothing</a></h2>
+						<ul>
+							<li><a href="#">Shirts &amp; Tops</a></li>
+							<li><a href="#">Dresses</a></li>
+							<li><a href="#">Shorts &amp; Skirts</a></li>
+						</ul>
+					</div>
+					<div class="sidebar-box-2">
+						<h2 class="heading mb-4"><a href="#">Jeans</a></h2>
+						<ul>
+							<li><a href="#">Shirts &amp; Tops</a></li>
+							<li><a href="#">Dresses</a></li>
+							<li><a href="#">Shorts &amp; Skirts</a></li>
+							<li><a href="#">Jackets</a></li>
+						</ul>
+					</div>
+					<div class="sidebar-box-2">
+						<h2 class="heading mb-2"><a href="#">Bags</a></h2>
+						<h2 class="heading mb-2"><a href="#">Accessories</a></h2>
+					</div>
+					<div class="sidebar-box-2">
+						<h2 class="heading mb-4"><a href="#">Shoes</a></h2>
+						<ul>
+							<li><a href="#">Nike</a></li>
+							<li><a href="#">Addidas</a></li>
+							<li><a href="#">Skechers</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<script src="/Content/js/jquery.min.js"></script>
+	<script src="/Content/js/jquery-migrate-3.0.1.min.js"></script>
+	<script src="/Content/js/popper.min.js"></script>
+	<script src="/Content/js/bootstrap.min.js"></script>
+	<script src="/Content/js/jquery.easing.1.3.js"></script>
+	<script src="/Content/js/jquery.waypoints.min.js"></script>
+	<script src="/Content/js/jquery.stellar.min.js"></script>
+	<script src="/Content/js/owl.carousel.min.js"></script>
+	<script src="/Content/js/jquery.magnific-popup.min.js"></script>
+	<script src="/Content/js/aos.js"></script>
+	<script src="/Content/js/jquery.animateNumber.min.js"></script>
+	<script src="/Content/js/bootstrap-datepicker.js"></script>
+	<script src="/Content/js/scrollax.min.js"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+	<script src="/Content/js/google-map.js"></script>
+	<script src="/Content/js/main.js"></script>
+
+</body>
+</html>
+
