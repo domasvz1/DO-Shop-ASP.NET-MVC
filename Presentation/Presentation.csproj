@@ -204,10 +204,6 @@
     <Content Include="bin\Unity.Mvc.dll" />
     <Content Include="bin\WebActivatorEx.dll" />
     <Content Include="bin\WebGrease.dll" />
-    <Content Include="Content\bootstrap-superhero.css" />
-    <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\bootstrapSite.css" />
     <Content Include="Content\css\bootstrap.min.css" />
     <Content Include="Content\css\bootstrap\bootstrap-grid.css" />
     <Content Include="Content\css\bootstrap\bootstrap-reboot.css" />
@@ -259,8 +255,6 @@
     <Content Include="Content\js\popper.min.js" />
     <Content Include="Content\js\range.js" />
     <Content Include="Content\js\scrollax.min.js" />
-    <Content Include="Content\starability-all.min.css" />
-    <Content Include="Content\quantityBox.css" />
     <Content Include="Content\themes\base\accordion.css" />
     <Content Include="Content\themes\base\all.css" />
     <Content Include="Content\themes\base\autocomplete.css" />
@@ -410,7 +404,6 @@
     <Content Include="Content\vendor\bootstrap\css\bootstrap-reboot.min.css.map" />
     <Content Include="Content\vendor\bootstrap\css\bootstrap.css.map" />
     <Content Include="Content\vendor\bootstrap\css\bootstrap.min.css.map" />
-    <Content Include="Content\prepros-6.config" />
     <Content Include="Content\scss\.DS_Store" />
     <Content Include="Content\scss\bootstrap\.DS_Store" />
     <Content Include="Content\scss\bootstrap\bootstrap-grid.scss" />
@@ -515,7 +508,6 @@
     <Content Include="Content\js\.DS_Store" />
     <Content Include="Content\Items\Prekes.xlsx" />
     <None Include="packages.config" />
-    <Content Include="Content\bootsrap-all.css" />
     <Content Include="Global.asax" />
     <Content Include="obj\Debug\Presentation.csproj.FileListAbsolute.txt" />
     <Content Include="obj\Debug\Presentation.dll" />
