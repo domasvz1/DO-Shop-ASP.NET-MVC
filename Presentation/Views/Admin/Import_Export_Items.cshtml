@@ -4,36 +4,36 @@
 	ViewBag.Title = "Import_Export_Items";
 }
 
-<div style="width:100%">
+	<body>
+		<h2>Prekių Importas</h2>
 
-	<h2>Prekių Importas</h2>
+		<h4>
+			Importuokite prekes is Excel failo tuojau pat! <br />
+			Spauskite 'Browse' mygtuką ir pasirinkite prekių faila
+		</h4>
 
-	<h4>
-		Importuokite prekes is Excel failo tuojau pat! <br />
-		Spauskite 'Browse' mygtuką ir pasirinkite prekių faila
-	</h4>
-
-	@{ Html.BeginForm("ImportItems", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" });}
-	<p>
-		Prekių failo direktorija: @Html.TextBox("file", null, new { type = "file" }) @Html.ValidationSummary(true, "", new { @class = "text-danger" }) <br />
-	</p>
-	<input type="submit" value="Importuoti prekes" class="btn btn-info" />
-	@{ Html.EndForm();}
-
-
-	<br /> <hr />
+		@{ Html.BeginForm("ImportItems", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" });}
+		<p>
+			Prekių failo direktorija: @Html.TextBox("file", null, new { type = "file" }) @Html.ValidationSummary(true, "", new { @class = "text-danger" }) <br />
+		</p>
+		<input type="submit" value="Importuoti prekes" class="btn btn-info" />
+		@{ Html.EndForm();
+		}
 
 
-	<h2>Prekių Eksportas</h2>
-	<h4>Paspaudę mygtuką "Eksportuoti prekes" eksportuosite esamas prekes į excel failą</h4>
+		<br /> <hr />
 
-	@{ Html.BeginForm("ExportItems", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" });}
-	<input type="submit" value="Eksportuoti prekes" class="btn btn-info" />
 
-	@{ Html.EndForm();}
+		<h2>Prekių Eksportas</h2>
+		<h4>Paspaudę mygtuką "Eksportuoti prekes" eksportuosite esamas prekes į excel failą</h4>
 
-	<br />
+		@{ Html.BeginForm("ExportItems", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" });}
+		<input type="submit" value="Eksportuoti prekes" class="btn btn-info" />
 
-	<button type="button" class="btn btn-dark" onclick="location.href = '@Url.Action("ModifyItems", "Admin")'">Grįžti į prekių valdymo langą</button>
+		@{ Html.EndForm();}
 
-</div>
+		<br />
+
+		<button type="button" class="btn btn-dark" onclick="location.href = '@Url.Action("ModifyItems", "Admin")'">Grįžti į prekių valdymo langą</button>
+
+	</body>

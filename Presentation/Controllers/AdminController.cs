@@ -42,8 +42,8 @@ namespace Presentation.Controllers
             _orderControl = orderControl;
         }
 
-        // Admin Connection view, locate in "DO SHOP project folder -> Views-> Admin"
-        // [UserAuthorization(ConnectionPage = "~/Admin/Login", Roles = "Admin")]
+        //Admin Connection view, locate in "DO SHOP project folder -> Views-> Admin"
+        [UserAuthorization(ConnectionPage = "~/Admin/Login", Roles = "Admin")]
         public ActionResult Index()
         {
             return View();
@@ -204,10 +204,18 @@ namespace Presentation.Controllers
         //Returns a list from the selected directory
         private List<FileInfo> GetExportedFile()
         {
-            string path = Server.MapPath("~/Content/Items");
+            string path = Server.MapPath("~/Content/Items"); // Here should be a check,
+            // It returns a list of files
 
-            var directory = new DirectoryInfo(path);
-            return directory.GetFiles("*.xlsx").ToList();
+            // Added a check if directory doesnt exist, then we return an empty list of FileInfo path
+            if(!Directory.Exists(path))
+            {
+                // The app doesnt crash here anymore it return an empty list
+                return new List<FileInfo>();
+            }
+
+            // If the .xlsx file exist there, it is returned
+            return new DirectoryInfo(path).GetFiles("*.xlsx").ToList();
         }
 
         // This Action has no references. It it called from the Import_Export_Items View

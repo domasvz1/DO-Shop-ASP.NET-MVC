@@ -513,6 +513,7 @@
     <Content Include="obj\Debug\Presentation.csprojAssemblyReference.cache" />
     <Content Include="bin\Presentation.dll.config" />
     <Content Include="Content\js\.DS_Store" />
+    <Content Include="Content\Items\Prekes.xlsx" />
     <None Include="packages.config" />
     <Content Include="Content\bootsrap-all.css" />
     <Content Include="Global.asax" />
@@ -546,7 +547,7 @@
     <Content Include="Views\Admin\ItemInformation.cshtml" />
     <Content Include="Views\Admin\ModifyItem.cshtml" />
     <Content Include="Views\Admin\Login.cshtml" />
-    <Content Include="Views\Shared\_NavigationBar.cshtml" />
+    <Content Include="Views\Shared\_Navigation.cshtml" />
     <Content Include="Views\Admin\Import_Export_Items.cshtml" />
     <Content Include="Views\Admin\ChangeItemsPicture.cshtml" />
     <Content Include="Views\Shared\_ErrorLayout.cshtml" />
@@ -636,9 +637,7 @@
     <Compile Include="App_Start\StartingRoles.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Content\Items\" />
     <Folder Include="Content\Nuotraukos\" />
-    <Folder Include="Content\Prekes\" />
     <Folder Include="obj\Debug\TempPE\" />
     <Folder Include="obj\Release\" />
     <Folder Include="RoleProviders\" />

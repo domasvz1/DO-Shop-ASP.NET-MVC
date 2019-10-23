@@ -126,7 +126,6 @@ C:\Users\dominykaso\Desktop\DO-Shop-ASP.NET-MVC\Presentation\bin\DataAccess.pdb
 C:\Users\dominykaso\Desktop\DO-Shop-ASP.NET-MVC\Presentation\bin\DataAccess.dll.config
 C:\Users\dominykaso\Desktop\DO-Shop-ASP.NET-MVC\Presentation\bin\EPPlus.xml
 C:\Users\dominykaso\Desktop\DO-Shop-ASP.NET-MVC\Presentation\obj\Debug\Presentation.csprojAssemblyReference.cache
-C:\Users\dominykaso\Desktop\DO-Shop-ASP.NET-MVC\Presentation\obj\Debug\Presentation.csproj.CoreCompileInputs.cache
 C:\Users\dominykaso\Desktop\DO-Shop-ASP.NET-MVC\Presentation\obj\Debug\Presentation.csproj.CopyComplete
 C:\Users\dominykaso\Desktop\DO-Shop-ASP.NET-MVC\Presentation\obj\Debug\Presentation.dll
 C:\Users\dominykaso\Desktop\DO-Shop-ASP.NET-MVC\Presentation\obj\Debug\Presentation.pdb
