@@ -84,13 +84,15 @@ If there are problems with migrations
 [WORK IN PROGRESS 0.3]
 
 New Admin Panel:
-- Start from sketches
+
+
+No skecthes needed, I have something in mind.
 
 
 
 
 
-Check street number (if it still exists, change that to Apartment / Office Number)
+Fixed street number (if it still exists, change that to Apartment / Office Number)
 
 
 
