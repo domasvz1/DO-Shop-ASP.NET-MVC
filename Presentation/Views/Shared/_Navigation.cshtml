@@ -107,10 +107,9 @@
 				}
 				else
 				{
-					<li class="nav-item"> <a href="@Url.Action("OrderHistory", "Client")" class="nav-link">Orders</a></li>
-
 					if (!(bool)isAdmin)
 					{
+						<li class="nav-item"> <a href="@Url.Action("OrderHistory", "Client")" class="nav-link">Orders</a></li>
 						<li class="nav-item cta cta-colored"><a href="@Url.Action("Cart", "Client")" class="nav-link"><span class="icon-shopping_cart"></span>My Cart</a></li>
 						<li class="nav-item"><a href="@Url.Action("EditProfile", "Client")" class="nav-link">Edit Profile</a></li>
 						<li class="nav-item"><a href="@Url.Action("LogOut", "Client")" class="nav-link">Log Out</a></li>
