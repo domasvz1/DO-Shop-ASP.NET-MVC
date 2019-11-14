@@ -82,23 +82,25 @@
 		<div class="collapse navbar-collapse" id="ftco-nav">
 			<ul class="navbar-nav ml-auto">
 
-				<li class="nav-item active"><a href="@Url.Action("Index", "Main")" class="nav-link">Home</a></li>
-				<li class="nav-item active"><a href="@Url.Action("Shop", "Main")" class="nav-link">Shop</a></li>
-
-				<li class="nav-item"><a href="@Url.Action("About", "Main")" class="nav-link">About</a></li>
-				<li class="nav-item"><a href="@Url.Action("Blog", "Main")" class="nav-link">Blog</a></li>
-				<li class="nav-item"><a href="@Url.Action("Contact", "Main")" class="nav-link"><span class="icon-phone2"></span>Contact</a></li>
-
-
-				@*Implementing Navigation Bar's list where the different pages are being dislayed logic for the different states *@
-
-				@*If the user is autheticated (a.k.a if the user is not connected)*@
+				@if ((bool)isAdmin)
+				{
+					<li class="nav-item active"><a href="@Url.Action("Index", "Main")" class="nav-link">Items</a></li>
+					<li class="nav-item active"><a href="@Url.Action("Shop", "Main")" class="nav-link">Orders</a></li>
+					<li class="nav-item"><a href="@Url.Action("About", "Main")" class="nav-link">Customers</a></li>
+					<li class="nav-item"><a href="@Url.Action("Blog", "Main")" class="nav-link">Blogs</a></li>
+					<li class="nav-item"><a href="@Url.Action("LogOut", "Admin")" class="nav-link">Please Logout Administrator</a></li>
+				}
+				else
+				{
+					<li class="nav-item active"><a href="@Url.Action("Index", "Main")" class="nav-link">Home</a></li>
+					<li class="nav-item active"><a href="@Url.Action("Shop", "Main")" class="nav-link">Shop</a></li>
+					<li class="nav-item"><a href="@Url.Action("About", "Main")" class="nav-link">About</a></li>
+					<li class="nav-item"><a href="@Url.Action("Blog", "Main")" class="nav-link">Blog</a></li>
+					<li class="nav-item"><a href="@Url.Action("Contact", "Main")" class="nav-link"><span class="icon-phone2"></span>Contact</a></li>
+				}
 
 				@if (!User.Identity.IsAuthenticated)
 				{
-					//What needs to be displayed when the UNREGISTERED user is connected:
-					//- Availability to register
-					//- Availability to log in
 					<li class="nav-item"><a href="@Url.Action("Register", "Client")" class="nav-link">Register</a></li>
 					<li class="nav-item"><a href="@Url.Action("Login", "Client")" class="nav-link">Log In</a></li>
 
@@ -107,27 +109,12 @@
 				{
 					<li class="nav-item"> <a href="@Url.Action("OrderHistory", "Client")" class="nav-link">Orders</a></li>
 
-					//Commented for now latern turned into checkout and pfoile windows
-					@*<li class="nav-item"> <a href="checkout.html" class="nav-link">Checkout</a></li>*@
-
-					//if the connected user is a common user and not administrator
 					if (!(bool)isAdmin)
 					{
-						//What needs to be displayed when the REGISTERED user is connected:
-						//- Availability to user's cart
-						//- Availability to edit your profile
-						//- Availability to log out
-
 						<li class="nav-item cta cta-colored"><a href="@Url.Action("Cart", "Client")" class="nav-link"><span class="icon-shopping_cart"></span>My Cart</a></li>
 						<li class="nav-item"><a href="@Url.Action("EditProfile", "Client")" class="nav-link">Edit Profile</a></li>
 						<li class="nav-item"><a href="@Url.Action("LogOut", "Client")" class="nav-link">Log Out</a></li>
 					}
-
-					else // If the admin is connected thelayout of the Navigation bar should completely different
-					{
-						<li class="nav-item"><a href="@Url.Action("LogOut", "Admin")" class="nav-link">Please Logout Administrator</a></li>
-					}
-
 				}
 
 			</ul>
@@ -135,24 +122,22 @@
 		</div>
 	</div>
 </nav>
-		<script src="/Content/js/jquery.min.js"></script>
-		<script src="/Content/js/jquery-migrate-3.0.1.min.js"></script>
-		<script src="/Content/js/popper.min.js"></script>
-		<script src="/Content/js/bootstrap.min.js"></script>
-		<script src="/Content/js/jquery.easing.1.3.js"></script>
-		<script src="/Content/js/jquery.waypoints.min.js"></script>
-		<script src="/Content/js/jquery.stellar.min.js"></script>
-		<script src="/Content/js/owl.carousel.min.js"></script>
-		<script src="/Content/js/jquery.magnific-popup.min.js"></script>
-		<script src="/Content/js/aos.js"></script>
-		<script src="/Content/js/jquery.animateNumber.min.js"></script>
-		<script src="/Content/js/bootstrap-datepicker.js"></script>
-		<script src="/Content/js/scrollax.min.js"></script>
-		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-		<script src="/Content/js/google-map.js"></script>
-		<script src="/Content/js/main.js"></script>
-
-</body>
-
 
 </html>
+
+<script src="/Content/js/jquery.min.js"></script>
+<script src="/Content/js/jquery-migrate-3.0.1.min.js"></script>
+<script src="/Content/js/popper.min.js"></script>
+<script src="/Content/js/bootstrap.min.js"></script>
+<script src="/Content/js/jquery.easing.1.3.js"></script>
+<script src="/Content/js/jquery.waypoints.min.js"></script>
+<script src="/Content/js/jquery.stellar.min.js"></script>
+<script src="/Content/js/owl.carousel.min.js"></script>
+<script src="/Content/js/jquery.magnific-popup.min.js"></script>
+<script src="/Content/js/aos.js"></script>
+<script src="/Content/js/jquery.animateNumber.min.js"></script>
+<script src="/Content/js/bootstrap-datepicker.js"></script>
+<script src="/Content/js/scrollax.min.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+<script src="/Content/js/google-map.js"></script>
+<script src="/Content/js/main.js"></script>

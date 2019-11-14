@@ -43,7 +43,7 @@ namespace Presentation.Controllers
         }
 
         //Admin Connection view, locate in "DO SHOP project folder -> Views-> Admin"
-        //[UserAuthorization(ConnectionPage = "~/Admin/Login", Roles = "Admin")]
+        [UserAuthorization(ConnectionPage = "~/Admin/Login", Roles = "Admin")]
         public ActionResult Index()
         {
             return View();
