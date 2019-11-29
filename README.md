@@ -1,4 +1,6 @@
 # D O Shop-ASP.NET MVC
+------------------------
+Public releases, this website project has not reached the alpha version yet. I have decided to publish this and curretnly I am working on 0.3 release (admin panel). This file will be updated once in a while to let people know what is up with this project.
 
 This was initially my University project changed and updated. (D O initials of my first and last name)
 Since there's a lot of things that can be tweaked and changed, I want to update the scripts and the documentation before releasing.
@@ -237,6 +239,6 @@ Connecting the login (through facebook, twitter google, maybe leave reviews)
 
 # Decided to start error log here and how I Dealt with these issues:
 
-Issue: Error thrown The required anti-forgery form field “__RequestVerificationToken” is not present Error in user Registration
+Issue: Error thrown The required anti-forgery form field Â“__RequestVerificationTokenÂ” is not present Error in user Registration
 Fix: If you have [ValidateAntiForgeryToken] attribute before your action (In HttpPost, you can't have them in HttpGet),
 then you should also add @Html.AntiForgeryToken() in your form after "@using (Html.BeginForm)"
