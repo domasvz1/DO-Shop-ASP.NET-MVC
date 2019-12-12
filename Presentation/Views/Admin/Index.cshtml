@@ -1,4 +1,4 @@
-﻿@model BusinessObjects.Item
+﻿@model IEnumerable<BusinessObjects.Item>
 
 @{
 	ViewBag.Title = "Index";
@@ -6,25 +6,117 @@
 
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-		<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
-		<link rel="stylesheet" href="/Content/css/open-iconic-bootstrap.min.css">
-		<link rel="stylesheet" href="/Content/css/animate.css">
-		<link rel="stylesheet" href="/Content/css/owl.carousel.min.css">
-		<link rel="stylesheet" href="/Content/css/owl.theme.default.min.css">
-		<link rel="stylesheet" href="/Content/css/magnific-popup.css">
-		<link rel="stylesheet" href="/Content/css/aos.css">
-		<link rel="stylesheet" href="/Content/css/ionicons.min.css">
-		<link rel="stylesheet" href="/Content/css/bootstrap-datepicker.css">
-		<link rel="stylesheet" href="/Content/css/jquery.timepicker.css">
-		<link rel="stylesheet" href="/Content/css/flaticon.css">
-		<link rel="stylesheet" href="/Content/css/icomoon.css">
-		<link rel="stylesheet" href="/Content/css/style.css">
-	</head>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
+	<link rel="stylesheet" href="/Content/css/open-iconic-bootstrap.min.css">
+	<link rel="stylesheet" href="/Content/css/animate.css">
+	<link rel="stylesheet" href="/Content/css/owl.carousel.min.css">
+	<link rel="stylesheet" href="/Content/css/owl.theme.default.min.css">
+	<link rel="stylesheet" href="/Content/css/magnific-popup.css">
+	<link rel="stylesheet" href="/Content/css/aos.css">
+	<link rel="stylesheet" href="/Content/css/ionicons.min.css">
+	<link rel="stylesheet" href="/Content/css/bootstrap-datepicker.css">
+	<link rel="stylesheet" href="/Content/css/jquery.timepicker.css">
+	<link rel="stylesheet" href="/Content/css/flaticon.css">
+	<link rel="stylesheet" href="/Content/css/icomoon.css">
+	<link rel="stylesheet" href="/Content/css/style.css">
+</head>
 
-	<body class="goto-here">
+<body class="goto-here">
 
+	<div class="container">
+		<div class="row">
+			<div class="col-md-4 col-lg-2 sidebar">
+				<div class="sidebar-box-2">
+					<h2 class="heading mb-4"><a href="#">Items in Shop</a></h2>
+					<ul>
+						<li><a href="@Url.Action("Import_Export_Items", "Admin")">Import &amp; Items</a></li>
+						<li><a href="@Url.Action("AddItem", "Admin")">Add Items</a></li>
+						<li><a href="@Url.Action("Import_Export_Items", "Admin")">Shorts &amp; Skirts</a></li>
+						<li><a href="@Url.Action("Properties", "Admin")">Configure Properties</a></li>
+						<li><a href="@Url.Action("Categories", "Admin")">Configure Categories</a></li>
+						<li><a href="@Url.Action("Import_Export_Items", "Admin")">Sleeveless</a></li>
+						<li><a href="@Url.Action("Import_Export_Items", "Admin")">Trousers</a></li>
+					</ul>
+				</div>
+				<div class="sidebar-box-2">
+					<h2 class="heading mb-4"><a href="#">Jeans</a></h2>
+					<ul>
+						<li><a href="@Url.Action("AddItem", "Admin")">Import &amp; Items</a></li>
+						<li><a href="#">Dresses</a></li>
+						<li><a href="#">Shorts &amp; Skirts</a></li>
+						<li><a href="#">Jackets</a></li>
+						<li><a href="#">Coats</a></li>
+						<li><a href="#">Jeans</a></li>
+						<li><a href="#">Sleeveless</a></li>
+						<li><a href="#">Trousers</a></li>
+						<li><a href="#">Winter Coats</a></li>
+						<li><a href="#">Jumpsuits</a></li>
+					</ul>
+				</div>
+				<div class="sidebar-box-2">
+					<h2 class="heading mb-2"><a href="#">Bags</a></h2>
+					<h2 class="heading mb-2"><a href="#">Accessories</a></h2>
+				</div>
+				<div class="sidebar-box-2">
+					<h2 class="heading mb-4"><a href="#">Shoes</a></h2>
+					<ul>
+						<li><a href="#">Nike</a></li>
+						<li><a href="#">Addidas</a></li>
+						<li><a href="#">Skechers</a></li>
+						<li><a href="#">Jackets</a></li>
+						<li><a href="#">Coats</a></li>
+						<li><a href="#">Jeans</a></li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="col-md-8 col-lg-10 order-md-last">
+
+				<table class="table-bordered" style="width: 100%; max-width: 100%; color:black;">
+					<tr style="padding-bottom: 1em;">
+						<th style="width:8%; text-align: center;">
+							@Html.DisplayNameFor(model => model.SKUCode)
+						</th>
+						<th style="width:15%; text-align: center;">
+							@Html.DisplayNameFor(model => model.Name)
+						</th>
+						<th style="width:8%; text-align: center;">
+							@Html.DisplayNameFor(model => model.Price)
+						</th>
+						<th style="width:50%; text-align: center;">
+							@Html.DisplayNameFor(model => model.Description)
+						</th>
+					</tr>
+					@foreach (var item in Model)
+					{
+						var itemPriceInEur = item.Price / 100.0m;
+						<tr>
+							<td style="padding-bottom: 1em; text-align: center;">
+								@Html.DisplayFor(modelItem => item.SKUCode)
+							</td>
+							<td style="padding-bottom: 1em;text-align: center; ">
+								@Html.DisplayFor(modelItem => item.Name)
+							</td>
+							<td style="padding-bottom: 1em;text-align: center;">
+								@Html.DisplayFor(modelItem => itemPriceInEur) Eurai
+							</td>
+							<td style=" padding-bottom: 1em;">
+								@Html.DisplayFor(modelItem => item.Description)
+							</td>
+							<td>
+								<div style="width:235px;">
+									<button type="button" class="btn btn-info" color onclick="location.href = '@Url.Action("ItemInformation", new { id = item.Id })'">Prekės Informacija</button>
+									<button type="button" class="btn btn-danger" color onclick="location.href = '@Url.Action("RemoveItem", new { id = item.Id })'">Ištrinti</button>
+								</div>
+							</td>
+						</tr>
+					}
+				</table>
+			</div>
+		</div>
+	</div>
 
 
 		<script src="/Content/js/jquery.min.js"></script>
@@ -43,5 +135,5 @@
 		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
 		<script src="/Content/js/google-map.js"></script>
 		<script src="/Content/js/main.js"></script>
-	</body>
+</body>
 </html>

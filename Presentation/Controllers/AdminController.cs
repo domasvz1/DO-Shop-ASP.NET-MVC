@@ -46,7 +46,7 @@ namespace Presentation.Controllers
         [UserAuthorization(ConnectionPage = "~/Admin/Login", Roles = "Admin")]
         public ActionResult Index()
         {
-            return View();
+            return View(_itemDistributionControl.GetAllItems());
         }
 
         public ActionResult Login()
@@ -173,12 +173,6 @@ namespace Presentation.Controllers
             return RedirectToAction("SystemUsers", "Admin");
         }
 
-        [UserAuthorization(ConnectionPage = "~/Admin/Login", Roles = "Admin")]
-        public ActionResult ModifyItems()
-        {
-            return View(_itemDistributionControl.GetAllItems());
-        }
-
         public ActionResult Import_Export_Items()
         {
             return View(new ItemExportModel {
@@ -278,7 +272,7 @@ namespace Presentation.Controllers
                     item.ItemProperties = item.ItemProperties.Where(x => x.Value != null && x.Value != "").ToList();
                     _itemControl.CreateItemWithPicture(item, Server.MapPath("~/Content/Pictures"));
 
-                    return RedirectToAction("ModifyItems");
+                    return RedirectToAction("Index");
                 }
                 catch (Exception ex)
                 {
@@ -366,6 +360,7 @@ namespace Presentation.Controllers
             return View(preke);
         }
 
+        //ApproveTheRemovalOfItem works and should call a pop up that shows that it was removed
         [HttpPost, ActionName("RemoveItem")]
         [ValidateAntiForgeryToken]
         public ActionResult ApproveTheRemovalOfItem(int id)
@@ -376,10 +371,10 @@ namespace Presentation.Controllers
             }
             catch (Exception)
             {
-                return RedirectToAction("ModifyItems");
+                return RedirectToAction("Index");
             }
 
-            return RedirectToAction("ModifyItems");
+            return RedirectToAction("index");
         }
 
         [HttpPost]

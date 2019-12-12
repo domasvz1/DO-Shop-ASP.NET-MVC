@@ -65,44 +65,43 @@
 		</div>
 		<br>
 
+
 		<div class="container">
 			<div class="row justify-content-center">
-				<div style="width:100%">
+				<div style="width:70%">
 					<form action="#" class="billing-form">
-						<div class="form-horizontal">
 
-							@Html.LabelFor(model => model.Login, htmlAttributes: new { @class = "col-md-12 d-flex justify-content-center" })
-							<div class="form-group d-flex justify-content-center">
-								<div class="col-md-8 d-flex justify-content-center">
-									@Html.EditorFor(model => model.Login, new { htmlAttributes = new { @class = "form-control" } })
-									@Html.ValidationMessageFor(model => model.Login, "", new { @class = "text-danger" })
-								</div>
-							</div>
 
-							@Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "col-md-12 d-flex justify-content-center" })
-							<div class="form-group d-flex justify-content-center">
-								<div class="col-md-8">
-									@Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
-									@Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
-								</div>
-							</div>
+						<div class="wrap-input100 validate-input m-b-23" data-validate="Login is reauired">
+							<span class="label-input100">@Html.LabelFor(model => model.Login)</span>
+							@Html.EditorFor(model => model.Login, new { htmlAttributes = new { @class = "input100", type = "text", placeholder = "Type your username" } })
+							<span class="focus-input100" data-symbol="&#xf206;"></span>
+						</div>
 
-							<div class="form-group d-flex justify-content-center">
-								<div class="col-md-8">
-									<div class="wrap-login100-form-btn">
-										<div class="login100-form-bgbtn"></div>
-										<button class="login100-form-btn" type="submit" value="Prisijungti">
-											Login
-										</button>
-									</div>
-								</div>
+						<div class="wrap-input100 validate-input" data-validate="Password is required">
+							<span class="label-input100">@Html.LabelFor(model => model.Password)</span>
+							@Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "input100", type = "password", placeholder = "Type your password" } })
+							<span class="focus-input100" data-symbol="&#xf190;"></span>
+						</div>
+
+						<div class="text-right p-t-8 p-b-31">
+							<a href="#">
+								Something looks wrong? Inform the Maintainer
+							</a>
+						</div>
+
+						<div class="container-login100-form-btn" style="width:80%; padding-left:20%">
+							<div class="wrap-login100-form-btn">
+								<div class="login100-form-bgbtn"></div>
+								<button class="login100-form-btn" type="submit" value="Prisijungti">
+									Login
+								</button>
 							</div>
 						</div>
 					</form>
 				</div>
 			</div>
 		</div>
-
 		<!--===============================================================================================-->
 		<script src="/Content/vendor/jquery/jquery-3.2.1.min.js"></script>
 		<!--===============================================================================================-->

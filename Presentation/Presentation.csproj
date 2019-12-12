@@ -580,7 +580,6 @@
     <Content Include="Views\Admin\ItemProperties.cshtml" />
     <Content Include="Views\Admin\EditorTemplates\ItemProperty.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
-    <Content Include="Views\Admin\ModifyItems.cshtml" />
     <Content Include="Views\Client\Register.cshtml" />
     <Content Include="Views\Client\Login.cshtml" />
     <Content Include="Views\Admin\SystemUsers.cshtml" />

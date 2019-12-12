@@ -1,4 +1,6 @@
-﻿@{
+﻿
+
+@{
 	//In the DO Shop, admins are connecting with a secret password and then with their username;
 	//On the other end, users are connecting with their emails;
 	//That means different variables will be needed (won't be able to take email for both);
@@ -13,7 +15,11 @@
 	if (!isAdmin.HasValue)
 	{
 		isAdmin = false;
+
+
 	}
+
+
 }
 
 <!DOCTYPE html>
@@ -57,6 +63,7 @@
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="oi oi-menu"></span> Menu
 			</button>
+			
 
 			<div class="collapse navbar-collapse" id="ftco-nav">
 				<ul class="navbar-nav ml-auto">
