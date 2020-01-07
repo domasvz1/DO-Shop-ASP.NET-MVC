@@ -81,15 +81,10 @@ If there are problems with migrations
 
 
 # Currently working on
-[WORK IN PROGRESS 0.3]
-
-New Admin Panel:
+[WORK IN PROGRESS 0.3 ADMIN PANEL] 
 
 
-No skecthes needed, I have something in mind.
-
-
-
+Documentation should come from the favro cards
 
 
 Fixed street number (if it still exists, change that to Apartment / Office Number)

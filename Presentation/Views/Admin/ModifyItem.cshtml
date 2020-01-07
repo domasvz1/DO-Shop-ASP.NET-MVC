@@ -4,7 +4,6 @@
 	ViewBag.Title = "ModifyItem";
 }
 
-
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
@@ -25,7 +24,6 @@
 
 <body>
 
-
 	@using (Html.BeginForm("ModifyItem", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
 	{
 		@Html.AntiForgeryToken()
@@ -43,6 +41,7 @@
 				</div>
 			</div>
 		</div>
+
 
 		<br>
 		<div class="container">
@@ -107,10 +106,9 @@
 					</p>
 					<div class="row mt-4">
 
-
-
 						<div class="w-100"></div>
-						<a style="margin-top: 10px" href="cart.html" class="btn btn-black py-3 px-5">Save Item</a>
+						<!-- Something should be thrown out here to inform admin that the item has been modifed/saved-->
+						<input style="margin-top: 10px" href="@Url.Action("Index", "Admin")" type="submit" value="Save Item" class="btn btn-black py-3 px-5">
 						<a style="margin-top: 10px" href="cart.html" class="btn btn-black py-3 px-5">Go back</a>
 
 					</div>
@@ -126,8 +124,6 @@
 					<input type="submit" value="Išsaugoti prekę" class="btn btn-success" />
 					<button type="button" class="btn btn-danger" color onclick="location.href = '@Url.Action("ItemInformation", new { id = Model.Id })'">Grižti atgal</button>
 				</div>
-
-
 
 				<div style="color:black" class="form-group">
 					@Html.LabelFor(model => model.SKUCode, htmlAttributes: new { @class = "col-md-3" })

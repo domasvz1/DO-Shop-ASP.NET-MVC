@@ -25,23 +25,25 @@
 
 <body class="goto-here">
 
-	<div class="container">
+	<!-- Adding some margin, so that all container would be a little bit allocated from the top -->
+	<div class="container" style="margin-top:20px">
 		<div class="row">
+
+			<!-- What follows next is the sidebar, which probably could be inserted into eperate file and reused in all of the panels-->
 			<div class="col-md-4 col-lg-2 sidebar">
 				<div class="sidebar-box-2">
-					<h2 class="heading mb-4"><a href="#">Items in Shop</a></h2>
+					<h2 class="heading mb-4"><a href="@Url.Action("Index", "Admin")">Items in shop</a></h2>
 					<ul>
-						<li><a href="@Url.Action("Import_Export_Items", "Admin")">Import &amp; Items</a></li>
-						<li><a href="@Url.Action("AddItem", "Admin")">Add Items</a></li>
-						<li><a href="@Url.Action("Import_Export_Items", "Admin")">Shorts &amp; Skirts</a></li>
-						<li><a href="@Url.Action("Properties", "Admin")">Configure Properties</a></li>
-						<li><a href="@Url.Action("Categories", "Admin")">Configure Categories</a></li>
-						<li><a href="@Url.Action("Import_Export_Items", "Admin")">Sleeveless</a></li>
-						<li><a href="@Url.Action("Import_Export_Items", "Admin")">Trousers</a></li>
+						<li><a href="@Url.Action("Import_Export_Items", "Admin")">Import Items</a></li>
+						<li><a href="@Url.Action("AddItem", "Admin")">Export Items</a></li>
+						<li><a href="@Url.Action("Import_Export_Items", "Admin")">Edit Item</a></li>
+						<li><a href="@Url.Action("Properties", "Admin")">Categories List</a></li>
+						<li><a href="@Url.Action("Categories", "Admin")">(---) Sub-Categories List</a></li>
+						<li><a href="@Url.Action("Import_Export_Items", "Admin")">Properties List</a></li>
 					</ul>
 				</div>
 				<div class="sidebar-box-2">
-					<h2 class="heading mb-4"><a href="#">Jeans</a></h2>
+					<h2 class="heading mb-4"><a href="#">System Users</a></h2>
 					<ul>
 						<li><a href="@Url.Action("AddItem", "Admin")">Import &amp; Items</a></li>
 						<li><a href="#">Dresses</a></li>
@@ -49,15 +51,7 @@
 						<li><a href="#">Jackets</a></li>
 						<li><a href="#">Coats</a></li>
 						<li><a href="#">Jeans</a></li>
-						<li><a href="#">Sleeveless</a></li>
-						<li><a href="#">Trousers</a></li>
-						<li><a href="#">Winter Coats</a></li>
-						<li><a href="#">Jumpsuits</a></li>
 					</ul>
-				</div>
-				<div class="sidebar-box-2">
-					<h2 class="heading mb-2"><a href="#">Bags</a></h2>
-					<h2 class="heading mb-2"><a href="#">Accessories</a></h2>
 				</div>
 				<div class="sidebar-box-2">
 					<h2 class="heading mb-4"><a href="#">Shoes</a></h2>
@@ -71,9 +65,9 @@
 					</ul>
 				</div>
 			</div>
+			<!-- Right here the sidebar ends and the table contens starts-->
 
 			<div class="col-md-8 col-lg-10 order-md-last">
-
 				<table class="table-bordered" style="width: 100%; max-width: 100%; color:black;">
 					<tr style="padding-bottom: 1em;">
 						<th style="width:8%; text-align: center;">
