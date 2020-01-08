@@ -100,6 +100,14 @@
 						</div>
 					</div>
 
+					<div style="color:black" class="form-group">
+						@Html.LabelFor(model => model.SKUCode, htmlAttributes: new {  @style = "margin-bottom: 0.0rem"  })
+						<div class="col-md-10">
+							@Html.EditorFor(model => model.SKUCode, new {  htmlAttributes = new { @class = "col-md-12" } })
+							@Html.ValidationMessageFor(model => model.SKUCode, "", new { @class = "text-danger"})
+						</div>
+					</div>
+
 					<p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
 					<p>
 						On her way she met a copy. The copy warned the Little Blind Text, that where it came from it would have been rewritten a thousand times and everything that was left from its origin would be the word "and" and the Little Blind Text should turn around and return to its own, safe country. But nothing the copy said could convince her and so it didn’t take long until a few insidious Copy Writers ambushed her, made her drunk with Longe and Parole and dragged her into their agency, where they abused her for their.
@@ -108,7 +116,9 @@
 
 						<div class="w-100"></div>
 						<!-- Something should be thrown out here to inform admin that the item has been modifed/saved-->
-						<input style="margin-top: 10px" href="@Url.Action("Index", "Admin")" type="submit" value="Save Item" class="btn btn-black py-3 px-5">
+						<button type="submit" value="save" class="btn btn-black py-3 px-5" href="@Url.Action("Index", "Admin")">
+							Save Item
+						</button>
 						<a style="margin-top: 10px" href="cart.html" class="btn btn-black py-3 px-5">Go back</a>
 
 					</div>
@@ -125,13 +135,7 @@
 					<button type="button" class="btn btn-danger" color onclick="location.href = '@Url.Action("ItemInformation", new { id = Model.Id })'">Grižti atgal</button>
 				</div>
 
-				<div style="color:black" class="form-group">
-					@Html.LabelFor(model => model.SKUCode, htmlAttributes: new { @class = "col-md-3" })
-					<div class="col-md-10">
-						@Html.EditorFor(model => model.SKUCode, new { htmlAttributes = new { @class = "form-control" } })
-						@Html.ValidationMessageFor(model => model.SKUCode, "", new { @class = "text-danger" })
-					</div>
-				</div>
+				
 
 
 				<div style="color:black" class="form-group">

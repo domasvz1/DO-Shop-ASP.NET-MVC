@@ -2,6 +2,7 @@
 
 @{
 	ViewBag.Title = "Index";
+	int i = 0;
 }
 
 <!DOCTYPE html>
@@ -22,6 +23,7 @@
 	<link rel="stylesheet" href="/Content/css/icomoon.css">
 	<link rel="stylesheet" href="/Content/css/style.css">
 </head>
+
 
 <body class="goto-here">
 
@@ -86,11 +88,16 @@
 							Functionality
 						</th>
 					</tr>
+
+
 					@foreach (var item in Model)
 					{
+						
 						var itemPriceInEur = item.Price / 100.0m;
 						<tr>
 							<td>
+
+				
 								<div style="height: 50px; overflow:hidden; padding-bottom: 1em; text-align: center;">
 									@Html.DisplayFor(modelItem => item.SKUCode)
 								</div>
@@ -99,6 +106,7 @@
 								<div style="height: 50px; overflow:hidden; padding-bottom: 1em; text-align: center;">
 									@Html.DisplayFor(modelItem => item.Name)
 								</div>
+
 							</td>
 							<td>
 								<div style="height: 50px; overflow:hidden; padding-bottom: 1em; text-align: center;">
@@ -111,16 +119,18 @@
 								</div>
 							</td>
 							<td>
-								<div class="dropdown " >
-									<button onclick="MoveToWindows()" class="dropbtn">+</button>
+								<div class="dropdownWarpper">
 									<div id="myDropdown" class="dropdown-content">
-										<a href="@Url.Action("EditItem", new { id = item.Id })">Edit</a>
+								
+										<a href="@Url.Action("ModifyItem", new { id = @item.Id })">Edit</a>
 										<a href="@Url.Action("Index", "Admin")">About</a>
-										<a href="@Url.Action("RemoveItem", new { id = item.Id })">Delete</a>
+										<a href="@Url.Action("RemoveItem", new { id = @item.Id })">Delete</a>
 									</div>
 								</div>
 							</td>
 						</tr>
+						
+						
 					}
 				</table>
 			</div>
@@ -166,56 +176,61 @@
 			}
 		}
 	</script>
-
-
 </body>
 </html>
 
-<style style="text/css">
+<style type="text/css">
+
 	tr:hover {
-	background-color: #ffa45c;
+		background-color: #ffa45c;
 	}
 
 	.dropbtn {
-	  background-color: #3498DB;
-	  color: white;
-	  padding: 16px;
-	  font-size: 16px;
-	  border: none;
-	  cursor: pointer;
-	  text-align: center;"
-
+		background-color: #3498DB;
+		color: white;
+		padding-top: 5px;
+		padding-left: 5px;
+		font-size: 16px;
+		border: none;
+		cursor: pointer;
+		width: 35px;
 	}
 
-	.dropbtn:hover, .dropbtn:focus {
-	  background-color: #2980B9;
-	}
+		.dropbtn:hover, .dropbtn:focus {
+			background-color: #2980B9;
+		}
 
-	.dropdown {
-	  position: relative;
-	  display: inline-block;
-	  text-align: center;"
+	.dropdownWarpper {
+		position: relative;
+		display: inline-block;
+		text-align: center;
+		margin: auto;
+		display: block;
 	}
 
 	.dropdown-content {
-	  display: none;
-	  position: absolute;
-	  background-color: #f1f1f1;
-	  min-width: 160px;
-	  overflow: auto;
-	  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-	  z-index: 1;
+		display: contents;
+		position: absolute;
+		background-color: #f1f1f1;
+		min-width: 160px;
+		overflow: auto;
+		box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+		z-index: 1;
 	}
 
-	.dropdown-content a {
-	  color: black;
-	  padding: 12px 16px;
-	  text-decoration: none;
-	  display: block;
+		.dropdown-content a {
+			color: black;
+			padding: 12px 16px;
+			text-decoration: none;
+			display: block;
+		}
+
+	.dropdown a:hover {
+		background-color: #ddd;
 	}
 
-	.dropdown a:hover {background-color: #ddd;}
-
-	.show {display: block;}
+	.show {
+		display: none;
+	}
 </style>
 
