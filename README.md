@@ -1,12 +1,13 @@
 # D O Shop-ASP.NET MVC
 
-This was initially my University project changed and updated. (D O initials of my first and last name)
+Initially this was my University project at Vilnius University. Most of the projects doen in the University goes by forgotten and dropped out. I have decided
+to continue working on this one and improving my knwolegde in some specific fields during the developement process.
 Since there's a lot of things that can be tweaked and changed, I want to update the scripts and the documentation before releasing.
 This won't be marketed or selled. This is a free download project with a fair use, UI remade completely learning from Winkel boostrap examples. Might some lithuanian expressions left, since this was my university project.
 
-An electronic shop local website written with following elemts frameworks (all can be found in the project):
-If by any chance you are seating nearby this right now, you can learn the following from this
-- .NET visual Studio 
+This was done with MVC(Model Based View) design pattern with .Net Visual Studio.
+An E-shop hoted on localhost, written with following frameworks (all can be found in the project):
+If by any chance you are working with this right now, you are free to learn the following from this:
     * Migartions 
     * Entity Framework
     * Unity Container
@@ -129,7 +130,7 @@ Fixed street number (if it still exists, change that to Apartment / Office Numbe
 -----------------------------------------------------------------------
 
 
-[Version 0.1a released]
+[Version 0.1 released]
 
 - Documented the changes made to the project in the 0.1 alpha version and moved/cleared cards in the Favro from done to documented.
 
@@ -190,7 +191,10 @@ The following modules, scripts / classes were deleted :
 [What needs to be fixed]
 --
 
-* Responsive and interactive buttons in the admin panel.
+* Web Layer Architecture diagram needs to be done for the first release at least;
+
+
+
 * Responsive buttons in the UI
 * Change the language from Lithuanian to English
 * Adminas/Edit/16 (Photo modificfaction widnow, back button doesnt work or deosnt exist)
