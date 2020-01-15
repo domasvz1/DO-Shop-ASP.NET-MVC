@@ -96,7 +96,7 @@ namespace BusinessLogic
                 foundItemObject.Name = item.Name;
                 foundItemObject.Description = item.Description;
                 foundItemObject.Price = item.Price;
-                foundItemObject.Title = item.Title;
+                foundItemObject.Headline = item.Headline;
                 if (item.CategoryId != foundItemObject.CategoryId)
                 {
                     foundItemObject.Category = item.Category;
@@ -228,7 +228,7 @@ namespace BusinessLogic
                 {
                     if (allItems[i].Name == null)
                         continue;
-                    if (allItems[i].Title == null)
+                    if (allItems[i].Headline == null)
                         continue;
                     if (allItems[i].SKUCode == null)
                         continue;

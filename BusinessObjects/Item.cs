@@ -15,23 +15,29 @@ namespace BusinessObjects
 
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        [DisplayName("Prekės Id")]
+        [DisplayName("Item Id")]
         public int Id { get; set; }
+
         [Required]
-        [DisplayName("Pavadinimas")]
+        [DisplayName("Item Name")]
         public string Name { get; set; }
+
         [Required]
-        [DisplayName("Antraštė")]
-        public string Title { get; set; }
+        [DisplayName("Headline")]
+        [DataType(DataType.MultilineText)]
+        public string Headline { get; set; }
+
         [Required]
-        [DisplayName("SKU")]
+        [DisplayName("Item SKU")]
         public string SKUCode { get; set; }
+
         //TODO maybe should be better to change from int to unsigned int?
         [Range(1, int.MaxValue, ErrorMessage = "Item price must be positive!")]
-        [DisplayName("Kaina")]
+        [DisplayName("Item Price")]
         public int Price { get; set; }
 
-        [DisplayName("Aprašymas")]
+        [DisplayName("Description")]
+        [DataType(DataType.MultilineText)]
         public string Description { get; set; }
 
         [DisplayName("Kategorijos Id")]

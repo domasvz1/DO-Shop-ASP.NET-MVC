@@ -22,6 +22,7 @@
 	<link rel="stylesheet" href="/Content/css/icomoon.css">
 	<link rel="stylesheet" href="/Content/css/style.css">
 </head>
+
 <body class="goto-here">
 	<section class="ftco-section bg-light">
 		<div class="container">
@@ -52,6 +53,7 @@
 						</div>
 
 
+						@*
 						<div class="col-sm-6 col-md-6 col-lg-4 ftco-animate">
 							<div class="product">
 								<a href="#" class="img-prod">
@@ -80,19 +82,17 @@
 									</p>
 								</div>
 							</div>
-						</div>
-						
+						</div>*@
+
 
 						<section>
 
-							@{ Html.BeginForm("ImportItems", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" });
-
-							}
+							@{ Html.BeginForm("ImportItems", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" });}
 
 							Prekių failo direktorija:
-
-
-							<input type="submit" value="Import Items" class="btn btn-info" />
+							<button type="submit" value="save" class="btn btn-info">
+								Start Importing Items
+							</button>
 
 						</section>
 
@@ -103,7 +103,7 @@
 						@{ Html.BeginForm("ExportItems", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" });}
 						<input type="submit" value="Eksportuoti prekes" class="btn btn-info" />
 
-						@{ Html.EndForm();}
+						@*@{ Html.EndForm();}*@
 
 						<br />
 

@@ -43,7 +43,7 @@ namespace Presentation.Controllers
         }
 
         //Admin Connection view, locate in "DO SHOP project folder -> Views-> Admin"
-        [UserAuthorization(ConnectionPage = "~/Admin/Login", Roles = "Admin")]
+        //[UserAuthorization(ConnectionPage = "~/Admin/Login", Roles = "Admin")]
         public ActionResult Index()
         {
             return View(_itemDistributionControl.GetAllItems());
@@ -220,13 +220,13 @@ namespace Presentation.Controllers
             return RedirectToAction("SuccessfulExport");
         }
 
-        [UserAuthorization(ConnectionPage = "~/Admin/Login", Roles = "Admin")]
+        //[UserAuthorization(ConnectionPage = "~/Admin/Login", Roles = "Admin")]
         public ActionResult SuccessfulImport()
         {
             return View();
         }
 
-        [UserAuthorization(ConnectionPage = "~/Admin/Login", Roles = "Admin")]
+        //[UserAuthorization(ConnectionPage = "~/Admin/Login", Roles = "Admin")]
         public ActionResult SuccessfulExport()
         {
             return View();
@@ -249,7 +249,7 @@ namespace Presentation.Controllers
         }
 
         //GET: Admin/AddItem
-        [UserAuthorization(ConnectionPage = "~/Admin/Login", Roles = "Admin")]
+        //[UserAuthorization(ConnectionPage = "~/Admin/Login", Roles = "Admin")]
         public ActionResult AddItem()
         {
             ViewBag.CategoryId = new SelectList(_itemCategoryControl.GetAllCategories(), "Id", "Name");
@@ -262,7 +262,7 @@ namespace Presentation.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult AddItem([Bind(Include = "Id,SKUCode,Title,Name,Price,Description,ImageUrl,Image,CategoryId,ItemProperties")] Item item)
+        public ActionResult AddItem([Bind(Include = "Id,SKUCode,Headline,Name,Price,Description,ImageUrl,Image,CategoryId,ItemProperties")] Item item)
         {
             ViewBag.CategoryId = new SelectList(_itemCategoryControl.GetAllCategories(), "Id", "Name");
             if (ModelState.IsValid)
@@ -305,7 +305,7 @@ namespace Presentation.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult ModifyItem([Bind(Include = "Id,SKUCode,Title,Name,Price,Description,CategoryId,ItemProperties,Property")] Item item)
+        public ActionResult ModifyItem([Bind(Include = "Id,SKUCode,Headline,Name,Price,Description,CategoryId,ItemProperties,Property")] Item item)
         {
             ViewBag.CategoryId = new SelectList(_itemCategoryControl.GetAllCategories(), "Id", "Name", item.CategoryId);
             if (ModelState.IsValid)
@@ -646,7 +646,7 @@ namespace Presentation.Controllers
             return View(_orderControl.GetAllOrders());
         }
 
-        [UserAuthorization(ConnectionPage = "~/Admin/Login", Roles = "Admin")]
+        //[UserAuthorization(ConnectionPage = "~/Admin/Login", Roles = "Admin")]
         public ActionResult ModifyOrderStatus(int? id)
         {
             if (id == null)
@@ -662,7 +662,7 @@ namespace Presentation.Controllers
         }
 
         // Id Of the certain order binds here with the OrderStatus class using 'Bind'
-        [UserAuthorization(ConnectionPage = "~/Admin/Login", Roles = "Admin")]
+        //[UserAuthorization(ConnectionPage = "~/Admin/Login", Roles = "Admin")]
         [HttpPost]
         public ActionResult ModifyOrderStatus([Bind(Include = "Id, OrderStatus")] ClientOrders order)
         {
