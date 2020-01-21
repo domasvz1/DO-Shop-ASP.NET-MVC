@@ -46,6 +46,7 @@ namespace Presentation.Controllers
         //[UserAuthorization(ConnectionPage = "~/Admin/Login", Roles = "Admin")]
         public ActionResult Index()
         {
+            // Check if not there are no items, display something ELSE !!!!!!!!!!!!!!!!!!!!!!!!!!!! [ A NEW PAGE OR STH ]
             return View(_itemDistributionControl.GetAllItems());
         }
 
@@ -184,15 +185,29 @@ namespace Presentation.Controllers
         [HttpPost]
         public ActionResult ImportItems([Bind(Include = "file")] HttpPostedFileBase file)
         {
-            // If there's no selected file
-            if (file == null)
+            // If there's no selected file or the file is empty
+            if (file != null && file.ContentLength > 0)
+            {
+                try
+                {
+                    string path = Path.Combine(Server.MapPath("~/Uploads/Items"), Path.GetFileName(file.FileName));
+                    file.SaveAs(path);
+
+                    _itemControl.ImportItemsTask(path, file, Server.MapPath("~/Uploads/Pictures"));
+                    return View("Import_Export_Items");
+                }
+
+                catch (Exception ex)
+                {
+                    ViewBag.Message = "ERROR: " + ex.Message.ToString();
+                    return View("Index");
+                }   
+            }
+            else
             {
                 ModelState.AddModelError("", "You haven't chosen the file");
-                return View("Import_Export_Items");
+                return View("Index");
             }
-
-            _itemControl.ImportItemsTask(Server.MapPath("~/Uploads/Items"), file, Server.MapPath("~/Uploads/Pictures"));
-            return RedirectToAction("SuccessfulImport");
         }
 
         //Returns a list from the selected directory
