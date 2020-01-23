@@ -1,0 +1,4 @@
+﻿[*.cs]
+
+# CA3147: Mark Verb Handlers With Validate Antiforgery Token
+dotnet_diagnostic.CA3147.severity = suggestion

@@ -517,6 +517,7 @@
     <Content Include="Content\bootstrap-reboot.css.map" />
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
+    <Content Include=".editorconfig" />
     <None Include="packages.config" />
     <Content Include="Global.asax" />
     <Content Include="obj\Debug\Presentation.csproj.FileListAbsolute.txt" />
@@ -572,7 +573,7 @@
     <Content Include="Views\Admin\ModifyItem.cshtml" />
     <Content Include="Views\Admin\Login.cshtml" />
     <Content Include="Views\Shared\_Navigation.cshtml" />
-    <Content Include="Views\Admin\Import_Export_Items.cshtml" />
+    <Content Include="Views\Admin\ItemManagement.cshtml" />
     <Content Include="Views\Admin\ChangeItemsPicture.cshtml" />
     <Content Include="Views\Shared\_ErrorLayout.cshtml" />
     <Content Include="Views\Admin\_Search.cshtml" />

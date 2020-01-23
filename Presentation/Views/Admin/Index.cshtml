@@ -26,101 +26,104 @@
 
 <body class="goto-here">
 
-	<!-- Adding some margin, so that all container would be a little bit allocated from the top -->
-	<div class="container" style="margin-top:20px">
-		<div class="row">
+		<!-- Adding some margin, so that all container would be a little bit allocated from the top -->
+		<div class="container" style="margin-top:20px">
+			<div class="row">
 
-			<!-- What follows next is the sidebar, which probably could be inserted into eperate file and reused in all of the panels-->
-			<div class="col-md-4 col-lg-2 sidebar">
-				<div class="sidebar-box-2">
-					<h2 class="heading mb-4"><a href="@Url.Action("Index", "Admin")">Items in shop</a></h2>
-					<ul>
-						<li><a href="@Url.Action("Import_Export_Items", "Admin")">Import Items</a></li>
-						<li><a href="@Url.Action("", "Admin")">Export Items</a></li>
-						<li><a href="@Url.Action("", "Admin")">Create New Item</a></li>
-						<li><a href="@Url.Action("Properties", "Admin")">Categories List</a></li>
-						<li><a href="@Url.Action("Categories", "Admin")">(---) Sub-Categories List</a></li>
-						<li><a href="@Url.Action("Import_Export_Items", "Admin")">Properties List</a></li>
-					</ul>
+				<!-- What follows next is the sidebar, which probably could be inserted into eperate file and reused in all of the panels-->
+				<div class="col-md-4 col-lg-2 sidebar">
+					<div class="sidebar-box-2">
+						<h2 class="heading mb-4"><a href="@Url.Action("Index", "Admin")">Items in shop</a></h2>
+						<ul>
+							<li><a href="@Url.Action("ItemManagement", "Admin")">Import Items</a></li>
+							<li><a href="@Url.Action("", "Admin")">Export Items</a></li>
+							<li><a href="@Url.Action("", "Admin")">Create New Item</a></li>
+							<li><a href="@Url.Action("Properties", "Admin")">Categories List</a></li>
+							<li><a href="@Url.Action("Categories", "Admin")">(---) Sub-Categories List</a></li>
+						</ul>
+					</div>
+					<div class="sidebar-box-2">
+						<h2 class="heading mb-4"><a href="#">System Users</a></h2>
+						<ul>
+							<li><a href="@Url.Action("AddItem", "Admin")">Import &amp; Items</a></li>
+							<li><a href="#">Dresses</a></li>
+							<li><a href="#">Shorts &amp; Skirts</a></li>
+							<li><a href="#">Jackets</a></li>
+							<li><a href="#">Coats</a></li>
+							<li><a href="#">Jeans</a></li>
+						</ul>
+					</div>
+					<div class="sidebar-box-2">
+						<h2 class="heading mb-4"><a href="#">Shoes</a></h2>
+						<ul>
+							<li><a href="#">Nike</a></li>
+							<li><a href="#">Addidas</a></li>
+							<li><a href="#">Skechers</a></li>
+							<li><a href="#">Jackets</a></li>
+							<li><a href="#">Coats</a></li>
+							<li><a href="#">Jeans</a></li>
+						</ul>
+					</div>
 				</div>
-				<div class="sidebar-box-2">
-					<h2 class="heading mb-4"><a href="#">System Users</a></h2>
-					<ul>
-						<li><a href="@Url.Action("AddItem", "Admin")">Import &amp; Items</a></li>
-						<li><a href="#">Dresses</a></li>
-						<li><a href="#">Shorts &amp; Skirts</a></li>
-						<li><a href="#">Jackets</a></li>
-						<li><a href="#">Coats</a></li>
-						<li><a href="#">Jeans</a></li>
-					</ul>
-				</div>
-				<div class="sidebar-box-2">
-					<h2 class="heading mb-4"><a href="#">Shoes</a></h2>
-					<ul>
-						<li><a href="#">Nike</a></li>
-						<li><a href="#">Addidas</a></li>
-						<li><a href="#">Skechers</a></li>
-						<li><a href="#">Jackets</a></li>
-						<li><a href="#">Coats</a></li>
-						<li><a href="#">Jeans</a></li>
-					</ul>
-				</div>
-			</div>
-			<!-- Right here the sidebar ends and the table contens starts-->
 
-			<div class="col-md-8 col-lg-10 order-md-last">
-				<table class="table-bordered" style=" height:50%; color:black;">
-					<tr style="padding-bottom: 1em; text-align: center;">
-						<th style="width:15%;">
-							@Html.DisplayNameFor(model => model.SKUCode)
-						</th>
-						<th style="width:30%;">
-							@Html.DisplayNameFor(model => model.Name)
-						</th>
-						<th style="width:15%;">
-							@Html.DisplayNameFor(model => model.Price)
-						</th>
-						<th style="">
-							@Html.DisplayNameFor(model => model.Description)
-						</th>
-					</tr>
+				<!-- Right here the sidebar ends and the table contens starts-->
+				<!-- Added a check so that the page would not corrupt -->
+				@if (Model != null && Model.Count() != 0)
+				{
+					<div class="col-md-8 col-lg-10 order-md-last">
+						<table class="table-bordered" style=" height:50%; color:black;">
+							<tr style="padding-bottom: 1em; text-align: center;">
+								<th style="width:15%;">
+									@Html.DisplayNameFor(model => model.SKUCode)
+								</th>
+								<th style="width:30%;">
+									@Html.DisplayNameFor(model => model.Name)
+								</th>
+								<th style="width:15%;">
+									@Html.DisplayNameFor(model => model.Price)
+								</th>
+								<th style="">
+									@Html.DisplayNameFor(model => model.Description)
+								</th>
+							</tr>
 
 
-					@foreach (var item in Model)
-					{
+							@foreach (var item in Model)
+							{
 
-						var itemPriceInEur = item.Price / 100.0m;
+								var itemPriceInEur = item.Price / 100.0m;
 
-						<tr onclick="window.location='@Url.Action("ItemInformation", new { id = @item.Id })'">
-							<td>
-								<div style="height: 50px; overflow:hidden; padding-bottom: 1em; text-align: center;">
-									@Html.DisplayFor(modelItem => item.SKUCode)
-								</div>
-							</td>
-							<td>
-								<div style="height: 50px; overflow:hidden; padding-bottom: 1em; text-align: center;">
-									@Html.DisplayFor(modelItem => item.Name)
-								</div>
+								<tr onclick="window.location='@Url.Action("ItemInformation", new { id = @item.Id })'">
+									<td>
+										<div style="height: 50px; overflow:hidden; padding-bottom: 1em; text-align: center;">
+											@Html.DisplayFor(modelItem => item.SKUCode)
+										</div>
+									</td>
+									<td>
+										<div style="height: 50px; overflow:hidden; padding-bottom: 1em; text-align: center;">
+											@Html.DisplayFor(modelItem => item.Name)
+										</div>
 
-							</td>
-							<td class="sibling-hover">
-								<div style="height: 50px; overflow:hidden; padding-bottom: 1em; text-align: center;">
-									@Html.DisplayFor(modelItem => itemPriceInEur) Euros
-								</div>
-							</td>
+									</td>
+									<td class="sibling-hover">
+										<div style="height: 50px; overflow:hidden; padding-bottom: 1em; text-align: center;">
+											@Html.DisplayFor(modelItem => itemPriceInEur) Euros
+										</div>
+									</td>
 
-							<td>
-								<div style="height: 50px; overflow:hidden; padding-bottom: 1em; text-align: center;">
-									@Html.DisplayFor(modelItem => item.Description)
-								</div>
-							</td>
-						</tr>
-					}
-				</table>
+									<td>
+										<div style="height: 50px; overflow:hidden; padding-bottom: 1em; text-align: center;">
+											@Html.DisplayFor(modelItem => item.Description)
+										</div>
+									</td>
+								</tr>
+							}
+						</table>
+					</div>
+				}
 			</div>
 		</div>
-	</div>
-</body>
+	</body>
 </html>
 
 <script src="/Content/js/jquery.min.js"></script>

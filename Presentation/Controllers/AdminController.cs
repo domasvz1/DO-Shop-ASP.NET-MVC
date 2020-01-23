@@ -23,6 +23,7 @@ namespace Presentation.Controllers
         private readonly IClientProfileControl _clientProfileControl;
         private readonly IAdminControl _adminControl;
         private readonly IOrderControl _orderControl;
+       
 
         public AdminController(
             IItemDistributionControl itemDistributionControl,
@@ -46,8 +47,18 @@ namespace Presentation.Controllers
         //[UserAuthorization(ConnectionPage = "~/Admin/Login", Roles = "Admin")]
         public ActionResult Index()
         {
-            // Check if not there are no items, display something ELSE !!!!!!!!!!!!!!!!!!!!!!!!!!!! [ A NEW PAGE OR STH ]
-            return View(_itemDistributionControl.GetAllItems());
+            // Check if not there are no items, 
+            var newVar = _itemDistributionControl.GetAllItems();
+
+            if (newVar.Count() == 0)
+            {
+                // Do something here
+                return View(_itemDistributionControl.GetAllItems());
+            }
+            else
+            {
+                return View(_itemDistributionControl.GetAllItems());
+            }
         }
 
         public ActionResult Login()
@@ -174,39 +185,40 @@ namespace Presentation.Controllers
             return RedirectToAction("SystemUsers", "Admin");
         }
 
-        public ActionResult Import_Export_Items()
+        public ActionResult ItemManagement()
         {
             return View(new ItemExportModel {
                 ExportItemsToFile = GetExportedFile()
             });
         }
 
-        // This Action has no references. It it called from the Import_Export_Items View
         [HttpPost]
-        public ActionResult ImportItems([Bind(Include = "file")] HttpPostedFileBase file)
+        public ActionResult ItemManagement([Bind(Include = "file")] HttpPostedFileBase file)
         {
             // If there's no selected file or the file is empty
             if (file != null && file.ContentLength > 0)
             {
                 try
                 {
-                    string path = Path.Combine(Server.MapPath("~/Uploads/Items"), Path.GetFileName(file.FileName));
-                    file.SaveAs(path);
+                    // The functionality is in FileControl (BUSINESS LOGIC LAYER) in LoadShopItemsFile method
+                    // All is neeeded here to pass the item and image location folders in the Project folder.. presentation layer 
+                    string itemsLocation = Server.MapPath("~/Uploads/Items"), imagesLocation = Server.MapPath("~/Uploads/Pictures");
+                    _itemControl.StartImportingItems(itemsLocation, file, imagesLocation);
 
-                    _itemControl.ImportItemsTask(path, file, Server.MapPath("~/Uploads/Pictures"));
-                    return View("Import_Export_Items");
+                    // After import is done there should be made another window
+                    return View("ItemManagement");
                 }
 
                 catch (Exception ex)
                 {
                     ViewBag.Message = "ERROR: " + ex.Message.ToString();
                     return View("Index");
-                }   
+                }
             }
             else
             {
                 ModelState.AddModelError("", "You haven't chosen the file");
-                return View("Index");
+                return View("ItemManagement");
             }
         }
 
@@ -227,7 +239,7 @@ namespace Presentation.Controllers
             return new DirectoryInfo(path).GetFiles("*.xlsx").ToList();
         }
 
-        // This Action has no references. It it called from the Import_Export_Items View
+        // This Action has no references. It it called from the ItemManagement View
         public ActionResult ExportItems()
         {
             var allItems = _itemDistributionControl.GetAllItems();
