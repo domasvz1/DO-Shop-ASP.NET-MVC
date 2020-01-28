@@ -23,16 +23,59 @@
 	<link rel="stylesheet" href="/Content/css/flaticon.css">
 	<link rel="stylesheet" href="/Content/css/icomoon.css">
 	<link rel="stylesheet" href="/Content/css/style.css">
+
+	<meta charset="utf-8">
+
+	<title>jQuery UI Dialog - Default functionality</title>
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	<link rel="stylesheet" href="/resources/demos/style.css">
+
+
 </head>
 
 
 <body class="goto-here">
 
+	<!-- If anyone will need help understanding this https://getbootstrap.com/docs/4.0/components/modal/ -->
 
 
 	@using (Html.BeginForm("ItemManagement", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
 	{
-		@ViewBag.Message
+
+		if (@ViewBag.Message == "You haven't chosen the file")
+		{
+			<h2>Click to see what might have happened</h2>
+			<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+				Just a test
+			</button>
+
+			<!-- Modal -->
+			<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="exampleModalLabel" style="height: 0px;">Modal title</h5>
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<p style="font-size: .9em">
+								<span style=" color: #d69903; font-weight: bold">What happened: </span><br />
+								@ViewBag.Message
+
+							</p>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		}
+
+
 		<section class="ftco-section bg-light">
 			<div class="container">
 				<div class="row">
@@ -82,6 +125,7 @@
 								<div class="product">
 									<a href="#" class="img-prod">
 										<img class="img-fluid" src="/Content/images/import.png" alt="Colorlib Template">
+
 										<div class="overlay"></div>
 									</a>
 									<div class="text py-3 px-3">
@@ -93,6 +137,7 @@
 
 										</div>
 										<p class="bottom-area d-flex px-3">
+
 											@Html.TextBox("Hello there", null, new { type = "file", htmlAttributes = new { @class = "ion-ios-cart ml-1!important" } })
 											<a href="#" class="buy-now text-center py-2">Import items<span><i class="ion-ios-cart ml-1"></i></span></a>
 										</p>
@@ -104,7 +149,11 @@
 
 
 							<input type="file" name="file" value="save" class="btn btn-info" />
+
 							<input id="importingExcelItems" type="submit" name="file" value="Start Importing" class="btn btn-info" />
+
+
+
 
 
 							<button type="button" class="btn btn-dark" onclick="location.href = '@Url.Action("Index", "Admin")'">Grįžti į prekių valdymo langą</button>
@@ -118,6 +167,18 @@
 		</section>
 
 	}
+
+
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	<script>
+		$(function () {
+			//xxx.modal("show") and xxx.modal("hide") control modal should be show or hide
+			$("#exampleModal").modal("hide");
+		});
+
+	</script>
 
 
 

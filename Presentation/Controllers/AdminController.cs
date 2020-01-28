@@ -187,6 +187,7 @@ namespace Presentation.Controllers
 
         public ActionResult ItemManagement()
         {
+            
             return View(new ItemExportModel {
                 ExportItemsToFile = GetExportedFile()
             });
@@ -217,7 +218,9 @@ namespace Presentation.Controllers
             }
             else
             {
-                ModelState.AddModelError("", "You haven't chosen the file");
+                string errorMsg = "You haven't chosen the file";
+                ModelState.AddModelError("", errorMsg);
+                ViewBag.Message = errorMsg;
                 return View("ItemManagement");
             }
         }
