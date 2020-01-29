@@ -207,6 +207,7 @@ namespace Presentation.Controllers
                     _itemControl.StartImportingItems(itemsLocation, file, imagesLocation);
 
                     // After import is done there should be made another window
+                    ViewBag.Message = "Items were successfully importer, go back to  main page to search for items.";
                     return View("ItemManagement");
                 }
 

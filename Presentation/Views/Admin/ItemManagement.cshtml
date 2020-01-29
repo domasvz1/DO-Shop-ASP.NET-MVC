@@ -2,13 +2,12 @@
 
 @{
 	ViewBag.Title = "ItemManagement";
-
 }
-
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
+	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
 	<link rel="stylesheet" href="/Content/css/open-iconic-bootstrap.min.css">
@@ -23,14 +22,8 @@
 	<link rel="stylesheet" href="/Content/css/flaticon.css">
 	<link rel="stylesheet" href="/Content/css/icomoon.css">
 	<link rel="stylesheet" href="/Content/css/style.css">
-
-	<meta charset="utf-8">
-
-	<title>jQuery UI Dialog - Default functionality</title>
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 	<link rel="stylesheet" href="/resources/demos/style.css">
-
-
 </head>
 
 
@@ -38,23 +31,17 @@
 
 	<!-- If anyone will need help understanding this https://getbootstrap.com/docs/4.0/components/modal/ -->
 
-
 	@using (Html.BeginForm("ItemManagement", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
 	{
 
-		if (@ViewBag.Message == "You haven't chosen the file")
+		if (@ViewBag.Message != null )
 		{
-			<h2>Click to see what might have happened</h2>
-			<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-				Just a test
-			</button>
-
-			<!-- Modal -->
+			<!-- Popup window -->
 			<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 				<div class="modal-dialog" role="document">
 					<div class="modal-content">
 						<div class="modal-header">
-							<h5 class="modal-title" id="exampleModalLabel" style="height: 0px;">Modal title</h5>
+							<h5 class="modal-title" id="exampleModalLabel" style="height: 20px;">Admin panel information</h5>
 							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 
 								<span aria-hidden="true">&times;</span>
@@ -64,7 +51,6 @@
 							<p style="font-size: .9em">
 								<span style=" color: #d69903; font-weight: bold">What happened: </span><br />
 								@ViewBag.Message
-
 							</p>
 						</div>
 						<div class="modal-footer">
@@ -115,6 +101,7 @@
 							</ul>
 						</div>
 					</div>
+					<!-- Sidebar ends here -->
 
 
 					<!-- What follows up is a mess and imports looks very bad for the moment, but it works finally-->
@@ -122,45 +109,21 @@
 						<div class="row">
 
 							<div class="col-sm-6 col-md-6 col-lg-4 ftco-animate">
-								<div class="product">
-									<a href="#" class="img-prod">
-										<img class="img-fluid" src="/Content/images/import.png" alt="Colorlib Template">
 
-										<div class="overlay"></div>
-									</a>
-									<div class="text py-3 px-3">
-										<h3><a href="#">Item Import</a></h3>
-										<div class="d-flex">
-											<div class="pricing">
-												<p class="price"><span>Import items from the selcted file</span></p>
-											</div>
+								<div class="d-flex" style="margin-bottom: 20px;">
+									<input type="file" name="file" value="save" class="btn btn-info" style="margin-right: 40px;" />
 
-										</div>
-										<p class="bottom-area d-flex px-3">
-
-											@Html.TextBox("Hello there", null, new { type = "file", htmlAttributes = new { @class = "ion-ios-cart ml-1!important" } })
-											<a href="#" class="buy-now text-center py-2">Import items<span><i class="ion-ios-cart ml-1"></i></span></a>
-										</p>
-									</div>
+									<input id="importingExcelItems" type="submit" name="file" value="Start Importing" class="btn btn-info" />
 								</div>
+
+								<div class="d-flex">
+									<button type="button" class="btn btn-dark" onclick="location.href = '@Url.Action("Index", "Admin")'">Grįžti į prekių valdymo langą</button>
+								</div>
+
 							</div>
-
-
-
-
-							<input type="file" name="file" value="save" class="btn btn-info" />
-
-							<input id="importingExcelItems" type="submit" name="file" value="Start Importing" class="btn btn-info" />
-
-
-
-
-
-							<button type="button" class="btn btn-dark" onclick="location.href = '@Url.Action("Index", "Admin")'">Grįžti į prekių valdymo langą</button>
 
 						</div>
 					</div>
-
 
 				</div>
 			</div>
@@ -175,7 +138,7 @@
 	<script>
 		$(function () {
 			//xxx.modal("show") and xxx.modal("hide") control modal should be show or hide
-			$("#exampleModal").modal("hide");
+			$("#exampleModal").modal("show");
 		});
 
 	</script>

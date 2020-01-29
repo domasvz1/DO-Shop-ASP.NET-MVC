@@ -82,7 +82,7 @@ If there are problems with migrations
 
 
 # Currently working on
-[WORK IN PROGRESS 0.3 ADMIN PANEL] 
+[WORK IN PROGRESS 0.3 ADMIN PANEL]
 
 
 Documentation should come from the favro cards
