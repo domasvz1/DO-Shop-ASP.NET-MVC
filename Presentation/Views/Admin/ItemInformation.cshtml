@@ -43,28 +43,51 @@
 			</div>
 		</div>
 
-
-		<br>
-		<div class="container">
+		<div class="container" style="margin-top: 1%">
 			<div class="row">
-				<div class="col-lg-6 mb-5 ftco-animate">
-					<a href="/Content/images/menu-2.jpg" class="image-popup"><img src="/Content/images/product-1.jpg" class="img-fluid" alt="Colorlib Template"></a>
-
-					<div class="col-md-12" style="padding-right: 0; padding-left: 0px; margin-top: 10px">
-						<div class="form-group d-flex col-md-12" style="padding-right: 0; padding-left: 0px; margin-top: 10px">
-							<div class="select-wrap col-md-12" style="padding-right: 0; padding-left: 0px; margin-top: 10px">
-								@Html.DisplayFor(model => model.Category, new { htmlAttributes = new { @class = "input100 col-md-12" } })
-							</div>
-						</div>
+				<!-- What follows next is the sidebar, which probably could be inserted into eperate file and reused in all of the panels-->
+				<!-- Sidebar spacing is always 2 space lg-4  -->
+				<div class="col-md-2 col-lg-2 sidebar">
+					<div class="sidebar-box-2">
+						<h2 class="heading mb-4"><a href="@Url.Action("Index", "Admin")">Items in shop</a></h2>
+						<ul>
+							<li><a href="@Url.Action("ItemManagement", "Admin")">Import Items</a></li>
+							<li><a href="@Url.Action("", "Admin")">Export Items</a></li>
+							<li><a href="@Url.Action("", "Admin")">Create New Item</a></li>
+							<li><a href="@Url.Action("Properties", "Admin")">Categories List</a></li>
+							<li><a href="@Url.Action("Categories", "Admin")">(---) Sub-Categories List</a></li>
+						</ul>
 					</div>
-
-					<div id="ItemProperties" class="input-group col-md-12 d-flex" style="padding-right: 0; padding-left: 0px">
-						@Html.DisplayFor(model => model.ItemProperties, new { htmlAttributes = new { @style = "padding-right: 0; padding-left: 0px" } })
+					<div class="sidebar-box-2">
+						<h2 class="heading mb-4"><a href="#">System Users</a></h2>
+						<ul>
+							<li><a href="@Url.Action("AddItem", "Admin")">Import &amp; Items</a></li>
+							<li><a href="#">Dresses</a></li>
+							<li><a href="#">Shorts &amp; Skirts</a></li>
+							<li><a href="#">Jackets</a></li>
+							<li><a href="#">Coats</a></li>
+							<li><a href="#">Jeans</a></li>
+						</ul>
 					</div>
-					<div class="w-100"></div>
+					<div class="sidebar-box-2">
+						<h2 class="heading mb-4"><a href="#">Shoes</a></h2>
+						<ul>
+							<li><a href="#">Nike</a></li>
+							<li><a href="#">Addidas</a></li>
+							<li><a href="#">Skechers</a></li>
+							<li><a href="#">Jackets</a></li>
+							<li><a href="#">Coats</a></li>
+							<li><a href="#">Jeans</a></li>
+						</ul>
+					</div>
 				</div>
-				<div class="col-lg-6 product-details pl-md-5 ftco-animate">
 
+				<!-- Image space lg-4 and md-4 -->
+				<div class="col-lg-4 col-md-4 ftco-animate">
+					<a href="/Content/images/menu-2.jpg" class="image-popup"><img src="/Content/images/product-1.jpg" class="img-fluid" alt="Colorlib Template"></a>
+				</div>
+
+				<div class="col-lg-6 product-details pl-md-6 ftco-animate">
 					<div class="rating d-flex">
 						<p class="text-left mr-4">
 							<a href="#" class="mr-2">5.0</a>
@@ -83,93 +106,40 @@
 					</div>
 
 					<div style="color:black" class="form-group">
-						@Html.LabelFor(model => model.Price, htmlAttributes: new { @style = "margin-bottom: 0.0rem" })
-						<div>
-							@Html.DisplayFor(model => model.Price, new { htmlAttributes = new { @class = "col-md-6" } })
-						</div>
+						<b>@Html.LabelFor(model => model.Price, htmlAttributes: new { @style = "margin-bottom: 0.0rem" })</b>
+						<span style="margin-left: 10px">@Html.DisplayFor(model => model.Price, new { htmlAttributes = new { @class = "col-md-6" } }) </span>
 					</div>
 
 					<div style="color:black" class="form-group">
-						@Html.LabelFor(model => model.Headline, htmlAttributes: new { @style = "margin-bottom: 0.0rem" })
-						<div>
-							@Html.DisplayFor(model => model.Headline, new { htmlAttributes = new { @class = "col-md-12" } })
-						</div>
+						<b>@Html.LabelFor(model => model.Headline, htmlAttributes: new { @style = "margin-bottom: 0.0rem" })</b>
+						<span style="margin-left: 10px">@Html.DisplayFor(model => model.Headline, new { htmlAttributes = new { @class = "col-md-12" } }) </span>
 					</div>
 
 					<div style="color:black" class="form-group">
-						@Html.LabelFor(model => model.SKUCode, htmlAttributes: new { @style = "margin-bottom: 0.0rem" })
-						<div class="col-md-10">
-							@Html.DisplayFor(model => model.SKUCode, new { htmlAttributes = new { @class = "col-md-12" } })
-						</div>
+						<b>@Html.LabelFor(model => model.SKUCode, htmlAttributes: new { @style = "margin-bottom: 0.0rem" })</b>
+						<span style="margin-left: 10px">@Html.DisplayFor(model => model.SKUCode, new { htmlAttributes = new { @class = "col-md-12" } }) </span>
 					</div>
+
+					<div style="color:black" class="form-group">
+						<b>@Html.LabelFor(model => model.Category, htmlAttributes: new { @style = "margin-bottom: 0.0rem" })</b>
+						<span style="margin-left: 10px">@Html.DisplayFor(model => model.Category.Name, new { htmlAttributes = new { @class = "input100 col-md-12" } }) </span>
+					</div>
+
+
 
 					<p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
 					<p>
 						On her way she met a copy. The copy warned the Little Blind Text, that where it came from it would have been rewritten a thousand times and everything that was left from its origin would be the word "and" and the Little Blind Text should turn around and return to its own, safe country. But nothing the copy said could convince her and so it didn’t take long until a few insidious Copy Writers ambushed her, made her drunk with Longe and Parole and dragged her into their agency, where they abused her for their.
 					</p>
-					<div class="row mt-4">
-
-						<div class="w-100"></div>
-						<!-- Something should be thrown out here to inform admin that the item has been modifed/saved-->
-						<button type="button" class="btn btn-warning" style="margin-left:4.5%; margin-top: 2%" color onclick="location.href = '@Url.Action("ModifyItem", new { id = Model.Id })'">Redaguoti prekę</button>
-
-						<div style="margin-right: 20%;">
-							<button type="button" class="btn btn-dark" color onclick="location.href = '@Url.Action("Index")'">Grižti į prekių sąrašą</button>
-						</div>
-
+					<div class="rating d-flex">
+						<button type="button" class="btn btn-warning" color onclick="location.href = '@Url.Action("ModifyItem", new { id = Model.Id })'">Edit the item</button>
+						<button type="button" class="btn btn-warning" color onclick="location.href = '@Url.Action("Index")'" style="margin-left: 20px">Back to Item List</button>
 					</div>
 
 				</div>
 			</div>
 		</div>
 
-		<br />
-		@*<div style="width:100%">
-
-				<div>
-					<input type="submit" value="Išsaugoti prekę" class="btn btn-success" />
-					<button type="button" class="btn btn-danger" color onclick="location.href = '@Url.Action("ItemInformation", new { id = Model.Id })'">Grižti atgal</button>
-				</div>
-
-
-
-
-				<div style="color:black" class="form-group">
-					@Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
-					<div class="col-md-10">
-						@Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
-						@Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
-					</div>
-				</div>
-
-
-				<div class="col-md-11">
-					@{
-						if (Model.ImageUrl != null)
-						{
-							<img src="@Url.Content(Model.ImageUrl)" alt="@Model.Name" width="40%" class="img-thumbnail" />
-						}
-						else
-						{
-							<img src="@Url.Content("~/Content/Images/NoImage.jpg")" alt="@Model.Name" width="40%" class="img-thumbnail" />
-						}
-					}
-				</div>
-
-				<button type="button" class="btn btn-primary" style="margin-left:2%; margin-top:2%" onclick="location.href='@Url.Action("ChangeItemsPicture", "Admin", new { id = Model.Id })'">Pakiesti nuotrauka</button>
-
-				<div class="form-group">
-					<br />
-					@Html.LabelFor(model => model.CategoryId, "Category", htmlAttributes: new { @class = "col-md-3" })
-
-					<div style="color:black;" class="col-md-10">
-						@Html.DropDownList("CategoryId", null, "Item has no Category", htmlAttributes: new { @class = "form-control", @onchange = "changeProperty()" })
-						@Html.ValidationMessageFor(model => model.CategoryId, "", new { @class = "text-danger" })
-					</div>
-				</div>
-
-
-			</div>*@
 	}
 
 	<br />
@@ -195,19 +165,4 @@
 <script src="/Content/js/google-map.js"></script>
 <script src="/Content/js/main.js"></script>
 
-<script type="text/javascript">
-    function changeProperty() {
-		var url = '@Url.Action("ItemProperties", "Admin")';
-        $.ajax({
-            type: "POST",
-            url: url,
-            data: $('#CategoryId').serialize(),
-            cache: false,
-            dataType: 'html',
-            success: function (response) {
-                $("#ItemProperties").html(response);
-            }
-        });
-    }
-</script>
 
