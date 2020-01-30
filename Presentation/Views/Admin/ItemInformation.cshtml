@@ -106,16 +106,6 @@
 					</div>
 
 					<div style="color:black" class="form-group">
-						<b>@Html.LabelFor(model => model.Price, htmlAttributes: new { @style = "margin-bottom: 0.0rem" })</b>
-						<span style="margin-left: 10px">@Html.DisplayFor(model => model.Price, new { htmlAttributes = new { @class = "col-md-6" } }) </span>
-					</div>
-
-					<div style="color:black" class="form-group">
-						<b>@Html.LabelFor(model => model.Headline, htmlAttributes: new { @style = "margin-bottom: 0.0rem" })</b>
-						<span style="margin-left: 10px">@Html.DisplayFor(model => model.Headline, new { htmlAttributes = new { @class = "col-md-12" } }) </span>
-					</div>
-
-					<div style="color:black" class="form-group">
 						<b>@Html.LabelFor(model => model.SKUCode, htmlAttributes: new { @style = "margin-bottom: 0.0rem" })</b>
 						<span style="margin-left: 10px">@Html.DisplayFor(model => model.SKUCode, new { htmlAttributes = new { @class = "col-md-12" } }) </span>
 					</div>
@@ -125,25 +115,36 @@
 						<span style="margin-left: 10px">@Html.DisplayFor(model => model.Category.Name, new { htmlAttributes = new { @class = "input100 col-md-12" } }) </span>
 					</div>
 
+					<div style="color:black" class="form-group">
+						<b>@Html.LabelFor(model => model.Price, htmlAttributes: new { @style = "margin-bottom: 0.0rem" })</b>
+						<span style="margin-left: 10px">@Html.DisplayFor(model => model.Price, new { htmlAttributes = new { @class = "col-md-6" } }) </span>
+					</div>
+
+					<div style="color:black" class="form-group">
+						<b>@Html.LabelFor(model => model.Headline, htmlAttributes: new { @style = "margin-bottom: 0.0rem" })</b>
+						<span style="margin-left: 10px">@Html.DisplayFor(model => model.Headline, new { htmlAttributes = new { @class = "col-md-12" } }) </span>
+					</div>
+
+					<div style="color:black; margin-bottom: 8%;" class="form-group">
+						<b>@Html.LabelFor(model => model.Description, htmlAttributes: new { @style = "margin-bottom: 0.0rem" })	</b>
+						<div>
+							@Html.DisplayFor(model => model.Description, new { htmlAttributes = new { @class = "col-md-12", @style = "height:300px" } })
+						</div>
+					</div>
 
 
-					<p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
-					<p>
-						On her way she met a copy. The copy warned the Little Blind Text, that where it came from it would have been rewritten a thousand times and everything that was left from its origin would be the word "and" and the Little Blind Text should turn around and return to its own, safe country. But nothing the copy said could convince her and so it didn’t take long until a few insidious Copy Writers ambushed her, made her drunk with Longe and Parole and dragged her into their agency, where they abused her for their.
-					</p>
 					<div class="rating d-flex">
 						<button type="button" class="btn btn-warning" color onclick="location.href = '@Url.Action("ModifyItem", new { id = Model.Id })'">Edit the item</button>
 						<button type="button" class="btn btn-warning" color onclick="location.href = '@Url.Action("Index")'" style="margin-left: 20px">Back to Item List</button>
 					</div>
 
 				</div>
+
 			</div>
 		</div>
 
 	}
 
-	<br />
-	<hr />
 </body>
 
 	
