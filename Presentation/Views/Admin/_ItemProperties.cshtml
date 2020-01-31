@@ -4,4 +4,5 @@
 	ViewBag.Title = "_ItemProperties";
 }
 
-@Html.EditorFor(x => Model)
+@Html.EditorFor(x => Model, 
+  new { htmlAttributes = new { @class="", style ="padding-left: 0px"  } })

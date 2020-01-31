@@ -96,7 +96,7 @@ namespace BusinessLogic
                 foundItemObject.Name = item.Name;
                 foundItemObject.Description = item.Description;
                 foundItemObject.Price = item.Price;
-                foundItemObject.Title = item.Title;
+                foundItemObject.Headline = item.Headline;
                 if (item.CategoryId != foundItemObject.CategoryId)
                 {
                     foundItemObject.Category = item.Category;
@@ -216,19 +216,20 @@ namespace BusinessLogic
             return Regex.IsMatch(url, @"(\.png|\.jpg|\.jpeg|\.gif){1}$");
         }
 
-        public async Task ImportItemsTask(string itemFolderRepository, HttpPostedFileBase file, string imageRepository)
+        // items Location represents file location in the projects folder, images location is the same, the httpbased file is the attached excel file
+        public async Task StartImportingItems(string itemsLocation, HttpPostedFileBase file, string imagesLocation)
         {
             await Task.Run(() =>
             {
-                var itemsFileObject = _FileControl.LoadShopItemsFile(itemFolderRepository, file);
-                var allItems = _ImportControl.ImportItemsFromFile(Path.Combine(itemFolderRepository, itemsFileObject));
+                var itemsFileObject = _FileControl.LoadShopItemsFile(itemsLocation, file);
+                var allItems = _ImportControl.ImportItemsFromFile(Path.Combine(itemsLocation, itemsFileObject));
                 var allCategories = _ItemCategoryControl.GetAllCategories();
 
                 for (int i = 0; i < allItems.Count; i++)
                 {
                     if (allItems[i].Name == null)
                         continue;
-                    if (allItems[i].Title == null)
+                    if (allItems[i].Headline == null)
                         continue;
                     if (allItems[i].SKUCode == null)
                         continue;
@@ -292,8 +293,8 @@ namespace BusinessLogic
                             {
                                 if (String.IsNullOrEmpty(allItems[i].ImageUrl) && allItems[i].Image != null)
                                 {
-                                    string[] itemsFileRepository = imageRepository.Split(Path.DirectorySeparatorChar);
-                                    string repository = Path.DirectorySeparatorChar + Path.Combine(itemsFileRepository[itemsFileRepository.Length - 2], Path.Combine(itemsFileRepository[itemsFileRepository.Length - 1], _FileControl.LoadShopItemsFile(imageRepository, allItems[i].Image)));
+                                    string[] itemsFileRepository = imagesLocation.Split(Path.DirectorySeparatorChar);
+                                    string repository = Path.DirectorySeparatorChar + Path.Combine(itemsFileRepository[itemsFileRepository.Length - 2], Path.Combine(itemsFileRepository[itemsFileRepository.Length - 1], _FileControl.LoadShopItemsFile(imagesLocation, allItems[i].Image)));
                                     if (!CheckPictureExtension(repository))
                                     {
                                         throw new Exception("Picture extension is not supported by the system");

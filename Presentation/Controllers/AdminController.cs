@@ -23,7 +23,7 @@ namespace Presentation.Controllers
         private readonly IClientProfileControl _clientProfileControl;
         private readonly IAdminControl _adminControl;
         private readonly IOrderControl _orderControl;
-
+       
         public AdminController(
             IItemDistributionControl itemDistributionControl,
             IItemCategoryControl itemCategoryControl,
@@ -42,11 +42,22 @@ namespace Presentation.Controllers
             _orderControl = orderControl;
         }
 
-        // Admin Connection view, locate in "DO SHOP project folder -> Views-> Admin"
+        //Admin Connection view, locate in "DO SHOP project folder -> Views-> Admin"
         [UserAuthorization(ConnectionPage = "~/Admin/Login", Roles = "Admin")]
         public ActionResult Index()
         {
-            return View();
+            // Check if not there are no items, 
+            var newVar = _itemDistributionControl.GetAllItems();
+
+            if (newVar.Count() == 0)
+            {
+                // Do something here
+                return View(_itemDistributionControl.GetAllItems());
+            }
+            else
+            {
+                return View(_itemDistributionControl.GetAllItems());
+            }
         }
 
         public ActionResult Login()
@@ -57,7 +68,7 @@ namespace Presentation.Controllers
         [HttpPost]
         public ActionResult Login(Admin admin, string returnUrl)
         {
-            // paduodamas admino objektas duomenu bazes, einame i admino valdymo klase ir ten patikrinsime ar yra admino objektas su tokiais duomenimis
+            // Give admin base object and lets go to the admin control class
             var adminObject = _adminControl.ConnectAdmin(admin);
 
             // If Admin object has been found
@@ -173,44 +184,65 @@ namespace Presentation.Controllers
             return RedirectToAction("SystemUsers", "Admin");
         }
 
-        [UserAuthorization(ConnectionPage = "~/Admin/Login", Roles = "Admin")]
-        public ActionResult ModifyItems()
+        public ActionResult ItemManagement()
         {
-            return View(_itemDistributionControl.GetAllItems());
-        }
-
-        public ActionResult Import_Export_Items()
-        {
+            
             return View(new ItemExportModel {
                 ExportItemsToFile = GetExportedFile()
             });
         }
 
-        // This Action has no references. It it called from the Import_Export_Items View
         [HttpPost]
-        public ActionResult ImportItems([Bind(Include = "file")] HttpPostedFileBase file)
+        public ActionResult ItemManagement([Bind(Include = "file")] HttpPostedFileBase file)
         {
-            // If there's no selected file
-            if (file == null)
+            // If there's no selected file or the file is empty
+            if (file != null && file.ContentLength > 0)
             {
-                ModelState.AddModelError("", "You haven't chosen the file");
-                return View("Import_Export_Items");
-            }
+                try
+                {
+                    // The functionality is in FileControl (BUSINESS LOGIC LAYER) in LoadShopItemsFile method
+                    // All is neeeded here to pass the item and image location folders in the Project folder.. presentation layer 
+                    string itemsLocation = Server.MapPath("~/Uploads/Items"), imagesLocation = Server.MapPath("~/Uploads/Pictures");
+                    _itemControl.StartImportingItems(itemsLocation, file, imagesLocation);
 
-            _itemControl.ImportItemsTask(Server.MapPath("~/Uploads/Items"), file, Server.MapPath("~/Uploads/Pictures"));
-            return RedirectToAction("SuccessfulImport");
+                    // After import is done there should be made another window
+                    ViewBag.Message = "Items were successfully importer, go back to  main page to search for items.";
+                    return View("ItemManagement");
+                }
+
+                catch (Exception ex)
+                {
+                    ViewBag.Message = "ERROR: " + ex.Message.ToString();
+                    return View("Index");
+                }
+            }
+            else
+            {
+                string errorMsg = "You haven't chosen the file";
+                ModelState.AddModelError("", errorMsg);
+                ViewBag.Message = errorMsg;
+                return View("ItemManagement");
+            }
         }
 
         //Returns a list from the selected directory
         private List<FileInfo> GetExportedFile()
         {
-            string path = Server.MapPath("~/Content/Items");
+            string path = Server.MapPath("~/Content/Items"); // Here should be a check,
+            // It returns a list of files
 
-            var directory = new DirectoryInfo(path);
-            return directory.GetFiles("*.xlsx").ToList();
+            // Added a check if directory doesnt exist, then we return an empty list of FileInfo path
+            if(!Directory.Exists(path))
+            {
+                // The app doesnt crash here anymore it return an empty list
+                return new List<FileInfo>();
+            }
+
+            // If the .xlsx file exist there, it is returned
+            return new DirectoryInfo(path).GetFiles("*.xlsx").ToList();
         }
 
-        // This Action has no references. It it called from the Import_Export_Items View
+        // This Action has no references. It it called from the ItemManagement View
         public ActionResult ExportItems()
         {
             var allItems = _itemDistributionControl.GetAllItems();
@@ -218,13 +250,13 @@ namespace Presentation.Controllers
             return RedirectToAction("SuccessfulExport");
         }
 
-        [UserAuthorization(ConnectionPage = "~/Admin/Login", Roles = "Admin")]
+        //[UserAuthorization(ConnectionPage = "~/Admin/Login", Roles = "Admin")]
         public ActionResult SuccessfulImport()
         {
             return View();
         }
 
-        [UserAuthorization(ConnectionPage = "~/Admin/Login", Roles = "Admin")]
+        //[UserAuthorization(ConnectionPage = "~/Admin/Login", Roles = "Admin")]
         public ActionResult SuccessfulExport()
         {
             return View();
@@ -260,7 +292,7 @@ namespace Presentation.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult AddItem([Bind(Include = "Id,SKUCode,Title,Name,Price,Description,ImageUrl,Image,CategoryId,ItemProperties")] Item item)
+        public ActionResult AddItem([Bind(Include = "Id,SKUCode,Headline,Name,Price,Description,ImageUrl,Image,CategoryId,ItemProperties")] Item item)
         {
             ViewBag.CategoryId = new SelectList(_itemCategoryControl.GetAllCategories(), "Id", "Name");
             if (ModelState.IsValid)
@@ -270,7 +302,7 @@ namespace Presentation.Controllers
                     item.ItemProperties = item.ItemProperties.Where(x => x.Value != null && x.Value != "").ToList();
                     _itemControl.CreateItemWithPicture(item, Server.MapPath("~/Content/Pictures"));
 
-                    return RedirectToAction("ModifyItems");
+                    return RedirectToAction("Index");
                 }
                 catch (Exception ex)
                 {
@@ -303,7 +335,7 @@ namespace Presentation.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult ModifyItem([Bind(Include = "Id,SKUCode,Title,Name,Price,Description,CategoryId,ItemProperties,Property")] Item item)
+        public ActionResult ModifyItem([Bind(Include = "Id,SKUCode,Headline,Name,Price,Description,CategoryId,ItemProperties,Property")] Item item)
         {
             ViewBag.CategoryId = new SelectList(_itemCategoryControl.GetAllCategories(), "Id", "Name", item.CategoryId);
             if (ModelState.IsValid)
@@ -358,6 +390,7 @@ namespace Presentation.Controllers
             return View(preke);
         }
 
+        //ApproveTheRemovalOfItem works and should call a pop up that shows that it was removed
         [HttpPost, ActionName("RemoveItem")]
         [ValidateAntiForgeryToken]
         public ActionResult ApproveTheRemovalOfItem(int id)
@@ -368,10 +401,10 @@ namespace Presentation.Controllers
             }
             catch (Exception)
             {
-                return RedirectToAction("ModifyItems");
+                return RedirectToAction("Index");
             }
 
-            return RedirectToAction("ModifyItems");
+            return RedirectToAction("index");
         }
 
         [HttpPost]

@@ -5,6 +5,8 @@ namespace Presentation
 {
     public class RouteConfig
     {
+        static RouteCollection currentRoutes;
+
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
@@ -16,6 +18,11 @@ namespace Presentation
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Main", action = "Index", id = UrlParameter.Optional }
             );
+            currentRoutes = routes;
+        }
+        public static RouteCollection GetRoute()
+        {
+            return currentRoutes;
         }
     }
 }

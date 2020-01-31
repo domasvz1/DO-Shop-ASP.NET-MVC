@@ -19,7 +19,7 @@ namespace BusinessLogic.Interfaces
         void RemovePropertyFromItem(int itemId, int propertyId);
 
         // Tasks with files
-        Task ImportItemsTask(string itemFolderRepository, HttpPostedFileBase file, string imageRepository);
+        Task StartImportingItems(string itemFolderRepository, HttpPostedFileBase file, string imageRepository);
         Task ExportItemsTask(IEnumerable<Item> items, string itemsRepository);
     }
 }

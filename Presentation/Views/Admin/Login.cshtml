@@ -4,36 +4,141 @@
 	ViewBag.Title = "Login";
 }
 
-@using (Html.BeginForm())
+<!DOCTYPE html>
+@using (Html.BeginForm("Login", "Admin", FormMethod.Post))
 {
-	<div class="panel panel-success" style=" margin-top:15%; max-height: 10; border-radius: 1px; border: 3px solid #73AD21">
+	@Html.AntiForgeryToken()
 
-		@Html.AntiForgeryToken()
-		<div class="form-horizontal">
-			<h3>Sveiki, administratoriau, prisijunkite</h3>
-			<hr />
-			<div class="form-group">
-				@Html.LabelFor(model => model.Login, htmlAttributes: new { @class = "control-label col-md-2" })
-				<div class="col-md-10">
-					@Html.EditorFor(model => model.Login, new { htmlAttributes = new { @class = "form-control" } })
-					@Html.ValidationMessageFor(model => model.Login, "", new { @class = "text-danger" })
-				</div>
-			</div>
-			<div class="form-group">
-				@Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
-				<div class="col-md-10">
-					@Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
-					@Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
-				</div>
-			</div>
-			@Html.ValidationSummary(true, "", new { @class = "text-danger" })
-			<div class="form-group">
-				<div class="col-md-offset-2 col-md-10">
-					<input type="submit" value="Prisijungti" class="btn btn-success" />
+	<html lang="en">
+	<head>
+		<title>Registration Window</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!--===============================================================================================-->
+		<link rel="icon" type="image/png" href="/Content/images/icons/favicon.ico" />
+		<!--===============================================================================================-->
+		<link rel="stylesheet" type="text/css" href="/Content/vendor/bootstrap/css/bootstrap.min.css">
+		<!--===============================================================================================-->
+		<link rel="stylesheet" type="text/css" href="/Content/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+		<!--===============================================================================================-->
+		<link rel="stylesheet" type="text/css" href="/Content/fonts/iconic/css/material-design-iconic-font.min.css">
+		<!--===============================================================================================-->
+		<link rel="stylesheet" type="text/css" href="/Content/vendor/animate/animate.css">
+		<!--===============================================================================================-->
+		<link rel="stylesheet" type="text/css" href="/Content/vendor/css-hamburgers/hamburgers.min.css">
+		<!--===============================================================================================-->
+		<link rel="stylesheet" type="text/css" href="/Content/vendor/animsition/css/animsition.min.css">
+		<!--===============================================================================================-->
+		<link rel="stylesheet" type="text/css" href="/Content/vendor/select2/select2.min.css">
+		<!--===============================================================================================-->
+		<link rel="stylesheet" type="text/css" href="/Content/vendor/daterangepicker/daterangepicker.css">
+		<!--===============================================================================================-->
+		<link rel="stylesheet" type="text/css" href="/Content/css/util.css">
+		<link rel="stylesheet" type="text/css" href="/Content/css/main.css">
+		<!--===============================================================================================-->
+
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
+		<link rel="stylesheet" href="/Content/css/open-iconic-bootstrap.min.css">
+		<link rel="stylesheet" href="/Content/css/animate.css">
+		<link rel="stylesheet" href="/Content/css/owl.carousel.min.css">
+		<link rel="stylesheet" href="/Content/css/owl.theme.default.min.css">
+		<link rel="stylesheet" href="/Content/css/magnific-popup.css">
+		<link rel="stylesheet" href="/Content/css/aos.css">
+		<link rel="stylesheet" href="/Content/css/ionicons.min.css">
+		<link rel="stylesheet" href="/Content/css/bootstrap-datepicker.css">
+		<link rel="stylesheet" href="/Content/css/jquery.timepicker.css">
+		<link rel="stylesheet" href="/Content/css/flaticon.css">
+		<link rel="stylesheet" href="/Content/css/icomoon.css">
+		<link rel="stylesheet" href="/Content/css/style.css">
+	</head>
+
+	<body class="goto-here">
+
+		<div class="hero-wrap hero-bread" style="background-image: url('/Content/images/bg_6.jpg');">
+			<div class="container">
+				<div class="row no-gutters slider-text align-items-center justify-content-center">
+					<div class="col-md-9 ftco-animate text-center">
+						<h1 class="mb-0 bread">Hello administrator</h1>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
+		<br>
+
+
+		<div class="container">
+			<div class="row justify-content-center">
+				<div style="width:70%">
+					<form action="#" class="billing-form">
+
+
+						<div class="wrap-input100 validate-input m-b-23" data-validate="Login is reauired">
+							<span class="label-input100">@Html.LabelFor(model => model.Login)</span>
+							@Html.EditorFor(model => model.Login, new { htmlAttributes = new { @class = "input100", type = "text", placeholder = "Type your username" } })
+							<span class="focus-input100" data-symbol="&#xf206;"></span>
+						</div>
+
+						<div class="wrap-input100 validate-input" data-validate="Password is required">
+							<span class="label-input100">@Html.LabelFor(model => model.Password)</span>
+							@Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "input100", type = "password", placeholder = "Type your password" } })
+							<span class="focus-input100" data-symbol="&#xf190;"></span>
+						</div>
+
+						<div class="text-right p-t-8 p-b-31">
+							<a href="#">
+								Something looks wrong? Inform the Maintainer
+							</a>
+						</div>
+
+						<div class="container-login100-form-btn" style="width:80%; padding-left:20%">
+							<div class="wrap-login100-form-btn">
+								<div class="login100-form-bgbtn"></div>
+								<button class="login100-form-btn" type="submit" value="Login">
+									Login
+								</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<!--===============================================================================================-->
+		<script src="/Content/vendor/jquery/jquery-3.2.1.min.js"></script>
+		<!--===============================================================================================-->
+		<script src="/Content/vendor/animsition/js/animsition.min.js"></script>
+		<!--===============================================================================================-->
+		<script src="/Content/vendor/bootstrap/js/popper.js"></script>
+		<script src="/Content/vendor/bootstrap/js/bootstrap.min.js"></script>
+		<!--===============================================================================================-->
+		<script src="/Content/vendor/select2/select2.min.js"></script>
+		<!--===============================================================================================-->
+		<script src="/Content/vendor/daterangepicker/moment.min.js"></script>
+		<script src="/Content/vendor/daterangepicker/daterangepicker.js"></script>
+		<!--===============================================================================================-->
+		<script src="/Content/vendor/countdowntime/countdowntime.js"></script>
+		<!--===============================================================================================-->
+		<script src="/Content/js/main.js"></script>
+		<script src="/Content/js/jquery.min.js"></script>
+		<script src="/Content/js/jquery-migrate-3.0.1.min.js"></script>
+		<script src="/Content/js/popper.min.js"></script>
+		<script src="/Content/js/bootstrap.min.js"></script>
+		<script src="/Content/js/jquery.easing.1.3.js"></script>
+		<script src="/Content/js/jquery.waypoints.min.js"></script>
+		<script src="/Content/js/jquery.stellar.min.js"></script>
+		<script src="/Content/js/owl.carousel.min.js"></script>
+		<script src="/Content/js/jquery.magnific-popup.min.js"></script>
+		<script src="/Content/js/aos.js"></script>
+		<script src="/Content/js/jquery.animateNumber.min.js"></script>
+		<script src="/Content/js/bootstrap-datepicker.js"></script>
+		<script src="/Content/js/scrollax.min.js"></script>
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+		<script src="/Content/js/google-map.js"></script>
+		<script src="/Content/js/main.js"></script>
+
+		<br />
+	</body>
+</html>
+
 }
 @section Scripts {
 	@Scripts.Render("~/bundles/jqueryval")

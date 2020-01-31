@@ -1,0 +1,162 @@
+﻿@model Presentation.Models.ItemExportModel
+
+@{
+	ViewBag.Title = "ItemManagement";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
+	<link rel="stylesheet" href="/Content/css/open-iconic-bootstrap.min.css">
+	<link rel="stylesheet" href="/Content/css/animate.css">
+	<link rel="stylesheet" href="/Content/css/owl.carousel.min.css">
+	<link rel="stylesheet" href="/Content/css/owl.theme.default.min.css">
+	<link rel="stylesheet" href="/Content/css/magnific-popup.css">
+	<link rel="stylesheet" href="/Content/css/aos.css">
+	<link rel="stylesheet" href="/Content/css/ionicons.min.css">
+	<link rel="stylesheet" href="/Content/css/bootstrap-datepicker.css">
+	<link rel="stylesheet" href="/Content/css/jquery.timepicker.css">
+	<link rel="stylesheet" href="/Content/css/flaticon.css">
+	<link rel="stylesheet" href="/Content/css/icomoon.css">
+	<link rel="stylesheet" href="/Content/css/style.css">
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	<link rel="stylesheet" href="/resources/demos/style.css">
+</head>
+
+
+<body class="goto-here">
+
+	<!-- If anyone will need help understanding this https://getbootstrap.com/docs/4.0/components/modal/ -->
+
+	@using (Html.BeginForm("ItemManagement", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+	{
+
+		if (@ViewBag.Message != null)
+		{
+			<!-- Popup window -->
+			<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="exampleModalLabel" style="height: 20px;">Admin panel information</h5>
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<p style="font-size: .9em">
+								<span style=" color: #d69903; font-weight: bold">What happened: </span><br />
+								@ViewBag.Message
+							</p>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		}
+
+
+		<section class="ftco-section bg-light">
+			<div class="container">
+				<div class="row">
+
+					<!-- What follows next is the sidebar, which probably could be inserted into eperate file and reused in all of the panels-->
+					<div class="col-md-4 col-lg-2 sidebar">
+						<div class="sidebar-box-2">
+							<h2 class="heading mb-4"><a href="@Url.Action("Index", "Admin")">Items in shop</a></h2>
+							<ul>
+								<li><a href="@Url.Action("ItemManagement", "Admin")">Import Items</a></li>
+								<li><a href="@Url.Action("", "Admin")">Export Items</a></li>
+								<li><a href="@Url.Action("", "Admin")">Create New Item</a></li>
+								<li><a href="@Url.Action("Properties", "Admin")">Categories List</a></li>
+								<li><a href="@Url.Action("Categories", "Admin")">(---) Sub-Categories List</a></li>
+							</ul>
+						</div>
+						<div class="sidebar-box-2">
+							<h2 class="heading mb-4"><a href="#">System Users</a></h2>
+							<ul>
+								<li><a href="@Url.Action("AddItem", "Admin")">Import &amp; Items</a></li>
+								<li><a href="#">Dresses</a></li>
+								<li><a href="#">Shorts &amp; Skirts</a></li>
+								<li><a href="#">Jackets</a></li>
+								<li><a href="#">Coats</a></li>
+								<li><a href="#">Jeans</a></li>
+							</ul>
+						</div>
+						<div class="sidebar-box-2">
+							<h2 class="heading mb-4"><a href="#">Shoes</a></h2>
+							<ul>
+								<li><a href="#">Nike</a></li>
+								<li><a href="#">Addidas</a></li>
+								<li><a href="#">Skechers</a></li>
+								<li><a href="#">Jackets</a></li>
+								<li><a href="#">Coats</a></li>
+								<li><a href="#">Jeans</a></li>
+							</ul>
+						</div>
+					</div>
+					<!-- Sidebar ends here -->
+					<!-- What follows up is a mess and imports looks very bad for the moment, but it works finally-->
+					<div class="col-md-8 col-lg-10 order-md-last">
+						<div class="row">
+
+							<div class="col-sm-6 col-md-6 col-lg-4 ftco-animate">
+
+								<div class="d-flex" style="margin-bottom: 20px;">
+									<input type="file" name="file" value="save" class="btn btn-info" style="margin-right: 40px;" />
+
+									<input id="importingExcelItems" type="submit" name="file" value="Start Importing" class="btn btn-info" />
+								</div>
+
+								<div class="d-flex">
+									<button type="button" class="btn btn-dark" onclick="location.href = '@Url.Action("Index", "Admin")'">Grįžti į prekių valdymo langą</button>
+								</div>
+
+							</div>
+
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</section>
+
+	}
+
+	<script>
+		$(function () {
+			//xxx.modal("show") and xxx.modal("hide") control modal should be show or hide
+			$("#exampleModal").modal("show");
+		});
+
+	</script>
+
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	<script src="/Content/js/jquery.min.js"></script>
+	<script src="/Content/js/jquery-migrate-3.0.1.min.js"></script>
+	<script src="/Content/js/popper.min.js"></script>
+	<script src="/Content/js/bootstrap.min.js"></script>
+	<script src="/Content/js/jquery.easing.1.3.js"></script>
+	<script src="/Content/js/jquery.waypoints.min.js"></script>
+	<script src="/Content/js/jquery.stellar.min.js"></script>
+	<script src="/Content/js/owl.carousel.min.js"></script>
+	<script src="/Content/js/jquery.magnific-popup.min.js"></script>
+	<script src="/Content/js/aos.js"></script>
+	<script src="/Content/js/jquery.animateNumber.min.js"></script>
+	<script src="/Content/js/bootstrap-datepicker.js"></script>
+	<script src="/Content/js/scrollax.min.js"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+	<script src="/Content/js/google-map.js"></script>
+	<script src="/Content/js/main.js"></script>
+
+</body>
+</html>
+

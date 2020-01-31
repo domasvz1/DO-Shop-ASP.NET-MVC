@@ -25,7 +25,7 @@ namespace BusinessLogic
                 if (worksheet == null)
                     throw new Exception("Where's the excel sheet?");
 
-                string name = null, title = null, imageUrl = null, skuCode = null, description = null, categoryName = null, propertyName = null, propertyValue = null;
+                string name = null, headline = null, imageUrl = null, skuCode = null, description = null, categoryName = null, propertyName = null, propertyValue = null;
                 int price = 0;
 
                 int lastItemRow = worksheet.Cells[startingRow, 1].GetLastItemRow();
@@ -33,9 +33,9 @@ namespace BusinessLogic
                 Item item = null;
                 HashSet<ItemProperty> properties = null;
 
-                ReadItemValues(ref name, ref title, ref price, ref imageUrl, ref skuCode, ref description, ref categoryName, ref propertyName, ref propertyValue, worksheet, startingRow);
+                ReadItemValues(ref name, ref headline, ref price, ref imageUrl, ref skuCode, ref description, ref categoryName, ref propertyName, ref propertyValue, worksheet, startingRow);
 
-                while (!SkipARow(name, title, price, imageUrl, skuCode, description, categoryName, propertyName, propertyValue))
+                while (!SkipARow(name, headline, price, imageUrl, skuCode, description, categoryName, propertyName, propertyValue))
                 {
                     if (firstRow)
                     {
@@ -43,7 +43,7 @@ namespace BusinessLogic
                         {
                             SKUCode = skuCode,
                             Name = name,
-                            Title = title,
+                            Headline = headline,
                             Price = price,
                             Description = description,
                             Category = new Category() { Name = categoryName },
@@ -69,7 +69,7 @@ namespace BusinessLogic
                         firstRow = true;
                         lastItemRow = worksheet.Cells[startingRow, 1].GetLastItemRow();
 
-                        ReadItemValues(ref name, ref title, ref price, ref imageUrl, ref skuCode,
+                        ReadItemValues(ref name, ref headline, ref price, ref imageUrl, ref skuCode,
                             ref description, ref categoryName, ref propertyName, ref propertyValue, worksheet, startingRow);
                     }
                     else
@@ -83,11 +83,11 @@ namespace BusinessLogic
             return items;
         }
 
-        private void ReadItemValues(ref string name, ref string title, ref int price, ref string imageUrl, ref string skuCode, ref string description, ref string categoryName, ref string propertyName, ref string propertyValue, ExcelWorksheet worksheet, int row)
+        private void ReadItemValues(ref string name, ref string headline, ref int price, ref string imageUrl, ref string skuCode, ref string description, ref string categoryName, ref string propertyName, ref string propertyValue, ExcelWorksheet worksheet, int row)
         {
              name = ConvertTostring(worksheet.Cells[row, 1].Value);
              
-             title = ConvertTostring(worksheet.Cells[row, 2].Value);
+             headline = ConvertTostring(worksheet.Cells[row, 2].Value);
              string priceStr = ConvertTostring(worksheet.Cells[row, 3].Value);
              if (priceStr != null)
              {
@@ -122,9 +122,9 @@ namespace BusinessLogic
             information = ConvertTostring(worksheet.Cells[row, 9].Value);
         }
 
-        private bool SkipARow(string name, string title, int price, string imageUrl,string skuCode, string description, string categoryName, string propertyName, string propertyValue)
+        private bool SkipARow(string name, string headline, int price, string imageUrl,string skuCode, string description, string categoryName, string propertyName, string propertyValue)
         {
-            return IsEmpty(name) && IsEmpty(title) && price == 0 && IsEmpty(imageUrl) && IsEmpty(skuCode) && IsEmpty(description) && IsEmpty(categoryName) && IsEmpty(propertyName) && IsEmpty(propertyValue);
+            return IsEmpty(name) && IsEmpty(headline) && price == 0 && IsEmpty(imageUrl) && IsEmpty(skuCode) && IsEmpty(description) && IsEmpty(categoryName) && IsEmpty(propertyName) && IsEmpty(propertyValue);
         }
 
         private bool IsEmpty(string str)
@@ -163,7 +163,7 @@ namespace BusinessLogic
             {
                 var worksheet = excelPackage.Workbook.Worksheets.Add("Items");
 
-                var columnNames = new List<string> { "Product Name", "Title", "Price", "Image", "SKU code", "Description", "Category", "Properties", "" };
+                var columnNames = new List<string> { "Product Name", "Headline", "Price", "Image", "SKU code", "Description", "Category", "Properties", "" };
                 for (int i = 1; i < columnNames.Count + 1; i++)
                 {
                     worksheet.Column(i).Width = 25;
@@ -204,7 +204,7 @@ namespace BusinessLogic
                     modelTable.Style.VerticalAlignment = ExcelVerticalAlignment.Center;
 
                     worksheet.Cells[rowIndex, 1].Value = item.Name;
-                    worksheet.Cells[rowIndex, 2].Value = item.Title;
+                    worksheet.Cells[rowIndex, 2].Value = item.Headline;
                     worksheet.Cells[rowIndex, 3].Value = item.Price;
                     worksheet.Cells[rowIndex, 4].Value = item.ImageUrl;
                     worksheet.Cells[rowIndex, 5].Value = item.SKUCode;

@@ -2,27 +2,28 @@
 ------------------------
 Public releases, this website project has not reached the alpha version yet. I have decided to publish this and curretnly I am working on 0.3 release (admin panel). This file will be updated once in a while to let people know what is up with this project.
 
-This was initially my University project changed and updated. (D O initials of my first and last name)
+Initially, this was my University project at Vilnius University. Most of the projects done in the University goes by forgotten and dropped out. I have decided
+to continue working on this one and improving my knowledge in some specific fields during the development process.
 Since there's a lot of things that can be tweaked and changed, I want to update the scripts and the documentation before releasing.
-This won't be marketed or selled. This is a free download project with a fair use, UI remade completely learning from Winkel boostrap examples. Might some lithuanian expressions left, since this was my university project.
+This website project won't be put up to the market or sold. As of right now, you are able to download the project with fair use freely. UI design remade thoroughly learning from Winkel bootstrap examples. There might some Lithuanian expressions left since this was my university project.
 
-An electronic shop local website written with following elemts frameworks (all can be found in the project):
-If by any chance you are seating nearby this right now, you can learn the following from this
-- .NET visual Studio 
-    * Migartions 
+In this project, I am using MVC(Model-Based View) architecture design patterns also I am working with .Net Visual Studio IDE.
+An E-shop hosted on localhost and written with the following frameworks (all of those frameworks can be found in use in the project itself):
+If by any chance you are working with this right now, you are free to learn the following from this:
+    * Migrations 
     * Entity Framework
     * Unity Container
-    * Boostrap
+    * Bootstrap
     * Winkel Boostrap
-    * jQuerry
+    * jquery
     * Plain javascript
     * Razor
-	* Ajax
+    * Ajax
 
-	The project uses Web Layer architecture:
-	-  Presentation layer
-	-  Business layer
-	-  DataAcess layer
+    The project uses Web Layer architecture:
+    -  Presentation layer
+    -  Business layer
+    -  DataAccess layer
 
 
 Taken from the Microsoft documentation: https://dotnet.microsoft.com/apps/aspnet/web-apps
@@ -34,7 +35,7 @@ Use .NET and C# to create websites based on HTML5, CSS, and JavaScript that are 
 *  Dynamically render HTML with Razor
 Razor provides a simple, clean, and lightweight way to create dynamic web content using HTML and C#.
 
-With Razor you can use any HTML or C# feature. You get great editor support for both, including IntelliSense which provides auto-completion, real-time type and syntax checking, and more.
+With Razor, you can use any HTML or C# feature. You get excellent editor support for both, including IntelliSense which provides auto-completion, real-time type and syntax checking, and more.
 
 -------
 * Seamless integration with the data in the project.
@@ -44,14 +45,14 @@ Most popular databases are supported, including SQLite, SQL Server, MySQL, Postg
 
 
 More documentation coming, (need to read it first and apply in the website)
-Also a section here should be added about winkel boostarp framework.
+Also, later in the future, I will add a section about Winkel bootstrap right here for more information.
 
 
 [Tips when launching the project]
 
 - Item display in the shop [Postponed]
 
-You might havesome addons or something else regarding the project, so im leaving you with this "Setting up the project" guide:
+You might have some addons or something else regarding the project, so I'm leaving you with this "Setting up the project" guide:
 --
 If you pull this from the master and the error is proceeded with the 
 
@@ -61,9 +62,8 @@ If you pull this from the master and the error is proceeded with the
 
   In the "Package Manager Console" in the Visual Studio.
 
-- Also you can add "SQL Server Object Explorer" in view. If itsmissin, restrat the project (by opening it in the explorer using Visual    Studio).
-- When you have opened the soloution, make sure to check if  "Presentation" Layer is set as a Startup Project in the Soloution Settings
-
+- Also, you can add "SQL Server Object Explorer" in view. If it's missing, restart the project (by opening it in the explorer using Visual Studio).
+- When you have opened the solution,  set the "Presentation" Layer as a Startup Project in the Visual Studio's Solution Settings.
 
 This error may also occur
 "No context type was found in the assembly"
@@ -83,16 +83,13 @@ If there are problems with migrations
 
 
 # Currently working on
-[WORK IN PROGRESS 0.3]
-
-New Admin Panel:
-- Start from sketches
+[WORK IN PROGRESS 0.3 ADMIN PANEL]
 
 
+Documentation should come from the favro cards
 
 
-
-Check street number (if it still exists, change that to Apartment / Office Number)
+Fixed street number (if it still exists, change that to Apartment / Office Number)
 
 
 
@@ -108,33 +105,33 @@ Check street number (if it still exists, change that to Apartment / Office Numbe
 - Added Country and City classes and implemented the architecture in the Business Object, Data access, Presentation Layers
 - Added MobilePhone field in the Business Object, Data access, database also Presentation Layer
 
-- Country and City is now assosaited via Client Repository
-- Fixed issue wher selected city or country is null
-- Fixed issue where if user has selected the city and country, the View should know about it and display it
-- In "Edit profile" view (save button should lead you back to your editProfile window and *Go Back* button leads to the main page)
-** To this fix was added ClientModel.cs which represent Client Data and City andCountry classes
+- Country and City is now associated via Client Repository
+- Fixed issue where selected City or state is null
+- A fixed item where if the user has chosen the City and country, the View should know about it and display it
+- In "Edit profile" view (save button should lead you back to your edit profile window and *Go Back* button leads to the main page)
+** To this fix was added ClientModel.cs which represent Client Data and City and country classes
 
-- Fixed styling when choosing Cities and Countries in EditProfile window
+- Fixed styling-when choosing Cities and Countries in the edit profile window
 
 - Remade EditProfile window, the UI and UX also styling redone
 
-- Fixed implemented --> In EditProfile window changed information now updates with database.
+- Fixed implemented --> In EditProfile window changed information now updates with the database.
 
 
 [Presentation Layer]
 - Fixed Selected Country and City Selection lists and styling.
-- Fixed the options, when country is not selected, you cannot select the city aswell.
-- Implemeneted first option  which won't be hidden, but is always selcted as --Not Selected {Delivery Country/City} --
+- Fixed the options, when the country is not selected, you cannot select the City aswell.
+- Implemented the first option  which won't be hidden, but is always selected as --Not Selected {Delivery Country/City} --
 
----Not related with coding:
+---Not related to coding:
 
-- Did my first Pull Request Review on this project.
+- I did my first Pull Request Review on this project.
 
 
 -----------------------------------------------------------------------
 
 
-[Version 0.1a released]
+[Version 0.1 released]
 
 - Documented the changes made to the project in the 0.1 alpha version and moved/cleared cards in the Favro from done to documented.
 
@@ -195,7 +192,10 @@ The following modules, scripts / classes were deleted :
 [What needs to be fixed]
 --
 
-* Responsive and interactive buttons in the admin panel.
+* Web Layer Architecture diagram needs to be done for the first release at least;
+
+
+
 * Responsive buttons in the UI
 * Change the language from Lithuanian to English
 * Adminas/Edit/16 (Photo modificfaction widnow, back button doesnt work or deosnt exist)
