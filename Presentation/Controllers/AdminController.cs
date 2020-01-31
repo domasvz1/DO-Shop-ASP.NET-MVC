@@ -24,7 +24,6 @@ namespace Presentation.Controllers
         private readonly IAdminControl _adminControl;
         private readonly IOrderControl _orderControl;
        
-
         public AdminController(
             IItemDistributionControl itemDistributionControl,
             IItemCategoryControl itemCategoryControl,
@@ -44,7 +43,7 @@ namespace Presentation.Controllers
         }
 
         //Admin Connection view, locate in "DO SHOP project folder -> Views-> Admin"
-        //[UserAuthorization(ConnectionPage = "~/Admin/Login", Roles = "Admin")]
+        [UserAuthorization(ConnectionPage = "~/Admin/Login", Roles = "Admin")]
         public ActionResult Index()
         {
             // Check if not there are no items, 
@@ -69,7 +68,7 @@ namespace Presentation.Controllers
         [HttpPost]
         public ActionResult Login(Admin admin, string returnUrl)
         {
-            // paduodamas admino objektas duomenu bazes, einame i admino valdymo klase ir ten patikrinsime ar yra admino objektas su tokiais duomenimis
+            // Give admin base object and lets go to the admin control class
             var adminObject = _adminControl.ConnectAdmin(admin);
 
             // If Admin object has been found
@@ -280,7 +279,7 @@ namespace Presentation.Controllers
         }
 
         //GET: Admin/AddItem
-        //[UserAuthorization(ConnectionPage = "~/Admin/Login", Roles = "Admin")]
+        [UserAuthorization(ConnectionPage = "~/Admin/Login", Roles = "Admin")]
         public ActionResult AddItem()
         {
             ViewBag.CategoryId = new SelectList(_itemCategoryControl.GetAllCategories(), "Id", "Name");
@@ -677,7 +676,7 @@ namespace Presentation.Controllers
             return View(_orderControl.GetAllOrders());
         }
 
-        //[UserAuthorization(ConnectionPage = "~/Admin/Login", Roles = "Admin")]
+        [UserAuthorization(ConnectionPage = "~/Admin/Login", Roles = "Admin")]
         public ActionResult ModifyOrderStatus(int? id)
         {
             if (id == null)
@@ -693,7 +692,7 @@ namespace Presentation.Controllers
         }
 
         // Id Of the certain order binds here with the OrderStatus class using 'Bind'
-        //[UserAuthorization(ConnectionPage = "~/Admin/Login", Roles = "Admin")]
+        [UserAuthorization(ConnectionPage = "~/Admin/Login", Roles = "Admin")]
         [HttpPost]
         public ActionResult ModifyOrderStatus([Bind(Include = "Id, OrderStatus")] ClientOrders order)
         {

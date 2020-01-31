@@ -53,7 +53,7 @@
 						<ul>
 							<li><a href="@Url.Action("ItemManagement", "Admin")">Import Items</a></li>
 							<li><a href="@Url.Action("", "Admin")">Export Items</a></li>
-							<li><a href="@Url.Action("", "Admin")">Create New Item</a></li>
+							<li><a href="@Url.Action("AddItem", "Admin")">Create New Item</a></li>
 							<li><a href="@Url.Action("Properties", "Admin")">Categories List</a></li>
 							<li><a href="@Url.Action("Categories", "Admin")">(---) Sub-Categories List</a></li>
 						</ul>
@@ -82,12 +82,21 @@
 					</div>
 				</div>
 
-				<!-- Image space lg-4 and md-4 -->
-				<div class="col-lg-4 col-md-4 ftco-animate">
-					<a href="/Content/images/menu-2.jpg" class="image-popup"><img src="/Content/images/product-1.jpg" class="img-fluid" alt="Colorlib Template"></a>
+				<!-- Image section here -->
+				<div class="col-lg-4 col-md-4 ftco-animate container doublePadding">
+					<div style="text-align:center;">
+						@if (Model.ImageUrl != null)
+						{
+							<a href="@Url.Content(Model.ImageUrl)" class="image-popup"><img src="@Url.Content(Model.ImageUrl)" class="img-fluid border" style="top:50%; width:250px; height:250px;"></a>
+						}
+						else
+						{
+							<a href="@Url.Content("~/Content/Images/NoImage.png")" class="image-popup"><img src="@Url.Content("~/Content/Images/NoImage.png")" class="img-fluid border" style="top:50%; width:250px; height:250px;"></a>
+						}
+					</div>
 				</div>
 
-				<div class="col-lg-6 product-details pl-md-6 ftco-animate">
+				<div class="col-lg-6 product-details pl-md-6 ftco-animate doublePadding">
 					<div class="rating d-flex">
 						<p class="text-left mr-4">
 							<a href="#" class="mr-2">5.0</a>
@@ -111,8 +120,18 @@
 					</div>
 
 					<div style="color:black" class="form-group">
+
 						<b>@Html.LabelFor(model => model.Category, htmlAttributes: new { @style = "margin-bottom: 0.0rem" })</b>
-						<span style="margin-left: 10px">@Html.DisplayFor(model => model.Category.Name, new { htmlAttributes = new { @class = "input100 col-md-12" } }) </span>
+						
+						@if (Model.Category != null)
+						{
+							<span style="margin-left: 10px">@Html.DisplayFor(model => model.Category.Name, new { htmlAttributes = new { @class = "input100 col-md-12" } }) </span>
+						}
+						else
+						{
+							<a style="margin-left:10px"> Item has no Category</a>
+						}
+
 					</div>
 
 					<div style="color:black" class="form-group">
@@ -131,7 +150,6 @@
 							@Html.DisplayFor(model => model.Description, new { htmlAttributes = new { @class = "col-md-12", @style = "height:300px" } })
 						</div>
 					</div>
-
 
 					<div class="rating d-flex">
 						<button type="button" class="btn btn-warning" color onclick="location.href = '@Url.Action("ModifyItem", new { id = Model.Id })'">Edit the item</button>
@@ -167,3 +185,11 @@
 <script src="/Content/js/main.js"></script>
 
 
+<style>
+	.doublePadding {
+	  position: relative;
+	  width: 100%;
+	  padding-right: 15px;
+	  padding-left: 15px;
+	}
+</style>

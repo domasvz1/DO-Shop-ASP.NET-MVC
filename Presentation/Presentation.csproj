@@ -213,7 +213,6 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\css\bootstrap.min.css" />
-    <Content Include="Content\css\bootstrap\bootstrap-grid.css" />
     <Content Include="Content\css\bootstrap\bootstrap-reboot.css" />
     <Content Include="Content\css\css\bootstrap-reboot.css" />
     <Content Include="Content\css\css\mixins\_text-hide.css" />
@@ -239,6 +238,7 @@
     <Content Include="Content\images\bg_5.jpg" />
     <Content Include="Content\images\bg_6.jpg" />
     <Content Include="Content\images\divider.png" />
+    <Content Include="Content\images\eSports.jpg" />
     <Content Include="Content\images\icons\favicon.ico" />
     <Content Include="Content\images\image_1.jpg" />
     <Content Include="Content\images\image_2.jpg" />
@@ -721,6 +721,7 @@
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
+      <UserProperties content_4bootstrap-grid_1min_1css_1map__JsonSchema="http://json.schemastore.org/tsd" />
     </VisualStudio>
   </ProjectExtensions>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

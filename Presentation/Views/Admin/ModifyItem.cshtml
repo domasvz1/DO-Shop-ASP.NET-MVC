@@ -41,8 +41,8 @@
 			</div>
 		</div>
 
-		<div class="container" style="margin-top: 1%">
-			<div class="row">
+		<div class="container" style="margin-top:1%">
+			<div class="row product-details">
 				<!-- What follows next is the sidebar, which probably could be inserted into eperate file and reused in all of the panels-->
 				<!-- Sidebar spacing is always 2 space lg-4  -->
 				<div class="col-md-2 col-lg-2 sidebar">
@@ -50,8 +50,8 @@
 						<h2 class="heading mb-4"><a href="@Url.Action("Index", "Admin")">Items in shop</a></h2>
 						<ul>
 							<li><a href="@Url.Action("ItemManagement", "Admin")">Import Items</a></li>
-							<li><a href="@Url.Action("", "Admin")">Export Items</a></li>
-							<li><a href="@Url.Action("", "Admin")">Create New Item</a></li>
+							<li><a href="@Url.Action("", "Admin")">Export Items</a> [0.4 Release]</li> 
+							<li><a href="@Url.Action("AddItem", "Admin")">Create New Item</a></li>
 							<li><a href="@Url.Action("Properties", "Admin")">Categories List</a></li>
 							<li><a href="@Url.Action("Categories", "Admin")">(---) Sub-Categories List</a></li>
 						</ul>
@@ -80,122 +80,105 @@
 					</div>
 				</div>
 
-						<!-- Image space lg-4 and md-4 -->
-						<div class="col-lg-4 col-md-4 ftco-animate">
-							<a href="/Content/images/menu-2.jpg" class="image-popup"><img src="/Content/images/product-1.jpg" class="img-fluid" alt="Colorlib Template"></a>
-						</div>
 
-						<div class="col-lg-6 product-details pl-md-6 ftco-animate">
-							<div class="rating d-flex">
-								<p class="text-left mr-4">
-									<a href="#" class="mr-2">5.0</a>
-									<a href="#"><span class="ion-ios-star-outline"></span></a>
-									<a href="#"><span class="ion-ios-star-outline"></span></a>
-									<a href="#"><span class="ion-ios-star-outline"></span></a>
-									<a href="#"><span class="ion-ios-star-outline"></span></a>
-									<a href="#"><span class="ion-ios-star-outline"></span></a>
-								</p>
-								<p class="text-left mr-4">
-									<a href="#" class="mr-2" style="color: #000;">100 <span style="color: #bbb;">Collected Rating On Item [Future Feature]</span></a>
-								</p>
-								<p class="text-left">
-									<a href="#" class="mr-2" style="color: #000;">500 <span style="color: #bbb;">Amount Sold [Future Feature]</span></a>
-								</p>
-							</div>
+				<!-- Image section here -->
+				<div class="col-lg-4 col-md-4 ftco-animate container">
+					<div style="text-align: center;">
+						@if (Model.ImageUrl != null)
+						{
+							<a href="@Url.Content(Model.ImageUrl)" class="image-popup"><img src="@Url.Content(Model.ImageUrl)" class="img-fluid border col-md-12" style="top:50%;"></a>
+						}
+						else
+						{
+							<a href="@Url.Content("~/Content/Images/NoImage.png")" class="image-popup"><img src="@Url.Content("~/Content/Images/NoImage.png")" class="img-fluid border col-md-12" style="top:50%;"></a>
+						}
+					</div>
 
-
-							<div style="color:black" class="form-group">
-								<b>@Html.LabelFor(model => model.Name, htmlAttributes: new { @style = "margin-bottom: 0.0rem" })</b>
-								<div>
-									@Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "col-md-12", @style = "; padding-left: 5px" } })
-									@Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
-								</div>
-							</div>
-
-							<div style="color:black" class="form-group">
-								<b>@Html.LabelFor(model => model.SKUCode, htmlAttributes: new { @style = "margin-bottom: 0.0rem" })</b>
-								<div>
-									@Html.EditorFor(model => model.SKUCode, new { htmlAttributes = new { @class = "col-md-6", @style = "padding-left: 5px" } })
-									@Html.ValidationMessageFor(model => model.SKUCode, "", new { @class = "text-danger" })
-								</div>
-							</div>
-
-							<div style="color:black" class="form-group">
-								<b>@Html.LabelFor(model => model.Price, htmlAttributes: new { @style = "margin-bottom: 0.0rem;" })</b>
-								<div>
-									@Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "col-md-6", @style = "; padding-left: 5px" } })
-									@Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
-								</div>
-							</div>
-
-							<div style="color:black; margin-bottom: 8%; height:100px" class="form-group">
-								<b>@Html.LabelFor(model => model.Headline, htmlAttributes: new { @style = "margin-bottom: 0.0rem" })</b>
-								<div>
-									@Html.EditorFor(model => model.Headline, new { htmlAttributes = new { @class = "col-md-12", @style = "height:100px; padding-left: 5px" } })
-									@Html.ValidationMessageFor(model => model.Headline, "", new { @class = "text-danger" })
-								</div>
-							</div>
-
-							<div style="color:black; height:300px; margin-bottom: 8%;" class="form-group">
-								<b>@Html.LabelFor(model => model.Description, htmlAttributes: new { @style = "margin-bottom: 0.0rem" })	</b>
-								<div style="height:300px">
-									@Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "col-md-12", @style = "height:300px; padding-left: 5px" } })
-									@Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
-								</div>
-							</div>
-
-
-							<div class="form-group">
-								<div>
-									@Html.DropDownList("CategoryId", null, "Item has no Category", htmlAttributes: new { @class = "col-md-12", @onchange = "changeProperty()", @style = "height:50px; padding-left: 5px" })
-								</div>
-
-								<div id="ItemProperties" class="input-group" style="padding-left: 5px!important;">
-									@Html.EditorFor(model => model.ItemProperties, new { htmlAttributes = new { @class = "", @style = "padding-left: 5px" } })
-								</div>
-
-							</div>
-
-							<div class="rating d-flex">
-								<button type="submit" class="btn btn-warning" value="save" onclick="location.href= '@Url.Action("ItemInformation", new { id = Model.Id })'">Save Item</button>
-								<button type="button" class="btn btn-warning" onclick="location.href = '@Url.Action("ItemInformation", new { id = Model.Id })'" style="margin-left: 20px">Go back</button>
-							</div>
-
-						</div>
+					<div style="text-align: center;">
+						<button type="button" class="col-lg-6 btn" onclick="location.href='@Url.Action("ChangeItemsPicture", "Admin", new { id = Model.Id })'" style="top:50%; margin-top: 5%">Change picture</button>
 					</div>
 				</div>
 
+				<!-- Stars (evaluation) section starts here -->
+				<div class="col-lg-6 pl-md-6 ftco-animate">
 
-				@*
+					<div class="rating d-flex">
+						<p class="text-left mr-4">
+							<a href="#" class="mr-2">5.0</a>
+							<a href="#"><span class="ion-ios-star-outline"></span></a>
+							<a href="#"><span class="ion-ios-star-outline"></span></a>
+							<a href="#"><span class="ion-ios-star-outline"></span></a>
+							<a href="#"><span class="ion-ios-star-outline"></span></a>
+							<a href="#"><span class="ion-ios-star-outline"></span></a>
+						</p>
+						<p class="text-left mr-4">
+							<a href="#" class="mr-2" style="color: #000;">100 <span style="color: #bbb;">Collected Rating On Item [Future Feature]</span></a>
+						</p>
+						<p class="text-left">
+							<a href="#" class="mr-2" style="color: #000;">500 <span style="color: #bbb;">Amount Sold [Future Feature]</span></a>
+						</p>
+					</div>
 
-			<div class="col-md-11">
-				@{
-					if (Model.ImageUrl != null)
-					{
-						<img src="@Url.Content(Model.ImageUrl)" alt="@Model.Name" width="40%" class="img-thumbnail" />
-					}
-					else
-					{
-						<img src="@Url.Content("~/Content/Images/NoImage.jpg")" alt="@Model.Name" width="40%" class="img-thumbnail" />
-					}
-				}
-			</div>
+					<div style="color:black" class="form-group">
+						<b>@Html.LabelFor(model => model.Name, htmlAttributes: new { @style = "margin-bottom: 0.0rem" })</b>
+						<div>
+							@Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "col-md-12", @style = "; padding-left: 5px" } })
+							@Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+						</div>
+					</div>
 
-			<button type="button" class="btn btn-primary" style="margin-left:2%; margin-top:2%" onclick="location.href='@Url.Action("ChangeItemsPicture", "Admin", new { id = Model.Id })'">Pakiesti nuotrauka</button>
+					<div style="color:black" class="form-group">
+						<b>@Html.LabelFor(model => model.SKUCode, htmlAttributes: new { @style = "margin-bottom: 0.0rem" })</b>
+						<div>
+							@Html.EditorFor(model => model.SKUCode, new { htmlAttributes = new { @class = "col-md-6", @style = "padding-left: 5px" } })
+							@Html.ValidationMessageFor(model => model.SKUCode, "", new { @class = "text-danger" })
+						</div>
+					</div>
 
-			<div class="form-group">
-				<br />
-				@Html.LabelFor(model => model.CategoryId, "Category", htmlAttributes: new { @class = "col-md-3" })
+					<div style="color:black" class="form-group">
+						<b>@Html.LabelFor(model => model.Price, htmlAttributes: new { @style = "margin-bottom: 0.0rem;" })</b>
+						<div>
+							@Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "col-md-6", @style = "; padding-left: 5px" } })
+							@Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
+						</div>
+					</div>
 
-				<div style="color:black;" class="col-md-10">
-					@Html.DropDownList("CategoryId", null, "Item has no Category", htmlAttributes: new { @class = "form-control", @onchange = "changeProperty()" })
-					@Html.ValidationMessageFor(model => model.CategoryId, "", new { @class = "text-danger" })
+					<div style="color:black; margin-bottom: 8%; height:100px" class="form-group">
+						<b>@Html.LabelFor(model => model.Headline, htmlAttributes: new { @style = "margin-bottom: 0.0rem" })</b>
+						<div>
+							@Html.EditorFor(model => model.Headline, new { htmlAttributes = new { @class = "col-md-12", @style = "height:100px; padding-left: 5px" } })
+							@Html.ValidationMessageFor(model => model.Headline, "", new { @class = "text-danger" })
+						</div>
+					</div>
+
+					<div style="color:black; height:300px; margin-bottom: 8%;" class="form-group">
+						<b>@Html.LabelFor(model => model.Description, htmlAttributes: new { @style = "margin-bottom: 0.0rem" })	</b>
+						<div style="height:300px">
+							@Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "col-md-12", @style = "height:300px; padding-left: 5px" } })
+							@Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+						</div>
+					</div>
+
+					<div class="form-group">
+						<div>
+							@Html.DropDownList("CategoryId", null, "Item has no Category", htmlAttributes: new { @class = "col-md-12", @onchange = "changeProperty()", @style = "height:50px; padding-left: 5px" })
+						</div>
+
+						<div id="ItemProperties" class="input-group" style="color:black;">
+							@Html.EditorFor(model => model.ItemProperties, new { htmlAttributes = new { @class = "border", @style = "color:black" } })
+						</div>
+
+					</div>
+
+					<div class="rating d-flex">
+						<button type="submit" class="btn" value="save" onclick="location.href= '@Url.Action("ItemInformation", new { id = Model.Id })'">Save Item</button>
+						<button type="button" class="btn" onclick="location.href = '@Url.Action("ItemInformation", new { id = Model.Id })'" style="margin-left: 20px">Go back</button>
+					</div>
+
 				</div>
 			</div>
-
-
-		</div>*@
-				}
+		</div>
+	}
 
 </body>
 
@@ -231,4 +214,3 @@
         });
     }
 </script>
-
