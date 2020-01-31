@@ -86,10 +86,36 @@ If there are problems with migrations
 [WORK IN PROGRESS 0.3 ADMIN PANEL]
 
 
-Documentation should come from the favro cards
+[0.3.2 release] Merging 0.3 admin panel to master
 
+Decided to work on another branch and this needs to be in master. Since this branch is not done yet, will merge everything that was corrected and since it was a lot, decided to merge.
 
-Fixed street number (if it still exists, change that to Apartment / Office Number)
+The idea about this release:
+
+Started implementing Admin Index Panel with Winkel bootstrap and redoing everything with its styling suggestions;
+Made sure that pictures would be clickable for admin and that it would display admin pictures;
+Made sure that If item has no proper picture, a proper picture would be displayed from content;
+The Layout of ItemInformation was completely redone;
+Implemented picture modification in ItemModification page;
+Redone the layout changes on Modification and Information pages of Items;
+Make so that items would be clickable in the admin's index panel and hoverable too;
+In ModifyItems Change "Save Item" and "Back" buttons implemented functionality and styling;
+Admin Index Page Layout changes;
+In the Admin Panel Page, the sidebar should implement functions with items, user and orders, Making sidebar options clickable;
+In the Admin Panel Page, implemented sidebar functions with items, user and orders;
+Made Importing functionality and sample layout page;
+Refactored"Title" to "Headline" to make more sense, Title doesn't sound good;
+Changed the login panel to admins and make it similar to user login;
+Implemented Navigation Bar's list where the different pages are being displayed logic for the different states;
+Redone admins login and admins top bar ( needs some work though);
+Fixed frontend warnings about nav element in the HTML documents;
+Bug fixes:
+
+[Issue #05] Fixed - If Item has no category, the admin panel doesn't display anything in the category section
+[Issue #07] Admin panel when selecting functionality button nearby, the board spawns nearby first button every time
+[Issue #4] "Save Item" functionality in the admin panel doesn't work
+[Issue #1] Admins Login Text is in the middle of the column, no more
+[Issue #2] When pressed on login column, the column border disappears
 
 
 
