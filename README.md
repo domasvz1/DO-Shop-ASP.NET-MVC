@@ -1,4 +1,6 @@
 # D O Shop-ASP.NET MVC
+------------------------
+Public releases, this website project has not reached the alpha version yet. I have decided to publish this and curretnly I am working on 0.3 release (admin panel). This file will be updated once in a while to let people know what is up with this project.
 
 Initially, this was my University project at Vilnius University. Most of the projects done in the University goes by forgotten and dropped out. I have decided
 to continue working on this one and improving my knowledge in some specific fields during the development process.
