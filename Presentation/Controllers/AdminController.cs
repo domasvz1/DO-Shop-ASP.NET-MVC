@@ -43,7 +43,7 @@ namespace Presentation.Controllers
         }
 
         //Admin Connection view, locate in "DO SHOP project folder -> Views-> Admin"
-        [UserAuthorization(ConnectionPage = "~/Admin/Login", Roles = "Admin")]
+        //[UserAuthorization(ConnectionPage = "~/Admin/Login", Roles = "Admin")]
         public ActionResult Index()
         {
             // Check if not there are no items, 
@@ -699,5 +699,37 @@ namespace Presentation.Controllers
             _orderControl.UpdateOrderStatus(order.Id, order.OrderStatus);
             return RedirectToAction("HandleOrders");
         }
+
+        // The function for searching certain items
+        public ActionResult Item_Search(string searchQuarry)
+        {
+            // Mainly it returs a list of all items for Partial voew
+            var allItems = _itemDistributionControl.GetAllItems();
+
+            // If the search quarry is not empty
+            if (!string.IsNullOrEmpty(searchQuarry))
+            {
+                searchQuarry = searchQuarry.ToUpper();
+                var searchQuarryInName = allItems.Where(x => x.Name.ToUpper().Contains(searchQuarry)).ToList();
+                var searchQuarryInCategroy = allItems.Where(x => x.Category != null && x.Category.Name.ToUpper().Contains(searchQuarry)).ToList();
+                // Search by Property should be added too
+
+
+                // All found items unites here
+                var allFoundItems = searchQuarryInName.Union(searchQuarryInCategroy);
+
+
+                // Return items in a Partial view here in the same window (this might be changed
+                return PartialView(allFoundItems);
+            }
+
+            // If the search quarry is empty, we return all the items in the shop
+
+            return PartialView(allItems);
+        }
+
+
+
+    
     }
 }
