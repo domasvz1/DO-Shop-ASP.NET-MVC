@@ -703,33 +703,48 @@ namespace Presentation.Controllers
         // The function for searching certain items
         public ActionResult Item_Search(string searchQuarry)
         {
+            List<Item> foundItems = new List<Item>();
+
+
             // Mainly it returs a list of all items for Partial voew
             var allItems = _itemDistributionControl.GetAllItems();
 
             // If the search quarry is not empty
             if (!string.IsNullOrEmpty(searchQuarry))
             {
+
                 searchQuarry = searchQuarry.ToUpper();
-                var searchQuarryInName = allItems.Where(x => x.Name.ToUpper().Contains(searchQuarry)).ToList();
-                var searchQuarryInCategroy = allItems.Where(x => x.Category != null && x.Category.Name.ToUpper().Contains(searchQuarry)).ToList();
-                // Search by Property should be added too
+                // Search by Name
+                foundItems.AddRange(allItems.Where(x =>
+                x.Name.ToUpper().Contains(searchQuarry)).ToList());
 
+                // Search by SKU Code
+                foundItems.AddRange(allItems.Where(x =>
+                x.SKUCode.ToUpper().Contains(searchQuarry)).ToList());
 
-                // All found items unites here
-                var allFoundItems = searchQuarryInName.Union(searchQuarryInCategroy);
+                // Search by Category
+                foundItems.AddRange(allItems.Where(x =>
+                x.Category != null && x.Category.Name.ToUpper().Contains(searchQuarry)).ToList());
 
+                // Search by Price
+                foundItems.AddRange(allItems.Where(x =>
+                x.Price.ToString().ToUpper().Contains(searchQuarry)).ToList());
+
+                // Search by Headline
+                foundItems.AddRange(allItems.Where(x =>
+                x.Headline != null && x.Headline.ToUpper().Contains(searchQuarry)).ToList());
+
+                // Description searching
+                foundItems.AddRange(allItems.Where(x =>
+                x.Description != null && x.Description.ToUpper().Contains(searchQuarry)).ToList());
 
                 // Return items in a Partial view here in the same window (this might be changed
-                return PartialView(allFoundItems);
+                return PartialView(foundItems);
             }
 
             // If the search quarry is empty, we return all the items in the shop
-
             return PartialView(allItems);
         }
-
-
-
     
     }
 }
