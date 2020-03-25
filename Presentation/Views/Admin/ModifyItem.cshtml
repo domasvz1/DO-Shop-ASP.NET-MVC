@@ -30,11 +30,12 @@
 		@Html.ValidationSummary(true, "", new { @class = "text-danger" })
 		@Html.HiddenFor(model => model.Id)
 
+		<!-- The top banner of the page-->
 		<div class="hero-wrap hero-bread" style="background-image: url('/Content/images/bg_6.jpg');">
 			<div class="container">
 				<div class="row no-gutters slider-text align-items-center justify-content-center">
 					<div class="col-md-9 ftco-animate text-center">
-						<p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span class="mr-2"><a href="index.html">Product</a></span> <span>Product Single</span></p>
+						<p class="breadcrumbs"><span>Edit the following product</span></p>
 						<h1 class="mb-0 bread">@Model.Name</h1>
 					</div>
 				</div>
@@ -51,7 +52,7 @@
 						<ul>
 							<li><a href="@Url.Action("ItemManagement", "Admin")">Import Items</a></li>
 							<li><a href="@Url.Action("", "Admin")">Export Items</a> [0.4 Release]</li> 
-							<li><a href="@Url.Action("AddItem", "Admin")">Create New Item</a></li>
+							<li><a href="@Url.Action("CreateItem", "Admin")">Create New Item</a></li>
 							<li><a href="@Url.Action("Properties", "Admin")">Categories List</a></li>
 							<li><a href="@Url.Action("Categories", "Admin")">(---) Sub-Categories List</a></li>
 						</ul>
@@ -59,7 +60,7 @@
 					<div class="sidebar-box-2">
 						<h2 class="heading mb-4"><a href="#">System Users</a></h2>
 						<ul>
-							<li><a href="@Url.Action("AddItem", "Admin")">Import &amp; Items</a></li>
+							<li><a href="@Url.Action("CreateItem", "Admin")">Import &amp; Items</a></li>
 							<li><a href="#">Dresses</a></li>
 							<li><a href="#">Shorts &amp; Skirts</a></li>
 							<li><a href="#">Jackets</a></li>

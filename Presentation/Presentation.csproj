@@ -567,7 +567,7 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\web.config" />
-    <Content Include="Views\Admin\AddItem.cshtml" />
+    <Content Include="Views\Admin\CreateItem.cshtml" />
     <Content Include="Views\Admin\RemoveItem.cshtml" />
     <Content Include="Views\Admin\ItemInformation.cshtml" />
     <Content Include="Views\Admin\ModifyItem.cshtml" />

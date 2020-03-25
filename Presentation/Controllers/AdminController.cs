@@ -279,20 +279,20 @@ namespace Presentation.Controllers
         }
 
         //GET: Admin/AddItem
-        [UserAuthorization(ConnectionPage = "~/Admin/Login", Roles = "Admin")]
-        public ActionResult AddItem()
+        //[UserAuthorization(ConnectionPage = "~/Admin/Login", Roles = "Admin")]
+        public ActionResult CreateItem()
         {
             ViewBag.CategoryId = new SelectList(_itemCategoryControl.GetAllCategories(), "Id", "Name");
             ViewBag.PropertyId = new SelectList(_propertyControl.GetAllProperties(), "Id", "Name");
             return View(new Item() { ItemProperties = _propertyControl.GetAllProperties().Select(x => new ItemProperty { Property = x, PropertyId = x.Id }).ToList() });
         }
 
-        //POST: Admin/AddItem
+        //POST: Admin/CreateItem
         //To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult AddItem([Bind(Include = "Id,SKUCode,Headline,Name,Price,Description,ImageUrl,Image,CategoryId,ItemProperties")] Item item)
+        public ActionResult CreateItem([Bind(Include = "Id,SKUCode,Headline,Name,Price,Description,ImageUrl,Image,CategoryId,ItemProperties")] Item item)
         {
             ViewBag.CategoryId = new SelectList(_itemCategoryControl.GetAllCategories(), "Id", "Name");
             if (ModelState.IsValid)
@@ -676,7 +676,7 @@ namespace Presentation.Controllers
             return View(_orderControl.GetAllOrders());
         }
 
-        [UserAuthorization(ConnectionPage = "~/Admin/Login", Roles = "Admin")]
+        //[UserAuthorization(ConnectionPage = "~/Admin/Login", Roles = "Admin")]
         public ActionResult ModifyOrderStatus(int? id)
         {
             if (id == null)
@@ -692,7 +692,7 @@ namespace Presentation.Controllers
         }
 
         // Id Of the certain order binds here with the OrderStatus class using 'Bind'
-        [UserAuthorization(ConnectionPage = "~/Admin/Login", Roles = "Admin")]
+        //[UserAuthorization(ConnectionPage = "~/Admin/Login", Roles = "Admin")]
         [HttpPost]
         public ActionResult ModifyOrderStatus([Bind(Include = "Id, OrderStatus")] ClientOrders order)
         {
