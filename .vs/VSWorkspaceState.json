@@ -8,7 +8,8 @@
     "\\Presentation",
     "\\Presentation\\Models",
     "\\Presentation\\Views",
-    "\\Presentation\\Views\\Client"
+    "\\Presentation\\Views\\Client",
+    "\\Presentation\\Views\\Main"
   ],
   "SelectedNode": "\\DO Shop.sln",
   "PreviewInSolutionExplorer": false
