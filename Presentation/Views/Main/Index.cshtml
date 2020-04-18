@@ -1,4 +1,4 @@
-﻿@*@model IEnumerable<BusinessObjects.Category>*@
+﻿@model IEnumerable<BusinessObjects.Category>
 
 @{
 	ViewBag.Title = "Index";
@@ -30,6 +30,39 @@
 </head>
 
 <body class="goto-here">
+
+
+	<div align="center">
+		Kreipiames i prekiu paieska
+		@Html.Partial("_ItemSearchPartial")
+	</div>
+
+	<script type="text/javascript">
+		document.write(kategorijuKlases)
+	</script>
+
+
+
+	<div style="height:700px;position: absolute; left:5%; margin-left: -3px; top:25%;">
+		@{
+			var count = 0;
+			foreach (var category in Model)
+			{
+				count += category.Items.Count;
+			}
+		}
+		@foreach (var kategorija in Model)
+		{
+			// Tu kategoriju, kurios neturi prekiu nerodysime
+			if (@kategorija.Items.Count > 0)
+			{
+				<button class="btn btn-dark" onclick="filterSelection('@kategorija.Name')" style="margin-bottom:2px; width:100%;"> @kategorija.Name <span class="badge badge-info">(@kategorija.Items.Count prekės)</span></button><br /><hr />
+			}
+		}
+	</div>
+
+	@Html.Action("Item_Search")
+
 
 	<section id="home-section" class="hero">
 		<div class="home-slider js-fullheight owl-carousel">
@@ -583,6 +616,9 @@
 		</div>
 	</section>
 
+
+
+
 	<script src="/Content/js/jquery.min.js"></script>
 	<script src="/Content/js/jquery-migrate-3.0.1.min.js"></script>
 	<script src="/Content/js/popper.min.js"></script>
@@ -607,45 +643,12 @@
 
 
 
-@*<br />
-
-	<div align="center">
-		Kreipiames i prekiu paieska
-		@Html.Partial("__ItemSearchPartial")
-	</div>
-
-	<script type="text/javascript">
-		document.write(kategorijuKlases)
-	</script>*@
 
 
-@*
-	Kategoriju mygtuku juosta
-	<div style="height:700px;position: absolute; left:5%; margin-left: -3px; top:25%;">
-		@{
-			var count = 0;
-			foreach (var category in Model)
-			{
-				count += category.Items.Count;
-			}
-		}
-		@foreach (var kategorija in Model)
-		{
-			// Tu kategoriju, kurios neturi prekiu nerodysime
-			if (@kategorija.Items.Count > 0)
-			{
-				<button class="btn btn-dark" onclick="filterSelection('@kategorija.Name')" style="margin-bottom:2px; width:100%;"> @kategorija.Name <span class="badge badge-info">(@kategorija.Items.Count prekės)</span></button><br /><hr />
-			}
-		}
-	</div>
-*@
-
-@*Kreipiamess i prekiu saraso funkcija*@
-
-@*@Html.Action("Item_Search")*@
 
 
-@*<script>
+
+<script>
 		filterSelection("visos")
 
 		function filterSelection(kategorijos) {
@@ -765,4 +768,4 @@
 				.done(function (result) {
 					$(".grid").html(result);
 				});
-		});</script>*@
+		});</script>

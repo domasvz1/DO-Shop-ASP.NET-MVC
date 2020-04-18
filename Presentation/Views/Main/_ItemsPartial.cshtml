@@ -30,7 +30,7 @@
 
 					<div style="min-height:50px; height:50px; text-align:center; margin-top:10px">
 						@*Pasiziurett tektso spalva*@
-						<h6 class="card-subtitle text-muted">@Html.DisplayFor(modelItem => item.Title)</h6>
+						<h6 class="card-subtitle text-muted">@Html.DisplayFor(modelItem => item.Headline)</h6>
 					</div>
 
 					<div onclick="location.href='@Url.Action("About_Item", "Main" , new { prekesId = item.Id }, null)'">

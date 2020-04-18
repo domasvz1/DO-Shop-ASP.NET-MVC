@@ -567,7 +567,7 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\web.config" />
-    <Content Include="Views\Admin\AddItem.cshtml" />
+    <Content Include="Views\Admin\CreateItem.cshtml" />
     <Content Include="Views\Admin\RemoveItem.cshtml" />
     <Content Include="Views\Admin\ItemInformation.cshtml" />
     <Content Include="Views\Admin\ModifyItem.cshtml" />
@@ -630,6 +630,7 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Views\Admin\Item_Search.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

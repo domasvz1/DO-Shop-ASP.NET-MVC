@@ -43,7 +43,7 @@ namespace Presentation.Controllers
         }
 
         //Admin Connection view, locate in "DO SHOP project folder -> Views-> Admin"
-        [UserAuthorization(ConnectionPage = "~/Admin/Login", Roles = "Admin")]
+        //[UserAuthorization(ConnectionPage = "~/Admin/Login", Roles = "Admin")]
         public ActionResult Index()
         {
             // Check if not there are no items, 
@@ -279,20 +279,20 @@ namespace Presentation.Controllers
         }
 
         //GET: Admin/AddItem
-        [UserAuthorization(ConnectionPage = "~/Admin/Login", Roles = "Admin")]
-        public ActionResult AddItem()
+        //[UserAuthorization(ConnectionPage = "~/Admin/Login", Roles = "Admin")]
+        public ActionResult CreateItem()
         {
             ViewBag.CategoryId = new SelectList(_itemCategoryControl.GetAllCategories(), "Id", "Name");
             ViewBag.PropertyId = new SelectList(_propertyControl.GetAllProperties(), "Id", "Name");
             return View(new Item() { ItemProperties = _propertyControl.GetAllProperties().Select(x => new ItemProperty { Property = x, PropertyId = x.Id }).ToList() });
         }
 
-        //POST: Admin/AddItem
+        //POST: Admin/CreateItem
         //To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult AddItem([Bind(Include = "Id,SKUCode,Headline,Name,Price,Description,ImageUrl,Image,CategoryId,ItemProperties")] Item item)
+        public ActionResult CreateItem([Bind(Include = "Id,SKUCode,Headline,Name,Price,Description,ImageUrl,Image,CategoryId,ItemProperties")] Item item)
         {
             ViewBag.CategoryId = new SelectList(_itemCategoryControl.GetAllCategories(), "Id", "Name");
             if (ModelState.IsValid)
@@ -676,7 +676,7 @@ namespace Presentation.Controllers
             return View(_orderControl.GetAllOrders());
         }
 
-        [UserAuthorization(ConnectionPage = "~/Admin/Login", Roles = "Admin")]
+        //[UserAuthorization(ConnectionPage = "~/Admin/Login", Roles = "Admin")]
         public ActionResult ModifyOrderStatus(int? id)
         {
             if (id == null)
@@ -692,12 +692,59 @@ namespace Presentation.Controllers
         }
 
         // Id Of the certain order binds here with the OrderStatus class using 'Bind'
-        [UserAuthorization(ConnectionPage = "~/Admin/Login", Roles = "Admin")]
+        //[UserAuthorization(ConnectionPage = "~/Admin/Login", Roles = "Admin")]
         [HttpPost]
         public ActionResult ModifyOrderStatus([Bind(Include = "Id, OrderStatus")] ClientOrders order)
         {
             _orderControl.UpdateOrderStatus(order.Id, order.OrderStatus);
             return RedirectToAction("HandleOrders");
         }
+
+        // The function for searching certain items
+        public ActionResult Item_Search(string searchQuarry)
+        {
+            List<Item> foundItems = new List<Item>();
+
+
+            // Mainly it returs a list of all items for Partial voew
+            var allItems = _itemDistributionControl.GetAllItems();
+
+            // If the search quarry is not empty
+            if (!string.IsNullOrEmpty(searchQuarry))
+            {
+
+                searchQuarry = searchQuarry.ToUpper();
+                // Search by Name
+                foundItems.AddRange(allItems.Where(x =>
+                x.Name.ToUpper().Contains(searchQuarry)).ToList());
+
+                // Search by SKU Code
+                foundItems.AddRange(allItems.Where(x =>
+                x.SKUCode.ToUpper().Contains(searchQuarry)).ToList());
+
+                // Search by Category
+                foundItems.AddRange(allItems.Where(x =>
+                x.Category != null && x.Category.Name.ToUpper().Contains(searchQuarry)).ToList());
+
+                // Search by Price
+                foundItems.AddRange(allItems.Where(x =>
+                x.Price.ToString().ToUpper().Contains(searchQuarry)).ToList());
+
+                // Search by Headline
+                foundItems.AddRange(allItems.Where(x =>
+                x.Headline != null && x.Headline.ToUpper().Contains(searchQuarry)).ToList());
+
+                // Description searching
+                foundItems.AddRange(allItems.Where(x =>
+                x.Description != null && x.Description.ToUpper().Contains(searchQuarry)).ToList());
+
+                // Return items in a Partial view here in the same window (this might be changed
+                return PartialView(foundItems);
+            }
+
+            // If the search quarry is empty, we return all the items in the shop
+            return PartialView(allItems);
+        }
+    
     }
 }
