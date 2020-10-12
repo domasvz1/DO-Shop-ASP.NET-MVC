@@ -37,7 +37,11 @@ namespace Presentation.Controllers
         // Shop Page
         public ActionResult Shop()
         {
-            return View();
+            var categories = _itemCategoryControl.GetAllCategories();
+
+            var items = (_itemDistributionControl.GetAllItems()).Where(i => i.CategoryId != null).ToList();
+           
+            return View(items);
         }
 
         // About Page

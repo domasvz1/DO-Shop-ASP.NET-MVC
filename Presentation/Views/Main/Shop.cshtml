@@ -1,362 +1,335 @@
-﻿@model BusinessObjects.Item
+﻿@model IEnumerable<BusinessObjects.Item>
 
 @{
-	ViewBag.Title = "Shop";
+    ViewBag.Title = "Shop";
 }
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
-	<link rel="stylesheet" href="/Content/css/open-iconic-bootstrap.min.css">
-	<link rel="stylesheet" href="/Content/css/animate.css">
-	<link rel="stylesheet" href="/Content/css/owl.carousel.min.css">
-	<link rel="stylesheet" href="/Content/css/owl.theme.default.min.css">
-	<link rel="stylesheet" href="/Content/css/magnific-popup.css">
-	<link rel="stylesheet" href="/Content/css/aos.css">
-	<link rel="stylesheet" href="/Content/css/ionicons.min.css">
-	<link rel="stylesheet" href="/Content/css/bootstrap-datepicker.css">
-	<link rel="stylesheet" href="/Content/css/jquery.timepicker.css">
-	<link rel="stylesheet" href="/Content/css/flaticon.css">
-	<link rel="stylesheet" href="/Content/css/icomoon.css">
-	<link rel="stylesheet" href="/Content/css/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
+    <link rel="stylesheet" href="/Content/css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="/Content/css/animate.css">
+    <link rel="stylesheet" href="/Content/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="/Content/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/Content/css/magnific-popup.css">
+    <link rel="stylesheet" href="/Content/css/aos.css">
+    <link rel="stylesheet" href="/Content/css/ionicons.min.css">
+    <link rel="stylesheet" href="/Content/css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="/Content/css/jquery.timepicker.css">
+    <link rel="stylesheet" href="/Content/css/flaticon.css">
+    <link rel="stylesheet" href="/Content/css/icomoon.css">
+    <link rel="stylesheet" href="/Content/css/style.css">
 </head>
+
 <body class="goto-here">
 
-	<div class="hero-wrap hero-bread" style="background-image: url('/Content/images/bg_6.jpg');">
-		<div class="container">
-			<div class="row no-gutters slider-text align-items-center justify-content-center">
-				<div class="col-md-9 ftco-animate text-center">
-					<p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span>Products</span></p>
-					<h1 class="mb-0 bread">Collection Products</h1>
-				</div>
-			</div>
-		</div>
-	</div>
 
-	<section class="ftco-section bg-light">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-8 col-lg-10 order-md-last">
-					<div class="row">
-						<div class="col-sm-6 col-md-6 col-lg-4 ftco-animate">
-							<div class="product">
-								<a href="#" class="img-prod">
-									<img class="img-fluid" src="/Content/images/product-1.jpg" alt="Colorlib Template">
-									<span class="status">30%</span>
-									<div class="overlay"></div>
-								</a>
-								<div class="text py-3 px-3">
-									<h3><a href="#">Floral Jackquard Pullover</a></h3>
-									<div class="d-flex">
-										<div class="pricing">
-											<p class="price"><span class="mr-2 price-dc">$120.00</span><span class="price-sale">$80.00</span></p>
-										</div>
-										<div class="rating">
-											<p class="text-right">
-												<a href="#"><span class="ion-ios-star-outline"></span></a>
-												<a href="#"><span class="ion-ios-star-outline"></span></a>
-												<a href="#"><span class="ion-ios-star-outline"></span></a>
-												<a href="#"><span class="ion-ios-star-outline"></span></a>
-												<a href="#"><span class="ion-ios-star-outline"></span></a>
-											</p>
-										</div>
-									</div>
-									<p class="bottom-area d-flex px-3">
-										<a href="#" class="add-to-cart text-center py-2 mr-1"><span>Add to cart <i class="ion-ios-add ml-1"></i></span></a>
-										<a href="#" class="buy-now text-center py-2">Buy now<span><i class="ion-ios-cart ml-1"></i></span></a>
-									</p>
-								</div>
-							</div>
-						</div>
-						<div class="col-sm-6 col-md-6 col-lg-4 ftco-animate">
-							<div class="product">
-								<a href="#" class="img-prod">
-									<img class="img-fluid" src="/Content/images/product-2.jpg" alt="Colorlib Template">
-									<div class="overlay"></div>
-								</a>
-								<div class="text py-3 px-3">
-									<h3><a href="#">Floral Jackquard Pullover</a></h3>
-									<div class="d-flex">
-										<div class="pricing">
-											<p class="price"><span>$120.00</span></p>
-										</div>
-										<div class="rating">
-											<p class="text-right">
-												<a href="#"><span class="ion-ios-star-outline"></span></a>
-												<a href="#"><span class="ion-ios-star-outline"></span></a>
-												<a href="#"><span class="ion-ios-star-outline"></span></a>
-												<a href="#"><span class="ion-ios-star-outline"></span></a>
-												<a href="#"><span class="ion-ios-star-outline"></span></a>
-											</p>
-										</div>
-									</div>
-									<p class="bottom-area d-flex px-3">
-										<a href="#" class="add-to-cart text-center py-2 mr-1"><span>Add to cart <i class="ion-ios-add ml-1"></i></span></a>
-										<a href="#" class="buy-now text-center py-2">Buy now<span><i class="ion-ios-cart ml-1"></i></span></a>
-									</p>
-								</div>
-							</div>
-						</div>
-						<div class="col-sm-6 col-md-6 col-lg-4 ftco-animate">
-							<div class="product">
-								<a href="#" class="img-prod">
-									<img class="img-fluid" src="/Content/images/product-3.jpg" alt="Colorlib Template">
-									<div class="overlay"></div>
-								</a>
-								<div class="text py-3 px-3">
-									<h3><a href="#">Floral Jackquard Pullover</a></h3>
-									<div class="d-flex">
-										<div class="pricing">
-											<p class="price"><span>$120.00</span></p>
-										</div>
-										<div class="rating">
-											<p class="text-right">
-												<a href="#"><span class="ion-ios-star-outline"></span></a>
-												<a href="#"><span class="ion-ios-star-outline"></span></a>
-												<a href="#"><span class="ion-ios-star-outline"></span></a>
-												<a href="#"><span class="ion-ios-star-outline"></span></a>
-												<a href="#"><span class="ion-ios-star-outline"></span></a>
-											</p>
-										</div>
-									</div>
-									<p class="bottom-area d-flex px-3">
-										<a href="#" class="add-to-cart text-center py-2 mr-1"><span>Add to cart <i class="ion-ios-add ml-1"></i></span></a>
-										<a href="#" class="buy-now text-center py-2">Buy now<span><i class="ion-ios-cart ml-1"></i></span></a>
-									</p>
-								</div>
-							</div>
-						</div>
-						<div class="col-sm-6 col-md-6 col-lg-4 ftco-animate">
-							<div class="product">
-								<a href="#" class="img-prod">
-									<img class="img-fluid" src="/Content/images/product-4.jpg" alt="Colorlib Template">
-									<div class="overlay"></div>
-								</a>
-								<div class="text py-3 px-3">
-									<h3><a href="#">Floral Jackquard Pullover</a></h3>
-									<div class="d-flex">
-										<div class="pricing">
-											<p class="price"><span>$120.00</span></p>
-										</div>
-										<div class="rating">
-											<p class="text-right">
-												<a href="#"><span class="ion-ios-star-outline"></span></a>
-												<a href="#"><span class="ion-ios-star-outline"></span></a>
-												<a href="#"><span class="ion-ios-star-outline"></span></a>
-												<a href="#"><span class="ion-ios-star-outline"></span></a>
-												<a href="#"><span class="ion-ios-star-outline"></span></a>
-											</p>
-										</div>
-									</div>
-									<p class="bottom-area d-flex px-3">
-										<a href="#" class="add-to-cart text-center py-2 mr-1"><span>Add to cart <i class="ion-ios-add ml-1"></i></span></a>
-										<a href="#" class="buy-now text-center py-2">Buy now<span><i class="ion-ios-cart ml-1"></i></span></a>
-									</p>
-								</div>
-							</div>
-						</div>
-						<div class="col-sm-6 col-md-6 col-lg-4 ftco-animate">
-							<div class="product">
-								<a href="#" class="img-prod">
-									<img class="img-fluid" src="/Content/images/product-5.jpg" alt="Colorlib Template">
-									<div class="overlay"></div>
-								</a>
-								<div class="text py-3 px-3">
-									<h3><a href="#">Floral Jackquard Pullover</a></h3>
-									<div class="d-flex">
-										<div class="pricing">
-											<p class="price"><span>$120.00</span></p>
-										</div>
-										<div class="rating">
-											<p class="text-right">
-												<a href="#"><span class="ion-ios-star-outline"></span></a>
-												<a href="#"><span class="ion-ios-star-outline"></span></a>
-												<a href="#"><span class="ion-ios-star-outline"></span></a>
-												<a href="#"><span class="ion-ios-star-outline"></span></a>
-												<a href="#"><span class="ion-ios-star-outline"></span></a>
-											</p>
-										</div>
-									</div>
-									<p class="bottom-area d-flex px-3">
-										<a href="#" class="add-to-cart text-center py-2 mr-1"><span>Add to cart <i class="ion-ios-add ml-1"></i></span></a>
-										<a href="#" class="buy-now text-center py-2">Buy now<span><i class="ion-ios-cart ml-1"></i></span></a>
-									</p>
-								</div>
-							</div>
-						</div>
-						<div class="col-sm-6 col-md-6 col-lg-4 ftco-animate">
-							<div class="product">
-								<a href="#" class="img-prod">
-									<img class="img-fluid" src="/Content/images/product-6.jpg" alt="Colorlib Template">
-									<div class="overlay"></div>
-								</a>
-								<div class="text py-3 px-3">
-									<h3><a href="#">Floral Jackquard Pullover</a></h3>
-									<div class="d-flex">
-										<div class="pricing">
-											<p class="price"><span>$120.00</span></p>
-										</div>
-										<div class="rating">
-											<p class="text-right">
-												<a href="#"><span class="ion-ios-star-outline"></span></a>
-												<a href="#"><span class="ion-ios-star-outline"></span></a>
-												<a href="#"><span class="ion-ios-star-outline"></span></a>
-												<a href="#"><span class="ion-ios-star-outline"></span></a>
-												<a href="#"><span class="ion-ios-star-outline"></span></a>
-											</p>
-										</div>
-									</div>
-									<p class="bottom-area d-flex px-3">
-										<a href="#" class="add-to-cart text-center py-2 mr-1"><span>Add to cart <i class="ion-ios-add ml-1"></i></span></a>
-										<a href="#" class="buy-now text-center py-2">Buy now<span><i class="ion-ios-cart ml-1"></i></span></a>
-									</p>
-								</div>
-							</div>
-						</div>
-						<div class="col-sm-6 col-md-6 col-lg-4 ftco-animate">
-							<div class="product">
-								<a href="#" class="img-prod">
-									<img class="img-fluid" src="/Content/images/product-7.jpg" alt="Colorlib Template">
-									<div class="overlay"></div>
-								</a>
-								<div class="text py-3 px-3">
-									<h3><a href="#">Floral Jackquard Pullover</a></h3>
-									<div class="d-flex">
-										<div class="pricing">
-											<p class="price"><span>$120.00</span></p>
-										</div>
-										<div class="rating">
-											<p class="text-right">
-												<a href="#"><span class="ion-ios-star-outline"></span></a>
-												<a href="#"><span class="ion-ios-star-outline"></span></a>
-												<a href="#"><span class="ion-ios-star-outline"></span></a>
-												<a href="#"><span class="ion-ios-star-outline"></span></a>
-												<a href="#"><span class="ion-ios-star-outline"></span></a>
-											</p>
-										</div>
-									</div>
-									<p class="bottom-area d-flex px-3">
-										<a href="#" class="add-to-cart text-center py-2 mr-1"><span>Add to cart <i class="ion-ios-add ml-1"></i></span></a>
-										<a href="#" class="buy-now text-center py-2">Buy now<span><i class="ion-ios-cart ml-1"></i></span></a>
-									</p>
-								</div>
-							</div>
-						</div>
-						<div class="col-sm-6 col-md-6 col-lg-4 ftco-animate">
-							<div class="product">
-								<a href="#" class="img-prod">
-									<img class="img-fluid" src="/Content/images/product-8.jpg" alt="Colorlib Template">
-									<div class="overlay"></div>
-								</a>
-								<div class="text py-3 px-3">
-									<h3><a href="#">Floral Jackquard Pullover</a></h3>
-									<div class="d-flex">
-										<div class="pricing">
-											<p class="price"><span>$120.00</span></p>
-										</div>
-										<div class="rating">
-											<p class="text-right">
-												<a href="#"><span class="ion-ios-star-outline"></span></a>
-												<a href="#"><span class="ion-ios-star-outline"></span></a>
-												<a href="#"><span class="ion-ios-star-outline"></span></a>
-												<a href="#"><span class="ion-ios-star-outline"></span></a>
-												<a href="#"><span class="ion-ios-star-outline"></span></a>
-											</p>
-										</div>
-									</div>
-									<p class="bottom-area d-flex px-3">
-										<a href="#" class="add-to-cart text-center py-2 mr-1"><span>Add to cart <i class="ion-ios-add ml-1"></i></span></a>
-										<a href="#" class="buy-now text-center py-2">Buy now<span><i class="ion-ios-cart ml-1"></i></span></a>
-									</p>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="row mt-5">
-						<div class="col text-center">
-							<div class="block-27">
-								<ul>
-									<li><a href="#">&lt;</a></li>
-									<li class="active"><span>1</span></li>
-									<li><a href="#">2</a></li>
-									<li><a href="#">3</a></li>
-									<li><a href="#">4</a></li>
-									<li><a href="#">5</a></li>
-									<li><a href="#">&gt;</a></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-				</div>
 
-				<div class="col-md-4 col-lg-2 sidebar">
-					<div class="sidebar-box-2">
-						<h2 class="heading mb-4"><a href="#">Clothing</a></h2>
-						<ul>
-							<li><a href="#">Shirts &amp; Tops</a></li>
-							<li><a href="#">Dresses</a></li>
-							<li><a href="#">Shorts &amp; Skirts</a></li>
-							<li><a href="#">Jackets</a></li>
-							<li><a href="#">Coats</a></li>
-							<li><a href="#">Sleeveless</a></li>
-							<li><a href="#">Trousers</a></li>
-							<li><a href="#">Winter Coats</a></li>
-							<li><a href="#">Jumpsuits</a></li>
-						</ul>
-					</div>
-					<div class="sidebar-box-2">
-						<h2 class="heading mb-4"><a href="#">Jeans</a></h2>
-						<ul>
-							<li><a href="#">Shirts &amp; Tops</a></li>
-							<li><a href="#">Dresses</a></li>
-							<li><a href="#">Shorts &amp; Skirts</a></li>
-							<li><a href="#">Jackets</a></li>
-							<li><a href="#">Coats</a></li>
-							<li><a href="#">Jeans</a></li>
-							<li><a href="#">Sleeveless</a></li>
-							<li><a href="#">Trousers</a></li>
-							<li><a href="#">Winter Coats</a></li>
-							<li><a href="#">Jumpsuits</a></li>
-						</ul>
-					</div>
-					<div class="sidebar-box-2">
-						<h2 class="heading mb-2"><a href="#">Bags</a></h2>
-						<h2 class="heading mb-2"><a href="#">Accessories</a></h2>
-					</div>
-					<div class="sidebar-box-2">
-						<h2 class="heading mb-4"><a href="#">Shoes</a></h2>
-						<ul>
-							<li><a href="#">Nike</a></li>
-							<li><a href="#">Addidas</a></li>
-							<li><a href="#">Skechers</a></li>
-							<li><a href="#">Jackets</a></li>
-							<li><a href="#">Coats</a></li>
-							<li><a href="#">Jeans</a></li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
 
-	<script src="/Content/js/jquery.min.js"></script>
-	<script src="/Content/js/jquery-migrate-3.0.1.min.js"></script>
-	<script src="/Content/js/popper.min.js"></script>
-	<script src="/Content/js/bootstrap.min.js"></script>
-	<script src="/Content/js/jquery.easing.1.3.js"></script>
-	<script src="/Content/js/jquery.waypoints.min.js"></script>
-	<script src="/Content/js/jquery.stellar.min.js"></script>
-	<script src="/Content/js/owl.carousel.min.js"></script>
-	<script src="/Content/js/jquery.magnific-popup.min.js"></script>
-	<script src="/Content/js/aos.js"></script>
-	<script src="/Content/js/jquery.animateNumber.min.js"></script>
-	<script src="/Content/js/bootstrap-datepicker.js"></script>
-	<script src="/Content/js/scrollax.min.js"></script>
-	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-	<script src="/Content/js/google-map.js"></script>
-	<script src="/Content/js/main.js"></script>
+
+    @*<div style="height:700px;position: absolute; left:5%; margin-left: -3px; top:25%;">
+            @{
+                var count = 0;
+                foreach (var category in Model)
+                {
+                    count += category.Items.Count;
+                }
+            }
+            @foreach (var kategorija in Model)
+            {
+
+                // Tu kategoriju, kurios neturi prekiu nerodysime
+                if (@kategorija.Items.Count > 0)
+                {
+                    <button class="btn btn-dark" onclick="filterSelection('@kategorija.Name')" style="margin-bottom:2px; width:100%;"> @kategorija.Name <span class="badge badge-info">(@kategorija.Items.Count prekės)</span></button><br /><hr />
+                }
+            }
+        </div>*@
+
+
+    <div class="hero-wrap hero-bread" style="background-image: url('/Content/images/bg_6.jpg');">
+        <div class="container">
+            <div class="row no-gutters slider-text align-items-center justify-content-center">
+                <div class="col-md-9 ftco-animate text-center">
+                    <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span>Products</span></p>
+                    <h1 class="mb-0 bread">Collection Products</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @*<div align="center" style="width:initial">
+            Kreipiames i prekiu paieska
+            @Html.Partial("_ItemSearchPartial")
+        </div>*@
+
+
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-lg-10 order-md-last">
+
+                    @*So far we have othing here, we will need to enter categories here*@
+                    <div class="row">
+                        @foreach (var item in Model)
+                        {
+
+                            <div class="col-sm-6 col-md-6 col-lg-4 ftco-animate">
+                                <div class="product">
+                                    <a href="#" class="img-prod" onclick="location.href='@Url.Action("About_Item", "Main" , new { prekesId = item.Id }, null)'">
+
+                                        @*Which Image will be used (should be fixed size)*@
+                                        @{
+                                            if (item.ImageUrl != null)
+                                            {
+                                                <img src="@Url.Content(item.ImageUrl)" class="img-fluid" alt="Colorlib Template" style="height:200px; min-height:400px; width:290px; min-width:290px" />
+                                            }
+                                            else
+                                            {
+                                                <img src="@Url.Content("~/Content/Images/nera.png")" class="img-fluid" alt="Colorlib Template " style="height:400px; min-height:200px; width:290px; min-width:290px" />
+                                            }
+                                        }
+
+                                        <span class="status"> 30% OFF THIS WEEK</span>
+                                        <div class="overlay"></div>
+                                    </a>
+                                    <div class="text py-3 px-3">
+                                        <h3><a onclick="location.href='@Url.Action("About_Item", "Main" , new { prekesId = item.Id }, null)'">@Html.DisplayFor(modelItem => item.Name)</a></h3>
+                                        <div class="d-flex" onclick="location.href='@Url.Action("About_Item", "Main" , new { prekesId = item.Id }, null)'">
+                                            <div class="pricing">
+                                                <p class="price"><span class="mr-2 price-dc">@Html.DisplayFor(modelItem => item.Price)</span><span class="price-sale">$80.00</span></p>
+                                            </div>
+                                            <div class="rating">
+                                                <p class="text-right">
+                                                    <a href="#"><span class="ion-ios-star-outline"></span></a>
+                                                    <a href="#"><span class="ion-ios-star-outline"></span></a>
+                                                    <a href="#"><span class="ion-ios-star-outline"></span></a>
+                                                    <a href="#"><span class="ion-ios-star-outline"></span></a>
+                                                    <a href="#"><span class="ion-ios-star-outline"></span></a>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <p class="bottom-area d-flex px-3">
+                                            <a onclick="AddToCart(@item.Id)" id="AddToCart" class="add-to-cart text-center py-2 mr-1"><span>Add to cart <i class="ion-ios-add ml-1"></i></span></a>
+                                            <a href="#" class="buy-now text-center py-2">Buy now<span><i class="ion-ios-cart ml-1"></i></span></a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                        }
+                    </div>
+                    @*Testing new feature*@
+
+
+                    @*Actual categories can be displayed here*@
+                    <div class="row mt-5">
+                        <div class="col text-center">
+                            <div class="block-27">
+                                <ul>
+                                    <li><a href="#">&lt;</a></li>
+                                    <li class="active"><span>1</span></li>
+                                    <li><a href="#">2</a></li>
+                                    <li><a href="#">3</a></li>
+                                    <li><a href="#">4</a></li>
+                                    <li><a href="#">5</a></li>
+                                    <li><a href="#">&gt;</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 col-lg-2 sidebar">
+                    <div class="sidebar-box-2">
+                        <h2 class="heading mb-4"><a href="#">Clothing</a></h2>
+                        <ul>
+                            <li><a href="#">Shirts &amp; Tops</a></li>
+                            <li><a href="#">Dresses</a></li>
+                            <li><a href="#">Shorts &amp; Skirts</a></li>
+                            <li><a href="#">Jackets</a></li>
+                            <li><a href="#">Coats</a></li>
+                            <li><a href="#">Sleeveless</a></li>
+                            <li><a href="#">Trousers</a></li>
+                            <li><a href="#">Winter Coats</a></li>
+                            <li><a href="#">Jumpsuits</a></li>
+                        </ul>
+                    </div>
+                    <div class="sidebar-box-2">
+                        <h2 class="heading mb-4"><a href="#">Jeans</a></h2>
+                        <ul>
+                            <li><a href="#">Shirts &amp; Tops</a></li>
+                            <li><a href="#">Dresses</a></li>
+                            <li><a href="#">Shorts &amp; Skirts</a></li>
+                            <li><a href="#">Jackets</a></li>
+                            <li><a href="#">Coats</a></li>
+                            <li><a href="#">Jeans</a></li>
+                            <li><a href="#">Sleeveless</a></li>
+                            <li><a href="#">Trousers</a></li>
+                            <li><a href="#">Winter Coats</a></li>
+                            <li><a href="#">Jumpsuits</a></li>
+                        </ul>
+                    </div>
+                    <div class="sidebar-box-2">
+                        <h2 class="heading mb-2"><a href="#">Bags</a></h2>
+                        <h2 class="heading mb-2"><a href="#">Accessories</a></h2>
+                    </div>
+                    <div class="sidebar-box-2">
+                        <h2 class="heading mb-4"><a href="#">Shoes</a></h2>
+                        <ul>
+                            <li><a href="#">Nike</a></li>
+                            <li><a href="#">Addidas</a></li>
+                            <li><a href="#">Skechers</a></li>
+                            <li><a href="#">Jackets</a></li>
+                            <li><a href="#">Coats</a></li>
+                            <li><a href="#">Jeans</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </section>
+
+        <script src="/Content/js/jquery.min.js"></script>
+        <script src="/Content/js/jquery-migrate-3.0.1.min.js"></script>
+        <script src="/Content/js/popper.min.js"></script>
+        <script src="/Content/js/bootstrap.min.js"></script>
+        <script src="/Content/js/jquery.easing.1.3.js"></script>
+        <script src="/Content/js/jquery.waypoints.min.js"></script>
+        <script src="/Content/js/jquery.stellar.min.js"></script>
+        <script src="/Content/js/owl.carousel.min.js"></script>
+        <script src="/Content/js/jquery.magnific-popup.min.js"></script>
+        <script src="/Content/js/aos.js"></script>
+        <script src="/Content/js/jquery.animateNumber.min.js"></script>
+        <script src="/Content/js/bootstrap-datepicker.js"></script>
+        <script src="/Content/js/scrollax.min.js"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+        <script src="/Content/js/google-map.js"></script>
+        <script src="/Content/js/main.js"></script>
 
 </body>
 </html>
+
+
+
+<script>
+		filterSelection("visos")
+
+		function filterSelection(kategorijos) {
+
+			var kategorijuKlases;
+			kategorijuKlases = document.getElementsByClassName("filterDiv");
+
+
+			if (kategorijos == "Prekės be kategorijos")
+			{
+				// Pirma paslepiam visas prekes
+				for (var i = 0; i < kategorijuKlases.length; i++) {
+					w3RemoveClass(kategorijuKlases[i], "show");
+					kategorijos = "";
+				}
+
+				// Dabar bar parodom tik tas kurios be kategorijos
+				for (var i = 0; i < kategorijuKlases.length; i++) {
+
+					if (kategorijuKlases[i].className == "filterDiv Neturi kategorijos")
+						w3AddClass(kategorijuKlases[i], "show");
+				}
+			}
+
+			// Parodyti visas kategorijas
+			else if (kategorijos == "visos") {
+				for (var i = 0; i < kategorijuKlases.length; i++) {
+					w3AddClass(kategorijuKlases[i], "show");
+					kategorijos = "";
+				}
+			}
+			else {
+				//Pereinu per visas prekes ir jas visas uzglaistau
+				for (var i = 0; i < kategorijuKlases.length; i++) {
+					w3RemoveClass(kategorijuKlases[i], "show");
+				}
+
+				// Dabar tos, kuriu indexai didesni nei neigiami tai jas rodom
+				for (var i = 0; i < kategorijuKlases.length; i++) {
+
+					if (kategorijuKlases[i].className.indexOf(kategorijos) > -1) {
+						w3AddClass(kategorijuKlases[i], "show");
+					}
+				}
+			}
+		}
+
+		// Prideti preke i krepseli
+        function AddToCart(prekesId) {
+			var url = '@Url.Action("AddItemToCart", "Client")';
+			$("#AddMessage" + prekesId).html("").show();
+			$.ajax({
+				type: "POST",
+				url: url,
+				data: { itemId: prekesId, quantity: 1 },
+				cache: false,
+				dataType: 'html',
+				success: function (response) {
+					var result = JSON.parse(response);
+					$("#CartBox").html(result.itemCount);
+					var x = document.getElementById("snackbar");
+					x.innerHTML = result.message;
+					x.className = "show";
+					setTimeout(function () { x.className = x.className.replace("show", ""); }, 1300);
+				}
+			});
+		}
+
+		// Elemento pridejimo is matymo lauko
+		function w3AddClass(element, name) {
+			var i, arr1, arr2;
+			arr1 = element.className.split(" ");
+			arr2 = name.split(" ");
+			for (i = 0; i < arr2.length; i++) {
+				if (arr1.indexOf(arr2[i]) == -1) {
+					element.className += " " + arr2[i];
+				}
+			}
+		}
+
+		// Elemento pasalinimo is matymo lauko
+		function w3RemoveClass(element, name) {
+			var i, arr1, arr2;
+			arr1 = element.className.split(" ");
+			arr2 = name.split(" ");
+			for (i = 0; i < arr2.length; i++) {
+				while (arr1.indexOf(arr2[i]) > -1) {
+					arr1.splice(arr1.indexOf(arr2[i]), 1);
+				}
+			}
+			element.className = arr1.join(" ");
+		}
+
+		var btnContainer = document.getElementById("myBtnContainer");
+		var btns = btnContainer.getElementsByClassName("btn");
+		for (var i = 0; i < btns.length; i++) {
+			btns[i].addEventListener("click", function () {
+				if (this.className.indexOf("notActive") > -1) {
+					this.className = this.className.replace(" notActive", "");
+				}
+				else {
+					this.className += " notActive";
+				}
+			});
+		}
+</script>
+
+<script>
+    $(".grid").on("click", ".trigger", function () {
+        $.ajax({
+            url: "/ProcessLogEntries",
+            type: "post"
+        })
+            .done(function (result) {
+                $(".grid").html(result);
+            });
+    });
+</script>
