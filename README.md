@@ -46,11 +46,10 @@ Most popular databases are supported, including SQLite, SQL Server, MySQL, Postg
 
 More documentation coming, (need to read it first and apply in the website)
 Also, later in the future, I will add a section about Winkel bootstrap right here for more information.
+----------------------------------------------------------------------------------------------------------
 
+# How to launch the project 
 
-[Tips when launching the project]
-
-- Item display in the shop [Postponed]
 
 You might have some addons or something else regarding the project, so I'm leaving you with this "Setting up the project" guide:
 --
@@ -78,13 +77,24 @@ If there are problems with migrations
 
 [Migrations sould be tested on new PC when starting the project for the first time]
 -----------------------------------------------------------------------------------------------------------------------------------
-[New added features, fixes, released versions starting with newest at the top]
---
 
 
-# Currently working on
-[WORK IN PROGRESS 0.3 ADMIN PANEL]
 
+# Release 0.4 is being created
+
+Plans for release 0.4:
+- Clear the processes, have plans for the current release
+- Webpage for webshop processes
+- Create first automation tests
+- Fix as mcuh exceptions (try catches as possible)
+- Add Sprint diagram, try to work in sprint 
+
+
+So far what has been done:
+
+
+
+-----------------------------------------------------------------------
 
 [0.3.2 release] Merging 0.3 admin panel to master
 
@@ -119,11 +129,7 @@ Bug fixes:
 
 
 
-
-
-
 -----------------------------------------------------------------------
-
 
 
 [Version 0.2 released]

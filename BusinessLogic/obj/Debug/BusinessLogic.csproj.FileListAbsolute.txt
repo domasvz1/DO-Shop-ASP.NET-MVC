@@ -76,3 +76,30 @@ C:\Users\TestUser\Desktop\DO-Shop-ASP.NET-MVC\BusinessLogic\obj\Debug\BusinessLo
 C:\Users\TestUser\Desktop\DO-Shop-ASP.NET-MVC\BusinessLogic\obj\Debug\BusinessLogic.csproj.CopyComplete
 C:\Users\TestUser\Desktop\DO-Shop-ASP.NET-MVC\BusinessLogic\obj\Debug\BusinessLogic.dll
 C:\Users\TestUser\Desktop\DO-Shop-ASP.NET-MVC\BusinessLogic\obj\Debug\BusinessLogic.pdb
+C:\Users\dosipovicius\OneDrive - barbora.lt\Desktop\DO-Shop-ASP.NET-MVC\BusinessLogic\bin\Debug\BusinessLogic.dll.config
+C:\Users\dosipovicius\OneDrive - barbora.lt\Desktop\DO-Shop-ASP.NET-MVC\BusinessLogic\bin\Debug\BusinessLogic.dll
+C:\Users\dosipovicius\OneDrive - barbora.lt\Desktop\DO-Shop-ASP.NET-MVC\BusinessLogic\bin\Debug\BusinessLogic.pdb
+C:\Users\dosipovicius\OneDrive - barbora.lt\Desktop\DO-Shop-ASP.NET-MVC\BusinessLogic\bin\Debug\BusinessObjects.dll
+C:\Users\dosipovicius\OneDrive - barbora.lt\Desktop\DO-Shop-ASP.NET-MVC\BusinessLogic\bin\Debug\DataAccess.dll
+C:\Users\dosipovicius\OneDrive - barbora.lt\Desktop\DO-Shop-ASP.NET-MVC\BusinessLogic\bin\Debug\EntityFramework.dll
+C:\Users\dosipovicius\OneDrive - barbora.lt\Desktop\DO-Shop-ASP.NET-MVC\BusinessLogic\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\dosipovicius\OneDrive - barbora.lt\Desktop\DO-Shop-ASP.NET-MVC\BusinessLogic\bin\Debug\EPPlus.dll
+C:\Users\dosipovicius\OneDrive - barbora.lt\Desktop\DO-Shop-ASP.NET-MVC\BusinessLogic\bin\Debug\Mehdime.Entity.dll
+C:\Users\dosipovicius\OneDrive - barbora.lt\Desktop\DO-Shop-ASP.NET-MVC\BusinessLogic\bin\Debug\MoreLinq.dll
+C:\Users\dosipovicius\OneDrive - barbora.lt\Desktop\DO-Shop-ASP.NET-MVC\BusinessLogic\bin\Debug\Newtonsoft.Json.dll
+C:\Users\dosipovicius\OneDrive - barbora.lt\Desktop\DO-Shop-ASP.NET-MVC\BusinessLogic\bin\Debug\System.ValueTuple.dll
+C:\Users\dosipovicius\OneDrive - barbora.lt\Desktop\DO-Shop-ASP.NET-MVC\BusinessLogic\bin\Debug\BusinessObjects.pdb
+C:\Users\dosipovicius\OneDrive - barbora.lt\Desktop\DO-Shop-ASP.NET-MVC\BusinessLogic\bin\Debug\BusinessObjects.dll.config
+C:\Users\dosipovicius\OneDrive - barbora.lt\Desktop\DO-Shop-ASP.NET-MVC\BusinessLogic\bin\Debug\DataAccess.pdb
+C:\Users\dosipovicius\OneDrive - barbora.lt\Desktop\DO-Shop-ASP.NET-MVC\BusinessLogic\bin\Debug\DataAccess.dll.config
+C:\Users\dosipovicius\OneDrive - barbora.lt\Desktop\DO-Shop-ASP.NET-MVC\BusinessLogic\bin\Debug\EntityFramework.xml
+C:\Users\dosipovicius\OneDrive - barbora.lt\Desktop\DO-Shop-ASP.NET-MVC\BusinessLogic\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\dosipovicius\OneDrive - barbora.lt\Desktop\DO-Shop-ASP.NET-MVC\BusinessLogic\bin\Debug\EPPlus.xml
+C:\Users\dosipovicius\OneDrive - barbora.lt\Desktop\DO-Shop-ASP.NET-MVC\BusinessLogic\bin\Debug\MoreLinq.xml
+C:\Users\dosipovicius\OneDrive - barbora.lt\Desktop\DO-Shop-ASP.NET-MVC\BusinessLogic\bin\Debug\Newtonsoft.Json.xml
+C:\Users\dosipovicius\OneDrive - barbora.lt\Desktop\DO-Shop-ASP.NET-MVC\BusinessLogic\bin\Debug\System.ValueTuple.xml
+C:\Users\dosipovicius\OneDrive - barbora.lt\Desktop\DO-Shop-ASP.NET-MVC\BusinessLogic\obj\Debug\BusinessLogic.csprojAssemblyReference.cache
+C:\Users\dosipovicius\OneDrive - barbora.lt\Desktop\DO-Shop-ASP.NET-MVC\BusinessLogic\obj\Debug\BusinessLogic.csproj.CoreCompileInputs.cache
+C:\Users\dosipovicius\OneDrive - barbora.lt\Desktop\DO-Shop-ASP.NET-MVC\BusinessLogic\obj\Debug\BusinessLogic.csproj.CopyComplete
+C:\Users\dosipovicius\OneDrive - barbora.lt\Desktop\DO-Shop-ASP.NET-MVC\BusinessLogic\obj\Debug\BusinessLogic.dll
+C:\Users\dosipovicius\OneDrive - barbora.lt\Desktop\DO-Shop-ASP.NET-MVC\BusinessLogic\obj\Debug\BusinessLogic.pdb

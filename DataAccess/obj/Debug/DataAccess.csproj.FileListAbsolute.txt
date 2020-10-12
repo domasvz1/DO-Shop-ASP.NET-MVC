@@ -61,3 +61,27 @@ C:\Users\TestUser\Desktop\DO-Shop-ASP.NET-MVC\DataAccess\obj\Debug\DataAccess.cs
 C:\Users\TestUser\Desktop\DO-Shop-ASP.NET-MVC\DataAccess\obj\Debug\DataAccess.csproj.CopyComplete
 C:\Users\TestUser\Desktop\DO-Shop-ASP.NET-MVC\DataAccess\obj\Debug\DataAccess.dll
 C:\Users\TestUser\Desktop\DO-Shop-ASP.NET-MVC\DataAccess\obj\Debug\DataAccess.pdb
+C:\Users\dosipovicius\OneDrive - barbora.lt\Desktop\DO-Shop-ASP.NET-MVC\DataAccess\bin\Debug\DataAccess.dll.config
+C:\Users\dosipovicius\OneDrive - barbora.lt\Desktop\DO-Shop-ASP.NET-MVC\DataAccess\bin\Debug\DataAccess.dll
+C:\Users\dosipovicius\OneDrive - barbora.lt\Desktop\DO-Shop-ASP.NET-MVC\DataAccess\bin\Debug\DataAccess.pdb
+C:\Users\dosipovicius\OneDrive - barbora.lt\Desktop\DO-Shop-ASP.NET-MVC\DataAccess\bin\Debug\BusinessObjects.dll
+C:\Users\dosipovicius\OneDrive - barbora.lt\Desktop\DO-Shop-ASP.NET-MVC\DataAccess\bin\Debug\EntityFramework.dll
+C:\Users\dosipovicius\OneDrive - barbora.lt\Desktop\DO-Shop-ASP.NET-MVC\DataAccess\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\dosipovicius\OneDrive - barbora.lt\Desktop\DO-Shop-ASP.NET-MVC\DataAccess\bin\Debug\log4net.dll
+C:\Users\dosipovicius\OneDrive - barbora.lt\Desktop\DO-Shop-ASP.NET-MVC\DataAccess\bin\Debug\Mehdime.Entity.dll
+C:\Users\dosipovicius\OneDrive - barbora.lt\Desktop\DO-Shop-ASP.NET-MVC\DataAccess\bin\Debug\System.Web.Mvc.dll
+C:\Users\dosipovicius\OneDrive - barbora.lt\Desktop\DO-Shop-ASP.NET-MVC\DataAccess\bin\Debug\System.Web.WebPages.dll
+C:\Users\dosipovicius\OneDrive - barbora.lt\Desktop\DO-Shop-ASP.NET-MVC\DataAccess\bin\Debug\System.Web.Razor.dll
+C:\Users\dosipovicius\OneDrive - barbora.lt\Desktop\DO-Shop-ASP.NET-MVC\DataAccess\bin\Debug\System.Web.WebPages.Razor.dll
+C:\Users\dosipovicius\OneDrive - barbora.lt\Desktop\DO-Shop-ASP.NET-MVC\DataAccess\bin\Debug\Microsoft.Web.Infrastructure.dll
+C:\Users\dosipovicius\OneDrive - barbora.lt\Desktop\DO-Shop-ASP.NET-MVC\DataAccess\bin\Debug\System.Web.WebPages.Deployment.dll
+C:\Users\dosipovicius\OneDrive - barbora.lt\Desktop\DO-Shop-ASP.NET-MVC\DataAccess\bin\Debug\BusinessObjects.pdb
+C:\Users\dosipovicius\OneDrive - barbora.lt\Desktop\DO-Shop-ASP.NET-MVC\DataAccess\bin\Debug\BusinessObjects.dll.config
+C:\Users\dosipovicius\OneDrive - barbora.lt\Desktop\DO-Shop-ASP.NET-MVC\DataAccess\bin\Debug\EntityFramework.xml
+C:\Users\dosipovicius\OneDrive - barbora.lt\Desktop\DO-Shop-ASP.NET-MVC\DataAccess\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\dosipovicius\OneDrive - barbora.lt\Desktop\DO-Shop-ASP.NET-MVC\DataAccess\bin\Debug\log4net.xml
+C:\Users\dosipovicius\OneDrive - barbora.lt\Desktop\DO-Shop-ASP.NET-MVC\DataAccess\obj\Debug\DataAccess.csprojAssemblyReference.cache
+C:\Users\dosipovicius\OneDrive - barbora.lt\Desktop\DO-Shop-ASP.NET-MVC\DataAccess\obj\Debug\DataAccess.csproj.CoreCompileInputs.cache
+C:\Users\dosipovicius\OneDrive - barbora.lt\Desktop\DO-Shop-ASP.NET-MVC\DataAccess\obj\Debug\DataAccess.csproj.CopyComplete
+C:\Users\dosipovicius\OneDrive - barbora.lt\Desktop\DO-Shop-ASP.NET-MVC\DataAccess\obj\Debug\DataAccess.dll
+C:\Users\dosipovicius\OneDrive - barbora.lt\Desktop\DO-Shop-ASP.NET-MVC\DataAccess\obj\Debug\DataAccess.pdb
