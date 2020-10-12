@@ -34,10 +34,14 @@ namespace Presentation.Controllers
             return View(categories);
         }
 
-        // Shop Page
-        public ActionResult Shop()
+        // Products Page
+        public ActionResult Products()
         {
-            return View();
+            var categories = _itemCategoryControl.GetAllCategories();
+
+            var items = (_itemDistributionControl.GetAllItems()).Where(i => i.CategoryId != null).ToList();
+           
+            return View(items);
         }
 
         // About Page

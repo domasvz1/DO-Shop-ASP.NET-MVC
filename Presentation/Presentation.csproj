@@ -618,7 +618,7 @@
     <Content Include="Views\Shared\_Footer.cshtml" />
     <Content Include="Uploads\Prekes\Prekes.xlsx" />
     <Content Include="Views\Admin\_ItemProperties.cshtml" />
-    <Content Include="Views\Main\Shop.cshtml" />
+    <Content Include="Views\Main\Products.cshtml" />
     <Content Include="Views\Client\Checkout.cshtml" />
     <Content Include="Views\Client\Index.cshtml" />
     <Content Include="Scripts\umd\popper.min.js.map" />
