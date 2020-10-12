@@ -71,15 +71,23 @@ In the Packahge Manager Console (Or if it changes in the future in something sim
 # Release 0.4 is being created
 
 Plans for release 0.4:
-- Clear the processes, have plans for the current release
+- First and far the most important feature is to fix the fronend of the main shop and make the payment system;
+- (Fix the UI in the SHOP) mian
+- Drop headline from database
+- (Fix the payment)
+- Another important thing is to make deleting items from database and importing process work flawlessly;
+- Clear the processes, have plans for the current release;
 - Webpage for webshop processes
-- Create first automation tests
+- Create first automation tests (UNIT TESTS)
 - Fix as mcuh exceptions (try catches as possible)
 - Add Sprint diagram, try to work in sprint 
 
 
 So far what has been done:
 - Empty webpager created
+- Changed the term meaning Shop -> Products
+
+
 
 
 -----------------------------------------------------------------------
