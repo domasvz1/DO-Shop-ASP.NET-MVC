@@ -34,8 +34,8 @@ namespace Presentation.Controllers
             return View(categories);
         }
 
-        // Shop Page
-        public ActionResult Shop()
+        // Products Page
+        public ActionResult Products()
         {
             var categories = _itemCategoryControl.GetAllCategories();
 

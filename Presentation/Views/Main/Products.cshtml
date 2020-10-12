@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<BusinessObjects.Item>
 
 @{
-    ViewBag.Title = "Shop";
+    ViewBag.Title = "Products";
 }
 
 <!DOCTYPE html>
@@ -53,8 +53,8 @@
         <div class="container">
             <div class="row no-gutters slider-text align-items-center justify-content-center">
                 <div class="col-md-9 ftco-animate text-center">
-                    <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span>Products</span></p>
-                    <h1 class="mb-0 bread">Collection Products</h1>
+                    
+                    <h1 class="mb-0 bread">Collection Products OF DO SHOP</h1>
                 </div>
             </div>
         </div>
@@ -67,17 +67,17 @@
 
 
 
-        <div class="container">
+        <div class="container" style="margin-top:40px">
             <div class="row">
-                <div class="col-md-8 col-lg-10 order-md-last">
+                <div class="col-md-10 col-lg-10 order-md-last">
 
                     @*So far we have othing here, we will need to enter categories here*@
                     <div class="row">
                         @foreach (var item in Model)
                         {
 
-                            <div class="col-sm-6 col-md-6 col-lg-4 ftco-animate">
-                                <div class="product">
+                            <div class="col-sm-4 col-md-4 col-lg-4  ftco-animate" style="padding-left:5px" >
+                                <div class="product" style="border:solid">
                                     <a href="#" class="img-prod" onclick="location.href='@Url.Action("About_Item", "Main" , new { prekesId = item.Id }, null)'">
 
                                         @*Which Image will be used (should be fixed size)*@
@@ -142,7 +142,7 @@
                     </div>
                 </div>
 
-                <div class="col-md-4 col-lg-2 sidebar">
+                <div class="col-md-2 col-lg-2 sidebar">
                     <div class="sidebar-box-2">
                         <h2 class="heading mb-4"><a href="#">Clothing</a></h2>
                         <ul>
