@@ -1,4 +1,4 @@
-# D O Shop-ASP.NET MVC
+# DO Shop-ASP.NET MVC
 ------------------------
 Public releases, this website project has not reached the alpha version yet. I have decided to publish this and curretnly I am working on 0.3 release (admin panel). This file will be updated once in a while to let people know what is up with this project.
 
@@ -46,7 +46,8 @@ Most popular databases are supported, including SQLite, SQL Server, MySQL, Postg
 
 More documentation coming, (need to read it first and apply in the website)
 Also, later in the future, I will add a section about Winkel bootstrap right here for more information.
-----------------------------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------------------------------------------------
 
 ## How to launch the project 
 
@@ -60,8 +61,8 @@ This error may also occur
 "No context type was found in the assembly"
 
 In the Packahge Manager Console (Or if it changes in the future in something similar) change Default project to "DataAccess"
---
-Enable-Migrations (if its installed do the following). Migrations sould be tested on new PC when starting the project for the first time: 
+
+"Enable-Migrations" in the Package manager (if its installed do the following). Migrations sould be tested on new PC when starting the project for the first time: 
  * If there are problems with migrations "Add-Migration InitialCreate and update-database" 
 
 
