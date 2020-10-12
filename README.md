@@ -73,21 +73,24 @@ In the Packahge Manager Console (Or if it changes in the future in something sim
 Plans for release 0.4:
 - First and far the most important feature is to fix the fronend of the main shop and make the payment system;
 - (Fix the UI in the SHOP) mian
-- Drop headline from database
-- (Fix the payment)
+- Drop headline parameter from Item object from the main database;
+- (Fix the payment system)
 - Another important thing is to make deleting items from database and importing process work flawlessly;
 - Clear the processes, have plans for the current release;
 - Webpage for webshop processes
 - Create first automation tests (UNIT TESTS)
-- Fix as mcuh exceptions (try catches as possible)
-- Add Sprint diagram, try to work in sprint 
+- Fix as mcuh exceptions (try catches as possible);
+- Add Sprint diagram, try to work in sprint;
+- Add CSS on products page;
+- Display products categories in Main Products window;
+- Add product search in the Main products window;
+- Add the cart option and make cart visible;
 
 
 So far what has been done:
-- Empty webpager created
+- Empty webpage created
 - Changed the term meaning Shop -> Products
-
-
+- Products are now being displayed in the store (In the navigation bar find Products section)
 
 
 -----------------------------------------------------------------------
@@ -96,8 +99,7 @@ So far what has been done:
 
 Decided to work on another branch and this needs to be in master. Since this branch is not done yet, will merge everything that was corrected and since it was a lot, decided to merge.
 
-The idea about this release:
-
+The main fixes on this release:
 - Started implementing Admin Index Panel with Winkel bootstrap and redoing everything with its styling suggestions;
 - Made sure that pictures would be clickable for admin and that it would display admin pictures;
 - Made sure that If item has no proper picture, a proper picture would be displayed from content;
