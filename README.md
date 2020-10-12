@@ -48,27 +48,21 @@ More documentation coming, (need to read it first and apply in the website)
 Also, later in the future, I will add a section about Winkel bootstrap right here for more information.
 ----------------------------------------------------------------------------------------------------------
 
-# How to launch the project 
+## How to launch the project 
 
+You might have some addons or something else regarding the project, so I'm leaving you with this "Setting up the project" guide. If you pull the master to your local repository and the following errors occur, you can fix them using these few steps: 
 
-You might have some addons or something else regarding the project, so I'm leaving you with this "Setting up the project" guide:
---
-If you pull this from the master and the error is proceeded with the 
-
-  You can fix it by entering this:
-  --
   - In the "Package Manager Console" (in the Visual Studio) update -> Update-Package Microsoft.CodeDom.Providers.DotNetCompilerPlatform -r
-  - Also, you can add "SQL Server Object Explorer" in view. If it's missing, restart the project (by opening it in the explorer using Visual Studio).
   - When you have opened the solution,  set the "Presentation" Layer as a Startup Project in the Visual Studio's Solution Settings.
+  - (Optional) Also, you can add "SQL Server Object Explorer" in view. If it's missing, restart the project (by opening it in the explorer using Visual Studio).
 
 This error may also occur
 "No context type was found in the assembly"
 
-In the Packahge Manager Console (Or if it changes in the future in something similar) change Defaukt project to "DataAccess"
+In the Packahge Manager Console (Or if it changes in the future in something similar) change Default project to "DataAccess"
 --
 Enable-Migrations (if its installed do the following). Migrations sould be tested on new PC when starting the project for the first time: 
  * If there are problems with migrations "Add-Migration InitialCreate and update-database" 
-
 
 
 -----------------------------------------------------------------------------------------------------------------------------------
