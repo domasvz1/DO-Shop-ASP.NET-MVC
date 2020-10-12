@@ -57,28 +57,21 @@ If you pull this from the master and the error is proceeded with the
 
   You can fix it by entering this:
   --
-  Update-Package Microsoft.CodeDom.Providers.DotNetCompilerPlatform -r
-
-  In the "Package Manager Console" in the Visual Studio.
-
-- Also, you can add "SQL Server Object Explorer" in view. If it's missing, restart the project (by opening it in the explorer using Visual Studio).
-- When you have opened the solution,  set the "Presentation" Layer as a Startup Project in the Visual Studio's Solution Settings.
+  - In the "Package Manager Console" (in the Visual Studio) update -> Update-Package Microsoft.CodeDom.Providers.DotNetCompilerPlatform -r
+  - Also, you can add "SQL Server Object Explorer" in view. If it's missing, restart the project (by opening it in the explorer using Visual Studio).
+  - When you have opened the solution,  set the "Presentation" Layer as a Startup Project in the Visual Studio's Solution Settings.
 
 This error may also occur
 "No context type was found in the assembly"
 
 In the Packahge Manager Console (Or if it changes in the future in something similar) change Defaukt project to "DataAccess"
 --
-Enable-Migrations (if its installed do the following)
+Enable-Migrations (if its installed do the following). Migrations sould be tested on new PC when starting the project for the first time: 
+ * If there are problems with migrations "Add-Migration InitialCreate and update-database" 
 
-Add-Migration InitialCreate and update-database
---
-If there are problems with migrations 
 
-[Migrations sould be tested on new PC when starting the project for the first time]
+
 -----------------------------------------------------------------------------------------------------------------------------------
-
-
 
 # Release 0.4 is being created
 
@@ -91,48 +84,46 @@ Plans for release 0.4:
 
 
 So far what has been done:
-
+- Empty webpager created
 
 
 -----------------------------------------------------------------------
 
-[0.3.2 release] Merging 0.3 admin panel to master
+ # 0.3 Release [done, but Lacks documentation]
 
 Decided to work on another branch and this needs to be in master. Since this branch is not done yet, will merge everything that was corrected and since it was a lot, decided to merge.
 
 The idea about this release:
 
-Started implementing Admin Index Panel with Winkel bootstrap and redoing everything with its styling suggestions;
-Made sure that pictures would be clickable for admin and that it would display admin pictures;
-Made sure that If item has no proper picture, a proper picture would be displayed from content;
-The Layout of ItemInformation was completely redone;
-Implemented picture modification in ItemModification page;
-Redone the layout changes on Modification and Information pages of Items;
-Make so that items would be clickable in the admin's index panel and hoverable too;
-In ModifyItems Change "Save Item" and "Back" buttons implemented functionality and styling;
-Admin Index Page Layout changes;
-In the Admin Panel Page, the sidebar should implement functions with items, user and orders, Making sidebar options clickable;
-In the Admin Panel Page, implemented sidebar functions with items, user and orders;
-Made Importing functionality and sample layout page;
-Refactored"Title" to "Headline" to make more sense, Title doesn't sound good;
-Changed the login panel to admins and make it similar to user login;
-Implemented Navigation Bar's list where the different pages are being displayed logic for the different states;
-Redone admins login and admins top bar ( needs some work though);
-Fixed frontend warnings about nav element in the HTML documents;
+- Started implementing Admin Index Panel with Winkel bootstrap and redoing everything with its styling suggestions;
+- Made sure that pictures would be clickable for admin and that it would display admin pictures;
+- Made sure that If item has no proper picture, a proper picture would be displayed from content;
+- The Layout of ItemInformation was completely redone;
+- Implemented picture modification in ItemModification page;
+- Redone the layout changes on Modification and Information pages of Items;
+- Make so that items would be clickable in the admin's index panel and hoverable too;
+- In ModifyItems Change "Save Item" and "Back" buttons implemented functionality and styling;
+- Admin Index Page Layout changes;
+- In the Admin Panel Page, the sidebar should implement functions with items, user and orders, Making sidebar options clickable;
+- In the Admin Panel Page, implemented sidebar functions with items, user and orders;
+- Made Importing functionality and sample layout page;
+- Refactored"Title" to "Headline" to make more sense, Title doesn't sound good;
+- Changed the login panel to admins and make it similar to user login;
+- Implemented Navigation Bar's list where the different pages are being displayed logic for the different states;
+- Redone admins login and admins top bar ( needs some work though);
+- Fixed frontend warnings about nav element in the HTML documents;
+
 Bug fixes:
-
-[Issue #05] Fixed - If Item has no category, the admin panel doesn't display anything in the category section
-[Issue #07] Admin panel when selecting functionality button nearby, the board spawns nearby first button every time
-[Issue #4] "Save Item" functionality in the admin panel doesn't work
-[Issue #1] Admins Login Text is in the middle of the column, no more
-[Issue #2] When pressed on login column, the column border disappears
-
+- [Issue #05] Fixed - If Item has no category, the admin panel doesn't display anything in the category section
+- [Issue #07] Admin panel when selecting functionality button nearby, the board spawns nearby first button every time
+- [Issue #4] "Save Item" functionality in the admin panel doesn't work
+- [Issue #1] Admins Login Text is in the middle of the column, no more
+- [Issue #2] When pressed on login column, the column border disappears
 
 
 -----------------------------------------------------------------------
 
-
-[Version 0.2 released]
+## Release 0.2 [done]
 
 - Added Country and City classes and implemented the architecture in the Business Object, Data access, Presentation Layers
 - Added MobilePhone field in the Business Object, Data access, database also Presentation Layer
@@ -149,7 +140,6 @@ Bug fixes:
 
 - Fixed implemented --> In EditProfile window changed information now updates with the database.
 
-
 [Presentation Layer]
 - Fixed Selected Country and City Selection lists and styling.
 - Fixed the options, when the country is not selected, you cannot select the City aswell.
@@ -162,8 +152,7 @@ Bug fixes:
 
 -----------------------------------------------------------------------
 
-
-[Version 0.1 released]
+## [Release 0.1 done]
 
 - Documented the changes made to the project in the 0.1 alpha version and moved/cleared cards in the Favro from done to documented.
 
@@ -213,10 +202,7 @@ The following modules, scripts / classes were deleted :
 - Presentation, DataAccess, Bussiness Layers made more readable/ adaptable;
 - Removed unnecessary namesapces and imports in Presentation, DataAccess, Bussiness Layers;
 - Made fileds with Interface type readonly in all the controllers.
-
 - Fixed JQuerry import issues;
-
------------------------------------------------------------------------
 
 -----------------------------------------------------------------------------------------------------------------------------------
 
