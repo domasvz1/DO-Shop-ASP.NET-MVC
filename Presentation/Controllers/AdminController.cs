@@ -402,6 +402,7 @@ namespace Presentation.Controllers
             catch (Exception)
             {
                 return RedirectToAction("Index");
+                // Input the message that item was not deleted
             }
 
             return RedirectToAction("index");
