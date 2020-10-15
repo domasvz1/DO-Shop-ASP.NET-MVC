@@ -85,7 +85,12 @@ Plans for release 0.4:
 - Display products categories in Main Products window;
 - Add product search in the Main products window;
 - Add the cart option and make cart visible;
+- Add the ability to add items into the cart
+- After creating user successfully show a (*pop up*) that user was created successfully.
+- After updating my info in user profile throw a popup that profile updatet sucessfully;
 
+[Bugs noticed]:
+- 
 
 So far what has been done:
 - Empty webpage created
