@@ -10,6 +10,7 @@ using BusinessLogic.Interfaces;
 using DataAccess.Interfaces;
 using Presentation.Models;
 using System.Web.UI.WebControls;
+using System.Diagnostics;
 
 namespace Presentation.Controllers
 {
@@ -41,15 +42,22 @@ namespace Presentation.Controllers
         [UserAuthorization(ConnectionPage = "~/Client/Login", Roles = "Client")]
         public ActionResult EditProfile()
         {
-            // A check here should be implemented in the never versions, to see f any cleints are left from last time log in
-            ClientModel model = new ClientModel
+            // Checking if session is connected (this prevents errors from previous stayed sessions)
+            if (Session["AccountId"] != null)
             {
-                ClientVM = _clientProfileControl.GetClient((int)Session["AccountId"])
-            };
+                ClientModel model = new ClientModel
+                {
+                    ClientVM = _clientProfileControl.GetClient((int)Session["AccountId"])
+                    // If account is null
+                };
+                // Since in Country and City list a value with index of 0 will be as " -- Not selected --"
+                ConfigureClientModel(model); // Filling Countries and City's data
+                return View(model);
+            }
 
-            // Since in Country and City list a value with index of 0 will be as " -- Not selected --"
-            ConfigureClientModel(model); // Filling Countries and City's data
-            return View(model);
+            // Needs message that need to relogin
+            // LogOut action logs off user from sesion if a session is still in tact
+            return RedirectToAction("LogOut");
         }
 
         [HttpPost]
@@ -240,8 +248,16 @@ namespace Presentation.Controllers
         // GET: Cart
         public ActionResult Cart()
         {
-            //if (Session["Cart"] == null || (int?)Session["Count"] == 0)
-            //    return RedirectToAction("EmptyCart");
+            if (Session["AccountId"] == null)
+            {
+                // Insert message to login
+                return RedirectToAction("Login");
+            }
+            // If user session is not over and cart is empty
+            else if (Session["AccountId"] != null && Session["Cart"] == null)
+            {
+                return RedirectToAction("EmptyCart");
+            }
 
             return View((Cart)Session["Cart"]);
         }
