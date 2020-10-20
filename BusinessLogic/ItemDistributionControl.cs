@@ -39,7 +39,7 @@ namespace BusinessLogic
                 Item item = _itemRepository.GetItem(id);
 
                 if (item == null)
-                    throw new ArgumentException("Item with such id was not found");
+                    throw new ArgumentException("Item with such id was not found"); // handle this expection
 
                 return item;
             }

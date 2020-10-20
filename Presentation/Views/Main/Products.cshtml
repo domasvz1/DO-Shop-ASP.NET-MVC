@@ -76,32 +76,36 @@
                         @foreach (var item in Model)
                         {
 
-                            <div class="col-sm-4 col-md-4 col-lg-4  ftco-animate" style="padding-left:5px" >
-                                <div class="product" style="border:solid">
-                                    <a href="#" class="img-prod" onclick="location.href='@Url.Action("About_Item", "Main" , new { prekesId = item.Id }, null)'">
+                            <div class="col-sm-4 col-md-4 col-lg-4  ftco-animate" style="padding-left:10px;" > 
+
+                                <div class="product" style="border:solid; height:410px">
+                                    <a href="#" class="img-prod" onclick="location.href='@Url.Action("About_Item", "Main" , new { prekesId = item.Id }, null)'" style="padding-left:10px">
 
                                         @*Which Image will be used (should be fixed size)*@
                                         @{
                                             if (item.ImageUrl != null)
                                             {
-                                                <img src="@Url.Content(item.ImageUrl)" class="img-fluid" alt="Colorlib Template" style="height:200px; min-height:400px; width:290px; min-width:290px" />
+                                                <img src="@Url.Content(item.ImageUrl)" class="img-fluid" alt="Colorlib Template" style="height:300px; width:290px; " />
                                             }
                                             else
                                             {
-                                                <img src="@Url.Content("~/Content/Images/nera.png")" class="img-fluid" alt="Colorlib Template " style="height:400px; min-height:200px; width:290px; min-width:290px" />
+                                                <img src="@Url.Content("~/Content/Images/nera.png")" class="img-fluid" alt="Colorlib Template " style="height:200px;  width:290px; min-width:290px" />
                                             }
                                         }
 
-                                        <span class="status"> 30% OFF THIS WEEK</span>
+                                        @*<span class="status"> 30% OFF THIS WEEK</span>*@
                                         <div class="overlay"></div>
                                     </a>
                                     <div class="text py-3 px-3">
                                         <h3><a onclick="location.href='@Url.Action("About_Item", "Main" , new { prekesId = item.Id }, null)'">@Html.DisplayFor(modelItem => item.Name)</a></h3>
                                         <div class="d-flex" onclick="location.href='@Url.Action("About_Item", "Main" , new { prekesId = item.Id }, null)'">
                                             <div class="pricing">
-                                                <p class="price"><span class="mr-2 price-dc">@Html.DisplayFor(modelItem => item.Price)</span><span class="price-sale">$80.00</span></p>
+                                                @{
+                                                    decimal piecePrice = item.Price / 100.0m;
+                                                }
+                                                <p class="price"><span class="mr-2 price-dc">@piecePrice $</span><span class="price-sale">$20.00</span></p>
                                             </div>
-                                            <div class="rating">
+                                            @*<div class="rating">
                                                 <p class="text-right">
                                                     <a href="#"><span class="ion-ios-star-outline"></span></a>
                                                     <a href="#"><span class="ion-ios-star-outline"></span></a>
@@ -109,7 +113,7 @@
                                                     <a href="#"><span class="ion-ios-star-outline"></span></a>
                                                     <a href="#"><span class="ion-ios-star-outline"></span></a>
                                                 </p>
-                                            </div>
+                                            </div>*@
                                         </div>
                                         <p class="bottom-area d-flex px-3">
                                             <a onclick="AddToCart(@item.Id)" id="AddToCart" class="add-to-cart text-center py-2 mr-1" style="cursor: pointer !important;"><span>Add to cart <i class="ion-ios-add ml-1"></i></span></a>
