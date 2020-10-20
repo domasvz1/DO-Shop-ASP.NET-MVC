@@ -93,9 +93,10 @@ namespace DataAccess
 
         public List<Country> FetchCountries()
         {
+            // Data here needs to be exported from an excel file to show which Cities belong to a certain country
             List<Country> countries = new List<Country>
             {
-                new Country() { ID = 0, Name = "- Select Delivery Country -" },
+                new Country() { ID = 0, Name = "-- (Unselected) Select Delivery Country--" },
                 new Country() { ID = 1, Name = "Lithuania" },
                 new Country() { ID = 2, Name = "Latvia" }
             };

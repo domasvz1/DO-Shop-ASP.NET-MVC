@@ -1,321 +1,154 @@
 ﻿@model BusinessObjects.Cart
 
 @{
-	ViewBag.Title = "Cart";
-	//var krepselioPrekes = Model.KrepselioPrekes;
+    ViewBag.Title = "Cart";
+    var allTheItemsInCart = Model.ItemsInCart;
 }
 
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-	<title>Winkel - Free Bootstrap 4 Template by Colorlib</title>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Winkel - Free Bootstrap 4 Template by Colorlib</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
+    <link rel="stylesheet" href="/Content/css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="/Content/css/animate.css">
+    <link rel="stylesheet" href="/Content/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="/Content/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/Content/css/magnific-popup.css">
+    <link rel="stylesheet" href="/Content/css/aos.css">
+    <link rel="stylesheet" href="/Content/css/ionicons.min.css">
+    <link rel="stylesheet" href="/Content/css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="/Content/css/jquery.timepicker.css">
+    <link rel="stylesheet" href="/Content/css/flaticon.css">
+    <link rel="stylesheet" href="/Content/css/icomoon.css">
+    <link rel="stylesheet" href="/Content/css/style.css">
 
-	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
-
-	<link rel="stylesheet" href="/Content/css/open-iconic-bootstrap.min.css">
-	<link rel="stylesheet" href="/Content/css/animate.css">
-
-	<link rel="stylesheet" href="/Content/css/owl.carousel.min.css">
-	<link rel="stylesheet" href="/Content/css/owl.theme.default.min.css">
-	<link rel="stylesheet" href="/Content/css/magnific-popup.css">
-
-	<link rel="stylesheet" href="/Content/css/aos.css">
-
-	<link rel="stylesheet" href="/Content/css/ionicons.min.css">
-
-	<link rel="stylesheet" href="/Content/css/bootstrap-datepicker.css">
-	<link rel="stylesheet" href="/Content/css/jquery.timepicker.css">
-
-
-	<link rel="stylesheet" href="/Content/css/flaticon.css">
-	<link rel="stylesheet" href="/Content/css/icomoon.css">
-	<link rel="stylesheet" href="/Content/css/style.css">
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
 </head>
 
-<body class="goto-here">
 
-	<div class="hero-wrap hero-bread" style="background-image: url('/Content/images/bg_6.jpg');">
-		<div class="container">
-			<div class="row no-gutters slider-text align-items-center justify-content-center">
-				<div class="col-md-9 ftco-animate text-center">
-					<p class="breadcrumbs"><span class="mr-2"><a href="/Content/index.html">Home</a></span> <span>Cart</span></p>
-					<h1 class="mb-0 bread">My Cart</h1>
-				</div>
-			</div>
-		</div>
-	</div>
+<body>
 
-	<section class="ftco-section ftco-cart">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12 ftco-animate">
-					<div class="cart-list">
-						<table class="table">
-							<thead class="thead-primary">
-								<tr class="text-center">
-									<th>&nbsp;</th>
-									<th>&nbsp;</th>
-									<th>Product</th>
-									<th>Price</th>
-									<th>Quantity</th>
-									<th>Total</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr class="text-center">
-									<td class="product-remove"><a href="#"><span class="ion-ios-close"></span></a></td>
+    <div class="hero-wrap hero-bread" style="background-image: url('/Content/images/bg_6.jpg');">
+        <div class="container">
+            <div class="row no-gutters slider-text align-items-center justify-content-center">
+                <div class="col-md-9 ftco-animate text-center">
+                    <h1 class="mb-0 bread">Your Shopping cart</h1>
+                </div>
+            </div>
+        </div>
+    </div>
 
-									<td class="image-prod"><div class="img" style="background-image:url(/Content/images/product-3.jpg);"></div></td>
+    <section class="ftco-section ftco-cart">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 ftco-animate">
+                    <div class="cart-list">
+                        <table class="table">
+                            <thead class="thead-primary">
+                                <tr class="text-center">
+                                    <th>&nbsp;</th>
+                                    <th>&nbsp;</th>
+                                    <th>Product</th>
+                                    <th>Price</th>
+                                    <th>Quantity</th>
+                                    <th>Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var cartItem in allTheItemsInCart)
+                                {
+                                    decimal price = (cartItem.Item.Price * cartItem.Quantity) / 100.0m;
+                                    decimal piecePrice = cartItem.Item.Price / 100.0m;
 
-									<td class="product-name">
-										<h3>Young Woman Wearing Dress</h3>
-										<p>Far far away, behind the word mountains, far from the countries</p>
-									</td>
+                                    <tr class="text-center">
+                                        <td class="product-remove"><a onclick="location.href='@Url.Action("RemoveFromCart", "Client", new { cartItemId = cartItem.Id })'"><span class="ion-ios-close"></span></a></td>
 
-									<td class="price">$4.90</td>
+                                        <td class="image-prod"><div alt="@cartItem.Item.Name" class="img" style="background-image:url(@Url.Content(cartItem.Item.ImageUrl));"></div></td>
 
-									<td class="quantity">
-										<div class="input-group mb-3">
-											<input type="text" name="quantity" class="quantity form-control input-number" value="1" min="1" max="100">
-										</div>
-									</td>
+                                        @*href="@Html.ActionLink(cartItem.Item.Name, "About_Item", "Main", new { prekesId = cartItem.Item.Id }, new { @style = "color:#00008B" })"*@
 
-									<td class="total">$4.90</td>
-								</tr><!-- END TR-->
+                                        <td class="product-name">
+                                            <h3>@cartItem.Item.Name</h3>
+                                            <p>@cartItem.Item.Headline</p>
+                                        </td>
 
-								<tr class="text-center">
-									<td class="product-remove"><a href="#"><span class="ion-ios-close"></span></a></td>
+                                        <td class="price">@Html.DisplayFor(modelItem => piecePrice)</td>
 
-									<td class="image-prod"><div class="img" style="background-image:url(/Content/images/product-4.jpg);"></div></td>
+                                        <td class="quantity">
+                                            <div class="input-group mb-3">
 
-									<td class="product-name">
-										<h3>Young Woman Wearing Dress</h3>
-										<p>Far far away, behind the word mountains, far from the countries</p>
-									</td>
+                                                <button class="minus-btn" type="button" name="button" style="width:20%">
+                                                    <img src="~/Content/Nuotraukos/atimti.png" alt="" style="width:50%" />
+                                                </button>
+                                                @Html.HiddenFor(modelItem => cartItem.Item.Id)
+                                                <input type="text" name="quantityBox" class="quantityBox form-control input-number" value="@cartItem.Quantity" min="1" max="10">
 
-									<td class="price">$15.70</td>
+                                                <button class="plus-btn" type="button" name="button" style="width:20%">
+                                                    <img src="~/Content/Nuotraukos/prideti.png" alt="" style="width:50%" />
+                                                </button>
 
-									<td class="quantity">
-										<div class="input-group mb-3">
-											<input type="text" name="quantity" class="quantity form-control input-number" value="1" min="1" max="100">
-										</div>
-									</td>
+                                            </div>
+                                        </td>
 
-									<td class="total">$15.70</td>
-								</tr><!-- END TR-->
-							</tbody>
-						</table>
-					</div>
-				</div>
-			</div>
-			<div class="row justify-content-center">
-				<div class="col col-lg-5 col-md-6 mt-5 cart-wrap ftco-animate">
-					<div class="cart-total mb-3">
-						<h3>Cart Totals</h3>
-						<p class="d-flex">
-							<span>Subtotal</span>
-							<span>$20.60</span>
-						</p>
-						<p class="d-flex">
-							<span>Delivery</span>
-							<span>$0.00</span>
-						</p>
-						<p class="d-flex">
-							<span>Discount</span>
-							<span>$3.00</span>
-						</p>
-						<hr>
-						<p class="d-flex total-price">
-							<span>Total</span>
-							<span>$17.60</span>
-						</p>
-					</div>
-					<p class="text-center"><a href="/Content/checkout.html" class="btn btn-primary py-3 px-4">Proceed to Checkout</a></p>
-				</div>
-			</div>
-		</div>
-	</section>
+                                        <td class="total" id="@("totalPriceOf"+@cartItem.Item.Id)"> @Html.DisplayFor(modelItem => price) $</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col col-lg-5 col-md-6 mt-5 cart-wrap ftco-animate">
+                    <div class="cart-total mb-3">
+                        @{
+                            var totalCost = Model.CountCartsPrice(Model.ItemsInCart) / 100.0m;
+                            var discount = 40.0m;
+                            var totalWithDiscount = totalCost - discount;
+                        }
 
+                        <h3>Cart Totals</h3>
+                        <p class="d-flex">
+                            <span>Subtotal</span>
+                            <span id="@("totalCartCost")">$@totalCost</span>
+                        </p>
+                        <p class="d-flex">
+                            <span>Delivery</span>
+                            <span>$20.00</span>
+                        </p>
+                        <p class="d-flex">
+                            <span>Discount</span>
+                            <span>-40$</span>
+                        </p>
+                        <hr>
 
-	<!-- loader -->
-	<div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" /><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg></div>
+                        <p class="d-flex total-price">
+                            <span>Total</span>
+                            <span id="@("totalCartCostWithDiscount")">$@totalWithDiscount</span>
+                        </p>
+                    </div>
+                    <p class="text-center"><a href="@Url.Action("Payment", "Client")" class="btn btn-primary py-3 px-4">Proceed to Checkout</a></p>
+                </div>
 
-
-	<script src="/Content/js/jquery.min.js"></script>
-	<script src="/Content/js/jquery-migrate-3.0.1.min.js"></script>
-	<script src="/Content/js/popper.min.js"></script>
-	<script src="/Content/js/bootstrap.min.js"></script>
-	<script src="/Content/js/jquery.easing.1.3.js"></script>
-	<script src="/Content/js/jquery.waypoints.min.js"></script>
-	<script src="/Content/js/jquery.stellar.min.js"></script>
-	<script src="/Content/js/owl.carousel.min.js"></script>
-	<script src="/Content/js/jquery.magnific-popup.min.js"></script>
-	<script src="/Content/js/aos.js"></script>
-	<script src="/Content/js/jquery.animateNumber.min.js"></script>
-	<script src="/Content/js/bootstrap-datepicker.js"></script>
-	<script src="/Content/js/scrollax.min.js"></script>
-	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-	<script src="/Content/js/google-map.js"></script>
-	<script src="/Content/js/main.js"></script>
-
-	<script>
-		$(document).ready(function () {
-
-			var quantitiy = 0;
-			$('.quantity-right-plus').click(function (e) {
-
-				// Stop acting like a button
-				e.preventDefault();
-				// Get the field name
-				var quantity = parseInt($('#quantity').val());
-
-				// If is not undefined
-
-				$('#quantity').val(quantity + 1);
+            </div>
+        </div>
+    </section>
 
 
-				// Increment
+    <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" /><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg></div>
 
-			});
-
-			$('.quantity-left-minus').click(function (e) {
-				// Stop acting like a button
-				e.preventDefault();
-				// Get the field name
-				var quantity = parseInt($('#quantity').val());
-
-				// If is not undefined
-
-				// Increment
-				if (quantity > 0) {
-					$('#quantity').val(quantity - 1);
-				}
-			});
-
-		});
-	</script>
 
 </body>
 </html>
 
 
 
-
-
-@*The old script is being commented and thisswill be tweaked to make room for new cart*@
-
-
-@*<head>
-		<script src="~/Scripts/jquery-1.10.2.min.js"></script>
-	</head>
-
-	<div>
-		<br /><h1>Prekės jūsų krepšelyje</h1><br />
-		<div>
-			<table class="table table-bordered">
-				<tr class="table-active">
-					<th></th>
-					<th>
-						Pavavdinimas
-					</th>
-					<th>
-						Kategorija
-					</th>
-					<th style="text-align:center">
-						Kiekis
-					</th>
-					<th>
-						Vieneto kaina
-					</th>
-					<th>
-						Bendra kaina
-					</th>
-				</tr>
-				@foreach (var cartItem in krepselioPrekes)
-				{
-					decimal price = (cartItem.Item.Price * cartItem.Kiekis) / 100.0m;
-
-					decimal piecePrice = cartItem.Item.Price / 100.0m;
-
-					<tr>
-						<td style="vertical-align:middle;" width="10%">
-							@{
-								if (cartItem.Item.ImageUrl != null)
-								{
-									@:<img src="@Url.Content(cartItem.Item.ImageUrl)" alt="@cartItem.Item.Name" style="height:40px; width:auto;" />
-								}
-							}
-						</td>
-
-						<td style="vertical-align:middle;">
-							@Html.ActionLink(cartItem.Item.Name, "PrekesInformacija", "Pagrindinis", new { prekesId = cartItem.Item.Id }, new { @style = "color:#00008B" })
-						</td>
-
-						<td style="vertical-align:middle">
-							@{
-								var categoryName = "Prekės be kategorijos";
-								if (cartItem.Item.Category != null)
-								{
-									categoryName = cartItem.Item.Category.Name;
-								}
-								@categoryName;
-							}
-						</td>
-
-						<td style="text-align:center;" width="25%">
-							<div class="quantity">
-
-								<button class="minus-btn" type="button" name="button">
-									<img width="25px" src="~/Content/Nuotraukos/atimti.png" alt="" />
-								</button>
-
-								<form id="myForm">
-									@Html.HiddenFor(modelItem => cartItem.Item.Id)
-									<input class="quantityBox" type="text" name="quantityBox" value="@cartItem.Kiekis">
-								</form>
-
-								<button class="plus-btn" type="button" name="button">
-									<img width="25px" src="~/Content/Nuotraukos/prideti.png" alt="" />
-								</button>
-
-							</div>
-						</td>
-
-						<td style="vertical-align:middle">
-							@Html.DisplayFor(modelItem => piecePrice) Eur
-						</td>
-
-						<td style="vertical-align:middle;" id="@("totalPriceOf"+@cartItem.Item.Id)">
-							@Html.DisplayFor(modelItem => price) Eur
-						</td>
-
-						<td style="vertical-align:middle;">
-							<button type="button" class="btn btn-default" color onclick="location.href = '@Url.Action("RemoveFromCart", new { cartItemId = cartItem.Id })'">Išimti iš krepšelio</button>
-						</td>
-
-					</tr>
-
-				}
-			</table>
-
-			@{var totalCost = Model.CountCartPrice(Model.KrepselioPrekes) / 100.0m; }
-
-			Pilna užsakymo kaina:
-			<div id="totalCartCost">
-				@Html.DisplayFor(model => totalCost) Eurai
-			</div> <br />
-		</div>
-
-		<div>
-			@Html.ActionLink("Apmokėti užsakymą", "Payment", "Klientas", null, new { @class = "btn btn-primary" })
-			<button type="button" class="btn btn-info" color onclick="location.href = '@Url.Action("Index", "Pagrindinis")'">Grįžti į parduotuvę</button>
-		</div>
-	</div>
-
-	<script type="text/javascript">
+<script type="text/javascript">
 
 		$(document).ready(function () {
 
@@ -336,7 +169,7 @@
 					$quantity.val(99999).trigger('change');
 				}
 
-				var url = '@Url.Action("PakeistiPrekiuKieki", "Klientas")';
+				var url = '@Url.Action("ChangeItemsQuantity", "Client")';
 				$.ajax({
 					type: "POST",
 					url: url,
@@ -351,8 +184,9 @@
 						$("#CartBox").html(result.itemCount);
 						var newItemCost = result.itemCost.toFixed(2);
 						var newCartCost = result.cartCost.toFixed(2);
-						$("#totalPriceOf" + itemIdInt).html(newItemCost + ' Eur');
-						$("#totalCartCost").html(newCartCost + ' Eur');
+						$("#totalPriceOf" + itemIdInt).html(newItemCost + '$');
+                        $("#totalCartCost").html(newCartCost + '$');
+                        $("#totalCartCostWithDiscount").html(newCartCost + '$');
 					}
 
 				});
@@ -376,11 +210,32 @@
 				var $input = $this.closest('div').find('.quantityBox');
 				var value = parseInt($input.val());
 
-				if (value < 99999) {
+				if (value < 10) {
 					value = value + 1;
 				}
 				$input.val(value).trigger('change');
 			});
 
 		});
-	</script>   *@
+
+</script>
+
+
+
+
+<script src="/Content/js/jquery.min.js"></script>
+<script src="/Content/js/jquery-migrate-3.0.1.min.js"></script>
+<script src="/Content/js/popper.min.js"></script>
+<script src="/Content/js/bootstrap.min.js"></script>
+<script src="/Content/js/jquery.easing.1.3.js"></script>
+<script src="/Content/js/jquery.waypoints.min.js"></script>
+<script src="/Content/js/jquery.stellar.min.js"></script>
+<script src="/Content/js/owl.carousel.min.js"></script>
+<script src="/Content/js/jquery.magnific-popup.min.js"></script>
+<script src="/Content/js/aos.js"></script>
+<script src="/Content/js/jquery.animateNumber.min.js"></script>
+<script src="/Content/js/bootstrap-datepicker.js"></script>
+<script src="/Content/js/scrollax.min.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+<script src="/Content/js/google-map.js"></script>
+<script src="/Content/js/main.js"></script>
