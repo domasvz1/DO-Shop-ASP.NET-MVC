@@ -69,7 +69,7 @@ In the Packahge Manager Console (Or if it changes in the future in something sim
 -----------------------------------------------------------------------------------------------------------------------------------
 # What are Unit Tests?
 
-Unit tests are typically automated tests written and run by software developers to ensure that a section of an application (known as the "unit") meets its design and behaves as intended. In procedural programming, a unit could be an entire module, but it is more commonly an individual function or procedure.
+Unit tests are typically automated tests written and run by software developers to ensure that a section of an application (known as the "unit") meets its design and behaves as intended. In procedural programming, a unit could be an entire module, but it is more commonly an individual function or procedure. After 0.4 this project will have Unit tests to conver some areas of the EShop.
 
 
 -----------------------------------------------------------------------------------------------------------------------------------
