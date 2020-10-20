@@ -11,6 +11,7 @@ using BusinessObjects;
 using BusinessObjects.Orders;
 using BusinessLogic.Interfaces;
 using Presentation.Models;
+using System.Runtime.ExceptionServices;
 
 namespace Presentation.Controllers
 {
@@ -26,8 +27,8 @@ namespace Presentation.Controllers
        
         public AdminController(
             IItemDistributionControl itemDistributionControl,
+            IItemControl  itemControl,
             IItemCategoryControl itemCategoryControl,
-            IItemControl itemControl,
             IPropertyControl propertyControl,
             IClientProfileControl clientProfileControl,
             IAdminControl adminControl,
@@ -47,15 +48,16 @@ namespace Presentation.Controllers
         public ActionResult Index()
         {
             // Check if not there are no items, 
-            if( _itemDistributionControl.GetAllItems() != null)
+            if( _itemDistributionControl != null)
             {
                 return View(_itemDistributionControl.GetAllItems());
             }
 
             else
             {
-                return View(_itemDistributionControl.GetAllItems());
+                return View("Index");
             }
+          
         }
 
         public ActionResult Login()

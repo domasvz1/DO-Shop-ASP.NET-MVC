@@ -12,31 +12,38 @@ using BusinessLogic.Interfaces;
 using Presentation.Models;
 using Presentation.Controllers;
 using System.ComponentModel.Design;
+using BusinessLogic;
 
 namespace UnitTestProject.ControllersTest
 {
     [TestClass]
     public class AdminControllerUnitTest
     {
-        private readonly IItemDistributionControl _itemDistributionControl;
-        private readonly IItemControl _itemControl;
-        private readonly IItemCategoryControl _itemCategoryControl;
-        private readonly IPropertyControl _propertyControl;
-        private readonly IClientProfileControl _clientProfileControl;
-        private readonly IAdminControl _adminControl;
-        private readonly IOrderControl _orderControl;
+         //need adminController here 
 
         [TestMethod]
-        public void Index()
+        public void IndexChecker()
         {
-            AdminController adminController = new AdminController(_itemDistributionControl, _itemControl,
-               _itemCategoryControl, _propertyControl, _clientProfileControl, _adminControl, _orderControl);
-
-            var sth = adminController.Index() as ViewResult;
-
             ViewResult objViewResult = adminController.Index() as ViewResult;
+            Assert.AreEqual("Index", objViewResult.ViewName);
+        }
 
-            // Assert
+        [TestMethod]
+        public void Login()
+        {
+            ViewResult objViewResult = adminController.Login() as ViewResult;
+            Assert.AreEqual("", objViewResult.ViewName);
+        }
+
+        [TestMethod]
+        public void LoginWithParams()
+        {
+            Admin admin = new Admin();
+            admin.Id = 999;
+            admin.Login = "testAdmin";
+            admin.Password = "randomPassword";
+            string emptyUrl = "";
+            ViewResult objViewResult = adminController.Login(admin, emptyUrl) as ViewResult;
             Assert.AreEqual("Index", objViewResult.ViewName);
         }
     }
