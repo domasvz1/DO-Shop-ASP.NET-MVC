@@ -47,13 +47,11 @@ namespace Presentation.Controllers
         public ActionResult Index()
         {
             // Check if not there are no items, 
-            var newVar = _itemDistributionControl.GetAllItems();
-
-            if (newVar.Count() == 0)
+            if( _itemDistributionControl.GetAllItems() != null)
             {
-                // Do something here
                 return View(_itemDistributionControl.GetAllItems());
             }
+
             else
             {
                 return View(_itemDistributionControl.GetAllItems());
