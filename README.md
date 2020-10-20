@@ -78,7 +78,7 @@ Plans for release 0.4:
 - Another important thing is to make deleting items from database and importing process work flawlessly;
 - Clear the processes, have plans for the current release;
 - Webpage for webshop processes
-- Create first automation tests (UNIT TESTS)
+- Create UNIT TESTS for the controllers !!!!
 - Fix as mcuh exceptions (try catches as possible);
 - Add Sprint diagram, try to work in sprint;
 - Add CSS on products page;
