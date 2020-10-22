@@ -43,3 +43,14 @@ C:\Users\dosipovicius\OneDrive - barbora.lt\Desktop\DO-Shop-ASP.NET-MVC\UnitTest
 C:\Users\dosipovicius\OneDrive - barbora.lt\Desktop\DO-Shop-ASP.NET-MVC\UnitTestProject\bin\Debug\Newtonsoft.Json.xml
 C:\Users\dosipovicius\OneDrive - barbora.lt\Desktop\DO-Shop-ASP.NET-MVC\UnitTestProject\bin\Debug\EPPlus.xml
 C:\Users\dosipovicius\OneDrive - barbora.lt\Desktop\DO-Shop-ASP.NET-MVC\UnitTestProject\bin\Debug\EntityFramework.xml
+C:\Users\dosipovicius\OneDrive - barbora.lt\Desktop\DO-Shop-ASP.NET-MVC\UnitTestProject\bin\Debug\UnitTestProject.dll.config
+C:\Users\dosipovicius\OneDrive - barbora.lt\Desktop\DO-Shop-ASP.NET-MVC\UnitTestProject\bin\Debug\WebGrease.dll
+C:\Users\dosipovicius\OneDrive - barbora.lt\Desktop\DO-Shop-ASP.NET-MVC\UnitTestProject\bin\Debug\Antlr3.Runtime.dll
+C:\Users\dosipovicius\OneDrive - barbora.lt\Desktop\DO-Shop-ASP.NET-MVC\UnitTestProject\bin\Debug\Castle.Core.dll
+C:\Users\dosipovicius\OneDrive - barbora.lt\Desktop\DO-Shop-ASP.NET-MVC\UnitTestProject\bin\Debug\Moq.dll
+C:\Users\dosipovicius\OneDrive - barbora.lt\Desktop\DO-Shop-ASP.NET-MVC\UnitTestProject\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\dosipovicius\OneDrive - barbora.lt\Desktop\DO-Shop-ASP.NET-MVC\UnitTestProject\bin\Debug\System.Threading.Tasks.Extensions.dll
+C:\Users\dosipovicius\OneDrive - barbora.lt\Desktop\DO-Shop-ASP.NET-MVC\UnitTestProject\bin\Debug\Castle.Core.xml
+C:\Users\dosipovicius\OneDrive - barbora.lt\Desktop\DO-Shop-ASP.NET-MVC\UnitTestProject\bin\Debug\Moq.xml
+C:\Users\dosipovicius\OneDrive - barbora.lt\Desktop\DO-Shop-ASP.NET-MVC\UnitTestProject\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\dosipovicius\OneDrive - barbora.lt\Desktop\DO-Shop-ASP.NET-MVC\UnitTestProject\bin\Debug\System.Threading.Tasks.Extensions.xml

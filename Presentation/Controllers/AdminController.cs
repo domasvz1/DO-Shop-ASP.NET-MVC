@@ -12,6 +12,7 @@ using BusinessObjects.Orders;
 using BusinessLogic.Interfaces;
 using Presentation.Models;
 using System.Runtime.ExceptionServices;
+using NUnit.Framework.Internal;
 
 namespace Presentation.Controllers
 {
@@ -41,7 +42,13 @@ namespace Presentation.Controllers
             _clientProfileControl = clientProfileControl;
             _adminControl = adminControl;
             _orderControl = orderControl;
+            
         }
+
+        // Big brain maybe ? Since we have eveything initialized here, we can maybe
+        // Try and pass this daat for the testing layer ?
+
+
 
         //Admin Connection view, locate in "DO SHOP project folder -> Views-> Admin"
         //[UserAuthorization(ConnectionPage = "~/Admin/Login", Roles = "Admin")]
@@ -59,6 +66,7 @@ namespace Presentation.Controllers
             }
           
         }
+        
 
         public ActionResult Login()
         {
