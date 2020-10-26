@@ -348,3 +348,9 @@ C:\Users\dosipovicius\OneDrive - barbora.lt\Desktop\DO-Shop-ASP.NET-MVC\Presenta
 C:\Users\dosipovicius\OneDrive - barbora.lt\Desktop\DO-Shop-ASP.NET-MVC\Presentation\bin\Moq.xml
 C:\Users\dosipovicius\OneDrive - barbora.lt\Desktop\DO-Shop-ASP.NET-MVC\Presentation\bin\System.Runtime.CompilerServices.Unsafe.xml
 C:\Users\dosipovicius\OneDrive - barbora.lt\Desktop\DO-Shop-ASP.NET-MVC\Presentation\bin\System.Threading.Tasks.Extensions.xml
+C:\Users\dosipovicius\OneDrive - barbora.lt\Desktop\DO-Shop-ASP.NET-MVC\Presentation\bin\roslyn\Microsoft.Managed.Core.targets
+C:\Users\dosipovicius\OneDrive - barbora.lt\Desktop\DO-Shop-ASP.NET-MVC\Presentation\bin\roslyn\System.Buffers.dll
+C:\Users\dosipovicius\OneDrive - barbora.lt\Desktop\DO-Shop-ASP.NET-MVC\Presentation\bin\roslyn\System.Memory.dll
+C:\Users\dosipovicius\OneDrive - barbora.lt\Desktop\DO-Shop-ASP.NET-MVC\Presentation\bin\roslyn\System.Numerics.Vectors.dll
+C:\Users\dosipovicius\OneDrive - barbora.lt\Desktop\DO-Shop-ASP.NET-MVC\Presentation\bin\roslyn\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\dosipovicius\OneDrive - barbora.lt\Desktop\DO-Shop-ASP.NET-MVC\Presentation\bin\roslyn\System.Threading.Tasks.Extensions.dll

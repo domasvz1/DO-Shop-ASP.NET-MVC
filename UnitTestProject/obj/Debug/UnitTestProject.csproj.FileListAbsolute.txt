@@ -54,3 +54,5 @@ C:\Users\dosipovicius\OneDrive - barbora.lt\Desktop\DO-Shop-ASP.NET-MVC\UnitTest
 C:\Users\dosipovicius\OneDrive - barbora.lt\Desktop\DO-Shop-ASP.NET-MVC\UnitTestProject\bin\Debug\Moq.xml
 C:\Users\dosipovicius\OneDrive - barbora.lt\Desktop\DO-Shop-ASP.NET-MVC\UnitTestProject\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 C:\Users\dosipovicius\OneDrive - barbora.lt\Desktop\DO-Shop-ASP.NET-MVC\UnitTestProject\bin\Debug\System.Threading.Tasks.Extensions.xml
+C:\Users\dosipovicius\OneDrive - barbora.lt\Desktop\DO-Shop-ASP.NET-MVC\UnitTestProject\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\dosipovicius\OneDrive - barbora.lt\Desktop\DO-Shop-ASP.NET-MVC\UnitTestProject\bin\Debug\EntityFramework.SqlServer.xml

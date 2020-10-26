@@ -14,11 +14,11 @@ namespace BusinessLogic
         private readonly ICategoryRepository _categoryRepository;
         private readonly IPropertyControl _propertyControl;
 
-        public ItemCategoryControl(IDbContextScopeFactory dbContextScopeFactory, ICategoryRepository kategorijosRepositorija, IPropertyControl savybesValdymas)
+        public ItemCategoryControl(IDbContextScopeFactory dbContextScopeFactory, ICategoryRepository categoryRepository, IPropertyControl propertyControl)
         {
             _dbContextScopeFactory = dbContextScopeFactory ?? throw new ArgumentNullException("ItemCategoryControl broke");
-            _categoryRepository = kategorijosRepositorija ?? throw new ArgumentNullException("ItemCategoryControl broke");
-            _propertyControl = savybesValdymas ?? throw new ArgumentNullException("ItemCategoryControl broke");
+            _categoryRepository = categoryRepository ?? throw new ArgumentNullException("ItemCategoryControl broke");
+            _propertyControl = propertyControl ?? throw new ArgumentNullException("ItemCategoryControl broke");
         }
 
         public Category GetCategory(int id)
