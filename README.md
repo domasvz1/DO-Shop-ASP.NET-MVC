@@ -24,6 +24,7 @@ If by any chance you are working with this right now, you are free to learn the 
     -  Presentation layer
     -  Business layer
     -  DataAccess layer
+    -  UnitTests (additional Layer)
 
 
 Taken from the Microsoft documentation: https://dotnet.microsoft.com/apps/aspnet/web-apps
@@ -70,6 +71,8 @@ In the Packahge Manager Console (Or if it changes in the future in something sim
 # What are Unit Tests?
 
 Unit tests are typically automated tests written and run by software developers to ensure that a section of an application (known as the "unit") meets its design and behaves as intended. In procedural programming, a unit could be an entire module, but it is more commonly an individual function or procedure. After 0.4 this project will have Unit tests to conver some areas of the EShop.
+
+- From the release 0.4, Unit tests will be added and every new feature should be convered with tests in the Controller or Classes etc..
 
 
 -----------------------------------------------------------------------------------------------------------------------------------
