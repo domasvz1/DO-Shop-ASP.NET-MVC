@@ -14,12 +14,9 @@ using Presentation.Controllers;
 using System.ComponentModel.Design;
 using BusinessLogic;
 using DataAccess;
-using System.ComponentModel;
-using Moq;
-using System.Dynamic;
-using Castle.Core.Internal;
 using Mehdime.Entity;
 using DataAccess.Interfaces;
+using Castle.Core.Internal;
 
 namespace UnitTestProject.ControllersTest
 {
@@ -39,7 +36,7 @@ namespace UnitTestProject.ControllersTest
         IAdminRepository iAdminRep;
         IOrderRepository iOrderRep;
         
-
+        // Control Interfaces
         IPropertyControl iPropCtrl;
         IImportControl iImpControl;
         IFileControl iFileControl;
@@ -52,7 +49,6 @@ namespace UnitTestProject.ControllersTest
         IAdminControl adminControl;
         IOrderControl orderControl;
 
-
         AdminController adminController;
 
 
@@ -60,15 +56,14 @@ namespace UnitTestProject.ControllersTest
         [TestInitialize]
         public void Setup()
         {
-
-        // Items mock data interfaces
-        iItemRep = new ItemRepository(iDBLoc);
+            // Items mock data interfaces
+            iItemRep = new ItemRepository(iDBLoc);
             iCatRep = new CategoryRepository(iDBLoc);
             iPropRep = new PropertyRepository(iDBLoc);
             iCliRep = new ClientRepository(iDBLoc);
             iAdminRep = new AdminRepository(iDBLoc);
             iOrderRep = new OrderRepository(iDBLoc);
-
+            // Create Controls
             iPropCtrl = new PropertyControl(iDBScope, iPropRep);
             iImpControl = new ImportControl();
             iFileControl = new FileControl();
@@ -151,6 +146,50 @@ namespace UnitTestProject.ControllersTest
             ViewResult objViewResult = adminController.Login(adminObjectNull) as ViewResult;
             //Assert
             Assert.AreEqual("Login", objViewResult.ViewName);
+        }
+
+        // Test For Empty Error Admin VIew
+        [TestMethod]
+        public void AdminErrorWindow()
+        {
+            var result = adminController.SomethingWrongAdmin() as ViewResult;
+
+            // Assert
+            Assert.IsNotNull(result);
+            // At the moment there's no model passed so its null
+            //Assert.IsNotNull(result.Model); // Additional check for the model itself
+            Assert.IsTrue(string.IsNullOrEmpty(result.ViewName));
+        }
+
+        [TestMethod]
+        public void TestSearchUsersListEmptyQuery()
+        {
+           string emptyQuery = "";
+            // Checks if the result is not null and equal to what it should be 
+            PartialViewResult result = adminController.UsersList(emptyQuery) as PartialViewResult;
+            // If the type is not List<CLient> this will return null, this is the check as if 
+            var model = ((PartialViewResult)result).Model as List<Client>;
+
+            // Assert
+            Assert.IsNotNull(model, "Model is not the type of List<List<Client>>");
+            Assert.AreEqual("../Admin/_UsersList", result.ViewName);
+            Assert.IsNotNull(result);
+        }
+
+        [TestMethod]
+        public void TestSearchUsersRandomQuery()
+        {
+            string rndmQuery = "saiudausdnsayod_randomAdminquery123*";
+            // Checks if the result is not null and equal to what it should be 
+            PartialViewResult result = adminController.UsersList(rndmQuery) as PartialViewResult;
+            // If the type is not List<CLient> this will return null, this is the check as if 
+            var model = ((PartialViewResult)result).Model as List<Client>;
+
+            // Assert
+            Assert.IsNotNull(model, "Model is not the type of List<List<Client>>");
+            Assert.IsTrue(model.IsNullOrEmpty());  // List should  be null or empty
+            Assert.AreEqual("../Admin/_UsersList", result.ViewName);
+            Assert.IsNotNull(result);
         }
     }
 }
