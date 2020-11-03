@@ -80,10 +80,7 @@ Unit tests are typically automated tests written and run by software developers 
 # Release 0.4 is being created
 
 Plans for release 0.4:
-- First and far the most important feature is to fix the fronend of the main shop and make the payment system;
-- (Fix the UI in the SHOP) mian
-- Drop headline parameter from Item object from the main database;
-- (Fix the payment system)
+
 - Another important thing is to make deleting items from database and importing process work flawlessly;
 - Clear the processes, have plans for the current release;
 - Webpage for webshop processes
@@ -97,17 +94,28 @@ Plans for release 0.4:
 - Add the ability to add items into the cart
 - After creating user successfully show a (*pop up*) that user was created successfully.
 - After updating my info in user profile throw a popup that profile updatet sucessfully;
-- Fix Cart UI and checkout for the ITEM;
+-  and checkout for the ITEM;
 - Change empty shopping cart's UI;
+- Make an Eye button in the user settings (which would show your password instead of star * symbol )
+
 
 [Bugs fixed]:
 - Check if session has started on the same user. (Previously when user has not disconnected from the system, his session would be over but he would still be connected. This is still hapenning but now when you press on nav bar buttons it redirects you to the login page;
+
+[Currently]
+- Fixing the payment system process:
+   - Stop saving data, remove data fields;
+   - Enter the mock payment data only in Methods inside (where sending the data);
+   - Renew UI of the payment system windows ;
+   - Add and write Unit tests for payment processes, for Client Controller;
 
 So far what has been done:
 - Empty webpage created
 - Changed the term meaning Shop -> Products
 - Products are now being displayed in the store (In the navigation bar find Products section)
-
+- Made a new Cart's UI
+- Improved Shops UI design (fixed the frontend of the main shop, items are being displayed way for applicable for the users eye)
+- Added UNIT Test's project layer to cover Admin panel. From now on, features should have Unit tests which would cover the features;
 
 -----------------------------------------------------------------------
 
