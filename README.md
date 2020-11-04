@@ -82,7 +82,7 @@ Unit tests are typically automated tests written and run by software developers 
 Plans for release 0.4:
 
 - Another important thing is to make deleting items from database and importing process work flawlessly;
-- Clear the processes, have plans for the current release;
+
 - Webpage for webshop processes
 - Create UNIT TESTS for the controllers !!!!
 - Fix as mcuh exceptions (try catches as possible);
@@ -104,9 +104,10 @@ Plans for release 0.4:
 
 [Currently]
 - Fixing the payment system process:
-   - Stop saving data, remove data fields;
-   - Enter the mock payment data only in Methods inside (where sending the data);
-   - Renew UI of the payment system windows ;
+   - Stop saving data, remove data fields; [Done]
+   - Enter the mock payment data only in Methods inside (where sending the data); [Done]
+   - Renew UI of the payment system windows; [Done]
+   - Make sure that the paying for the cart proces is working;
    - Add and write Unit tests for payment processes, for Client Controller;
 
 So far what has been done:
@@ -116,7 +117,9 @@ So far what has been done:
 - Made a new Cart's UI
 - Improved Shops UI design (fixed the frontend of the main shop, items are being displayed way for applicable for the users eye)
 - Added UNIT Test's project layer to cover Admin panel. From now on, features should have Unit tests which would cover the features;
+- Implementing more clear processes, have plans for the current release;
 
+- Created WIKI page for the project;
 -----------------------------------------------------------------------
 
  # 0.3 Release [done, but Lacks documentation]
