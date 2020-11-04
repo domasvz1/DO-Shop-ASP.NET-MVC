@@ -7,7 +7,9 @@
 @using BusinessObjects.Orders;
 
 	<h1>Bendra informacija apie pirkima</h1>
+
 	<p>@Model.PaymentInformation.OrderStatus.GetOrderStatus()</p>
+
 	@if (@Model.PaymentInformation.PaymentDetails != "")
 	{
 		<p>Payment status:  @Model.PaymentInformation.PaymentDetails</p>

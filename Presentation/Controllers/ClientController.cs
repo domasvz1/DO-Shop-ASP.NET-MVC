@@ -115,6 +115,7 @@ namespace Presentation.Controllers
             }
         }
 
+        // [R04] Changed here
         //GET: Client/Register
         [HttpGet]
         public ActionResult Register()
@@ -130,11 +131,9 @@ namespace Presentation.Controllers
             // He will be available to edit them in other windows
             ClientObject.MobilePhone = "";
             DeliveryAddress delivery = new DeliveryAddress();
-            Card card = new Card();
-
+            
             // Passing the client data to the created object
             ClientObject.DeliveryAddress = delivery;
-            ClientObject.Card = card;
 
             if (ModelState.IsValid) // Tells if any model errors have been added to ModelState.
             {
@@ -390,18 +389,12 @@ namespace Presentation.Controllers
         [UserAuthorization(ConnectionPage = "~/Client/Login", Roles = "Client")]
         public ActionResult ApmoketiSuformuotaUzsakyma(FormCollection fc)
         {
-            string cardNumber = fc["Client.Card.cardNumber"];
-            string cardHolder = fc["Client.Card.cardOwner"];
-            int cardExpirationYear = Int32.Parse(fc["Client.Card.cardExpirationYear"]);
-            int cardExpirationMonth = Int32.Parse(fc["Client.Card.cardExpirationMonth"]);
-            string cardCVV = fc["Client.Card.CVV"];
             int cartId = Int32.Parse(fc["cartId"]);
 
             GetSessionCustomer(out Client klientas);
             var order = klientas.ClientOrders.FirstOrDefault(o => o.Cart.Id == cartId);
-
             var cart = order.Cart;
-            var paymentInformation = _clientPaymentDatabseControl.ConfirmedPresetOrder(klientas.Id, cart, cardNumber, cardExpirationYear, cardExpirationMonth, cardHolder, cardCVV);
+            var paymentInformation = _clientPaymentDatabseControl.ConfirmedPresetOrder(klientas.Id, cart);
             return View("NotPaidOrders", new PaymentModel() { PaymentInformation = paymentInformation, Cart = cart });
         }
 
@@ -423,24 +416,18 @@ namespace Presentation.Controllers
         [UserAuthorization(ConnectionPage = "~/Client/Login", Roles = "Client")]
         public ActionResult NotPaidOrders(FormCollection fc)
         {
-            string cardNumber = fc["Client.Card.cardNumber"];
-            string cardHolder = fc["Client.Card.cardOwner"];
-            int cardExpirationYear = Int32.Parse(fc["Client.Card.cardExpirationYear"]);
-            int cardExpirationMonth = Int32.Parse(fc["Client.Card.cardExpirationMonth"]);
-            string cardCVV = fc["Client.Card.CVV"];
+            // [R04] Removed client card info
 
             ActionResult actionResult = GetSessionProperties(out Client customer, out Cart cart);
 
             if (actionResult != null)
-            {
                 return actionResult;
-            }
 
-            var apmokejimoInformacija = _clientPaymentDatabseControl.ConfirmPayment( customer.Id, cart, cardNumber, cardExpirationYear, cardExpirationMonth, cardHolder, cardCVV);
+            var orderPaymentInformation = _clientPaymentDatabseControl.ConfirmPayment(customer.Id, cart);
 
             Session["Cart"] = null;
             Session["Count"] = 0;
-            return View(new PaymentModel() { PaymentInformation = apmokejimoInformacija, Cart = cart });
+            return View(new PaymentModel() { PaymentInformation = orderPaymentInformation, Cart = cart });
         }
 
         [UserAuthorization(ConnectionPage = "~/Client/Login", Roles = "Client")]

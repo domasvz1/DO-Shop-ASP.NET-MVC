@@ -243,3 +243,4 @@ C:\Users\dosipovicius\OneDrive - barbora.lt\Desktop\DO-Shop-ASP.NET-MVC\Business
 C:\Users\dosipovicius\OneDrive - barbora.lt\Desktop\DO-Shop-ASP.NET-MVC\BusinessObjects\obj\Debug\BusinessObjects.csproj.CopyComplete
 C:\Users\dosipovicius\OneDrive - barbora.lt\Desktop\DO-Shop-ASP.NET-MVC\BusinessObjects\obj\Debug\BusinessObjects.dll
 C:\Users\dosipovicius\OneDrive - barbora.lt\Desktop\DO-Shop-ASP.NET-MVC\BusinessObjects\obj\Debug\BusinessObjects.pdb
+C:\Users\dosipovicius\OneDrive - barbora.lt\Desktop\DO-Shop-ASP.NET-MVC\BusinessObjects\obj\Debug\BusinessObjects.csprojAssemblyReference.cache

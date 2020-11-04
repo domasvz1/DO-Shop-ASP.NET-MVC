@@ -4,6 +4,6 @@ namespace BusinessLogic.Interfaces
 {
     public interface IHttpPaymentControl
     {
-        PaymentInformation InitializePayment(Card card, int amount);
+        PaymentInformation InitializePayment(int amount);
     }
 }

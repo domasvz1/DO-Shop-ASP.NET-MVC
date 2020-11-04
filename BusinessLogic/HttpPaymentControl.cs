@@ -15,18 +15,24 @@ namespace BusinessLogic
     {
         private readonly HttpClient _clientObject = new HttpClient();
 
-        private Task<HttpResponseMessage> SendPaymentInformation(Card card, int cost)
+        private Task<HttpResponseMessage> SendPaymentInformation(int cost)
         {
+            // Setting up card imock data
+            string CardNumber = "4111111111111111";
+            int CardExpirationYear = 2021;
+            int CardExpirationMonth = 1;
+            string CardHolder = "Vardenis Pavardenis";
+            string CVV = "111";
 
             // We take the credit cards information and send it to the payment api
             // To be honest it should be encrypted, the payment should be only entered in the last page
             string json = "{" +
                 "\"amount\":" + cost + ","
-                + "\"number\":\"" + card.CardNumber + "\","
-                + "\"holder\":\"" + card.CardHolder + "\","
-                + "\"exp_year\":" + card.CardExpirationYear + ","
-                + "\"exp_month\":" + card.CardExpirationMonth + ","
-                + "\"cvv\":\"" + card.CVV + "\""
+                + "\"number\":\"" + CardNumber + "\","
+                + "\"holder\":\"" + CardHolder + "\","
+                + "\"exp_year\":" + CardExpirationYear + ","
+                + "\"exp_month\":" + CardExpirationMonth + ","
+                + "\"cvv\":\"" + CVV + "\""
                 + "}";
 
             _clientObject.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
@@ -55,9 +61,10 @@ namespace BusinessLogic
         }
 
 
-        public PaymentInformation InitializePayment(Card card, int paymentAmount)
+        public PaymentInformation InitializePayment(int paymentAmount)
         {
-            HttpResponseMessage paymentResponse = SendPaymentInformation(card, paymentAmount).Result;
+
+            HttpResponseMessage paymentResponse = SendPaymentInformation(paymentAmount).Result;
             
             OrderStatus orderStatus;
             string returnMessage = "";

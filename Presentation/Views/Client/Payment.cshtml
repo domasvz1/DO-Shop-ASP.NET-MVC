@@ -6,7 +6,7 @@
     int cartID = -1;
     if (Model.FullOrder)
     {
-        method = "ApmoketiSuformuotaUzsakyma";
+        method = "PayFormedOrder";
         cartID = Model.Cart.Id;
     }
     else
@@ -45,7 +45,7 @@
 
         @{var fullOrderPrice = Model.Cart.CartsPrice / 100.0m; }
 
-         
+
 
 
         <div class="hero-wrap hero-bread" style="background-image: url('/Content/images/bg_6.jpg');">
@@ -215,9 +215,6 @@
                 </div>
             </div>
         </section> <!-- .section -->
-
-
-
         <!-- loader -->
         <!--<div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" /><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg></div>-->
 
@@ -248,51 +245,49 @@
 
 
 
-    
-    @*<input type="submit" name="btnPay" value="Apmoketi" class="btn btn-primary" />
-    <button type="button" class="btn btn-info" color onclick="location.href = '@Url.Action("Index", "Main")'">Grįžti ir nusipirkti dar prekių</button>
+
+@*<input type="submit" name="btnPay" value="Apmoketi" class="btn btn-primary" />
+        <button type="button" class="btn btn-info" color onclick="location.href = '@Url.Action("Index", "Main")'">Grįžti ir nusipirkti dar prekių</button>
 
 
+
+    <script type="text/javascript">
+        function Apmoketi() {
+            var url = '@Url.Action("NotPaidOrders", "Client")';
+            var kortelesNumeris = $('#Klientas_ManoKortele_KortelesNumeris').val();
+            var kortelesSavininkas = $('#Klientas_ManoKortele_KortelesSavininkas').val();
+            var galiojimoMetai = $('#Klientas_ManoKortele_GaliojimoMetai').val();
+            var galiojimoMenesis = $('#Klientas_ManoKortele_GaliojimoMenesis').val();
+            var cvv = $('#Klientas_ManoKortele_CVV').val();
+
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: { Klientas_ManoKortele_KortelesNumeris: kortelesNumeris, Klientas_ManoKortele_GaliojimoMetai: galiojimoMetai, Klientas_ManoKortele_GaliojimoMenesis: galiojimoMenesis, Klientas_ManoKortele_CVV: cvv },
+                cache: false,
+                dataType: 'html',
+                success: function (response) {
+                    $("html").empty();
+                    $("html").append(response);
+                }
+            });
+        }
+    </script>
+*@
 
 <script type="text/javascript">
-    function Apmoketi() {
-		var url = '@Url.Action("NotPaidOrders", "Client")';
-		var kortelesNumeris = $('#Klientas_ManoKortele_KortelesNumeris').val();
-		var kortelesSavininkas = $('#Klientas_ManoKortele_KortelesSavininkas').val();
-		var galiojimoMetai = $('#Klientas_ManoKortele_GaliojimoMetai').val();
-		var galiojimoMenesis = $('#Klientas_ManoKortele_GaliojimoMenesis').val();
-		var cvv = $('#Klientas_ManoKortele_CVV').val();
+    function PayFormedOrder(cartID) {
+
+        var url = '@Url.Action("PayUnPayedOrder", "Client")';
+        var cartId = $('#cartID').val();
 
         $.ajax({
             type: "POST",
             url: url,
-			data: { Klientas_ManoKortele_KortelesNumeris: kortelesNumeris, Klientas_ManoKortele_GaliojimoMetai: galiojimoMetai, Klientas_ManoKortele_GaliojimoMenesis: galiojimoMenesis, Klientas_ManoKortele_CVV: cvv },
+            data: { cartId: cartId },
             cache: false,
             dataType: 'html',
-            success: function (response) {
-                $("html").empty();
-                $("html").append(response);
-            }
-        });
-	}
-
-
-	function ApmoketiSuformuotaUzsakyma(cartID) {
-        var url = '@Url.Action("ApmoketiSuformuotaUzsakyma", "Client")';
-		var kortelesNumeris = $('#Klientas_ManoKortele_KortelesNumeris').val();
-		var kortelesSavininkas = $('#Klientas_ManoKortele_KortelesSavininkas').val();
-		var galiojimoMetai = $('#Klientas_ManoKortele_GaliojimoMetai').val();
-		var galiojimoMenesis = $('#Klientas_ManoKortele_GaliojimoMenesis').val();
-		var cvv = $('#Klientas_ManoKortele_CVV').val();
-		var cartId = $('#cartID').val();
-
-        $.ajax({
-            type: "POST",
-            url: url,
-			data: { Klientas_ManoKortele_KortelesNumeris: kortelesNumeris, Klientas_ManoKortele_GaliojimoMetai: galiojimoMetai, Klientas_ManoKortele_GaliojimoMenesis: galiojimoMenesis, Klientas_ManoKortele_CVV: cvv, cartId: cartID },
-            cache: false,
-            dataType: 'html',
-        });
+         });
     }
-</script>*@
+</script>
 
