@@ -97,6 +97,7 @@ Plans for release 0.4:
 -  and checkout for the ITEM;
 - Change empty shopping cart's UI;
 - Make an Eye button in the user settings (which would show your password instead of star * symbol )
+- When creating database add one admin user
 
 
 [Bugs fixed]:
