@@ -81,13 +81,14 @@ Unit tests are typically automated tests written and run by software developers 
 
 Plans for release 0.4:
 
-- Another important thing is to make deleting items from database and importing process work flawlessly;
+- Add order delivery time after payment; (would require a new page)
+- Important thing is to make deleting items from database and importing process work flawlessly;
 
 - Webpage for webshop processes
-- Create UNIT TESTS for the controllers !!!!
+
 - Fix as mcuh exceptions (try catches as possible);
 - Add Sprint diagram, try to work in sprint;
-- Add CSS on products page;
+
 - Display products categories in Main Products window;
 - Add product search in the Main products window;
 - Add the cart option and make cart visible;
@@ -112,8 +113,10 @@ Plans for release 0.4:
    - Add and write Unit tests for payment processes, for Client Controller;
 
 So far what has been done:
+- Unit tests were started
 - Empty webpage created
 - Changed the term meaning Shop -> Products
+- Added CSS on products page;
 - Products are now being displayed in the store (In the navigation bar find Products section)
 - Made a new Cart's UI
 - Improved Shops UI design (fixed the frontend of the main shop, items are being displayed way for applicable for the users eye)
