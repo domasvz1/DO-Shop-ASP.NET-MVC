@@ -16,6 +16,7 @@ namespace BusinessLogic
         public AdminControl(IDbContextScopeFactory dbContextScopeFactory, IAdminRepository adminRepository)
         {
             _dbContextScopeFactory = dbContextScopeFactory ?? throw new ArgumentNullException("w/e dbContextScopeFactory broke near AdminControl");
+            
             _adminRepository = adminRepository ?? throw new ArgumentNullException("adminRepository broke near AdminControl");
         }
 
@@ -46,26 +47,35 @@ namespace BusinessLogic
         // Could benefit from more edge case's handling
         public Admin ConnectAdmin(Admin admin)
         {
-            using (_dbContextScopeFactory.CreateReadOnly())
-            {   
-                // Need to search the admin object by name
-                var foundAdminObject = _adminRepository.GetAdmin(admin.Login);
-
-                if (foundAdminObject == null)
-                    return null;
-
-                // If both fields (Login and Password) are not empty
-                if (admin.Login != null && admin.Password != null)
-                {
-                    // If the password matches the hash in the databse
-                    if (foundAdminObject.IsCorrectPassword(admin.Password) && foundAdminObject != null)
-                        return foundAdminObject;
-                    // Else returning null object
-                    else
-                        return null;
-                }
+            // Cant do Equals with null, needs to be woth "==" operand
+            if (admin == null)
+            {
                 return null;
             }
+            else
+            {
+                using (_dbContextScopeFactory.CreateReadOnly())
+                {
+                    // Need to search the admin object by name
+                    var foundAdminObject = _adminRepository.GetAdmin(admin.Login);
+
+                    if (foundAdminObject == null)
+                        return null;
+
+                    // If both fields (Login and Password) are not empty
+                    if (admin.Login != null && admin.Password != null)
+                    {
+                        // If the password matches the hash in the databse
+                        if (foundAdminObject.IsCorrectPassword(admin.Password) && foundAdminObject != null)
+                            return foundAdminObject;
+                        // Else returning null object
+                        else
+                            return null;
+                    }
+                    return null;
+                }
+            }
+
         }
     }
 }

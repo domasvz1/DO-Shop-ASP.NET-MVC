@@ -40,6 +40,8 @@ namespace Presentation.Controllers
             var categories = _itemCategoryControl.GetAllCategories();
 
             var items = (_itemDistributionControl.GetAllItems()).Where(i => i.CategoryId != null).ToList();
+
+            
            
             return View(items);
         }
