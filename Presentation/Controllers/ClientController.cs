@@ -386,26 +386,15 @@ namespace Presentation.Controllers
             return View(new PaymentModel() { Client = customer, Cart = cart, FullOrder = false });
         }
 
-        [UserAuthorization(ConnectionPage = "~/Client/Login", Roles = "Client")]
-        public ActionResult ApmoketiSuformuotaUzsakyma(FormCollection fc)
-        {
-            int cartId = Int32.Parse(fc["cartId"]);
-
-            GetSessionCustomer(out Client klientas);
-            var order = klientas.ClientOrders.FirstOrDefault(o => o.Cart.Id == cartId);
-            var cart = order.Cart;
-            var paymentInformation = _clientPaymentDatabseControl.ConfirmedPresetOrder(klientas.Id, cart);
-            return View("NotPaidOrders", new PaymentModel() { PaymentInformation = paymentInformation, Cart = cart });
-        }
-
-        public ActionResult PayUnpaidOrder(int orderId)
+        // This is assosiated with DIsaplay orders
+        public ActionResult PayUnPaidOrder(int orderId)
         {
             GetSessionCustomer(out Client customer);
 
             var order = customer.ClientOrders.FirstOrDefault(o => o.Id == orderId);
             var cart = order.Cart;
 
-            // If the order is null this sould be added to favro
+            
             if (order == null)
             {
 
@@ -414,10 +403,11 @@ namespace Presentation.Controllers
         }
 
         [UserAuthorization(ConnectionPage = "~/Client/Login", Roles = "Client")]
-        public ActionResult NotPaidOrders(FormCollection fc)
+        public ActionResult NotPaidOrders(int cartNumber)
         {
-            // [R04] Removed client card info
 
+            int cartId = cartNumber;
+            // [R04] Removed client card info
             ActionResult actionResult = GetSessionProperties(out Client customer, out Cart cart);
 
             if (actionResult != null)
@@ -429,6 +419,21 @@ namespace Presentation.Controllers
             Session["Count"] = 0;
             return View(new PaymentModel() { PaymentInformation = orderPaymentInformation, Cart = cart });
         }
+
+        [UserAuthorization(ConnectionPage = "~/Client/Login", Roles = "Client")]
+        [HttpPost]
+        public ActionResult PayFormedOrder(int cartNumber)
+        {
+            
+            // [R04] Removed client card info
+            int cartId = cartNumber;
+            GetSessionCustomer(out Client klientas);
+            var order = klientas.ClientOrders.FirstOrDefault(o => o.Cart.Id == cartId);
+            var cart = order.Cart;
+            var paymentInformation = _clientPaymentDatabseControl.ConfirmedPresetOrder(klientas.Id, cart);
+            return View("NotPaidOrders", new PaymentModel() { PaymentInformation = paymentInformation, Cart = cart });
+        }
+
 
         [UserAuthorization(ConnectionPage = "~/Client/Login", Roles = "Client")]
         private ActionResult GetSessionProperties(out Client customer, out Cart cart)
@@ -445,11 +450,21 @@ namespace Presentation.Controllers
             return null;
         }
 
+        //  Fix this 
         [UserAuthorization(ConnectionPage = "~/Client/Login", Roles = "Client")]
         private void GetSessionCustomer(out Client customer)
         {
             int? customerId = (int?)Session["AccountId"];
-            customer = _clientProfileControl.GetClient((int)customerId);
+            if (customerId == null)
+            {
+                RedirectToAction("LogOut");
+                customer = _clientProfileControl.GetClient((int)5589282);
+            }
+            else
+            {
+                customer = _clientProfileControl.GetClient((int)customerId);
+            }
+     
         }
 
         [UserAuthorization(ConnectionPage = "~/Client/Login", Roles = "Client")]

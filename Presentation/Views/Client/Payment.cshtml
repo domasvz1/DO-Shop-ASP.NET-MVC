@@ -12,6 +12,7 @@
     else
     {
         method = "NotPaidOrders";
+        cartID = Model.Cart.Id;
     }
 }
 
@@ -19,6 +20,7 @@
 
 @using (Html.BeginForm(method, "Client", FormMethod.Post))
 {
+    
     <!DOCTYPE html>
     <html lang="en">
     <head>
@@ -44,7 +46,6 @@
 
 
         @{var fullOrderPrice = Model.Cart.CartsPrice / 100.0m; }
-
 
 
 
@@ -208,6 +209,16 @@
                                     </div>
 
                                     <p><a href="#" class="btn btn-primary py-3 px-4">Place an order</a></p>
+
+                                    @*We can pass any type of vars this way*@
+                                    <input type="hidden" name="cartNumber" value="@cartID" />
+
+                                    <input type="submit" class="btn btn-primary" />
+
+
+                                    <button type="button" class="btn btn-info" color onclick="location.href = '@Url.Action("Index", "Main")'">Grįžti ir nusipirkti dar prekių</button>
+
+
                                 </div>
                             </div>
                         </div>
@@ -236,58 +247,61 @@
         <script src="/Content/js/google-map.js"></script>
         <script src="/Content/js/main.js"></script>
 
+        <script src="~/Scripts/modernizr-2.6.2.js"></script>
+        <script src="~/Scripts/jquery-1.8.2.intellisense.js"></script>
+        <script src="~/Scripts/jquery-1.8.2.js"></script>
+        <script src="~/Scripts/jquery-1.8.2.min.js"></script>
+
+
+        <script type="text/javascript">
+
+
+            @*function PayJs() {
+                var url = '@Url.Action("NotPaidOrders", "Client")';
+                var cartId = $('#cartID').val();
+                var cartId2 = $('#cartID').val();
+
+
+                $.ajax({
+                    type: "POST",
+                    url: url,
+                    data: { cartId: "2" },
+                    cache: false,
+                    dataType: 'html',
+                    success: function (response) {
+                        $("html").empty();
+                        $("html").append(response);
+                    }
+                });
+            }
+
+
+            $(document).ready(function () {
+                $("#submitBTN").click(function () {
+                    var ab = "2"
+
+
+                    $.ajax({
+                        url: 'Client/PayFormedOrder',
+                        type: 'POST',
+                        data: { id: ab },
+                        success: function (result) {
+
+                        },
+                        error: function () {
+                        }
+                    });
+                });
+            });*@
+            
+
+
+ 
+
+        </script>
 
     </body>
 </html>
 
-}
 
-
-
-
-
-@*<input type="submit" name="btnPay" value="Apmoketi" class="btn btn-primary" />
-        <button type="button" class="btn btn-info" color onclick="location.href = '@Url.Action("Index", "Main")'">Grįžti ir nusipirkti dar prekių</button>
-
-
-
-    <script type="text/javascript">
-        function Apmoketi() {
-            var url = '@Url.Action("NotPaidOrders", "Client")';
-            var kortelesNumeris = $('#Klientas_ManoKortele_KortelesNumeris').val();
-            var kortelesSavininkas = $('#Klientas_ManoKortele_KortelesSavininkas').val();
-            var galiojimoMetai = $('#Klientas_ManoKortele_GaliojimoMetai').val();
-            var galiojimoMenesis = $('#Klientas_ManoKortele_GaliojimoMenesis').val();
-            var cvv = $('#Klientas_ManoKortele_CVV').val();
-
-            $.ajax({
-                type: "POST",
-                url: url,
-                data: { Klientas_ManoKortele_KortelesNumeris: kortelesNumeris, Klientas_ManoKortele_GaliojimoMetai: galiojimoMetai, Klientas_ManoKortele_GaliojimoMenesis: galiojimoMenesis, Klientas_ManoKortele_CVV: cvv },
-                cache: false,
-                dataType: 'html',
-                success: function (response) {
-                    $("html").empty();
-                    $("html").append(response);
-                }
-            });
-        }
-    </script>
-*@
-
-<script type="text/javascript">
-    function PayFormedOrder(cartID) {
-
-        var url = '@Url.Action("PayUnPayedOrder", "Client")';
-        var cartId = $('#cartID').val();
-
-        $.ajax({
-            type: "POST",
-            url: url,
-            data: { cartId: cartId },
-            cache: false,
-            dataType: 'html',
-         });
-    }
-</script>
-
+ }

@@ -94,19 +94,22 @@ namespace BusinessLogic
 
                         string error = responseContent.Property("error").Value.ToString();
                         if (error == "OutOfFunds")
-                            returnMessage = "Neužtenka pinigų kortelėje";
+                            returnMessage = "Received a message of insufficent funds in the card";
 
                         else if (error == "CardExpired")
                             returnMessage = "Kortelės galiojimo data yra praeityje";
-
                         break;
 
                     case System.Net.HttpStatusCode.NotFound:
-                        returnMessage = "Operacija nerasta";
+                        returnMessage = "The operation was not found";
                         break;
 
                     case System.Net.HttpStatusCode.RequestTimeout:
-                        returnMessage = "Apmokėjimas nevyko, bandykite dar karta";
+                        returnMessage = "While paying there was a session timeout";
+                        break;
+
+                    case System.Net.HttpStatusCode.ServiceUnavailable: // 503 service unavailable
+                        returnMessage = "Payment service is not responding at this moment";
                         break;
                 }
             }
