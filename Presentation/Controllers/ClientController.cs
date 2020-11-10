@@ -16,26 +16,29 @@ namespace Presentation.Controllers
 {
     public class ClientController : Controller
     {
+        private readonly IClientRepository _IClientRepository;
         private readonly IClientProfileControl _clientProfileControl;
         private readonly IClientCartControl clientCartControl;
         private readonly IItemDistributionControl _itemDistributionControl;
         private readonly IHttpPaymentControl _httpPaymentControl;
         private readonly IClientPaymentDatabaseControl _clientPaymentDatabseControl;
-        private readonly IClientRepository _IClientRepository;
 
-        public ClientController(IClientProfileControl clientProfileControl, IClientCartControl cartControl, IItemDistributionControl itemDistributionControl, IHttpPaymentControl httpPaymentControl, IClientPaymentDatabaseControl clientPaymentDatabseControl, IClientRepository iClientRepository)
+        public ClientController(IClientRepository iClientRepository, IClientProfileControl clientProfileControl, IClientCartControl cartControl,
+            IItemDistributionControl itemDistributionControl, IHttpPaymentControl httpPaymentControl, IClientPaymentDatabaseControl clientPaymentDatabseControl)
         {
+            _IClientRepository = iClientRepository;
             _clientProfileControl = clientProfileControl;
             clientCartControl = cartControl;
             _itemDistributionControl = itemDistributionControl;
             _httpPaymentControl = httpPaymentControl;
-            _clientPaymentDatabseControl = clientPaymentDatabseControl;
-            _IClientRepository = iClientRepository; 
+            _clientPaymentDatabseControl = clientPaymentDatabseControl;      
         }
 
+        [UserAuthorization(ConnectionPage = "~/Client/Login", Roles = "Client")]
         public ActionResult Index()
         {
-            return View();
+            // This needs to be turned into clients profiles page in the next patches
+            return View("Index");
         }
 
         [HttpGet]
@@ -63,19 +66,19 @@ namespace Presentation.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [UserAuthorization(ConnectionPage = "~/Client/Login", Roles = "Client")]
-        public ActionResult EditProfile(ClientModel model)
+        public ActionResult EditProfile(ClientModel cModel)
         {
             // Since the selected Country and City is never null after editing anymore the null checking is not necessary
             // List values assigned to the Client Object's Delivery Address class
-            model.ClientVM.DeliveryAddress.Country = _IClientRepository.FetchCountries().ElementAt(model.SelectedCountry.Value).Name;
-            model.ClientVM.DeliveryAddress.City = _IClientRepository.FetchCities().ElementAt(model.SelectedCity.Value).Name;
+            cModel.ClientVM.DeliveryAddress.Country = _IClientRepository.FetchCountries().ElementAt(cModel.SelectedCountry.Value).Name;
+            cModel.ClientVM.DeliveryAddress.City = _IClientRepository.FetchCities().ElementAt(cModel.SelectedCity.Value).Name;
 
             if (ModelState.IsValid)
             {
                 try
                 {
                     // If clients updates successfully
-                    _clientProfileControl.EditProfile(model.ClientVM);
+                    _clientProfileControl.EditProfile(cModel.ClientVM);
                     return RedirectToAction("EditProfile", "Client");
                 }
                 catch (Exception ex)
@@ -83,8 +86,8 @@ namespace Presentation.Controllers
                     ModelState.AddModelError("Failino ?", ex.Message);
                 }
             }
-            ConfigureClientModel(model);
-            return View(model);
+            ConfigureClientModel(cModel);
+            return View(cModel);
         }
 
         // Ajax in EditProfile View calls this
@@ -97,7 +100,7 @@ namespace Presentation.Controllers
             return Json(data, JsonRequestBehavior.AllowGet);
         }
 
-        private void ConfigureClientModel(ClientModel model)
+        public void ConfigureClientModel(ClientModel model)
         {
             List<Country> countries = _IClientRepository.FetchCountries();
             model.CountryList = new SelectList(countries, "ID", "Name");
