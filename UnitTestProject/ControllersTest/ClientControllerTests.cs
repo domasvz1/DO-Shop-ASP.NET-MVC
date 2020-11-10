@@ -79,13 +79,14 @@ namespace UnitTestProject.ControllersTest
             Assert.IsTrue(string.IsNullOrEmpty(result.ViewName) || result.ViewName == "Index");
         }
 
+        [TestMethod]
         public void TestEditClientProfile()
         {
             ViewResult objViewResult = clientController.EditProfile() as ViewResult;
             Assert.AreEqual("Index", objViewResult.ViewName);
         }
 
-
+        [TestMethod]
         public void TestEditClientProfileGet()
         {
             ClientModel cModel = new ClientModel
