@@ -1,173 +1,307 @@
 ﻿@model Presentation.Models.PaymentModel
 
 @{
-	ViewBag.Title = "Payment";
-	string method;
-	int cartID = -1;
-	if (Model.FullOrder)
-	{
-		method = "ApmoketiSuformuotaUzsakyma";
-		cartID = Model.Cart.Id;
-	}
-	else
-	{
-		method = "NotPaidOrders";
-	}
+    ViewBag.Title = "Payment";
+    string method;
+    int cartID = -1;
+    if (Model.FullOrder)
+    {
+        method = "PayFormedOrder";
+        cartID = Model.Cart.Id;
+    }
+    else
+    {
+        method = "NotPaidOrders";
+        cartID = Model.Cart.Id;
+    }
 }
+
 
 
 @using (Html.BeginForm(method, "Client", FormMethod.Post))
 {
-	<br />
-	<h1>Apmokėjimo langas</h1>
-	<p>
-		<h3>Jūsų užsakyme esančios prekės </h3> <br />
-		<table class="table">
-			<tr class="table-active">
-				<th>
-				</th>
-				<th>
-					Prekės pavadinimas
-				</th>
-				<th>
-					Prekės kategorija
-				</th>
-				<th>
-					Kiekis
-				</th>
-				<th>
-					Bendra kaina
-				</th>
-				<th>
-					Visa kaina
-				</th>
-			</tr>
-			@foreach (var cartItem in Model.Cart.ItemsInCart)
-			{
-				decimal price = (cartItem.CartsPrice * cartItem.Quantity) / 100.0m;
-				decimal piecePrice = cartItem.CartsPrice / 100.0m;
-
-				<tr style="vertical-align:middle;">
-					<td width="10%">
-						@{
-							if (cartItem.Item.ImageUrl != null)
-							{
-								@:<img src="@Url.Content(cartItem.Item.ImageUrl)" alt="@cartItem.Item.Name" style="height:40px; width:auto;" />
-							}
-						}
-					</td>
-					<td>
-						@Html.ActionLink(cartItem.Item.Name, "About_Item", "Main", new { prekesId = cartItem.Item.Id }, new { @style = "color:#00008B" })
-					</td>
-					<td>
-						@Html.DisplayFor(modelItem => cartItem.Item.Category.Name)
-					</td>
-					<td>
-						@Html.DisplayFor(modelItem => cartItem.Quantity)
-					</td>
-					<td>
-						@Html.DisplayFor(modelItem => piecePrice) Eur/piece
-					</td>
-					<td>
-						@Html.DisplayFor(modelItem => price) Eur
-					</td>
-				</tr>
-			}
-		</table>
-		@{var fullOrderPrice = Model.Cart.CartsPrice / 100.0m; } <br /><br />
+    
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <title>Winkel - Free Bootstrap 4 Template by Colorlib</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
+        <link rel="stylesheet" href="/Content/css/open-iconic-bootstrap.min.css">
+        <link rel="stylesheet" href="/Content/css/animate.css">
+        <link rel="stylesheet" href="/Content/css/owl.carousel.min.css">
+        <link rel="stylesheet" href="/Content/css/owl.theme.default.min.css">
+        <link rel="stylesheet" href="/Content/css/magnific-popup.css">
+        <link rel="stylesheet" href="/Content/css/aos.css">
+        <link rel="stylesheet" href="/Content/css/ionicons.min.css">
+        <link rel="stylesheet" href="/Content/css/bootstrap-datepicker.css">
+        <link rel="stylesheet" href="/Content/css/jquery.timepicker.css">
+        <link rel="stylesheet" href="/Content/css/flaticon.css">
+        <link rel="stylesheet" href="/Content/css/icomoon.css">
+        <link rel="stylesheet" href="/Content/css/style.css">
+        <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    </head>
+    <body class="goto-here">
 
 
-		<b>Įveskite kortelės duomenis norėdami įvykdyti transakciją</b><br /><br />
-		<table class="table" style="width:80%">
-			<tr class="table-active">
-				<th>
-					Kortelės numeris
-				</th>
-				<th>
-					Kortelės savininko vardas ir pavardė
-				</th>
-				<th>
-					Kortelės galiojimo datos metai
-				</th>
-				<th>
-					Kortelės galiojimo datas mėnuo
-				</th>
-				<th>
-					Kortelės CVV
-				</th>
-			</tr>
-			<tr>
-				<th style="width:30%; text-align:center">
-					@Html.EditorFor(model => model.Client.Card.CardNumber, new { htmlAttributes = new { @class = "form-control" } })
-				</th>
+        @{var fullOrderPrice = Model.Cart.CartsPrice / 100.0m; }
 
-				<th style="width:30%; text-align:center">
-					@Html.EditorFor(model => model.Client.Card.CardHolder, new { htmlAttributes = new { @class = "form-control" } })
-				</th>
 
-				<th style="width:30%; text-align:center">
-					@Html.EditorFor(model => model.Client.Card.CardExpirationYear, new { htmlAttributes = new { @class = "form-control" } })
-				</th>
-				<th style="width:30%; text-align:center">
-					@Html.EditorFor(model => model.Client.Card.CardExpirationMonth, new { htmlAttributes = new { @class = "form-control" } })
 
-				</th>
-				<th style="width:30%; text-align:center">
-					@Html.EditorFor(model => model.Client.Card.CVV, new { htmlAttributes = new { @class = "form-control" } })
-					@*Reikia tik vienos pasleptos krepselio id*@
-					<input type="hidden" name="cartId" value="@cartID" />
-				</th>
-			</tr>
-		</table>
+        <div class="hero-wrap hero-bread" style="background-image: url('/Content/images/bg_6.jpg');">
+            <div class="container">
+                <div class="row no-gutters slider-text align-items-center justify-content-center">
+                    <div class="col-md-9 ftco-animate text-center">
+                        <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Final</a></span> <span>Step</span></p>
+                        <h1 class="mb-0 bread">Checkout</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-		<br />
-		<b>Viso krepšelio kaina:</b> @Html.DisplayFor(model => fullOrderPrice ) Euros
-		<br />
-		<br />
-		<input type="submit" name="btnPay" value="Apmoketi" class="btn btn-primary" /> 
-		<button type="button" class="btn btn-info" color onclick="location.href = '@Url.Action("Index", "Main")'">Grįžti ir nusipirkti dar prekių</button>
-	</p>
-}
+        <section class="ftco-section">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-xl-8 ftco-animate">
+                        <form action="#" class="billing-form">
+                            <h3 class="mb-4 billing-heading">Billing Details</h3>
+                            <div class="row align-items-end">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="firstname">Firt Name</label>
+                                        <input type="text" class="form-control" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="lastname">Last Name</label>
+                                        <input type="text" class="form-control" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="w-100"></div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="country">State / Country</label>
+                                        <div class="select-wrap">
+                                            <div class="icon"><span class="ion-ios-arrow-down"></span></div>
+                                            <select name="" id="" class="form-control">
+                                                <option value="">France</option>
+                                                <option value="">Italy</option>
+                                                <option value="">Philippines</option>
+                                                <option value="">South Korea</option>
+                                                <option value="">Hongkong</option>
+                                                <option value="">Japan</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="w-100"></div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="streetaddress">Street Address</label>
+                                        <input type="text" class="form-control" placeholder="House number and street name">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="Appartment, suite, unit etc: (optional)">
+                                    </div>
+                                </div>
+                                <div class="w-100"></div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="towncity">Town / City</label>
+                                        <input type="text" class="form-control" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="postcodezip">Postcode / ZIP *</label>
+                                        <input type="text" class="form-control" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="w-100"></div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="phone">Phone</label>
+                                        <input type="text" class="form-control" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="emailaddress">Email Address</label>
+                                        <input type="text" class="form-control" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="w-100"></div>
 
-<script type="text/javascript">
-    function Apmoketi() {
-		var url = '@Url.Action("NotPaidOrders", "Client")';
-		var kortelesNumeris = $('#Klientas_ManoKortele_KortelesNumeris').val();
-		var kortelesSavininkas = $('#Klientas_ManoKortele_KortelesSavininkas').val();
-		var galiojimoMetai = $('#Klientas_ManoKortele_GaliojimoMetai').val();
-		var galiojimoMenesis = $('#Klientas_ManoKortele_GaliojimoMenesis').val();
-		var cvv = $('#Klientas_ManoKortele_CVV').val();
+                                <p><a href="#" class="btn btn-primary py-3 px-4">Check cart</a></p>
 
-        $.ajax({
-            type: "POST",
-            url: url,
-			data: { Klientas_ManoKortele_KortelesNumeris: kortelesNumeris, Klientas_ManoKortele_GaliojimoMetai: galiojimoMetai, Klientas_ManoKortele_GaliojimoMenesis: galiojimoMenesis, Klientas_ManoKortele_CVV: cvv },
-            cache: false,
-            dataType: 'html',
-            success: function (response) {
-                $("html").empty();
-                $("html").append(response);
+                                <div class="col-md-12">
+                                    <div class="form-group mt-4">
+                                        <div class="radio">
+                                            <label class="mr-3"><input type="radio" name="optradio"> Fill my account address </label>
+                                            <label><input type="radio" name="optradio"> Ship to different address</label>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </form><!-- END -->
+
+
+                        <div class="row mt-5 pt-3 d-flex">
+                            <div class="col-md-6 d-flex">
+                                <div class="cart-detail cart-total bg-light p-3 p-md-4">
+                                    <h3 class="billing-heading mb-4">Cart Total</h3>
+
+                                    <p class="d-flex">
+                                        <span>Subtotal</span>
+                                        <span>$20.60</span>
+                                    </p>
+                                    <p class="d-flex">
+                                        <span>Delivery</span>
+                                        <span>$0.00</span>
+                                    </p>
+                                    <p class="d-flex">
+                                        <span>Discount</span>
+                                        <span>$3.00</span>
+                                    </p>
+                                    <hr>
+                                    <p class="d-flex total-price">
+                                        <span>Total</span>
+                                        <span>@Html.DisplayFor(model => fullOrderPrice) </span>
+                                    </p>
+
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="cart-detail bg-light p-3 p-md-4">
+                                    <h3 class="billing-heading mb-4">Payment Method</h3>
+                                    <div class="form-group">
+                                        <div class="col-md-12">
+                                            <div class="radio">
+                                                <label><input type="radio" name="optradio" class="mr-2"> Direct Bank Tranfer</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-md-12">
+                                            <div class="radio">
+                                                <label><input type="radio" name="optradio" class="mr-2"> Check Payment</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-md-12">
+                                            <div class="radio">
+                                                <label><input type="radio" name="optradio" class="mr-2"> Paypal</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-md-12">
+                                            <div class="checkbox">
+                                                <label><input type="checkbox" value="" class="mr-2"> I have read and accept the terms and conditions</label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <p><a href="#" class="btn btn-primary py-3 px-4">Place an order</a></p>
+
+                                    @*We can pass any type of vars this way*@
+                                    <input type="hidden" name="cartNumber" value="@cartID" />
+
+                                    <input type="submit" class="btn btn-primary" />
+
+
+                                    <button type="button" class="btn btn-info" color onclick="location.href = '@Url.Action("Index", "Main")'">Grįžti ir nusipirkti dar prekių</button>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div> <!-- .col-md-8 -->
+                </div>
+            </div>
+        </section> <!-- .section -->
+        <!-- loader -->
+        <!--<div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" /><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg></div>-->
+
+
+        <script src="/Content/js/jquery.min.js"></script>
+        <script src="/Content/js/jquery-migrate-3.0.1.min.js"></script>
+        <script src="/Content/js/popper.min.js"></script>
+        <script src="/Content/js/bootstrap.min.js"></script>
+        <script src="/Content/js/jquery.easing.1.3.js"></script>
+        <script src="/Content/js/jquery.waypoints.min.js"></script>
+        <script src="/Content/js/jquery.stellar.min.js"></script>
+        <script src="/Content/js/owl.carousel.min.js"></script>
+        <script src="/Content/js/jquery.magnific-popup.min.js"></script>
+        <script src="/Content/js/aos.js"></script>
+        <script src="/Content/js/jquery.animateNumber.min.js"></script>
+        <script src="/Content/js/bootstrap-datepicker.js"></script>
+        <script src="/Content/js/scrollax.min.js"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+        <script src="/Content/js/google-map.js"></script>
+        <script src="/Content/js/main.js"></script>
+
+        <script src="~/Scripts/modernizr-2.6.2.js"></script>
+        <script src="~/Scripts/jquery-1.8.2.intellisense.js"></script>
+        <script src="~/Scripts/jquery-1.8.2.js"></script>
+        <script src="~/Scripts/jquery-1.8.2.min.js"></script>
+
+
+        <script type="text/javascript">
+
+
+            @*function PayJs() {
+                var url = '@Url.Action("NotPaidOrders", "Client")';
+                var cartId = $('#cartID').val();
+                var cartId2 = $('#cartID').val();
+
+
+                $.ajax({
+                    type: "POST",
+                    url: url,
+                    data: { cartId: "2" },
+                    cache: false,
+                    dataType: 'html',
+                    success: function (response) {
+                        $("html").empty();
+                        $("html").append(response);
+                    }
+                });
             }
-        });
-	}
 
 
-	function ApmoketiSuformuotaUzsakyma(cartID) {
-        var url = '@Url.Action("ApmoketiSuformuotaUzsakyma", "Client")';
-		var kortelesNumeris = $('#Klientas_ManoKortele_KortelesNumeris').val();
-		var kortelesSavininkas = $('#Klientas_ManoKortele_KortelesSavininkas').val();
-		var galiojimoMetai = $('#Klientas_ManoKortele_GaliojimoMetai').val();
-		var galiojimoMenesis = $('#Klientas_ManoKortele_GaliojimoMenesis').val();
-		var cvv = $('#Klientas_ManoKortele_CVV').val();
-		var cartId = $('#cartID').val();
+            $(document).ready(function () {
+                $("#submitBTN").click(function () {
+                    var ab = "2"
 
-        $.ajax({
-            type: "POST",
-            url: url,
-			data: { Klientas_ManoKortele_KortelesNumeris: kortelesNumeris, Klientas_ManoKortele_GaliojimoMetai: galiojimoMetai, Klientas_ManoKortele_GaliojimoMenesis: galiojimoMenesis, Klientas_ManoKortele_CVV: cvv, cartId: cartID },
-            cache: false,
-            dataType: 'html',
-        });
-    }
-</script>
 
+                    $.ajax({
+                        url: 'Client/PayFormedOrder',
+                        type: 'POST',
+                        data: { id: ab },
+                        success: function (result) {
+
+                        },
+                        error: function () {
+                        }
+                    });
+                });
+            });*@
+            
+
+
+ 
+
+        </script>
+
+    </body>
+</html>
+
+
+ }

@@ -41,6 +41,7 @@ namespace UnitTestProject.ControllersTest
         IImportControl iImpControl;
         IFileControl iFileControl;
         IItemCategoryControl iItmCatCtrl;
+
         IItemDistributionControl itemDistributionControl;
         IItemControl itemControl;
         IItemCategoryControl itemCategoryControl;
@@ -124,13 +125,13 @@ namespace UnitTestProject.ControllersTest
 
         [TestMethod]
         public void AdminLoginWithParams()
-        {
+        {   // This test might often fail due to admin default details change
             // Mock default admin user for testing
             Admin admin = new Admin
             {
                 Id = 1,
                 Login = "admin",
-                Password = "1234*"
+                Password = "123"
             };
 
             ViewResult objViewResult = adminController.Login(admin) as ViewResult;

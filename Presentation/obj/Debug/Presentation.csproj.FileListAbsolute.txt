@@ -217,8 +217,6 @@ C:\Users\dosipovicius\OneDrive - barbora.lt\Desktop\DO-Shop-ASP.NET-MVC\Presenta
 C:\Users\dosipovicius\OneDrive - barbora.lt\Desktop\DO-Shop-ASP.NET-MVC\Presentation\bin\roslyn\Microsoft.VisualBasic.Core.targets
 C:\Users\dosipovicius\OneDrive - barbora.lt\Desktop\DO-Shop-ASP.NET-MVC\Presentation\bin\roslyn\System.Collections.Immutable.dll
 C:\Users\dosipovicius\OneDrive - barbora.lt\Desktop\DO-Shop-ASP.NET-MVC\Presentation\bin\roslyn\System.Reflection.Metadata.dll
-C:\Users\dosipovicius\OneDrive - barbora.lt\Desktop\DO-Shop-ASP.NET-MVC\Presentation\bin\roslyn\System.Security.AccessControl.dll
-C:\Users\dosipovicius\OneDrive - barbora.lt\Desktop\DO-Shop-ASP.NET-MVC\Presentation\bin\roslyn\System.Security.Principal.Windows.dll
 C:\Users\dosipovicius\OneDrive - barbora.lt\Desktop\DO-Shop-ASP.NET-MVC\Presentation\bin\roslyn\System.Text.Encoding.CodePages.dll
 C:\Users\dosipovicius\OneDrive - barbora.lt\Desktop\DO-Shop-ASP.NET-MVC\Presentation\bin\roslyn\vbc.exe
 C:\Users\dosipovicius\OneDrive - barbora.lt\Desktop\DO-Shop-ASP.NET-MVC\Presentation\bin\roslyn\vbc.exe.config
