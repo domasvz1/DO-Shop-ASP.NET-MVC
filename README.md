@@ -76,19 +76,15 @@ Unit tests are typically automated tests written and run by software developers 
 
 
 -----------------------------------------------------------------------------------------------------------------------------------
+# Release 0.5 isbeing created
 
-# Release 0.4 is being created
-
-Plans for release 0.4:
+- Payment and orders new UI from Admin and Client side;
 
 - Add order delivery time after payment; (would require a new page)
 - Important thing is to make deleting items from database and importing process work flawlessly;
-
 - Webpage for webshop processes
-
 - Fix as mcuh exceptions (try catches as possible);
 - Add Sprint diagram, try to work in sprint;
-
 - Display products categories in Main Products window;
 - Add product search in the Main products window;
 - Add the cart option and make cart visible;
@@ -100,17 +96,17 @@ Plans for release 0.4:
 - Make an Eye button in the user settings (which would show your password instead of star * symbol )
 - When creating database add one admin user
 
+# Release 0.4 is in progress
+
+In this release, the personal decision was made to makre releases shorter
 
 [Bugs fixed]:
 - Check if session has started on the same user. (Previously when user has not disconnected from the system, his session would be over but he would still be connected. This is still hapenning but now when you press on nav bar buttons it redirects you to the login page;
+- Handled crashing when the mock service is unavailable;
 
 [Currently]
-- Fixing the payment system process:
-   - Stop saving data, remove data fields; [Done]
-   - Enter the mock payment data only in Methods inside (where sending the data); [Done]
-   - Renew UI of the payment system windows; [Done]
-   - Make sure that the paying for the cart proces is working;
-   - Add and write Unit tests for payment processes, for Client Controller;
+- Currently finishing the initial functinality of the mock payment process;
+- After wards push the release branch and release testing;
 
 So far what has been done:
 - Unit tests were started
@@ -122,6 +118,11 @@ So far what has been done:
 - Improved Shops UI design (fixed the frontend of the main shop, items are being displayed way for applicable for the users eye)
 - Added UNIT Test's project layer to cover Admin panel. From now on, features should have Unit tests which would cover the features;
 - Implementing more clear processes, have plans for the current release;
+- Fixed the payment system process:
+   - Stopped saving data, remove data fields;
+   - The mock payment data only entered in Methods inside (where sending the data to the mock payment service);
+   - Make sure that the paying for the cart proces is working;
+   - Add and write Unit tests for payment processes, for Client Controller;
 
 - Created WIKI page for the project;
 -----------------------------------------------------------------------

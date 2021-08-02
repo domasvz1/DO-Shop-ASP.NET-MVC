@@ -102,7 +102,9 @@ namespace BusinessLogic
                 foundClientObject.FirstName = client.FirstName;
                 foundClientObject.LastName = client.LastName;
                 foundClientObject.MobilePhone = client.MobilePhone;
-                foundClientObject.Card = client.Card;
+
+                // [R04] TAG REMOVE
+                //foundClientObject.Card = client.Card;
                 foundClientObject.DeliveryAddress = client.DeliveryAddress;
 
                 // Edits the repository [the database object and saves it]
