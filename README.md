@@ -24,6 +24,7 @@ If by any chance you are working with this right now, you are free to learn the 
     -  Presentation layer
     -  Business layer
     -  DataAccess layer
+    -  UnitTests (additional Layer)
 
 
 Taken from the Microsoft documentation: https://dotnet.microsoft.com/apps/aspnet/web-apps
@@ -67,29 +68,70 @@ In the Packahge Manager Console (Or if it changes in the future in something sim
 
 
 -----------------------------------------------------------------------------------------------------------------------------------
+# What are Unit Tests?
 
-# Release 0.4 is being created
+Unit tests are typically automated tests written and run by software developers to ensure that a section of an application (known as the "unit") meets its design and behaves as intended. In procedural programming, a unit could be an entire module, but it is more commonly an individual function or procedure. After 0.4 this project will have Unit tests to conver some areas of the EShop.
 
-Plans for release 0.4:
-- Clear the processes, have plans for the current release
+- From the release 0.4, Unit tests will be added and every new feature should be convered with tests in the Controller or Classes etc..
+
+
+-----------------------------------------------------------------------------------------------------------------------------------
+# Release 0.5 isbeing created
+
+- Payment and orders new UI from Admin and Client side;
+
+- Add order delivery time after payment; (would require a new page)
+- Important thing is to make deleting items from database and importing process work flawlessly;
 - Webpage for webshop processes
-- Create first automation tests
-- Fix as mcuh exceptions (try catches as possible)
-- Add Sprint diagram, try to work in sprint 
+- Fix as mcuh exceptions (try catches as possible);
+- Add Sprint diagram, try to work in sprint;
+- Display products categories in Main Products window;
+- Add product search in the Main products window;
+- Add the cart option and make cart visible;
+- Add the ability to add items into the cart
+- After creating user successfully show a (*pop up*) that user was created successfully.
+- After updating my info in user profile throw a popup that profile updatet sucessfully;
+-  and checkout for the ITEM;
+- Change empty shopping cart's UI;
+- Make an Eye button in the user settings (which would show your password instead of star * symbol )
+- When creating database add one admin user
 
+# Release 0.4 is in progress
+
+In this release, the personal decision was made to makre releases shorter
+
+[Bugs fixed]:
+- Check if session has started on the same user. (Previously when user has not disconnected from the system, his session would be over but he would still be connected. This is still hapenning but now when you press on nav bar buttons it redirects you to the login page;
+- Handled crashing when the mock service is unavailable;
+
+[Currently]
+- Currently finishing the initial functinality of the mock payment process;
+- After wards push the release branch and release testing;
 
 So far what has been done:
-- Empty webpager created
+- Unit tests were started
+- Empty webpage created
+- Changed the term meaning Shop -> Products
+- Added CSS on products page;
+- Products are now being displayed in the store (In the navigation bar find Products section)
+- Made a new Cart's UI
+- Improved Shops UI design (fixed the frontend of the main shop, items are being displayed way for applicable for the users eye)
+- Added UNIT Test's project layer to cover Admin panel. From now on, features should have Unit tests which would cover the features;
+- Implementing more clear processes, have plans for the current release;
+- Fixed the payment system process:
+   - Stopped saving data, remove data fields;
+   - The mock payment data only entered in Methods inside (where sending the data to the mock payment service);
+   - Make sure that the paying for the cart proces is working;
+   - Add and write Unit tests for payment processes, for Client Controller;
 
-
+- Created WIKI page for the project;
 -----------------------------------------------------------------------
 
  # 0.3 Release [done, but Lacks documentation]
 
 Decided to work on another branch and this needs to be in master. Since this branch is not done yet, will merge everything that was corrected and since it was a lot, decided to merge.
 
-The idea about this release:
-
+The main fixes on this release:
 - Started implementing Admin Index Panel with Winkel bootstrap and redoing everything with its styling suggestions;
 - Made sure that pictures would be clickable for admin and that it would display admin pictures;
 - Made sure that If item has no proper picture, a proper picture would be displayed from content;

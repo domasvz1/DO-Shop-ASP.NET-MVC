@@ -239,8 +239,8 @@ C:\Users\dosipovicius\OneDrive - barbora.lt\Desktop\DO-Shop-ASP.NET-MVC\Business
 C:\Users\dosipovicius\OneDrive - barbora.lt\Desktop\DO-Shop-ASP.NET-MVC\BusinessObjects\bin\Debug\tr\Microsoft.VisualStudio.Services.WebApi.resources.dll
 C:\Users\dosipovicius\OneDrive - barbora.lt\Desktop\DO-Shop-ASP.NET-MVC\BusinessObjects\bin\Debug\zh-Hans\Microsoft.VisualStudio.Services.WebApi.resources.dll
 C:\Users\dosipovicius\OneDrive - barbora.lt\Desktop\DO-Shop-ASP.NET-MVC\BusinessObjects\bin\Debug\zh-Hant\Microsoft.VisualStudio.Services.WebApi.resources.dll
-C:\Users\dosipovicius\OneDrive - barbora.lt\Desktop\DO-Shop-ASP.NET-MVC\BusinessObjects\obj\Debug\BusinessObjects.csprojAssemblyReference.cache
 C:\Users\dosipovicius\OneDrive - barbora.lt\Desktop\DO-Shop-ASP.NET-MVC\BusinessObjects\obj\Debug\BusinessObjects.csproj.CoreCompileInputs.cache
 C:\Users\dosipovicius\OneDrive - barbora.lt\Desktop\DO-Shop-ASP.NET-MVC\BusinessObjects\obj\Debug\BusinessObjects.csproj.CopyComplete
 C:\Users\dosipovicius\OneDrive - barbora.lt\Desktop\DO-Shop-ASP.NET-MVC\BusinessObjects\obj\Debug\BusinessObjects.dll
 C:\Users\dosipovicius\OneDrive - barbora.lt\Desktop\DO-Shop-ASP.NET-MVC\BusinessObjects\obj\Debug\BusinessObjects.pdb
+C:\Users\dosipovicius\OneDrive - barbora.lt\Desktop\DO-Shop-ASP.NET-MVC\BusinessObjects\obj\Debug\BusinessObjects.csprojAssemblyReference.cache

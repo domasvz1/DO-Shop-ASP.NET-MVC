@@ -11,6 +11,8 @@ using BusinessObjects;
 using BusinessObjects.Orders;
 using BusinessLogic.Interfaces;
 using Presentation.Models;
+using System.Runtime.ExceptionServices;
+using NUnit.Framework.Internal;
 
 namespace Presentation.Controllers
 {
@@ -26,8 +28,8 @@ namespace Presentation.Controllers
        
         public AdminController(
             IItemDistributionControl itemDistributionControl,
+            IItemControl  itemControl,
             IItemCategoryControl itemCategoryControl,
-            IItemControl itemControl,
             IPropertyControl propertyControl,
             IClientProfileControl clientProfileControl,
             IAdminControl adminControl,
@@ -40,25 +42,35 @@ namespace Presentation.Controllers
             _clientProfileControl = clientProfileControl;
             _adminControl = adminControl;
             _orderControl = orderControl;
+            
         }
 
+        // Big brain maybe ? Since we have eveything initialized here, we can maybe
+        // Try and pass this data for the testing layer ?
+
+
         //Admin Connection view, locate in "DO SHOP project folder -> Views-> Admin"
-        //[UserAuthorization(ConnectionPage = "~/Admin/Login", Roles = "Admin")]
+        [UserAuthorization(ConnectionPage = "~/Admin/Login", Roles = "Admin")]
         public ActionResult Index()
         {
             // Check if not there are no items, 
-            var newVar = _itemDistributionControl.GetAllItems();
-
-            if (newVar.Count() == 0)
+            if( _itemDistributionControl != null)
             {
-                // Do something here
                 return View(_itemDistributionControl.GetAllItems());
             }
+
             else
             {
-                return View(_itemDistributionControl.GetAllItems());
+                return View("Index");
             }
+
         }
+
+        public ActionResult SomethingWrongAdmin()
+        {
+            return View();
+        }
+
 
         public ActionResult Login()
         {
@@ -66,8 +78,9 @@ namespace Presentation.Controllers
         }
 
         [HttpPost]
-        public ActionResult Login(Admin admin, string returnUrl)
+        public ActionResult Login(Admin admin)
         {
+           
             // Give admin base object and lets go to the admin control class
             var adminObject = _adminControl.ConnectAdmin(admin);
 
@@ -75,37 +88,30 @@ namespace Presentation.Controllers
             if (adminObject != null)
             {
                 // Find out how to use admin session more
-                FormsAuthentication.SetAuthCookie("a" + adminObject.Login, false);
-                Session["AccountId"] = adminObject.Id;
-                Session["AccountUsername"] = adminObject.Login;
-                Session["IsAdminAccount"] = true;
-                if (returnUrl == null || returnUrl == string.Empty)
-                {
-                    returnUrl = "Index";
-                }
-                return Redirect(returnUrl);
+                //FormsAuthentication.SetAuthCookie("a" + adminObject.Login, false);
+                //Session["AccountId"] = adminObject.Id;
+                //Session["AccountUsername"] = adminObject.Login;
+                //Session["IsAdminAccount"] = true;
+
+                return View("Index");
             }
 
             // If there's none Admin object detected
             else if (adminObject == null)
             {
                 ModelState.AddModelError("", "Admin object was not found in the database");
-                return Redirect("Index");
+                return View("Login");
             }
 
-            else
-                ModelState.AddModelError("", "Bad login, sorry");
-
-            return View(admin);
+            return View("SomethingWrongAdmin");
         }
 
         public ActionResult LogOut()
         {
-            string adminLogin = Session["AccountUsername"].ToString();
-            Session["AccountId"] = null;
-            Session["AccountUsername"] = null;
-            Session["IsAdminAccount"] = null;
-            FormsAuthentication.SignOut();
+            //Session["AccountId"] = null;
+            //Session["AccountUsername"] = null;
+            //Session["IsAdminAccount"] = null;
+            //FormsAuthentication.SignOut();
             return RedirectToAction("Login");
         }
 
@@ -402,6 +408,7 @@ namespace Presentation.Controllers
             catch (Exception)
             {
                 return RedirectToAction("Index");
+                // Input the message that item was not deleted
             }
 
             return RedirectToAction("index");

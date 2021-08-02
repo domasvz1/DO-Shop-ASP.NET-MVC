@@ -154,6 +154,7 @@
 					<div class="rating d-flex">
 						<button type="button" class="btn btn-warning" color onclick="location.href = '@Url.Action("ModifyItem", new { id = Model.Id })'">Edit the item</button>
 						<button type="button" class="btn btn-warning" color onclick="location.href = '@Url.Action("Index")'" style="margin-left: 20px">Back to Item List</button>
+                        <button type="button" class="btn btn-warning" color onclick="location.href = '@Url.Action("RemoveItem", new { id = Model.Id })'" style="margin-left: 20px">Delete Item</button>
 					</div>
 
 				</div>
