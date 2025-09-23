@@ -1,13 +1,7 @@
-using AutoMapper;
-using Mehdime.Entity;
 using System;
+
 using Unity;
-// Used modules and interfaces in the project
-using BusinessLogic;
-using DataAccess;
-using BusinessLogic.Interfaces;
-using DataAccess.Interfaces;
-using Presentation.App_Start;
+using Unity.Injection;
 
 namespace Presentation
 {
@@ -47,54 +41,50 @@ namespace Presentation
             // Make sure to add a Unity.Configuration to the using statements.
             // container.LoadConfiguration();
 
+            // Register Business Logic dependencies
+            container.RegisterType<BusinessLogic.Interfaces.IItemCategoryControl, BusinessLogic.ItemCategoryControl>();
+            container.RegisterType<BusinessLogic.Interfaces.IItemDistributionControl, BusinessLogic.ItemDistributionControl>();
+            container.RegisterType<BusinessLogic.Interfaces.IItemControl, BusinessLogic.ItemControl>();
+            container.RegisterType<BusinessLogic.Interfaces.IOrderControl, BusinessLogic.OrderControl>();
+            container.RegisterType<BusinessLogic.Interfaces.IPropertyControl, BusinessLogic.PropertyControl>();
+            container.RegisterType<BusinessLogic.Interfaces.IAdminControl, BusinessLogic.AdminControl>();
+            container.RegisterType<BusinessLogic.Interfaces.IClientCartControl, BusinessLogic.ClientCartControl>();
+            container.RegisterType<BusinessLogic.Interfaces.IClientProfileControl, BusinessLogic.ClientProfileControl>();
+            
+            // Register Data Access dependencies  
+            container.RegisterType<DataAccess.Interfaces.IItemRepository, DataAccess.ItemRepository>();
+            container.RegisterType<DataAccess.Interfaces.IOrderRepository, DataAccess.OrderRepository>();
+            container.RegisterType<DataAccess.Interfaces.IPropertyRepository, DataAccess.PropertyRepository>();
+            container.RegisterType<DataAccess.Interfaces.ICategoryRepository, DataAccess.CategoryRepository>();
+            container.RegisterType<DataAccess.Interfaces.IAdminRepository, DataAccess.AdminRepository>();
+            container.RegisterType<DataAccess.Interfaces.IClientRepository, DataAccess.ClientRepository>();
+            container.RegisterType<DataAccess.Interfaces.ICountryRepository, DataAccess.CountryRepository>();
+            
+            // Register Mehdime.Entity dependencies for Entity Framework scoping
+            container.RegisterType<Mehdime.Entity.IDbContextScopeFactory, Mehdime.Entity.DbContextScopeFactory>();
+            container.RegisterType<Mehdime.Entity.IAmbientDbContextLocator, Mehdime.Entity.AmbientDbContextLocator>();
+            
+            // Register custom DbContextFactory for DataBaseMigrator
+            container.RegisterInstance<Mehdime.Entity.IDbContextFactory>(
+                new CustomDbContextFactory());
+        }
+    }
 
-            // Admin
-            container.RegisterType<IAdminRepository, AdminRepository>();
-            container.RegisterType<IAdminControl, AdminControl>();
-
-
-            // Client
-            container.RegisterType<IClientRepository, ClientRepository>();
-            container.RegisterType<IClientProfileControl, ClientProfileControl>();
-            container.RegisterType<ICountryRepository, CountryRepository>();
-
-
-            // Operations with Files
-            container.RegisterType<IFileControl, FileControl>();
-            container.RegisterType<IImportControl, ImportControl>();
-
-
-            // Everything associated with items in the shop
-            container.RegisterType<IItemRepository, ItemRepository>();
-            container.RegisterType<IItemDistributionControl, ItemDistributionControl>();
-            container.RegisterType<IItemControl, ItemControl>();
-
-
-            // Everything associated with categories and properties
-            container.RegisterType<ICategoryRepository, CategoryRepository>();
-            container.RegisterType<IItemCategoryControl, ItemCategoryControl>();
-            container.RegisterType<IPropertyControl, PropertyControl>();
-            container.RegisterType<IPropertyRepository, PropertyRepository>();
-
-
-            // Everything associated with  orders in the shop
-            container.RegisterType<IOrderControl, OrderControl>();
-            container.RegisterType<IOrderRepository, OrderRepository>();
-
-
-            // Cart
-            container.RegisterType<IClientCartControl, ClientCartControl>();
-
-
-            // Payment
-            container.RegisterType<IHttpPaymentControl, HttpPaymentControl>();
-            container.RegisterType<IClientPaymentDatabaseControl, ClientPaymentDatabaseControl>();
-
-
-            //Mapping DB Context
-            container.RegisterInstance<IMapper>(MappingProfile.InitializeAutoMapper().CreateMapper());
-            container.RegisterInstance<IDbContextScopeFactory>(new DbContextScopeFactory());
-            container.RegisterInstance<IAmbientDbContextLocator>(new AmbientDbContextLocator());
+    /// <summary>
+    /// Custom DbContextFactory implementation for DataBaseMigrator
+    /// </summary>
+    public class CustomDbContextFactory : Mehdime.Entity.IDbContextFactory
+    {
+        public TDbContext CreateDbContext<TDbContext>() where TDbContext : System.Data.Entity.DbContext
+        {
+            // Create and return DataBaseMigrator instance
+            if (typeof(TDbContext) == typeof(DataAccess.DataBaseMigrator) || typeof(TDbContext).IsAssignableFrom(typeof(DataAccess.DataBaseMigrator)))
+            {
+                return new DataAccess.DataBaseMigrator() as TDbContext;
+            }
+            
+            // Fallback - try to create instance using Activator
+            return System.Activator.CreateInstance<TDbContext>();
         }
     }
 }
