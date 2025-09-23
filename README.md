@@ -51,11 +51,63 @@ Also, later in the future, I will add a section about Winkel bootstrap right her
 
 ## How to launch the project 
 
-You might have some addons or something else regarding the project, so I'm leaving you with this "Setting up the project" guide. If you pull the master to your local repository and the following errors occur, you can fix them using these few steps: 
+### Prerequisites
+- Visual Studio 2017 or later
+- .NET Framework 4.6.1 or later
+- SQL Server LocalDB (included with Visual Studio)
 
-  - In the "Package Manager Console" (in the Visual Studio) update -> Update-Package Microsoft.CodeDom.Providers.DotNetCompilerPlatform -r
-  - When you have opened the solution,  set the "Presentation" Layer as a Startup Project in the Visual Studio's Solution Settings.
-  - (Optional) Also, you can add "SQL Server Object Explorer" in view. If it's missing, restart the project (by opening it in the explorer using Visual Studio).
+### Setup Instructions
+
+1. **Clone the repository**
+   ```
+   git clone [your-repo-url]
+   cd DO-Shop
+   ```
+
+2. **Open the solution**
+   - Open `DO Shop.sln` in Visual Studio
+
+3. **Set startup project**
+   - Right-click on **"Presentation"** project in Solution Explorer
+   - Select **"Set as Startup Project"**
+
+4. **Restore NuGet packages** (if needed)
+   - The project includes a `nuget.config` file for proper package sources
+   - In Package Manager Console, run:
+   ```
+   dotnet nuget locals all --clear
+   nuget restore "DO Shop.sln"
+   ```
+
+5. **Setup database**
+   - In Package Manager Console, change Default project to **"DataAccess"**
+   - Run these commands:
+   ```
+   Enable-Migrations
+   Add-Migration InitialCreate
+   Update-Database
+   ```
+
+6. **Run the application**
+   - Press **F5** or click **Start** in Visual Studio
+   - The application will open in your default browser
+
+### Troubleshooting
+
+#### NuGet Package Issues
+If you encounter "package not found" errors:
+1. **Use Visual Studio NuGet Manager UI** instead of Package Manager Console:
+   - Right-click solution → "Manage NuGet Packages for Solution"
+   - Use the "Updates" tab to update packages
+2. **Clear NuGet cache**: `dotnet nuget locals all --clear`
+3. **Update Microsoft.CodeDom.Providers.DotNetCompilerPlatform** to version 2.0.1 or higher
+4. **Run the setup script**: `.\setup.ps1` (PowerShell as Administrator)
+
+#### Common Solutions
+- Ensure internet connection for package downloads
+- The project may work without updating packages - try running first
+- If Package Manager Console fails, use Visual Studio's NuGet UI
+- Restart Visual Studio after making NuGet configuration changes
 
 This error may also occur
 "No context type was found in the assembly"
