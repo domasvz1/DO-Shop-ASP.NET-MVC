@@ -29,7 +29,8 @@ namespace BusinessLogic
             _httpPaymentControl = httpPaymentControl ?? throw new ArgumentNullException("http payment control broke near ClientPaymentDatabaseControl");
         }
 
-        public PaymentInformation ConfirmPayment(int clientId, Cart cart, string cardNumber, int expirationYear, int expirationMonth, string cardHolder, string cvv)
+        // [R04] TAG Changing Clients Data
+        public PaymentInformation ConfirmPayment(int clientId, Cart cart)
         {
             using (var dbContextScope = _dbContextScopeFactory.Create())
             {
@@ -40,41 +41,25 @@ namespace BusinessLogic
                     throw new Exception($"There was no client found with the {clientId} id");
                 }
 
-                // Assigning the values to the required fields of the card
-                foundClientObject.Card.CardNumber = cardNumber;
-                foundClientObject.Card.CardExpirationYear = expirationYear;
-                foundClientObject.Card.CardExpirationMonth = expirationMonth;
-                foundClientObject.Card.CardHolder = cardHolder;
-                foundClientObject.Card.CVV = cvv;
 
-
-                var paymentInformation = _httpPaymentControl.InitializePayment(foundClientObject.Card, cart.CartsPrice);
-
+                var orderInformation = _httpPaymentControl.InitializePayment(cart.CartsPrice);
                 cart.ItemsInCart.ToList().ForEach(x => x.Item = _itemDistributionControl.GetItem(x.Item.Id));
 
-                var order = new ClientOrders { Cart = cart, OrderDate = DateTime.Now, OrderStatus = paymentInformation.OrderStatus };
+                var order = new ClientOrders { Cart = cart, OrderDate = DateTime.Now, OrderStatus = orderInformation.OrderStatus };
+                // Adding order to clinet orders
                 foundClientObject.ClientOrders.Add(order);
-                _clientRepository.EditClient(foundClientObject);
 
-                // Making cards information default or blank (for now)
-                foundClientObject.Card.CardNumber = "4111111111111111";
-                foundClientObject.Card.CardExpirationYear = 2021;
-                foundClientObject.Card.CardExpirationMonth = 1;
-                foundClientObject.Card.CardHolder = "Vardenis Pavardenis";
-                foundClientObject.Card.CVV = "111";
+                // [R04] TAG we do not need to update client information anymore
+                //_clientRepository.EditClient(foundClientObject);
+
+                // Saving database contex changes
                 dbContextScope.SaveChanges();
-                return paymentInformation;
+                return orderInformation;
             }
         }
 
-        public PaymentInformation ConfirmedPresetOrder(
-            int clientId,
-            Cart cart,
-            string cardNumber,
-            int expirationYear,
-            int expirationMonth,
-            string cardHolder,
-            string cvv)
+        // [R04] TAG Changing Clients Data
+        public PaymentInformation ConfirmedPresetOrder(int clientId, Cart cart)
         {
             using (var dbContextScope = _dbContextScopeFactory.Create())
             {
@@ -85,25 +70,14 @@ namespace BusinessLogic
                     throw new Exception($"There was no client found with the {clientId} id");
                 }
 
-                // Cia irgi reiks prideti likusius duomenis
-                foundClientObject.Card.CardNumber = cardNumber;
-                foundClientObject.Card.CardExpirationYear = expirationYear;
-                foundClientObject.Card.CardExpirationMonth = expirationMonth;
-                foundClientObject.Card.CardHolder = cardHolder;
-                foundClientObject.Card.CVV = cvv;
-
-                var paymentInformation = _httpPaymentControl.InitializePayment(foundClientObject.Card, cart.CartsPrice);
+                var paymentInformation = _httpPaymentControl.InitializePayment(cart.CartsPrice);
 
                 ClientOrders order = foundClientObject.ClientOrders.FirstOrDefault(o => o.Cart.Id == cart.Id);
                 order.OrderStatus = paymentInformation.OrderStatus;
+
                 _clientRepository.EditClient(foundClientObject);
 
-                // Making card object data default (for now)
-                foundClientObject.Card.CardNumber = "4111111111111111";
-                foundClientObject.Card.CardExpirationYear = 2021;
-                foundClientObject.Card.CardExpirationMonth = 1;
-                foundClientObject.Card.CardHolder = "Vardenis Pavardenis";
-                foundClientObject.Card.CVV = "111";
+              
                 dbContextScope.SaveChanges();
                 return paymentInformation;
             }

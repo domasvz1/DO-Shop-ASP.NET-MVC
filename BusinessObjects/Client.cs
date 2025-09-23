@@ -39,8 +39,9 @@ namespace BusinessObjects
         [DisplayName("Mobile Phone")]
         public string MobilePhone { get; set; }
 
-        [UIHint("Card")]
-        public Card Card { get; set; }
+        //[R04] TAG emoving Card from now on and iintroducing mock payment
+        //[UIHint("Card")]
+        //public Card Card { get; set; }
 
         public DeliveryAddress DeliveryAddress { get; set; }
 

@@ -65,42 +65,43 @@
 			
 
 			<div class="collapse navbar-collapse" id="ftco-nav">
-				<ul class="navbar-nav ml-auto">
+                <ul class="navbar-nav ml-auto">
 
-					@if ((bool)isAdmin)
-					{
-						<li class="nav-item active"><a href="@Url.Action("Index", "Main")" class="nav-link">Items</a></li>
-						<li class="nav-item active"><a href="@Url.Action("Products", "Main")" class="nav-link">Orders</a></li>
-						<li class="nav-item"><a href="@Url.Action("About", "Main")" class="nav-link">Customers</a></li>
-						<li class="nav-item"><a href="@Url.Action("Blog", "Main")" class="nav-link">Blogs</a></li>
-						<li class="nav-item"><a href="@Url.Action("LogOut", "Admin")" class="nav-link">Please Logout Administrator</a></li>
-					}
-					else
-					{
-						<li class="nav-item active"><a href="@Url.Action("Index", "Main")" class="nav-link">Home</a></li>
-						<li class="nav-item active"><a href="@Url.Action("Products", "Main")" class="nav-link">Products</a></li>
-						<li class="nav-item"><a href="@Url.Action("About", "Main")" class="nav-link">About</a></li>
-						<li class="nav-item"><a href="@Url.Action("Blog", "Main")" class="nav-link">Blog</a></li>
-						<li class="nav-item"><a href="@Url.Action("Contact", "Main")" class="nav-link"><span class="icon-phone2"></span>Contact</a></li>
-					}
+                    @if ((bool)isAdmin)
+                    {
+                        <li class="nav-item active"><a href="@Url.Action("Index", "Main")" class="nav-link">Items</a></li>
+                        <li class="nav-item active"><a href="@Url.Action("Products", "Main")" class="nav-link">Orders</a></li>
+                        <li class="nav-item"><a href="@Url.Action("About", "Main")" class="nav-link">Customers</a></li>
+                        <li class="nav-item"><a href="@Url.Action("Blog", "Main")" class="nav-link">Blogs</a></li>
+                        <li class="nav-item"><a href="@Url.Action("LogOut Admin", "Admin")" class="nav-link">Please Logout Administrator</a></li>
+                    }
+                    else
+                    {
+                        <li class="nav-item active"><a href="@Url.Action("Index", "Main")" class="nav-link">Home</a></li>
+                        <li class="nav-item active"><a href="@Url.Action("Products", "Main")" class="nav-link">Products</a></li>
+                        <li class="nav-item"><a href="@Url.Action("About", "Main")" class="nav-link">About</a></li>
+                        <li class="nav-item"><a href="@Url.Action("Blog", "Main")" class="nav-link">Blog</a></li>
+                        <li class="nav-item"><a href="@Url.Action("Contact", "Main")" class="nav-link"><span class="icon-phone2"></span>Contact</a></li>
 
-					@if (!User.Identity.IsAuthenticated)
-					{
-						<li class="nav-item"><a href="@Url.Action("Register", "Client")" class="nav-link">Register</a></li>
-						<li class="nav-item"><a href="@Url.Action("Login", "Client")" class="nav-link">Log In</a></li>
-					}
-					else
-					{
-						if (!(bool)isAdmin)
-						{
-							<li class="nav-item"> <a href="@Url.Action("OrderHistory", "Client")" class="nav-link">Orders</a></li>
-							<li class="nav-item cta cta-colored"><a href="@Url.Action("Cart", "Client")" class="nav-link"><span class="icon-shopping_cart"></span>My Cart</a></li>
-							<li class="nav-item"><a href="@Url.Action("EditProfile", "Client")" class="nav-link">Edit Profile</a></li>
-							<li class="nav-item"><a href="@Url.Action("LogOut", "Client")" class="nav-link">Log Out</a></li>
-						}
-					}
+                    }
 
-				</ul>
+                    @if (!User.Identity.IsAuthenticated)
+                    {
+                        <li class="nav-item"><a href="@Url.Action("Register", "Client")" class="nav-link">Register</a></li>
+                        <li class="nav-item"><a href="@Url.Action("Login", "Client")" class="nav-link">Log In</a></li>
+                    }
+                    else
+                    {
+                        if (!(bool)isAdmin)
+                        {
+                            <li class="nav-item"> <a href="@Url.Action("OrderHistory", "Client")" class="nav-link">Orders</a></li>
+                            <li class="nav-item cta cta-colored"><a href="@Url.Action("Cart", "Client")" class="nav-link"><span class="icon-shopping_cart">[0]</span>My Cart</a></li>
+                            <li class="nav-item"><a href="@Url.Action("EditProfile", "Client")" class="nav-link">Edit Profile</a></li>
+						    <li class="nav-item"><a href="@Url.Action("LogOut", "Client")" class="nav-link">Log Out</a></li>
+                        }
+                    }
+
+                </ul>
 			</div>
 		</div>
 	</nav>

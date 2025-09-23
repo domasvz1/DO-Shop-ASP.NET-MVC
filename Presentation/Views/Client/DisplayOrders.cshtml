@@ -98,12 +98,12 @@
 		</tr>
 	</table>
 	<p>
-		Užsakymo būsena: @Model.ClientOrders.OrderStatus.GetOrderStatus() <br /> <br />
+		Order status: @Model.ClientOrders.OrderStatus.GetOrderStatus() <br /> <br />
 
 		@*Pagal uzsakymo busena ismtam klientui pasirinkima*@
 		@if (@Model.ClientOrders.OrderStatus == OrderStatus.Waiting)
 		{
-			@Html.ActionLink("These orders are waiting for your payment", "PayUnpaidOrder", "Client", new { orderId = Model.ClientOrders.Id }, new { @class = "btn btn-warning" })
+			@Html.ActionLink("Pay for this order", "PayUnpaidOrder", "Client", new { orderId = Model.ClientOrders.Id }, new { @class = "btn btn-warning" })
 		}
 		else
 		{

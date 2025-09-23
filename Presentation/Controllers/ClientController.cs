@@ -10,64 +10,75 @@ using BusinessLogic.Interfaces;
 using DataAccess.Interfaces;
 using Presentation.Models;
 using System.Web.UI.WebControls;
+using System.Diagnostics;
 
 namespace Presentation.Controllers
 {
     public class ClientController : Controller
     {
+        private readonly IClientRepository _IClientRepository;
         private readonly IClientProfileControl _clientProfileControl;
         private readonly IClientCartControl clientCartControl;
         private readonly IItemDistributionControl _itemDistributionControl;
         private readonly IHttpPaymentControl _httpPaymentControl;
         private readonly IClientPaymentDatabaseControl _clientPaymentDatabseControl;
-        private readonly IClientRepository _IClientRepository;
 
-        public ClientController(IClientProfileControl clientProfileControl, IClientCartControl cartControl, IItemDistributionControl itemDistributionControl, IHttpPaymentControl httpPaymentControl, IClientPaymentDatabaseControl clientPaymentDatabseControl, IClientRepository iClientRepository)
+        public ClientController(IClientRepository iClientRepository, IClientProfileControl clientProfileControl, IClientCartControl cartControl,
+            IItemDistributionControl itemDistributionControl, IHttpPaymentControl httpPaymentControl, IClientPaymentDatabaseControl clientPaymentDatabseControl)
         {
+            _IClientRepository = iClientRepository;
             _clientProfileControl = clientProfileControl;
             clientCartControl = cartControl;
             _itemDistributionControl = itemDistributionControl;
             _httpPaymentControl = httpPaymentControl;
-            _clientPaymentDatabseControl = clientPaymentDatabseControl;
-            _IClientRepository = iClientRepository; 
+            _clientPaymentDatabseControl = clientPaymentDatabseControl;      
         }
 
+        [UserAuthorization(ConnectionPage = "~/Client/Login", Roles = "Client")]
         public ActionResult Index()
         {
-            return View();
+            // This needs to be turned into clients profiles page in the next patches
+            return View("Index");
         }
 
         [HttpGet]
         [UserAuthorization(ConnectionPage = "~/Client/Login", Roles = "Client")]
         public ActionResult EditProfile()
         {
-            // A check here should be implemented in the never versions, to see f any cleints are left from last time log in
-            ClientModel model = new ClientModel
+            // Checking if session is connected (this prevents errors from previous stayed sessions)
+            if (Session["AccountId"] != null)
             {
-                ClientVM = _clientProfileControl.GetClient((int)Session["AccountId"])
-            };
+                ClientModel model = new ClientModel
+                {
+                    ClientVM = _clientProfileControl.GetClient((int)Session["AccountId"])
+                    // If account is null
+                };
+                // Since in Country and City list a value with index of 0 will be as " -- Not selected --"
+                ConfigureClientModel(model); // Filling Countries and City's data
+                return View(model);
+            }
 
-            // Since in Country and City list a value with index of 0 will be as " -- Not selected --"
-            ConfigureClientModel(model); // Filling Countries and City's data
-            return View(model);
+            // Needs message that need to relogin
+            // LogOut action logs off user from sesion if a session is still in tact
+            return RedirectToAction("LogOut");
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         [UserAuthorization(ConnectionPage = "~/Client/Login", Roles = "Client")]
-        public ActionResult EditProfile(ClientModel model)
+        public ActionResult EditProfile(ClientModel cModel)
         {
             // Since the selected Country and City is never null after editing anymore the null checking is not necessary
             // List values assigned to the Client Object's Delivery Address class
-            model.ClientVM.DeliveryAddress.Country = _IClientRepository.FetchCountries().ElementAt(model.SelectedCountry.Value).Name;
-            model.ClientVM.DeliveryAddress.City = _IClientRepository.FetchCities().ElementAt(model.SelectedCity.Value).Name;
+            cModel.ClientVM.DeliveryAddress.Country = _IClientRepository.FetchCountries().ElementAt(cModel.SelectedCountry.Value).Name;
+            cModel.ClientVM.DeliveryAddress.City = _IClientRepository.FetchCities().ElementAt(cModel.SelectedCity.Value).Name;
 
             if (ModelState.IsValid)
             {
                 try
                 {
                     // If clients updates successfully
-                    _clientProfileControl.EditProfile(model.ClientVM);
+                    _clientProfileControl.EditProfile(cModel.ClientVM);
                     return RedirectToAction("EditProfile", "Client");
                 }
                 catch (Exception ex)
@@ -75,8 +86,8 @@ namespace Presentation.Controllers
                     ModelState.AddModelError("Failino ?", ex.Message);
                 }
             }
-            ConfigureClientModel(model);
-            return View(model);
+            ConfigureClientModel(cModel);
+            return View(cModel);
         }
 
         // Ajax in EditProfile View calls this
@@ -89,7 +100,7 @@ namespace Presentation.Controllers
             return Json(data, JsonRequestBehavior.AllowGet);
         }
 
-        private void ConfigureClientModel(ClientModel model)
+        public void ConfigureClientModel(ClientModel model)
         {
             List<Country> countries = _IClientRepository.FetchCountries();
             model.CountryList = new SelectList(countries, "ID", "Name");
@@ -107,6 +118,7 @@ namespace Presentation.Controllers
             }
         }
 
+        // [R04] Changed here
         //GET: Client/Register
         [HttpGet]
         public ActionResult Register()
@@ -122,11 +134,9 @@ namespace Presentation.Controllers
             // He will be available to edit them in other windows
             ClientObject.MobilePhone = "";
             DeliveryAddress delivery = new DeliveryAddress();
-            Card card = new Card();
-
+            
             // Passing the client data to the created object
             ClientObject.DeliveryAddress = delivery;
-            ClientObject.Card = card;
 
             if (ModelState.IsValid) // Tells if any model errors have been added to ModelState.
             {
@@ -240,8 +250,16 @@ namespace Presentation.Controllers
         // GET: Cart
         public ActionResult Cart()
         {
-            //if (Session["Cart"] == null || (int?)Session["Count"] == 0)
-            //    return RedirectToAction("EmptyCart");
+            if (Session["AccountId"] == null)
+            {
+                // Insert message to login
+                return RedirectToAction("Login");
+            }
+            // If user session is not over and cart is empty
+            else if (Session["AccountId"] != null && Session["Cart"] == null)
+            {
+                return RedirectToAction("EmptyCart");
+            }
 
             return View((Cart)Session["Cart"]);
         }
@@ -371,32 +389,15 @@ namespace Presentation.Controllers
             return View(new PaymentModel() { Client = customer, Cart = cart, FullOrder = false });
         }
 
-        [UserAuthorization(ConnectionPage = "~/Client/Login", Roles = "Client")]
-        public ActionResult ApmoketiSuformuotaUzsakyma(FormCollection fc)
-        {
-            string cardNumber = fc["Client.Card.cardNumber"];
-            string cardHolder = fc["Client.Card.cardOwner"];
-            int cardExpirationYear = Int32.Parse(fc["Client.Card.cardExpirationYear"]);
-            int cardExpirationMonth = Int32.Parse(fc["Client.Card.cardExpirationMonth"]);
-            string cardCVV = fc["Client.Card.CVV"];
-            int cartId = Int32.Parse(fc["cartId"]);
-
-            GetSessionCustomer(out Client klientas);
-            var order = klientas.ClientOrders.FirstOrDefault(o => o.Cart.Id == cartId);
-
-            var cart = order.Cart;
-            var paymentInformation = _clientPaymentDatabseControl.ConfirmedPresetOrder(klientas.Id, cart, cardNumber, cardExpirationYear, cardExpirationMonth, cardHolder, cardCVV);
-            return View("NotPaidOrders", new PaymentModel() { PaymentInformation = paymentInformation, Cart = cart });
-        }
-
-        public ActionResult PayUnpaidOrder(int orderId)
+        // This is assosiated with DIsaplay orders
+        public ActionResult PayUnPaidOrder(int orderId)
         {
             GetSessionCustomer(out Client customer);
 
             var order = customer.ClientOrders.FirstOrDefault(o => o.Id == orderId);
             var cart = order.Cart;
 
-            // If the order is null this sould be added to favro
+            
             if (order == null)
             {
 
@@ -405,27 +406,37 @@ namespace Presentation.Controllers
         }
 
         [UserAuthorization(ConnectionPage = "~/Client/Login", Roles = "Client")]
-        public ActionResult NotPaidOrders(FormCollection fc)
+        public ActionResult NotPaidOrders(int cartNumber)
         {
-            string cardNumber = fc["Client.Card.cardNumber"];
-            string cardHolder = fc["Client.Card.cardOwner"];
-            int cardExpirationYear = Int32.Parse(fc["Client.Card.cardExpirationYear"]);
-            int cardExpirationMonth = Int32.Parse(fc["Client.Card.cardExpirationMonth"]);
-            string cardCVV = fc["Client.Card.CVV"];
 
+            int cartId = cartNumber;
+            // [R04] Removed client card info
             ActionResult actionResult = GetSessionProperties(out Client customer, out Cart cart);
 
             if (actionResult != null)
-            {
                 return actionResult;
-            }
 
-            var apmokejimoInformacija = _clientPaymentDatabseControl.ConfirmPayment( customer.Id, cart, cardNumber, cardExpirationYear, cardExpirationMonth, cardHolder, cardCVV);
+            var orderPaymentInformation = _clientPaymentDatabseControl.ConfirmPayment(customer.Id, cart);
 
             Session["Cart"] = null;
             Session["Count"] = 0;
-            return View(new PaymentModel() { PaymentInformation = apmokejimoInformacija, Cart = cart });
+            return View(new PaymentModel() { PaymentInformation = orderPaymentInformation, Cart = cart });
         }
+
+        [UserAuthorization(ConnectionPage = "~/Client/Login", Roles = "Client")]
+        [HttpPost]
+        public ActionResult PayFormedOrder(int cartNumber)
+        {
+            
+            // [R04] Removed client card info
+            int cartId = cartNumber;
+            GetSessionCustomer(out Client klientas);
+            var order = klientas.ClientOrders.FirstOrDefault(o => o.Cart.Id == cartId);
+            var cart = order.Cart;
+            var paymentInformation = _clientPaymentDatabseControl.ConfirmedPresetOrder(klientas.Id, cart);
+            return View("NotPaidOrders", new PaymentModel() { PaymentInformation = paymentInformation, Cart = cart });
+        }
+
 
         [UserAuthorization(ConnectionPage = "~/Client/Login", Roles = "Client")]
         private ActionResult GetSessionProperties(out Client customer, out Cart cart)
@@ -442,11 +453,21 @@ namespace Presentation.Controllers
             return null;
         }
 
+        //  Fix this 
         [UserAuthorization(ConnectionPage = "~/Client/Login", Roles = "Client")]
         private void GetSessionCustomer(out Client customer)
         {
             int? customerId = (int?)Session["AccountId"];
-            customer = _clientProfileControl.GetClient((int)customerId);
+            if (customerId == null)
+            {
+                RedirectToAction("LogOut");
+                customer = _clientProfileControl.GetClient((int)5589282);
+            }
+            else
+            {
+                customer = _clientProfileControl.GetClient((int)customerId);
+            }
+     
         }
 
         [UserAuthorization(ConnectionPage = "~/Client/Login", Roles = "Client")]
