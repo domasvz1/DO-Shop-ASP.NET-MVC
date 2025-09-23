@@ -1,0 +1,70 @@
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+bld/
+[Bb]in/
+[Oo]bj/
+
+# NuGet Packages Directory (but keep packages.config)
+**/packages/*
+!**/packages/build/
+!**/packages/repositories.config
+*.nupkg
+
+# Visual Studio cache files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.userprefs
+
+# Visual Studio IDE files
+/.vs/
+.vscode/
+
+# Build Results of an ATL Project
+[Dd]ebugPS/
+[Rr]eleasePS/
+dlldata.c
+
+# Temporary ASP.NET Files
+[Tt]emp/
+Temporary ASP.NET Files/
+
+# IIS Express
+applicationhost.config
+
+# Web publish profiles (sensitive deployment info)
+PublishProfiles/
+*.pubxml
+*.pubxml.user
+
+# Database files
+*.mdf
+*.ldf
+*.sdf
+
+# Log files
+*.log
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDE specific files
+*.swp
+*.swo
+*~
+
+# Backup files
+*.bak
+*.tmp
