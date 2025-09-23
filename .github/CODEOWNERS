@@ -1,0 +1,20 @@
+# DO-Shop Code Owners
+# These owners will be requested for review when someone opens a pull request.
+
+# Global owners (for all files)
+* @domasvz1
+
+# Automation scripts require special review
+*.ps1 @domasvz1
+.github/ @domasvz1
+
+# Core application layers
+Presentation/ @domasvz1
+BusinessLogic/ @domasvz1
+DataAccess/ @domasvz1
+BusinessObjects/ @domasvz1
+
+# Configuration files
+*.config @domasvz1
+*.json @domasvz1
+*.md @domasvz1

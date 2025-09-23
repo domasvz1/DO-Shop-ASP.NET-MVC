@@ -1,0 +1,58 @@
+name: DO-Shop CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-and-test:
+    runs-on: windows-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+      
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: '4.6.1'
+        
+    - name: Setup MSBuild
+      uses: microsoft/setup-msbuild@v1.1
+      
+    - name: Restore NuGet packages
+      run: |
+        nuget restore "DO Shop.sln"
+        
+    - name: Build solution
+      run: |
+        msbuild "DO Shop.sln" /p:Configuration=Release /p:Platform="Any CPU"
+        
+    - name: Run automated tests (if any)
+      run: |
+        echo "Tests would run here"
+        
+    - name: Validate project structure
+      run: |
+        if (!(Test-Path "Presentation\Presentation.csproj")) { exit 1 }
+        if (!(Test-Path "BusinessLogic\BusinessLogic.csproj")) { exit 1 }
+        if (!(Test-Path "DataAccess\DataAccess.csproj")) { exit 1 }
+        if (!(Test-Path "BusinessObjects\BusinessObjects.csproj")) { exit 1 }
+        echo "✅ Project structure validation passed"
+        
+    - name: Security scan (optional)
+      run: |
+        echo "Security scanning would happen here"
+        
+  deployment-ready:
+    needs: build-and-test
+    runs-on: windows-latest
+    if: github.ref == 'refs/heads/main'
+    
+    steps:
+    - name: Mark as deployment ready
+      run: |
+        echo "✅ Ready for deployment"
+        echo "🚀 DO-Shop v0.4 Enterprise build successful"
